@@ -1,0 +1,60 @@
+# ============================================
+# Claude Projects - Git Ignore
+# ============================================
+
+# Claude Code session/runtime data (not portable, regenerated per session)
+.claude/debug/
+.claude/cache/
+.claude/file-history/
+.claude/history.jsonl
+.claude/paste-cache/
+.claude/projects/
+.claude/shell-snapshots/
+.claude/stats-cache.json
+.claude/todos/
+.claude/downloads/
+.claude/plans/
+.claude/plugins/
+
+# Team runtime data (inboxes, locks are session-specific)
+.claude/teams/*/inboxes/
+.claude/tasks/*/.lock
+
+# Claude_Setup is its own repo
+Claude_Setup/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+mainNotes.bib
+
+# Windows artifacts
+nul
+Thumbs.db
+Desktop.ini
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Secrets
+*.env
+.env.*
+credentials.json
+
+# Git internals (nested repos)
+EA_Team/.git/
+
+# Empty placeholder PDFs (0 bytes)
+# Note: real PDFs are tracked via Git LFS
