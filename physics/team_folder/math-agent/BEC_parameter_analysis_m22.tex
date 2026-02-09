@@ -1,0 +1,1048 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============== ENCODING AND FONTS ==============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ============== PAGE LAYOUT ==============
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+
+% ============== MATHEMATICS ==============
+\usepackage{amsmath,amssymb,amsfonts,amsthm,bm}
+\usepackage{siunitx}
+
+% ============== GRAPHICS AND TABLES ==============
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{array}
+
+% ============== LISTS AND ENUMERATIONS ==============
+\usepackage{enumitem}
+
+% ============== COLORS ==============
+\usepackage{xcolor}
+
+% ============== HYPERLINKS (load last) ==============
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ============== CUSTOM MACROS ==============
+\newcommand{\ee}[1]{\times 10^{#1}}
+\newcommand{\hbar}{\ensuremath{\hslash}}
+\newcommand{\kB}{\ensuremath{k_{\mathrm{B}}}}
+\newcommand{\lPl}{\ensuremath{\ell_{\mathrm{Pl}}}}
+\newcommand{\mPl}{\ensuremath{m_{\mathrm{Pl}}}}
+\newcommand{\tPl}{\ensuremath{t_{\mathrm{Pl}}}}
+\newcommand{\rhocrit}{\ensuremath{\rho_{\mathrm{crit}}}}
+\newcommand{\rhoDM}{\ensuremath{\rho_{\mathrm{DM}}}}
+\newcommand{\rhoDE}{\ensuremath{\rho_{\mathrm{DE}}}}
+\newcommand{\lambdaC}{\ensuremath{\lambda_{\mathrm{C}}}}
+\newcommand{\lambdadB}{\ensuremath{\lambda_{\mathrm{dB}}}}
+\newcommand{\lambdaJ}{\ensuremath{\lambda_{\mathrm{J}}}}
+
+% Flag markers
+\newcommand{\FLAG}[1]{\textcolor{red}{\textbf{[FLAG: #1]}}}
+\newcommand{\CONSISTENT}{\textcolor{green!60!black}{\checkmark~Consistent}}
+\newcommand{\INCONSISTENT}{\textcolor{red}{\textbf{X}~Inconsistent}}
+
+% Theorem environments
+\newtheorem{result}{Result}
+\newtheorem{observation}{Observation}
+
+% ============== TITLE ==============
+\title{\textbf{Comprehensive BEC Parameter Analysis for the Universal Condensate Framework}\\[0.5em]
+\large Ultralight Boson Mass $m = 10^{-22}$ eV/$c^2$: Derived Quantities and Consistency Checks}
+
+\author{Math-Agent\\
+\small Physics Research Team\\
+\small Document Date: \today}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document provides a comprehensive mathematical analysis of the condensate cosmology framework assuming the condensate is composed of ultralight bosons with mass $m \sim 10^{-22}$ eV/$c^2$ (the ``fuzzy dark matter'' mass scale). We compute all derived quantities---Compton wavelengths, number densities, healing lengths, interaction strengths, critical temperatures, chemical potentials, sound speeds, de Broglie wavelengths, Jeans lengths, and boundary parameters---and assess their consistency with the framework's foundational equations. We identify several critical tensions between the $m = 10^{-22}$ eV assumption and the stiffness-matching condition $c_s = c$ that defines the cosmic condensate. These findings are essential for the team's ongoing theoretical development.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{Fundamental Constants and Input Parameters}
+\label{sec:constants}
+%==============================================================================
+
+We adopt the following fundamental constants (CODATA 2018 values):
+
+\begin{table}[H]
+\centering
+\caption{Fundamental Physical Constants}
+\label{tab:constants}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Quantity} & \textbf{Symbol} & \textbf{Value} & \textbf{Units} \\
+\midrule
+Speed of light & $c$ & $2.99792458 \ee{8}$ & m/s \\
+Reduced Planck constant & $\hbar$ & $1.054571817 \ee{-34}$ & J$\cdot$s \\
+Gravitational constant & $G$ & $6.67430 \ee{-11}$ & m$^3$/(kg$\cdot$s$^2$) \\
+Boltzmann constant & $\kB$ & $1.380649 \ee{-23}$ & J/K \\
+Planck length & $\lPl$ & $1.616255 \ee{-35}$ & m \\
+Planck mass & $\mPl$ & $2.176434 \ee{-8}$ & kg \\
+Planck time & $\tPl$ & $5.391247 \ee{-44}$ & s \\
+Electron volt & 1 eV & $1.602176634 \ee{-19}$ & J \\
+Parsec & 1 pc & $3.08567758 \ee{16}$ & m \\
+Megaparsec & 1 Mpc & $3.08567758 \ee{22}$ & m \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cosmological Parameters (Planck 2018)}
+
+\begin{table}[H]
+\centering
+\caption{Cosmological Parameters}
+\label{tab:cosmo}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Quantity} & \textbf{Symbol} & \textbf{Value} & \textbf{Units} \\
+\midrule
+Hubble constant & $H_0$ & 67.4 & km/s/Mpc \\
+ & & $2.184 \ee{-18}$ & s$^{-1}$ \\
+Critical density & $\rhocrit$ & $9.47 \ee{-27}$ & kg/m$^3$ \\
+Dark matter fraction & $\Omega_{\mathrm{DM}}$ & 0.27 & -- \\
+Dark energy fraction & $\Omega_\Lambda$ & 0.68 & -- \\
+Baryon fraction & $\Omega_b$ & 0.05 & -- \\
+CMB temperature & $T_{\mathrm{CMB}}$ & 2.725 & K \\
+Hubble radius & $R_H = c/H_0$ & $1.37 \ee{26}$ & m \\
+ & & 4.44 Gpc & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Part A: Fundamental Boson Parameters}
+\label{sec:partA}
+%==============================================================================
+
+\subsection{Mass Conversion to SI Units}
+
+\textbf{Given:} $m = 10^{-22}$ eV/$c^2$
+
+\textbf{Conversion:}
+\begin{align}
+m &= 10^{-22} \text{ eV}/c^2 \times \frac{1.602176634 \ee{-19} \text{ J}}{1 \text{ eV}} \times \frac{1}{(2.998 \ee{8} \text{ m/s})^2} \nonumber \\
+m &= 10^{-22} \times 1.602 \ee{-19} \times 1.113 \ee{-17} \text{ kg} \nonumber \\
+m &= 1.783 \ee{-58} \text{ kg}
+\end{align}
+
+\begin{result}[Boson mass in SI]
+\begin{equation}
+\boxed{m = 1.783 \times 10^{-58} \text{ kg} = 10^{-22} \text{ eV}/c^2}
+\end{equation}
+\end{result}
+
+\textbf{Dimensional check:} [eV/$c^2$] = [Energy]/[velocity$^2$] = J/(m/s)$^2$ = kg. \CONSISTENT
+
+\subsection{Compton Wavelength}
+
+The Compton wavelength characterizes the quantum scale of a particle:
+\begin{equation}
+\lambda_C = \frac{h}{mc} = \frac{2\pi\hbar}{mc}
+\end{equation}
+
+\textbf{Calculation:}
+\begin{align}
+\lambda_C &= \frac{2\pi \times 1.055 \ee{-34} \text{ J}\cdot\text{s}}{1.783 \ee{-58} \text{ kg} \times 2.998 \ee{8} \text{ m/s}} \nonumber \\
+\lambda_C &= \frac{6.626 \ee{-34}}{5.344 \ee{-50}} \text{ m} \nonumber \\
+\lambda_C &= 1.240 \ee{16} \text{ m}
+\end{align}
+
+Converting to parsecs: $\lambda_C = 1.240 \ee{16} / 3.086 \ee{16} = 0.402$ pc $\approx$ 1.3 light-years.
+
+\begin{result}[Compton wavelength]
+\begin{equation}
+\boxed{\lambda_C = 1.24 \times 10^{16} \text{ m} \approx 0.40 \text{ pc} \approx 1.3 \text{ ly}}
+\end{equation}
+\end{result}
+
+\subsection{Reduced Compton Wavelength}
+
+The reduced Compton wavelength is:
+\begin{equation}
+\bar{\lambda}_C = \frac{\hbar}{mc} = \frac{\lambda_C}{2\pi}
+\end{equation}
+
+\textbf{Calculation:}
+\begin{align}
+\bar{\lambda}_C &= \frac{1.055 \ee{-34}}{1.783 \ee{-58} \times 2.998 \ee{8}} \nonumber \\
+\bar{\lambda}_C &= \frac{1.055 \ee{-34}}{5.344 \ee{-50}} \nonumber \\
+\bar{\lambda}_C &= 1.974 \ee{15} \text{ m}
+\end{align}
+
+\begin{result}[Reduced Compton wavelength]
+\begin{equation}
+\boxed{\bar{\lambda}_C = \frac{\hbar}{mc} = 1.97 \times 10^{15} \text{ m} \approx 0.064 \text{ pc} \approx 0.21 \text{ ly}}
+\end{equation}
+\end{result}
+
+\textbf{Physical significance:} The reduced Compton wavelength $\bar{\lambda}_C \sim 2 \ee{15}$ m $\sim 0.2$ light-years is a \emph{galactic scale}. This is characteristic of fuzzy dark matter, where quantum pressure suppresses structure below this scale.
+
+%==============================================================================
+\section{Part B: Condensate Parameters}
+\label{sec:partB}
+%==============================================================================
+
+\subsection{Number Density Calculations}
+
+The number density of the condensate is:
+\begin{equation}
+n = \frac{\rho}{m}
+\end{equation}
+
+\subsubsection{Critical Density}
+
+\begin{align}
+n_{\mathrm{crit}} &= \frac{\rhocrit}{m} = \frac{9.47 \ee{-27} \text{ kg/m}^3}{1.783 \ee{-58} \text{ kg}} \nonumber \\
+n_{\mathrm{crit}} &= 5.31 \ee{31} \text{ m}^{-3}
+\end{align}
+
+\begin{result}[Number density at critical density]
+\begin{equation}
+\boxed{n_{\mathrm{crit}} = 5.31 \times 10^{31} \text{ m}^{-3}}
+\end{equation}
+\end{result}
+
+\subsubsection{Dark Matter Density}
+
+\begin{align}
+\rhoDM &= \Omega_{\mathrm{DM}} \times \rhocrit = 0.27 \times 9.47 \ee{-27} = 2.56 \ee{-27} \text{ kg/m}^3 \\
+n_{\mathrm{DM}} &= \frac{\rhoDM}{m} = \frac{2.56 \ee{-27}}{1.783 \ee{-58}} = 1.43 \ee{31} \text{ m}^{-3}
+\end{align}
+
+\begin{result}[Number density of dark matter]
+\begin{equation}
+\boxed{n_{\mathrm{DM}} = 1.43 \times 10^{31} \text{ m}^{-3}}
+\end{equation}
+\end{result}
+
+\subsubsection{Dark Energy Density}
+
+\begin{align}
+\rhoDE &= \Omega_\Lambda \times \rhocrit = 0.68 \times 9.47 \ee{-27} = 6.44 \ee{-27} \text{ kg/m}^3 \\
+n_{\mathrm{DE}} &= \frac{\rhoDE}{m} = \frac{6.44 \ee{-27}}{1.783 \ee{-58}} = 3.61 \ee{31} \text{ m}^{-3}
+\end{align}
+
+\begin{result}[Number density equivalent for dark energy]
+\begin{equation}
+\boxed{n_{\mathrm{DE}} = 3.61 \times 10^{31} \text{ m}^{-3}}
+\end{equation}
+\end{result}
+
+\textbf{Dimensional check:} $[\rho/m] = $ kg/m$^3$ / kg $=$ m$^{-3}$. \CONSISTENT
+
+\subsection{Healing/Coherence Length}
+\label{sec:healing}
+
+The healing length (coherence length) in a BEC is the characteristic scale below which the condensate cannot support density variations. It is given by:
+\begin{equation}
+\xi = \frac{\hbar}{\sqrt{2m \cdot g \cdot n}}
+\end{equation}
+where $g = 4\pi\hbar^2 a_s/m$ is the interaction strength and $a_s$ is the $s$-wave scattering length.
+
+Equivalently, for a condensate with sound speed $c_s$:
+\begin{equation}
+\xi = \frac{\hbar}{m c_s}
+\end{equation}
+
+\subsubsection{Healing Length for $c_s = c$}
+
+The framework postulates $c_s = c$ (acoustic speed equals light speed). Therefore:
+\begin{align}
+\xi &= \frac{\hbar}{mc} = \bar{\lambda}_C \nonumber \\
+\xi &= 1.97 \ee{15} \text{ m}
+\end{align}
+
+\begin{result}[Healing length for $c_s = c$]
+\begin{equation}
+\boxed{\xi = \frac{\hbar}{mc} = 1.97 \times 10^{15} \text{ m} \approx 0.064 \text{ pc}}
+\end{equation}
+\end{result}
+
+\subsubsection{Comparison to Planck Length}
+
+\begin{align}
+\frac{\xi}{\lPl} &= \frac{1.97 \ee{15}}{1.616 \ee{-35}} = 1.22 \ee{50}
+\end{align}
+
+\begin{result}[Ratio of healing length to Planck length]
+\begin{equation}
+\boxed{\frac{\xi}{\lPl} = 1.22 \times 10^{50}}
+\end{equation}
+\end{result}
+
+\FLAG{Critical Observation} The healing length $\xi \sim 10^{15}$ m (galactic scale) is $10^{50}$ times larger than the Planck length. The formal bridge document (Section 5.6 of the draft) identifies $\ell_{\mathrm{coh}} = \lPl$ to ensure constant $G$. This creates a \textbf{fundamental tension}: for $m = 10^{-22}$ eV, the natural coherence length from $\xi = \hbar/(mc)$ is galactic, not Planckian.
+
+\subsection{Interaction Strength $g$ from Stiffness Matching}
+\label{sec:interaction_g}
+
+The framework identifies the bulk modulus with the geometric stiffness:
+\begin{equation}
+K = \rho c^2 = \frac{c^4}{8\pi G}
+\end{equation}
+
+For a GP condensate, the equation of state is $P = \frac{g}{2m^2}\rho^2 = \frac{gn^2}{2}$. The bulk modulus is:
+\begin{equation}
+K = \rho \frac{dP}{d\rho} = \rho c_s^2
+\end{equation}
+where $c_s^2 = gn/m = g\rho/m^2$.
+
+Setting $c_s = c$ gives:
+\begin{equation}
+c^2 = \frac{gn}{m} \quad \Rightarrow \quad g = \frac{mc^2}{n}
+\end{equation}
+
+\subsubsection{Computing $g$ from Critical Density}
+
+\begin{align}
+g &= \frac{mc^2}{n_{\mathrm{crit}}} = \frac{1.783 \ee{-58} \times (2.998 \ee{8})^2}{5.31 \ee{31}} \nonumber \\
+g &= \frac{1.783 \ee{-58} \times 8.988 \ee{16}}{5.31 \ee{31}} \nonumber \\
+g &= \frac{1.602 \ee{-41}}{5.31 \ee{31}} \nonumber \\
+g &= 3.02 \ee{-73} \text{ J}\cdot\text{m}^3
+\end{align}
+
+\begin{result}[Interaction strength from stiffness matching]
+\begin{equation}
+\boxed{g = 3.02 \times 10^{-73} \text{ J}\cdot\text{m}^3}
+\end{equation}
+\end{result}
+
+\textbf{Dimensional check:} From $g = 4\pi\hbar^2 a_s/m$, we have $[g] = $ J$\cdot$s$^2$/kg $\cdot$ m/kg $=$ J$\cdot$s$^2\cdot$m/kg$^2$. But $[\hbar^2/m] = $ (J$\cdot$s)$^2$/kg $=$ J$^2\cdot$s$^2$/kg. Actually, the standard convention is $[g] = $ Energy $\times$ Volume $=$ J$\cdot$m$^3$. Let me verify: $P = gn^2/2$ implies $[g] = [P]/[n^2] = $ Pa/(m$^{-6}$) $=$ Pa$\cdot$m$^6$ $=$ (kg/m$\cdot$s$^2$)$\cdot$m$^6$ $=$ kg$\cdot$m$^5$/s$^2$ $=$ J$\cdot$m$^3$. \CONSISTENT
+
+\subsubsection{Implied Scattering Length}
+
+From $g = 4\pi\hbar^2 a_s/m$:
+\begin{align}
+a_s &= \frac{gm}{4\pi\hbar^2} = \frac{3.02 \ee{-73} \times 1.783 \ee{-58}}{4\pi \times (1.055 \ee{-34})^2} \nonumber \\
+a_s &= \frac{5.38 \ee{-131}}{4\pi \times 1.113 \ee{-68}} \nonumber \\
+a_s &= \frac{5.38 \ee{-131}}{1.399 \ee{-67}} \nonumber \\
+a_s &= 3.85 \ee{-64} \text{ m}
+\end{align}
+
+\begin{result}[Implied scattering length]
+\begin{equation}
+\boxed{a_s = 3.85 \times 10^{-64} \text{ m}}
+\end{equation}
+\end{result}
+
+\FLAG{Scattering Length Assessment} The implied scattering length $a_s \sim 10^{-64}$ m is $\sim 10^{-29}$ times the Planck length. This is extraordinarily small---far below any known physical scale. For comparison:
+\begin{itemize}
+    \item Planck length: $\lPl = 1.6 \ee{-35}$ m
+    \item Proton Compton wavelength: $\sim 10^{-15}$ m
+    \item Electron Compton wavelength: $\sim 10^{-12}$ m
+\end{itemize}
+
+Such a small scattering length suggests the interaction is effectively zero in any conventional sense. This is physically reasonable for a cosmological condensate where the ``interaction'' is not a local two-body potential but rather an effective collective behavior.
+
+\subsection{Critical Temperature for BEC Formation}
+\label{sec:Tc}
+
+For a uniform ideal Bose gas, the critical temperature for Bose-Einstein condensation is:
+\begin{equation}
+T_c = \frac{2\pi\hbar^2}{m\kB} \left(\frac{n}{\zeta(3/2)}\right)^{2/3}
+\end{equation}
+where $\zeta(3/2) \approx 2.612$.
+
+\subsubsection{Calculation for Cosmological Density}
+
+Using $n = n_{\mathrm{crit}} = 5.31 \ee{31}$ m$^{-3}$:
+\begin{align}
+T_c &= \frac{2\pi \times (1.055 \ee{-34})^2}{1.783 \ee{-58} \times 1.381 \ee{-23}} \left(\frac{5.31 \ee{31}}{2.612}\right)^{2/3} \nonumber \\
+T_c &= \frac{2\pi \times 1.113 \ee{-68}}{2.462 \ee{-81}} \times (2.03 \ee{31})^{2/3} \nonumber \\
+T_c &= \frac{6.993 \ee{-68}}{2.462 \ee{-81}} \times (2.03 \ee{31})^{2/3} \nonumber \\
+T_c &= 2.84 \ee{13} \times (2.03 \ee{31})^{2/3}
+\end{align}
+
+Computing $(2.03 \ee{31})^{2/3}$:
+\begin{align}
+(2.03 \ee{31})^{2/3} &= 2.03^{2/3} \times 10^{31 \times 2/3} = 1.60 \times 10^{20.67} \approx 7.50 \ee{20}
+\end{align}
+
+Therefore:
+\begin{align}
+T_c &= 2.84 \ee{13} \times 7.50 \ee{20} = 2.13 \ee{34} \text{ K}
+\end{align}
+
+\begin{result}[Critical temperature at cosmological density]
+\begin{equation}
+\boxed{T_c \approx 2.1 \times 10^{34} \text{ K}}
+\end{equation}
+\end{result}
+
+\subsubsection{Comparison to CMB Temperature}
+
+\begin{equation}
+\frac{T_c}{T_{\mathrm{CMB}}} = \frac{2.1 \ee{34}}{2.725} = 7.7 \ee{33}
+\end{equation}
+
+\begin{result}[Temperature ratio]
+\begin{equation}
+\boxed{T_c / T_{\mathrm{CMB}} \approx 7.7 \times 10^{33}}
+\end{equation}
+\end{result}
+
+The critical temperature for BEC formation at cosmological densities is enormously high---comparable to Planck temperature ($T_{\mathrm{Pl}} = 1.42 \ee{32}$ K). In fact, $T_c \approx 150 \, T_{\mathrm{Pl}}$.
+
+\subsubsection{Redshift at Which $T = T_c$}
+
+The CMB temperature scales with redshift as $T(z) = T_{\mathrm{CMB}} (1+z)$. Setting $T(z_c) = T_c$:
+\begin{align}
+1 + z_c &= \frac{T_c}{T_{\mathrm{CMB}}} = 7.7 \ee{33} \\
+z_c &\approx 7.7 \ee{33}
+\end{align}
+
+\begin{result}[Redshift of BEC transition]
+\begin{equation}
+\boxed{z_c \approx 7.7 \times 10^{33}}
+\end{equation}
+\end{result}
+
+This redshift corresponds to times \emph{far earlier than the Planck epoch}. For reference, the Planck time corresponds to $z \sim 10^{32}$ in a naive extrapolation. This suggests:
+
+\begin{observation}[BEC Formation Epoch]
+For $m = 10^{-22}$ eV bosons at cosmological densities, the BEC transition temperature is trans-Planckian. The condensate would have formed, if this simple model applies, at the very earliest moments of cosmic history, well before standard cosmological evolution begins. This is consistent with interpreting the condensate as a fundamental substrate rather than a late-time phenomenon.
+\end{observation}
+
+\subsection{Chemical Potential}
+\label{sec:chemical_potential}
+
+In GP theory, the chemical potential for a weakly interacting condensate is:
+\begin{equation}
+\mu = gn
+\end{equation}
+
+\subsubsection{Calculation}
+
+\begin{align}
+\mu &= g \times n_{\mathrm{crit}} = 3.02 \ee{-73} \times 5.31 \ee{31} \nonumber \\
+\mu &= 1.60 \ee{-41} \text{ J}
+\end{align}
+
+Converting to eV:
+\begin{align}
+\mu &= \frac{1.60 \ee{-41}}{1.602 \ee{-19}} \text{ eV} = 1.00 \ee{-22} \text{ eV}
+\end{align}
+
+\begin{result}[Chemical potential]
+\begin{equation}
+\boxed{\mu = gn = 1.0 \times 10^{-22} \text{ eV}}
+\end{equation}
+\end{result}
+
+\subsubsection{Comparison to Rest Mass Energy}
+
+\begin{equation}
+\frac{\mu}{mc^2} = \frac{1.0 \ee{-22} \text{ eV}}{10^{-22} \text{ eV}} = 1.0
+\end{equation}
+
+\begin{result}[Chemical potential vs. rest mass]
+\begin{equation}
+\boxed{\mu = mc^2}
+\end{equation}
+\end{result}
+
+\begin{observation}[Chemical Potential Identity]
+The chemical potential exactly equals the rest mass energy: $\mu = mc^2$. This is a consequence of the stiffness matching condition $c_s = c$. For a GP condensate with $c_s^2 = gn/m$, the condition $c_s = c$ implies $gn = mc^2$, hence $\mu = gn = mc^2$. This is a \textbf{self-consistency check} that confirms our algebra.
+\end{observation}
+
+\subsection{Sound Speed Verification}
+\label{sec:sound_speed}
+
+The sound speed in a GP condensate is:
+\begin{equation}
+c_s = \sqrt{\frac{gn}{m}}
+\end{equation}
+
+\subsubsection{Verification Calculation}
+
+\begin{align}
+c_s^2 &= \frac{gn}{m} = \frac{3.02 \ee{-73} \times 5.31 \ee{31}}{1.783 \ee{-58}} \nonumber \\
+c_s^2 &= \frac{1.60 \ee{-41}}{1.783 \ee{-58}} = 8.97 \ee{16} \text{ m}^2/\text{s}^2
+\end{align}
+
+\begin{align}
+c_s &= \sqrt{8.97 \ee{16}} = 2.995 \ee{8} \text{ m/s} \approx c
+\end{align}
+
+\begin{result}[Sound speed verification]
+\begin{equation}
+\boxed{c_s = 2.995 \times 10^8 \text{ m/s} = c \quad \checkmark}
+\end{equation}
+\end{result}
+
+The calculation closes self-consistently: imposing $c_s = c$ to determine $g$, we recover $c_s = c$ from the GP formula. \CONSISTENT
+
+%==============================================================================
+\section{Part C: Cosmological Connections}
+\label{sec:partC}
+%==============================================================================
+
+\subsection{de Broglie Wavelength at Different Scales}
+
+The de Broglie wavelength is:
+\begin{equation}
+\lambdadB = \frac{h}{mv} = \frac{2\pi\hbar}{mv}
+\end{equation}
+
+\subsubsection{At Galactic Velocities ($v \sim 200$ km/s)}
+
+\begin{align}
+\lambdadB &= \frac{2\pi \times 1.055 \ee{-34}}{1.783 \ee{-58} \times 2 \ee{5}} \nonumber \\
+\lambdadB &= \frac{6.63 \ee{-34}}{3.57 \ee{-53}} = 1.86 \ee{19} \text{ m}
+\end{align}
+
+Converting to kpc: $\lambdadB = 1.86 \ee{19} / 3.086 \ee{19} = 0.60$ kpc.
+
+\begin{result}[de Broglie wavelength at galactic velocities]
+\begin{equation}
+\boxed{\lambdadB(v = 200 \text{ km/s}) = 1.86 \times 10^{19} \text{ m} \approx 0.6 \text{ kpc} \approx 2000 \text{ ly}}
+\end{equation}
+\end{result}
+
+This is the characteristic ``fuzziness'' scale of fuzzy dark matter in galaxies.
+
+\subsubsection{At Hubble Flow Velocities}
+
+The Hubble flow velocity at distance $d$ is $v = H_0 d$.
+
+\textbf{At $d = 1$ Mpc:}
+\begin{align}
+v &= 67.4 \text{ km/s} \\
+\lambdadB &= \frac{6.63 \ee{-34}}{1.783 \ee{-58} \times 6.74 \ee{4}} = \frac{6.63 \ee{-34}}{1.20 \ee{-53}} = 5.52 \ee{19} \text{ m} \approx 1.8 \text{ kpc}
+\end{align}
+
+\textbf{At $d = 10$ Mpc:}
+\begin{align}
+v &= 674 \text{ km/s} \\
+\lambdadB &= \frac{6.63 \ee{-34}}{1.783 \ee{-58} \times 6.74 \ee{5}} = 5.52 \ee{18} \text{ m} \approx 180 \text{ pc}
+\end{align}
+
+\textbf{At $d = 100$ Mpc:}
+\begin{align}
+v &= 6740 \text{ km/s} \\
+\lambdadB &= \frac{6.63 \ee{-34}}{1.783 \ee{-58} \times 6.74 \ee{6}} = 5.52 \ee{17} \text{ m} \approx 18 \text{ pc}
+\end{align}
+
+\textbf{At the speed of light ($v = c$):}
+\begin{align}
+\lambdadB &= \frac{h}{mc} = \lambda_C = 1.24 \ee{16} \text{ m} \approx 0.4 \text{ pc}
+\end{align}
+
+\begin{result}[de Broglie wavelength summary]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Velocity} & \textbf{$\lambdadB$} & \textbf{Scale} \\
+\midrule
+200 km/s (galactic) & $1.86 \ee{19}$ m & 0.6 kpc \\
+67.4 km/s (1 Mpc Hubble) & $5.52 \ee{19}$ m & 1.8 kpc \\
+674 km/s (10 Mpc Hubble) & $5.52 \ee{18}$ m & 180 pc \\
+6740 km/s (100 Mpc Hubble) & $5.52 \ee{17}$ m & 18 pc \\
+$c$ (relativistic limit) & $1.24 \ee{16}$ m & 0.4 pc \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{result}
+
+\subsection{Jeans Length for the BEC}
+
+The Jeans length characterizes the scale below which pressure support prevents gravitational collapse:
+\begin{equation}
+\lambdaJ = c_s \sqrt{\frac{\pi}{G\rho}}
+\end{equation}
+
+\subsubsection{Calculation for $c_s = c$ and $\rho = \rhocrit$}
+
+\begin{align}
+\lambdaJ &= c \sqrt{\frac{\pi}{G \rhocrit}} \nonumber \\
+\lambdaJ &= 2.998 \ee{8} \times \sqrt{\frac{3.1416}{6.674 \ee{-11} \times 9.47 \ee{-27}}} \nonumber \\
+\lambdaJ &= 2.998 \ee{8} \times \sqrt{\frac{3.1416}{6.32 \ee{-37}}} \nonumber \\
+\lambdaJ &= 2.998 \ee{8} \times \sqrt{4.97 \ee{36}} \nonumber \\
+\lambdaJ &= 2.998 \ee{8} \times 7.05 \ee{18} \nonumber \\
+\lambdaJ &= 2.11 \ee{27} \text{ m}
+\end{align}
+
+Converting to Hubble radii: $\lambdaJ / R_H = 2.11 \ee{27} / 1.37 \ee{26} = 15.4$.
+
+\begin{result}[Jeans length]
+\begin{equation}
+\boxed{\lambdaJ = 2.1 \times 10^{27} \text{ m} \approx 15.4 \, R_H \approx 68 \text{ Gpc}}
+\end{equation}
+\end{result}
+
+\begin{observation}[Jeans Length vs. Hubble Radius]
+The Jeans length for the cosmic condensate with $c_s = c$ is \emph{much larger} than the Hubble radius ($\lambdaJ \approx 15 R_H$). This means the entire observable universe is \emph{Jeans-stable}: pressure support from the stiff condensate prevents gravitational collapse on cosmological scales. This is consistent with the interpretation that the condensate forms a stable background upon which matter perturbations evolve.
+\end{observation}
+
+\subsection{Connection to $G$: The Stiffness Relation}
+
+From the prior work, the stiffness matching gives:
+\begin{equation}
+K = \rho c^2 = \frac{c^4}{8\pi G}
+\end{equation}
+
+Solving for $\rho$:
+\begin{equation}
+\rho = \frac{c^2}{8\pi G}
+\end{equation}
+
+\subsubsection{Numerical Verification}
+
+\begin{align}
+\rho_{\mathrm{stiffness}} &= \frac{(2.998 \ee{8})^2}{8\pi \times 6.674 \ee{-11}} \nonumber \\
+\rho_{\mathrm{stiffness}} &= \frac{8.988 \ee{16}}{1.675 \ee{-9}} \nonumber \\
+\rho_{\mathrm{stiffness}} &= 5.37 \ee{25} \text{ kg/m}^3
+\end{align}
+
+\begin{result}[Stiffness-implied density]
+\begin{equation}
+\boxed{\rho_{\mathrm{stiffness}} = \frac{c^2}{8\pi G} = 5.37 \times 10^{25} \text{ kg/m}^3}
+\end{equation}
+\end{result}
+
+\subsubsection{Comparison to Planck Density}
+
+The Planck density is:
+\begin{equation}
+\rho_{\mathrm{Pl}} = \frac{\mPl}{\lPl^3} = \frac{c^5}{\hbar G^2} = 5.16 \ee{96} \text{ kg/m}^3
+\end{equation}
+
+\begin{equation}
+\frac{\rho_{\mathrm{stiffness}}}{\rho_{\mathrm{Pl}}} = \frac{5.37 \ee{25}}{5.16 \ee{96}} = 1.04 \ee{-71}
+\end{equation}
+
+\subsubsection{Comparison to Critical Density}
+
+\begin{equation}
+\frac{\rho_{\mathrm{stiffness}}}{\rhocrit} = \frac{5.37 \ee{25}}{9.47 \ee{-27}} = 5.67 \ee{51}
+\end{equation}
+
+\begin{result}[Density comparisons]
+\begin{equation}
+\boxed{\rho_{\mathrm{stiffness}} = 5.7 \times 10^{51} \, \rhocrit = 1.0 \times 10^{-71} \, \rho_{\mathrm{Pl}}}
+\end{equation}
+\end{result}
+
+\FLAG{Critical Inconsistency} The stiffness-matching condition $K = c^4/(8\pi G)$ implies a density $\rho = c^2/(8\pi G) \approx 5 \ee{25}$ kg/m$^3$. This is:
+\begin{itemize}
+    \item $\sim 10^{52}$ times larger than the critical density $\rhocrit \approx 10^{-26}$ kg/m$^3$
+    \item $\sim 10^{-71}$ times the Planck density
+\end{itemize}
+
+For the framework to be self-consistent, the \emph{condensate background density} must be $\rho_0 = c^2/(8\pi G)$, not the cosmological critical density. This is the vacuum energy density associated with $\Lambda$ in the mechanical interpretation.
+
+\subsubsection{Does $\rho = mn$ Match $\rho = c^2/(8\pi G)$?}
+
+For $m = 10^{-22}$ eV and $n = n_{\mathrm{crit}}$:
+\begin{equation}
+\rho = mn = 1.783 \ee{-58} \times 5.31 \ee{31} = 9.47 \ee{-27} \text{ kg/m}^3 = \rhocrit
+\end{equation}
+
+This does \emph{not} match $\rho_{\mathrm{stiffness}} = 5.37 \ee{25}$ kg/m$^3$.
+
+\begin{observation}[Density Mismatch]
+\textbf{There is a fundamental inconsistency.} If the condensate is composed of $m = 10^{-22}$ eV bosons at cosmological density, then $\rho_{\mathrm{DM}} \approx 10^{-27}$ kg/m$^3$. But the stiffness-matching condition requires $\rho = c^2/(8\pi G) \approx 5 \ee{25}$ kg/m$^3$. These differ by a factor of $\sim 10^{52}$.
+
+\textbf{Resolution options:}
+\begin{enumerate}
+    \item The $m = 10^{-22}$ eV mass scale applies to the \emph{matter content} (dark matter), while the stiffness-matched density applies to a separate \emph{vacuum condensate} that provides the gravitational coupling.
+    \item The effective mass entering the stiffness relation is not $m = 10^{-22}$ eV but rather the Planck mass $\mPl \approx 10^{-8}$ kg.
+    \item The framework requires two distinct condensates or scales.
+\end{enumerate}
+\end{observation}
+
+\subsection{Boundary (Conversion Front) Parameters}
+\label{sec:boundary}
+
+\subsubsection{Impedance of the Condensate}
+
+The acoustic impedance is $Z = \rho c_s$. For the condensate with $c_s = c$:
+\begin{align}
+Z_c &= \rhocrit \times c = 9.47 \ee{-27} \times 2.998 \ee{8} \nonumber \\
+Z_c &= 2.84 \ee{-18} \text{ kg/(m}^2\cdot\text{s)}
+\end{align}
+
+\begin{result}[Condensate impedance at critical density]
+\begin{equation}
+\boxed{Z_c = \rho_c \cdot c = 2.84 \times 10^{-18} \text{ Pa}\cdot\text{s/m}}
+\end{equation}
+\end{result}
+
+\subsubsection{Reflection and Transmission Coefficients}
+
+The reflection and transmission coefficients are:
+\begin{align}
+R &= \left|\frac{Z_c - Z_{pf}}{Z_c + Z_{pf}}\right|^2 \\
+T &= \frac{4 Z_c Z_{pf}}{(Z_c + Z_{pf})^2}
+\end{align}
+
+Define the impedance ratio $r = Z_{pf}/Z_c$. Then:
+\begin{align}
+R &= \left|\frac{1 - r}{1 + r}\right|^2 = \frac{(1-r)^2}{(1+r)^2} \\
+T &= \frac{4r}{(1+r)^2}
+\end{align}
+
+\begin{table}[H]
+\centering
+\caption{Reflection and Transmission Coefficients vs. Impedance Ratio}
+\label{tab:RT}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$r = Z_{pf}/Z_c$ & $R$ & $T$ & $R + T$ \\
+\midrule
+0.01 & 0.961 & 0.039 & 1.000 \\
+0.10 & 0.669 & 0.331 & 1.000 \\
+0.50 & 0.111 & 0.889 & 1.000 \\
+0.90 & 0.003 & 0.997 & 1.000 \\
+1.00 & 0.000 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{result}[R and T for various $Z_{pf}/Z_c$]
+\begin{itemize}
+    \item $Z_{pf}/Z_c = 0.01$: $R = 96.1\%$, $T = 3.9\%$ (strong mismatch, high reflection)
+    \item $Z_{pf}/Z_c = 0.10$: $R = 66.9\%$, $T = 33.1\%$
+    \item $Z_{pf}/Z_c = 0.50$: $R = 11.1\%$, $T = 88.9\%$
+    \item $Z_{pf}/Z_c = 0.90$: $R = 0.3\%$, $T = 99.7\%$ (near impedance match)
+\end{itemize}
+\end{result}
+
+\subsubsection{Impedance Ratio for $f_{\mathrm{mech}} \sim 0.1$}
+
+The $u_{\mathrm{mech}}$ bump amplitude $f_{\mathrm{mech}}$ is determined by the energy accumulation rate from reflection. If the incident energy flux is $\Phi_{\mathrm{in}}$ and a fraction $R$ is reflected, the accumulated energy over time $\Delta t$ is:
+\begin{equation}
+\Delta E \sim R \cdot \Phi_{\mathrm{in}} \cdot \Delta t
+\end{equation}
+
+For $f_{\mathrm{mech}} \sim 0.1$ (10\% of critical density), we need significant reflection. From the table above, $R \sim 0.5$--$0.9$ corresponds to $r = Z_{pf}/Z_c \sim 0.1$--$0.3$.
+
+\begin{result}[Impedance ratio for EDE bump]
+For $f_{\mathrm{mech}} \sim 0.1$, an impedance ratio $Z_{pf}/Z_c \sim 0.1$--$0.3$ would provide sufficient reflection ($R \sim 40$--$70\%$) to accumulate the required boundary energy.
+\end{result}
+
+%==============================================================================
+\section{Part D: Resolution of Open Questions}
+\label{sec:partD}
+%==============================================================================
+
+\subsection{Physics Review Q: ``Protofluid is Unspecified''}
+
+\textbf{Question:} With $m = 10^{-22}$ eV, what can we say about the protofluid? Is it the thermal (non-condensed) fraction above $T_c$? A different vacuum state?
+
+\textbf{Analysis:}
+
+The critical temperature calculation (Section \ref{sec:Tc}) shows $T_c \sim 10^{34}$ K for $m = 10^{-22}$ eV bosons at cosmological density. This is trans-Planckian, meaning the condensate would have formed in the earliest moments of cosmic history.
+
+\textbf{Interpretation:} The protofluid cannot be a ``thermal cloud'' of $m = 10^{-22}$ eV bosons above $T_c$, because $T_c$ is so high that the universe has been far below $T_c$ for essentially all of cosmic history.
+
+\textbf{Alternative interpretations:}
+\begin{enumerate}
+    \item \textbf{Different vacuum state:} The protofluid is a distinct phase (e.g., false vacuum) with different thermodynamic properties, not simply the degenerate thermal component of the same boson species.
+    \item \textbf{Higher-energy excitations:} The protofluid could be a ``sea'' of highly excited modes that do not condense, characterized by a different effective mass or equation of state.
+    \item \textbf{Causal set / spin network:} Following Volovik's program, the protofluid could be a pre-geometric structure from which spacetime emerges upon condensation.
+\end{enumerate}
+
+\begin{observation}[Protofluid Nature]
+The $m = 10^{-22}$ eV mass scale does not naturally explain the protofluid. The protofluid must be specified independently, either as a distinct phase characterized by its impedance $Z_{pf}$, or as a pre-geometric substrate. The framework should parameterize over $Z_{pf}/Z_c$ rather than attempt to derive $Z_{pf}$ from $m = 10^{-22}$ eV.
+\end{observation}
+
+\subsection{Physics Review Q: ``Coherence Length Not Connected to Cosmology''}
+
+\textbf{Question:} How does $\xi$ compare to $\lPl$, $\lambda_C$, and galactic scales?
+
+\textbf{Summary of computed scales:}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Scale} & \textbf{Value} & \textbf{Physical Meaning} \\
+\midrule
+Planck length $\lPl$ & $1.6 \ee{-35}$ m & Quantum gravity scale \\
+Healing length $\xi = \hbar/(mc)$ & $2.0 \ee{15}$ m $\approx$ 0.06 pc & Condensate coherence \\
+Compton wavelength $\lambda_C$ & $1.2 \ee{16}$ m $\approx$ 0.4 pc & Particle quantum scale \\
+de Broglie at 200 km/s & $1.9 \ee{19}$ m $\approx$ 0.6 kpc & Galactic fuzziness \\
+Hubble radius $R_H$ & $1.4 \ee{26}$ m $\approx$ 4.4 Gpc & Observable universe \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Key observation:} The healing length $\xi \sim 0.06$ pc (and $\lambda_C \sim 0.4$ pc) are \emph{galactic sub-scales}, much larger than Planck ($10^{50}$ times larger) but much smaller than the Hubble radius ($10^{-11}$ times smaller).
+
+\begin{observation}[Coherence Length Hierarchy]
+The coherence length $\xi = \hbar/(mc) \approx 2 \ee{15}$ m is intermediate between Planck and cosmological scales. It corresponds to \emph{galactic substructure} scales, which is physically appropriate for fuzzy dark matter. However, the formal bridge document requires $\ell_{\mathrm{coh}} = \lPl$ for constant $G$. This creates a scale mismatch that must be resolved by distinguishing between:
+\begin{enumerate}
+    \item The \emph{GP coherence length} $\xi = \hbar/(mc)$ (galactic scale, relevant for dark matter fuzziness)
+    \item The \emph{gravitational coherence length} $\ell_{\mathrm{coh}} = \lPl$ (Planck scale, relevant for $G$)
+\end{enumerate}
+\end{observation}
+
+\subsection{Physics Review Q: ``What Sets Condensate Density?''}
+
+\textbf{Question:} Is $\rho = c^2/(8\pi G)$ consistent with $\rho = mn$ for $m = 10^{-22}$ eV?
+
+\textbf{Answer:} \textbf{No.} As computed in Section \ref{sec:partC}:
+\begin{itemize}
+    \item $\rho = c^2/(8\pi G) = 5.37 \ee{25}$ kg/m$^3$
+    \item $\rho = m \cdot n_{\mathrm{crit}} = 9.47 \ee{-27}$ kg/m$^3$
+\end{itemize}
+
+These differ by a factor of $\sim 5.7 \ee{51}$.
+
+\textbf{Resolution:} The stiffness-matching density $\rho = c^2/(8\pi G)$ is \textbf{not} the cosmological matter density. It is the \emph{vacuum stiffness scale}---the effective ``inertia'' of the gravitational medium. In the mechanical route to $G$, this density is associated with $\Lambda$ (cosmological constant) through:
+\begin{equation}
+\rho_\Lambda = \frac{\Lambda c^2}{8\pi G} \quad \Leftrightarrow \quad G = \frac{\Lambda c^4}{8\pi u_\nu}
+\end{equation}
+where $u_\nu = \rho_\Lambda c^2$ is the vacuum energy density.
+
+If we use the observed $\Lambda \approx 1.1 \ee{-52}$ m$^{-2}$:
+\begin{align}
+\rho_\Lambda &= \frac{\Lambda c^2}{8\pi G} = \frac{1.1 \ee{-52} \times (3 \ee{8})^2}{8\pi \times 6.67 \ee{-11}} \approx 5.9 \ee{-27} \text{ kg/m}^3 \approx \Omega_\Lambda \rhocrit
+\end{align}
+
+This is the \emph{observed} dark energy density, not $c^2/(8\pi G)$. The discrepancy arises because the mechanical route equates $K = \rho c^2$ to $c^4/(8\pi G)$, implying $\rho = c^2/(8\pi G)$---but this is the stiffness-equivalent density, not the physical mass density.
+
+\begin{observation}[Two Density Scales]
+The framework involves two distinct density scales:
+\begin{enumerate}
+    \item \textbf{Physical density:} $\rho_{\mathrm{phys}} = mn \sim \rhocrit \sim 10^{-26}$ kg/m$^3$ (cosmological matter)
+    \item \textbf{Stiffness density:} $\rho_{\mathrm{stiff}} = c^2/(8\pi G) \sim 10^{26}$ kg/m$^3$ (geometric coupling scale)
+\end{enumerate}
+The identification $K = \rho c^2$ uses the \emph{physical} density, while $K = c^4/(8\pi G)$ is a definition of $G$. Equating these does \emph{not} imply that the physical density equals $c^2/(8\pi G)$.
+\end{observation}
+
+\subsection{Physics Review Q: ``Is $G$ Constant?''}
+
+\textbf{Question:} If $G = c^2/(8\pi\rho\xi^2)$ or similar, does $\xi$ evolve? Under what conditions is $G$ constant?
+
+\textbf{Analysis:}
+
+From the formal bridge, $G$ is constant if $\ell_{\mathrm{coh}}$ and $\rho_0$ (the vacuum density) are constant. For the cosmic condensate in quasi-static equilibrium with $\rho_0 = \rho_\Lambda = \text{const}$, $G$ is constant.
+
+However, if $\xi = \hbar/(mc)$ with $m = 10^{-22}$ eV fixed, then $\xi$ is constant and $G$ remains constant.
+
+\textbf{Potential time-variation scenarios:}
+\begin{enumerate}
+    \item If the effective mass $m$ varies with cosmological time, $\xi \propto 1/m$ would vary.
+    \item If the condensate density $n$ varies, the healing length $\xi \propto 1/\sqrt{gn}$ would vary (but for fixed $m$ and $g$, this is automatic).
+    \item If the interaction strength $g$ evolves (e.g., through coupling to other fields), $\xi$ varies.
+\end{enumerate}
+
+\textbf{Observational constraints:}
+\begin{itemize}
+    \item BBN: $|\Delta G/G| < 5\%$ from $z \sim 10^9$ to today
+    \item Binary pulsars: $|\dot{G}/G| < 10^{-12}$ yr$^{-1}$
+    \item Lunar laser ranging: $|\dot{G}/G| < 10^{-13}$ yr$^{-1}$
+\end{itemize}
+
+For $m = 10^{-22}$ eV and fixed $g$, the framework predicts $G = \text{const}$, satisfying these bounds.
+
+\begin{observation}[G Constancy]
+$G$ is constant in the framework provided:
+\begin{enumerate}
+    \item The boson mass $m$ is constant
+    \item The interaction strength $g$ (or equivalently, the stiffness $K$) is constant
+    \item The vacuum background density $\rho_\Lambda$ is constant
+\end{enumerate}
+These are satisfied in the late-time equilibrium condensate. Time-variation of $G$ could occur during the boundary epoch if boundary-layer dynamics affect $K$, but this must be small enough to satisfy BBN bounds.
+\end{observation}
+
+\subsection{Math Review Q: ``Dimensional Consistency Throughout''}
+
+We verify dimensional consistency for all key derived quantities:
+
+\begin{longtable}{@{}p{4cm}p{4cm}p{4cm}c@{}}
+\toprule
+\textbf{Quantity} & \textbf{Formula} & \textbf{Dimensions} & \textbf{Status} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Quantity} & \textbf{Formula} & \textbf{Dimensions} & \textbf{Status} \\
+\midrule
+\endhead
+Mass $m$ & $10^{-22}$ eV/$c^2$ & kg & \CONSISTENT \\
+Compton wavelength $\lambda_C$ & $h/(mc)$ & m & \CONSISTENT \\
+Reduced Compton $\bar{\lambda}_C$ & $\hbar/(mc)$ & m & \CONSISTENT \\
+Number density $n$ & $\rho/m$ & m$^{-3}$ & \CONSISTENT \\
+Healing length $\xi$ & $\hbar/(mc_s)$ & m & \CONSISTENT \\
+Interaction strength $g$ & $mc^2/n$ & J$\cdot$m$^3$ & \CONSISTENT \\
+Scattering length $a_s$ & $gm/(4\pi\hbar^2)$ & m & \CONSISTENT \\
+Critical temp $T_c$ & $(2\pi\hbar^2/m\kB)(n/\zeta)^{2/3}$ & K & \CONSISTENT \\
+Chemical potential $\mu$ & $gn$ & J (or eV) & \CONSISTENT \\
+Sound speed $c_s$ & $\sqrt{gn/m}$ & m/s & \CONSISTENT \\
+de Broglie $\lambdadB$ & $h/(mv)$ & m & \CONSISTENT \\
+Jeans length $\lambdaJ$ & $c_s\sqrt{\pi/(G\rho)}$ & m & \CONSISTENT \\
+Impedance $Z$ & $\rho c_s$ & kg/(m$^2\cdot$s) & \CONSISTENT \\
+Stiffness density $\rho_{\mathrm{stiff}}$ & $c^2/(8\pi G)$ & kg/m$^3$ & \CONSISTENT \\
+\bottomrule
+\caption{Dimensional Consistency Verification}
+\label{tab:dimensions}
+\end{longtable}
+
+All quantities have correct dimensions. \CONSISTENT
+
+%==============================================================================
+\section{Part E: Summary Parameter Table}
+\label{sec:partE}
+%==============================================================================
+
+\begin{longtable}{@{}p{4.5cm}p{3.5cm}p{3cm}p{4cm}@{}}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Units} & \textbf{Physical Significance} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Units} & \textbf{Physical Significance} \\
+\midrule
+\endhead
+\multicolumn{4}{l}{\textbf{A. Fundamental Boson Parameters}} \\
+\midrule
+Mass $m$ & $1.78 \ee{-58}$ & kg & Input: fuzzy DM scale \\
+ & $10^{-22}$ & eV/$c^2$ & \\
+Compton wavelength $\lambda_C$ & $1.24 \ee{16}$ & m & 0.4 pc, 1.3 ly \\
+Reduced Compton $\bar{\lambda}_C$ & $1.97 \ee{15}$ & m & 0.06 pc, 0.2 ly \\
+\midrule
+\multicolumn{4}{l}{\textbf{B. Condensate Parameters}} \\
+\midrule
+$n_{\mathrm{crit}}$ & $5.31 \ee{31}$ & m$^{-3}$ & Particle density at $\rhocrit$ \\
+$n_{\mathrm{DM}}$ & $1.43 \ee{31}$ & m$^{-3}$ & Dark matter density \\
+$n_{\mathrm{DE}}$ & $3.61 \ee{31}$ & m$^{-3}$ & Dark energy equiv. \\
+Healing length $\xi$ & $1.97 \ee{15}$ & m & 0.06 pc (galactic) \\
+$\xi/\lPl$ & $1.22 \ee{50}$ & -- & \FLAG{Huge ratio} \\
+Interaction $g$ & $3.02 \ee{-73}$ & J$\cdot$m$^3$ & From $c_s = c$ \\
+Scattering length $a_s$ & $3.85 \ee{-64}$ & m & \FLAG{Sub-Planckian} \\
+Critical temp $T_c$ & $2.1 \ee{34}$ & K & Trans-Planckian \\
+$T_c/T_{\mathrm{CMB}}$ & $7.7 \ee{33}$ & -- & Early BEC formation \\
+$z_c$ (BEC redshift) & $7.7 \ee{33}$ & -- & Pre-Planck epoch \\
+Chemical potential $\mu$ & $10^{-22}$ & eV & $\mu = mc^2$ (check) \\
+Sound speed $c_s$ & $3.0 \ee{8}$ & m/s & $= c$ (imposed) \\
+\midrule
+\multicolumn{4}{l}{\textbf{C. Cosmological Connections}} \\
+\midrule
+$\lambdadB$ (200 km/s) & $1.86 \ee{19}$ & m & 0.6 kpc (galactic) \\
+$\lambdadB$ ($v = c$) & $1.24 \ee{16}$ & m & $= \lambda_C$ \\
+Jeans length $\lambdaJ$ & $2.1 \ee{27}$ & m & 68 Gpc, $15 R_H$ \\
+$\rho_{\mathrm{stiffness}}$ & $5.37 \ee{25}$ & kg/m$^3$ & $= c^2/(8\pi G)$ \\
+$\rho_{\mathrm{stiff}}/\rhocrit$ & $5.7 \ee{51}$ & -- & \FLAG{Major mismatch} \\
+Impedance $Z_c$ & $2.84 \ee{-18}$ & Pa$\cdot$s/m & At $\rhocrit$ \\
+\midrule
+\multicolumn{4}{l}{\textbf{D. Derived Consistency Checks}} \\
+\midrule
+$\mu = mc^2$ & Yes & -- & Self-consistent \\
+$c_s = c$ verification & Yes & -- & Self-consistent \\
+$R + T = 1$ & Yes & -- & Energy conservation \\
+Dimensions & All correct & -- & \CONSISTENT \\
+\bottomrule
+\caption{Complete Parameter Summary for $m = 10^{-22}$ eV/$c^2$}
+\label{tab:summary}
+\end{longtable}
+
+%==============================================================================
+\section{Identified Inconsistencies and Critical Flags}
+\label{sec:flags}
+%==============================================================================
+
+\subsection{Flag 1: Coherence Length Scale Mismatch}
+
+\textbf{Issue:} The formal bridge requires $\ell_{\mathrm{coh}} = \lPl$ to ensure $G$ is constant and reproduces the correct value. However, for $m = 10^{-22}$ eV bosons with $c_s = c$, the natural coherence length is:
+\begin{equation}
+\xi = \frac{\hbar}{mc} = 2 \ee{15} \text{ m} = 1.2 \ee{50} \, \lPl
+\end{equation}
+
+\textbf{Severity:} \textbf{HIGH}. This is a factor of $10^{50}$ mismatch.
+
+\textbf{Possible resolutions:}
+\begin{enumerate}
+    \item The ``cosmic condensate'' providing gravitational stiffness is NOT the $m = 10^{-22}$ eV dark matter condensate, but a separate Planck-scale medium.
+    \item The coherence length entering the $G$ derivation is different from the GP healing length.
+    \item There are two condensates: a Planck-scale ``gravitational substrate'' and a $10^{-22}$ eV ``fuzzy dark matter'' layer.
+\end{enumerate}
+
+\subsection{Flag 2: Stiffness Density vs. Physical Density}
+
+\textbf{Issue:} The stiffness-matching implies $\rho = c^2/(8\pi G) \approx 5 \ee{25}$ kg/m$^3$, but the cosmological density is $\rhocrit \approx 10^{-26}$ kg/m$^3$.
+
+\textbf{Severity:} \textbf{MEDIUM}. This can be resolved by recognizing that the stiffness relation is a \emph{constitutive identity} for $G$, not a statement about physical mass density.
+
+\textbf{Resolution:} The mechanical route to $G$ uses the vacuum stiffness $K = c^4/(8\pi G)$ as the geometric coupling scale. The ``density'' $\rho = c^2/(8\pi G)$ is an effective inertial density, not the physical mass content.
+
+\subsection{Flag 3: Sub-Planckian Scattering Length}
+
+\textbf{Issue:} The implied scattering length $a_s \approx 4 \ee{-64}$ m is $\sim 10^{-29}$ times the Planck length.
+
+\textbf{Severity:} \textbf{LOW}. This simply indicates that the ``interaction'' is not a standard two-body scattering process but an effective collective phenomenon.
+
+\textbf{Resolution:} For a cosmological condensate, the interaction strength $g$ is determined by the macroscopic requirement $c_s = c$, not by microscopic scattering physics. The small $a_s$ is consistent with a nearly ideal (non-interacting) Bose gas where collective behavior dominates.
+
+\subsection{Flag 4: Trans-Planckian BEC Formation}
+
+\textbf{Issue:} The critical temperature $T_c \sim 10^{34}$ K and formation redshift $z_c \sim 10^{33}$ are trans-Planckian.
+
+\textbf{Severity:} \textbf{LOW} (feature, not bug). This is consistent with interpreting the condensate as a fundamental substrate that ``always was'' rather than a late-time phase transition.
+
+\textbf{Resolution:} The cosmic condensate is the ground state of the universe, formed at (or before) the Planck epoch. Standard cosmology emerges within this condensate.
+
+%==============================================================================
+\section{Conclusions and Recommendations}
+\label{sec:conclusions}
+%==============================================================================
+
+\subsection{Summary of Findings}
+
+We have computed all derived quantities for the universal condensate framework assuming $m = 10^{-22}$ eV/$c^2$ (fuzzy dark matter mass scale). The key findings are:
+
+\begin{enumerate}
+    \item \textbf{Galactic-scale coherence:} The reduced Compton wavelength and healing length are $\sim 0.1$ pc, characteristic of fuzzy dark matter's suppression of small-scale structure.
+
+    \item \textbf{Self-consistent sound speed:} Imposing $c_s = c$ determines $g$ and $\mu$, with $\mu = mc^2$ as a consistency check.
+
+    \item \textbf{Trans-Planckian BEC formation:} The condensate would have formed before/during the Planck epoch, consistent with it being a fundamental substrate.
+
+    \item \textbf{Jeans-stable universe:} The Jeans length ($\sim 15 R_H$) exceeds the Hubble radius, ensuring the condensate is stable against gravitational collapse.
+
+    \item \textbf{Critical scale mismatch:} The healing length $\xi \sim 10^{15}$ m is $10^{50}$ times the Planck length required by the formal bridge for constant $G$.
+\end{enumerate}
+
+\subsection{Recommendations for the Team}
+
+\begin{enumerate}
+    \item \textbf{Two-scale model:} Consider a framework with two condensates:
+    \begin{itemize}
+        \item A Planck-scale ``gravitational substrate'' with $\ell_{\mathrm{coh}} = \lPl$ providing the stiffness for $G$.
+        \item A $m = 10^{-22}$ eV ``fuzzy dark matter'' condensate as the matter content.
+    \end{itemize}
+
+    \item \textbf{Clarify density scales:} Distinguish clearly between physical mass density ($\rho = mn$) and stiffness-equivalent density ($c^2/(8\pi G)$) in all equations.
+
+    \item \textbf{Protofluid specification:} Since the protofluid cannot be the thermal fraction of $10^{-22}$ eV bosons (given the trans-Planckian $T_c$), specify it as an independent phase characterized by $Z_{pf}$.
+
+    \item \textbf{Parameter table for Paper 1:} Use the summary table (Table \ref{tab:summary}) as input for Boltzmann code implementation, noting the flags.
+\end{enumerate}
+
+%==============================================================================
+\section*{Document Information}
+%==============================================================================
+
+\textbf{Author:} Math-Agent (Physics Research Team)
+
+\textbf{File:} \texttt{C:\textbackslash Users\textbackslash skavbr\textbackslash Documents\textbackslash Claude\_Projects\textbackslash physics\textbackslash team\_folder\textbackslash math-agent\textbackslash BEC\_parameter\_analysis\_m22.tex}
+
+\textbf{Date:} \today
+
+\textbf{Status:} Complete. Ready for team review.
+
+\end{document}

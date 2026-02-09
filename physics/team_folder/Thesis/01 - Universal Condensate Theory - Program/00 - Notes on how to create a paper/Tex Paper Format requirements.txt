@@ -1,0 +1,113 @@
+========================
+TOOLS
+------------------------
+✅ Preferred for physics journals: pdfLaTeX (using LaTeX)
+Almost all major physics journals — especially those that publish theoretical and mathematical physics — prefer or require pdfLaTeX, not LuaLaTeX or XeLaTeX.
+This includes:
+
+APS journals (PRL, PRD, PRA, PRX)
+AIP journals (JAP, Chaos)
+IOP journals (CQG, J. Phys. A, EPL)
+Elsevier physics journals (Physica A/B/C, Annals of Physics)
+Springer physics journals (EPJ series)
+arXiv submissions in physics categories
+
+pdfLaTeX is the industry standard for:
+
+reproducibility
+consistent fonts across platforms
+compatibility with journal production pipelines
+automated typesetting systems
+
+⭐ LuaLaTeX and XeLaTeX are allowed but not preferred
+Journals usually accept LuaLaTeX/XeLaTeX, but only if:
+
+you need Unicode-heavy text,
+you require non-Latin scripts,
+or you rely on system fonts.
+
+They are not the default and sometimes introduce compatibility issues:
+
+different microtype behavior
+different math font handling
+sometimes inconsistent spacing
+not always supported in publisher’s final print pipeline
+
+Editors prefer classical LaTeX → pdfLaTeX unless you have a specific reason to use something else.
+
+So which should you use?
+✔ Use pdfLaTeX (with lmodern)
+This is the most compatible path for your condensate‑gravity theory paper.
+It ensures:
+
+submission will compile on the journal’s automated system
+PDF output will match what editors expect
+RevTeX 4.2 behaves exactly as intended
+microtype works (with scalable fonts enabled)
+no surprises at production stage
+
+===============================
+Typical structure:
+-------------------------------
+main.tex
+figures/ (folder)
+bibliography.bib
+
+-------------------------------
+Your main.tex will have:
+\documentclass[twocolumn]{article}  % or journal template
+\usepackage{amsmath, amssymb, graphicx, physics}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+...
+\end{abstract}
+
+\section{Introduction}
+...
+
+\section{Theory}
+...
+
+\section{Results}
+...
+
+\section{Conclusion}
+...
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}
+
+================================
+Use the following headers in the tex file:
+--------------------------------
+\documentclass[preprint,onecolumn,longbibliography]{revtex4-2}
+
+% --- scalable fonts for pdfLaTeX ---
+\usepackage{lmodern}           % essential for scalable Type1 fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% --- core math & graphics ---
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% --- micro-typography (stable settings for MiKTeX) ---
+\usepackage[final,tracking=true,expansion=false]{microtype}
+
+% --- hyperlinks & refs ---
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+==============================
+Full example:
+------------------------------
+

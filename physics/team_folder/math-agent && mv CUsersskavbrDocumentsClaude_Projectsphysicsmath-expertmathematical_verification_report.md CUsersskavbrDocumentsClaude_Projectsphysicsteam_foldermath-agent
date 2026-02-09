@@ -1,0 +1,136 @@
+# Verification of Physical Constants Calculations
+
+## Problem 1: Calculate m = h-bar/(c*xi)
+
+**Given:**
+- h-bar = 1.055 x 10^-34 J*s
+- c = 3 x 10^8 m/s
+- xi = 1 kpc = 3.09 x 10^19 m
+
+**Calculation:**
+
+m = h-bar / (c * xi)
+
+Step 1: Calculate the denominator c * xi
+c * xi = (3 x 10^8 m/s) x (3.09 x 10^19 m)
+       = 3 x 3.09 x 10^(8+19) m^2/s
+       = 9.27 x 10^27 m^2/s
+
+Step 2: Divide h-bar by (c * xi)
+m = (1.055 x 10^-34 J*s) / (9.27 x 10^27 m^2/s)
+  = (1.055 / 9.27) x 10^(-34-27) kg
+  = 0.1138 x 10^-61 kg
+  = **1.138 x 10^-62 kg**
+
+**VERIFICATION RESULT:**
+The paper claims m = 1.14 x 10^-63 kg.
+**This is INCORRECT by a factor of 10.** The correct value is m = 1.14 x 10^-62 kg.
+
+---
+
+## Problem 2: Convert m to eV/c^2
+
+**Formula:**
+m(eV/c^2) = m(kg) * c^2 / (1.602 x 10^-19 J/eV)
+
+**Using the CORRECT value m = 1.14 x 10^-62 kg:**
+
+Step 1: Calculate m * c^2
+m * c^2 = (1.14 x 10^-62 kg) x (3 x 10^8 m/s)^2
+        = 1.14 x 10^-62 x 9 x 10^16 J
+        = 10.26 x 10^-46 J
+        = 1.026 x 10^-45 J
+
+Step 2: Convert to eV
+m(eV/c^2) = (1.026 x 10^-45 J) / (1.602 x 10^-19 J/eV)
+          = (1.026 / 1.602) x 10^(-45+19) eV
+          = 0.6404 x 10^-26 eV
+          = **6.4 x 10^-27 eV/c^2**
+
+**VERIFICATION RESULT:**
+The paper claims 6.4 x 10^-23 eV/c^2.
+**This is INCORRECT by a factor of 10^4.** The correct value is 6.4 x 10^-27 eV/c^2.
+
+Note: Even using the paper's incorrect value of 1.14 x 10^-63 kg would give 6.4 x 10^-28 eV/c^2,
+which is still not 6.4 x 10^-23 eV/c^2.
+
+---
+
+## Problem 3: If m = 10^-22 eV/c^2, what is xi?
+
+Step 1: Convert m from eV/c^2 to kg
+m(kg) = m(eV) x 1.602 x 10^-19 J/eV / c^2
+      = (10^-22 x 1.602 x 10^-19) / (3 x 10^8)^2
+      = (1.602 x 10^-41) / (9 x 10^16)
+      = 0.178 x 10^-57 kg
+      = **1.78 x 10^-58 kg**
+
+Step 2: Calculate xi = h-bar/(m*c)
+xi = h-bar / (m * c)
+   = (1.055 x 10^-34) / (1.78 x 10^-58 x 3 x 10^8)
+   = (1.055 x 10^-34) / (5.34 x 10^-50)
+   = 0.1976 x 10^16 m
+   = **1.976 x 10^15 m**
+
+Step 3: Convert to kpc (1 kpc = 3.09 x 10^19 m)
+xi = (1.976 x 10^15) / (3.09 x 10^19) kpc
+   = 6.4 x 10^-5 kpc
+   = **0.064 pc = 64 mpc (milliparsec)**
+
+---
+
+## Problem 4: Calculate (1.14 x 10^-62 kg)^3 and 7.7 x 10^-113 / (that cube)
+
+Step 1: Calculate the cube
+(1.14 x 10^-62)^3 = (1.14)^3 x (10^-62)^3
+                  = 1.482 x 10^-186
+                  = **1.48 x 10^-186**
+
+Step 2: Calculate the division
+7.7 x 10^-113 / (1.482 x 10^-186)
+= (7.7 / 1.482) x 10^(-113-(-186))
+= 5.2 x 10^73
+= **5.2 x 10^73**
+
+---
+
+## Problem 5: Calculate n_0 and a_s
+
+Step 1: Calculate n_0 = 5.4 x 10^25 / (1.14 x 10^-62)
+n_0 = (5.4 x 10^25) / (1.14 x 10^-62)
+    = (5.4 / 1.14) x 10^(25-(-62))
+    = 4.74 x 10^87
+    = **4.74 x 10^87**
+
+Step 2: Calculate a_s = 1/(8*pi * n_0 * xi^2)
+
+First, calculate xi^2 = (3.09 x 10^19)^2 = 9.55 x 10^38 m^2
+
+a_s = 1 / (8*pi x n_0 x xi^2)
+    = 1 / (8 x 3.14159 x 4.74 x 10^87 x 9.55 x 10^38)
+    = 1 / (25.13 x 45.27 x 10^125)
+    = 1 / (1137.6 x 10^125)
+    = 1 / (1.138 x 10^128)
+    = **8.79 x 10^-129 m**
+
+---
+
+## Summary Table
+
+| Problem | Paper's Claim | Correct Value | Status |
+|---------|---------------|---------------|--------|
+| 1. m = h-bar/(c*xi) | 1.14 x 10^-63 kg | 1.14 x 10^-62 kg | **ERROR (factor of 10)** |
+| 2. m in eV/c^2 | 6.4 x 10^-23 eV/c^2 | 6.4 x 10^-27 eV/c^2 | **ERROR (factor of 10^4)** |
+| 3. xi for m=10^-22 eV/c^2 | (not given) | 1.98 x 10^15 m | Calculated |
+| 4. Cube and division | (not given) | 5.2 x 10^73 | Calculated |
+| 5. n_0 and a_s | (not given) | n_0=4.74x10^87, a_s=8.8x10^-129 m | Calculated |
+
+---
+
+## Key Finding
+
+The paper appears to have systematic errors in their unit conversions:
+1. The mass calculation is off by a factor of 10 (10^-63 vs 10^-62)
+2. The eV conversion is off by a factor of 10^4 (10^-23 vs 10^-27)
+
+These errors could significantly impact any derived quantities in the paper.

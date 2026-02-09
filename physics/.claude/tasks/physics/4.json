@@ -1,0 +1,11 @@
+{
+  "id": "4",
+  "subject": "physics-researcher",
+  "description": "You are the physics researcher on the physics team. Your role is to find physics papers, scientific ",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": [],
+  "metadata": {
+    "_internal": true
+  }
+}

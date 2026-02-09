@@ -1,0 +1,38 @@
+
+\documentclass[preprint,onecolumn,longbibliography]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[final,tracking=true,expansion=true]{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+\begin{document}
+\title{Gravity as Field Reaction: Deriving $G$ from the Bulk Modulus of a Universal Condensate}
+\author{Rob Skavberg}
+\affiliation{Your Affiliation Here}
+\date{\today}
+\begin{abstract}
+We present a unified-field framework in which the physical vacuum is a Bose--Einstein condensate (BEC) with coherence scale $\lambda_c$. Photons, matter, and gravity appear as distinct excitations (transverse, solitonic, and longitudinal/pressure modes) of this underlying field. In the weak-field limit, the effective gravitational coupling is shown to arise from the condensate's bulk modulus $K$ and inertia density $\rho$, yielding an expression for Newton's constant $G$ without introducing it as an independent parameter. We outline empirical constraints and propose discriminating predictions.
+\end{abstract}
+\maketitle
+% ---- Main text ----
+\input{sections/introduction}
+\input{sections/model}
+\input{sections/predictions}
+\input{sections/experiments}
+\input{sections/discussion}
+\input{sections/conclusion}
+\begin{acknowledgments}
+We thank colleagues and reviewers for helpful feedback. Funding acknowledgments go here.
+\end{acknowledgments}
+\section*{Data and Code Availability}
+All derivations are contained in this manuscript. Computational notebooks and plotting scripts will be posted upon acceptance.
+\bibliographystyle{apsrev4-2}
+\bibliography{bib/references}
+\end{document}

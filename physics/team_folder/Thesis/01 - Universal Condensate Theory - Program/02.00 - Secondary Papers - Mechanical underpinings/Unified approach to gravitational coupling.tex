@@ -1,0 +1,85 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{cite}
+
+\geometry{margin=1in}
+
+\title{\textbf{The Stiffness Matching Principle: A Mechanical Derivation of $G$, Resolution of Singularities, and the Information Paradox}}
+\author{\textbf{Robin Skavberg} \\ \small \textit{Independent Researcher} \\ \small \textit{Correspondence: skavberg@gmail.com}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper introduces the Stiffness Matching Principle (SMP), defining the gravitational constant as a dynamic ratio $G = c^2 / (8\pi + P_m)$. By matching the Einstein-Hilbert coupling to the field pressure $P_m$, we resolve two fundamental crises in physics: the gravitational singularity and the Black Hole Information Paradox. We demonstrate that as $P_m$ increases, the decoupling of $G$ prevents the formation of a singularity, resulting in a "Frozen Core." This finite-density structure allows for the preservation of quantum information, ensuring unitarity in accordance with a mechanical route to $G$. Finally, we propose an observational verification method using the periapsis precession of the star S2 orbiting Sagittarius A*.
+\end{abstract}
+
+\section{Introduction}
+Modern cosmology is bifurcated by the singularity problem. Standard General Relativity (GR) predicts a point of infinite density at the center of black holes, necessitating the loss of quantum information. However, recent mechanical interpretations of $G$ \cite{Zenodo18393277} suggest that the coupling between matter and geometry is dynamic. We propose the Stiffness Matching Principle (SMP) to bridge $K = P_m c^2$ with the vacuum stiffness $8\pi$.
+
+\section{The Stiffness Matching Equation}
+We propose that $G$ is an emergent scalar defined by:
+\begin{equation}
+G(P_m) = \frac{c^2}{8\pi + P_m}
+\end{equation}
+where $P_m$ represents the energy density or field pressure. The effective coupling constant $\kappa_{eff}$ becomes:
+\begin{equation}
+\kappa_{eff} = \frac{8\pi G}{c^4} = \frac{8\pi}{c^2(8\pi + P_m)}
+\end{equation}
+As $P_m \to P_{planck}$, the term $\kappa_{eff} \to 0$, indicating a saturation of spacetime stiffness that prohibits further collapse.
+
+\section{Resolution of the Information Paradox}
+The Hawking Information Paradox \cite{Hawking1976} is resolved under the SMP via the "Frozen Core" mechanism. Because $G \to 0$ in extreme density regimes, the "singularity" is replaced by a high-density, finite-volume state. 
+\begin{itemize}
+    \item \textbf{Unitary Preservation:} Information is encoded within the volumetric structure of the core rather than an infinitesimal point.
+    \item \textbf{Geometric Stability:} The core acts as a high-density "hard drive," ensuring that quantum information remains accessible to the manifold's causal structure.
+\end{itemize}
+
+\section{Numerical Scaling of $G$}
+The following table reflects the transition of $G$ from the Newtonian baseline ($G_0 \approx 6.67 \times 10^{-11}$) to the high-stiffness regime.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Environment} & \textbf{Density $P_m$} & \textbf{Stiffness Match} & \textbf{Effective $G$} \\ \hline
+Deep Space & $10^{-30}$ & Geometry ($8\pi$) Dominant & $1.00 G_0$ \\ \hline
+Neutron Star Core & $10^{17}$ & Transitional & $\approx 0.1 G_0$ \\ \hline
+Black Hole Core & $P_{planck}$ & Pressure ($P_m$) Dominant & $\to 0$ \\ \hline
+\end{tabular}
+\caption{Evolution of $G$ toward the Stiffness-Saturated regime.}
+\end{table}
+
+\section{Observational Verification: The S2 Star Orbit}
+The Galactic Center provides a natural laboratory for the SMP. The star S2 orbits the supermassive black hole Sagittarius A* (Sgr A*) with a 16-year period.
+
+\subsection{Comparison with Schwarzschild Precession}
+Standard GR predicts a Schwarzschild precession of $f_{SP} = 1.0$, which has been detected at the $8\sigma$ level by the GRAVITY collaboration \cite{GRAVITY2020}. Under the SMP, the effective $G$ thins near the high-density environment of Sgr A*.
+\begin{equation}
+\Delta \phi_{SMP} = \Delta \phi_{GR} \left( \frac{8\pi}{8\pi + P_m} \right)
+\end{equation}
+Astronomers should look for a "Precession Deficiency." If the measured precession $f_{SP}$ is consistently found to be $1.0 - \epsilon$ (where $\epsilon$ corresponds to the field pressure $P_m$ of the Sgr A* environment), it would serve as direct evidence for a dynamic $G$.
+
+
+
+\section{Conclusion}
+The Stiffness Matching Principle replaces mathematical infinities with mechanical equilibrium. By treating $G$ as a dynamic ratio, we resolve the singularity problem and provide a platform for information preservation. This model is falsifiable through high-precision astrometry of stellar orbits in the strong-field regime of the Galactic Center.
+
+\begin{thebibliography}{9}
+\bibitem{Zenodo18393277} 
+\textit{A Mechanical Route to G: Matching Dark-Matter Field Pressure to the Einstein-Hilbert Coupling}. DOI: 10.5281/zenodo.18393277.
+\bibitem{Hawking1976}
+Hawking, S. W. (1976). \textit{Breakdown of predictability in gravitational collapse}. Physical Review D.
+\bibitem{GRAVITY2020}
+GRAVITY Collaboration. (2020). \textit{Detection of the Schwarzschild precession in the orbit of the star S2}. Astronomy \& Astrophysics.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,10 @@
+{
+  "id": "5",
+  "subject": "Create arXiv physics LaTeX template draft",
+  "description": "Create a PDFLaTeX-compatible LaTeX template for arXiv physics submissions using revtex4-2. Include standard physics packages, placeholder sections, and examples of equations, figures, tables, and citations. Save draft to /home/skavbr/physics/shared/template-draft.tex for team lead review.",
+  "activeForm": "Creating arXiv physics LaTeX template",
+  "owner": "latex-specialist",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

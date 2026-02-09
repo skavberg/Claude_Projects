@@ -1,0 +1,11 @@
+{
+  "id": "3",
+  "subject": "math-expert",
+  "description": "You are the math expert on the physics team. Your role is to handle complex mathematical calculation",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": [],
+  "metadata": {
+    "_internal": true
+  }
+}

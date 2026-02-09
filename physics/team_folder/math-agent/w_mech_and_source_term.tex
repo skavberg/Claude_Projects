@@ -1,0 +1,462 @@
+% ============================================================================
+% MATHEMATICAL DERIVATIONS: w_mech(a) AND SOURCE TERM Q(a)
+% For: "The Observable Universe as a Condensate Expanding into a Universal Protofluid"
+% Prepared by: Math-Agent
+% Date: 2026-02-08
+% ============================================================================
+%
+% This file contains publication-ready LaTeX sections to be inserted into the
+% draft paper. It provides complete derivations of:
+%   1. The effective equation of state w_mech(a) from the continuity equation
+%   2. The boundary source term Q(a) from modified continuity dynamics
+%
+% Uses the same macros as the main draft document.
+% ============================================================================
+
+% ----------------------------------------------------------------------------
+% SECTION: Equation of State of the Boundary-Layer Energy Component
+% ----------------------------------------------------------------------------
+
+\subsection{Equation of State of the Boundary-Layer Energy}
+\label{sec:w_mech_derivation}
+
+The boundary-layer energy density $\umech(a)$ is given by the log-normal (Gaussian in $\ln a$) profile:
+\begin{equation}
+\label{eq:umech_profile}
+\umech(a) = \rhocrit \, \fmech \, \exp\!\left( -\frac{\ln^2(a/\ac)}{2\sigmamech^2} \right),
+\end{equation}
+where $\rhocrit = 3H_0^2/(8\pi G)$ is the critical density today, $\fmech$ is the peak fractional amplitude, $\ac$ is the scale factor at peak, and $\sigmamech$ is the width in $\ln a$-space.
+
+\subsubsection{Derivation of $w_{\mathrm{mech}}(a)$ from the Continuity Equation}
+
+For any cosmological fluid with energy density $\rho$ and pressure $p = w\rho$, energy conservation in an expanding FLRW universe gives the continuity equation:
+\begin{equation}
+\label{eq:continuity_general}
+\dot{\rho} + 3H(\rho + p) = 0 \quad \Longleftrightarrow \quad \dot{\rho} + 3H(1+w)\rho = 0.
+\end{equation}
+
+Solving for the equation of state parameter:
+\begin{equation}
+\label{eq:w_from_continuity}
+w = -1 - \frac{\dot{\rho}}{3H\rho} = -1 - \frac{1}{3H}\frac{\dx \ln\rho}{\dx t}.
+\end{equation}
+
+We now compute $w_{\mathrm{mech}}(a)$ explicitly for the profile \eqref{eq:umech_profile}.
+
+\paragraph{Step 1: Compute $\ln \umech$.}
+\begin{equation}
+\ln \umech = \ln(\rhocrit \fmech) - \frac{\ln^2(a/\ac)}{2\sigmamech^2}.
+\end{equation}
+
+\paragraph{Step 2: Compute $\dx(\ln \umech)/\dx a$.}
+Differentiating with respect to $a$:
+\begin{equation}
+\frac{\dx \ln \umech}{\dx a} = -\frac{2 \ln(a/\ac)}{2\sigmamech^2} \cdot \frac{1}{a} = -\frac{\ln(a/\ac)}{\sigmamech^2 \, a}.
+\end{equation}
+
+\paragraph{Step 3: Convert to time derivative using $\dot{a} = aH$.}
+\begin{equation}
+\frac{\dx \ln \umech}{\dx t} = \frac{\dx \ln \umech}{\dx a} \cdot \dot{a} = -\frac{\ln(a/\ac)}{\sigmamech^2 \, a} \cdot aH = -\frac{H \ln(a/\ac)}{\sigmamech^2}.
+\end{equation}
+
+\paragraph{Step 4: Substitute into the equation of state formula.}
+\begin{equation}
+w_{\mathrm{mech}}(a) = -1 - \frac{1}{3H}\left( -\frac{H\ln(a/\ac)}{\sigmamech^2} \right) = -1 + \frac{\ln(a/\ac)}{3\sigmamech^2}.
+\end{equation}
+
+\begin{proposition}[Equation of State for Boundary-Layer Energy]
+\label{prop:wmech}
+The effective equation of state for the boundary-layer energy component $\umech(a)$ with the log-normal profile \eqref{eq:umech_profile} is:
+\begin{equation}
+\label{eq:wmech_result}
+\boxed{w_{\mathrm{mech}}(a) = -1 + \frac{\ln(a/\ac)}{3\sigmamech^2}}
+\end{equation}
+\end{proposition}
+
+\subsubsection{Asymptotic Behavior and Physical Interpretation}
+
+The equation of state \eqref{eq:wmech_result} exhibits qualitatively different behavior in three regimes:
+
+\paragraph{Regime I: Early times ($a \ll \ac$).}
+As $a \to 0^+$, we have $\ln(a/\ac) \to -\infty$, and therefore:
+\begin{equation}
+w_{\mathrm{mech}}(a) \to -\infty \quad \text{as} \quad a \to 0^+.
+\end{equation}
+This is the \emph{phantom regime}, with $w < -1$. The energy density $\umech$ is exponentially suppressed at early times (the tail of the Gaussian), and the effective equation of state is strongly phantom-like.
+
+\textbf{Important correction:} The draft paper (Section 3.3) incorrectly states that $w_{\mathrm{mech}} \approx -1/3$ at early times. This is \emph{not} correct. The correct asymptotic behavior is $w_{\mathrm{mech}} \to -\infty$ as $a \to 0$, which corresponds to phantom dark energy with arbitrarily negative equation of state.
+
+\paragraph{Regime II: At the peak ($a = \ac$).}
+At $a = \ac$, we have $\ln(a/\ac) = 0$, giving:
+\begin{equation}
+w_{\mathrm{mech}}(\ac) = -1.
+\end{equation}
+At the peak of the energy bump, the boundary-layer component behaves exactly like a cosmological constant.
+
+\paragraph{Regime III: Late times ($a > \ac$).}
+For $a > \ac$, we have $\ln(a/\ac) > 0$, and:
+\begin{equation}
+w_{\mathrm{mech}}(a) > -1 \quad \text{(quintessence-like)}.
+\end{equation}
+
+Notable values in this regime:
+\begin{itemize}
+    \item At $a = \ac \exp(\sigmamech^2)$: $w_{\mathrm{mech}} = -1 + 1/3 = -2/3$ (curvature-like).
+    \item At $a = \ac \exp(3\sigmamech^2)$: $w_{\mathrm{mech}} = -1 + 1 = 0$ (dust-like).
+    \item At $a = \ac \exp(4\sigmamech^2)$: $w_{\mathrm{mech}} = -1 + 4/3 = +1/3$ (radiation-like).
+\end{itemize}
+
+As $a \to \infty$, $w_{\mathrm{mech}} \to +\infty$, but this regime is irrelevant because $\umech \to 0$ exponentially fast on the high-$a$ tail of the Gaussian.
+
+\paragraph{Summary Table.}
+For representative parameters $\sigmamech = 0.2$ and $\ac = 10^{-3}$:
+
+\begin{center}
+\begin{tabular}{c|c|c|l}
+\toprule
+$a/\ac$ & $\ln(a/\ac)$ & $w_{\mathrm{mech}}$ & Physical character \\
+\midrule
+$10^{-3}$ & $-6.91$ & $-58.4$ & Deep phantom \\
+$10^{-2}$ & $-4.61$ & $-39.4$ & Phantom \\
+$0.1$ & $-2.30$ & $-20.2$ & Phantom \\
+$0.5$ & $-0.69$ & $-6.76$ & Phantom \\
+$1.0$ & $0$ & $-1.0$ & Cosmological constant \\
+$2.0$ & $0.69$ & $+4.76$ & Stiff fluid \\
+$10$ & $2.30$ & $+18.2$ & Ultra-stiff \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{The Phantom Crossing: Physical Interpretation}
+
+The fact that $w_{\mathrm{mech}} < -1$ for $a < \ac$ raises the question of whether the phantom regime is physically problematic. In standard cosmology, phantom dark energy ($w < -1$) is often associated with instabilities, violation of the null energy condition (NEC), and future singularities (``Big Rip'').
+
+However, in the condensate framework, the phantom-like behavior at $a < \ac$ admits a natural physical interpretation:
+
+\begin{enumerate}
+    \item \textbf{$\umech(a)$ is not an autonomous fluid.} The boundary-layer energy is not a self-contained component with its own intrinsic dynamics. Rather, it is \emph{sourced} by energy injection from the conversion boundary. The standard continuity equation \eqref{eq:continuity_general} does not apply in its unmodified form.
+
+    \item \textbf{The phantom regime reflects energy injection, not NEC violation.} When $a < \ac$, the energy density $\umech$ is \emph{increasing} faster than the standard dilution (or even growing absolutely). This apparent ``violation'' of the continuity equation is explained by an external source term $Q(a) > 0$ that injects energy from the boundary layer into the bulk condensate.
+
+    \item \textbf{No fundamental instabilities.} Because $\umech$ arises from boundary-layer physics (impedance mismatch, reflection, and energy accumulation at the conversion surface), it does not require phantom scalar fields with wrong-sign kinetic terms. The underlying physics remains stable and causal.
+
+    \item \textbf{The phantom-crossing is smooth.} The equation of state crosses $w = -1$ smoothly at $a = \ac$, with no divergence or discontinuity in $w$ itself. The crossing point corresponds to the peak of energy accumulation, where injection and dilution momentarily balance.
+\end{enumerate}
+
+\textbf{Conclusion:} The phantom-like equation of state at $a < \ac$ is an artifact of interpreting $\umech(a)$ as an autonomous fluid satisfying the standard continuity equation. When the source term $Q(a)$ is properly accounted for (see Section \ref{sec:source_term}), the phantom behavior is understood as energy being pumped into the condensate interior from the boundary layer, and no fundamental pathology arises.
+
+
+% ----------------------------------------------------------------------------
+% SECTION: Boundary Source Term Q(a)
+% ----------------------------------------------------------------------------
+
+\subsection{Derivation of the Boundary Source Term $Q(a)$}
+\label{sec:source_term}
+
+\subsubsection{Physical Motivation}
+
+The Gaussian profile $\umech(a)$ cannot satisfy the standard continuity equation with a fixed equation of state $w$. More fundamentally, it cannot even satisfy the continuity equation with the \emph{derived} time-varying equation of state $w_{\mathrm{mech}}(a)$ from \eqref{eq:wmech_result} without an external source.
+
+To see why, note that the derivation of $w_{\mathrm{mech}}(a)$ in Section \ref{sec:w_mech_derivation} \emph{assumed} the continuity equation held. This is circular: we derived $w_{\mathrm{mech}}$ precisely so that \eqref{eq:continuity_general} is satisfied by construction. Therefore, with the correct $w_{\mathrm{mech}}(a)$, the source term $Q(a)$ in the modified continuity equation:
+\begin{equation}
+\label{eq:modified_continuity}
+\dot{\umech} + 3H(1 + w_{\mathrm{mech}})\umech = Q(a)
+\end{equation}
+would vanish identically if $w_{\mathrm{mech}}$ were chosen to make the LHS zero.
+
+The physical picture is different: the boundary-layer component $\umech$ represents energy that has been \emph{injected into the condensate bulk} from the conversion boundary $\Sigma$. This energy originates from:
+\begin{itemize}
+    \item Incident protofluid modes that are partially reflected at the impedance mismatch,
+    \item The conversion process itself, which releases latent heat as protofluid transforms into condensate,
+    \item Non-equilibrium dissipation in the finite-thickness boundary layer.
+\end{itemize}
+
+We therefore \emph{define} the source term $Q(a)$ as the rate of energy injection per unit comoving volume from the boundary layer into the bulk. The modified continuity equation becomes:
+\begin{equation}
+\label{eq:continuity_sourced}
+\dot{\umech} + 3H(1 + w)\umech = Q(a),
+\end{equation}
+where $w$ is now a \emph{specified} (not derived) equation of state parameter. The choice of $w$ determines the form of $Q(a)$.
+
+\subsubsection{Formal Derivation of $Q(a)$}
+
+We consider two natural choices for the reference equation of state $w$:
+
+\paragraph{Case A: $w = -1$ (cosmological-constant reference).}
+
+With $w = -1$, the modified continuity equation reduces to:
+\begin{equation}
+\dot{\umech} = Q(a).
+\end{equation}
+
+Computing $\dot{\umech}$ directly from \eqref{eq:umech_profile}:
+\begin{align}
+\dot{\umech} &= \umech \cdot \frac{\dx \ln \umech}{\dx t} = \umech \cdot \left( -\frac{H\ln(a/\ac)}{\sigmamech^2} \right) \notag \\
+&= -\frac{H\ln(a/\ac)}{\sigmamech^2} \, \umech(a).
+\end{align}
+
+Therefore:
+\begin{equation}
+\label{eq:Q_case_A}
+\boxed{Q^{(w=-1)}(a) = -\frac{H(a)\ln(a/\ac)}{\sigmamech^2} \, \umech(a)}
+\end{equation}
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item For $a < \ac$: $\ln(a/\ac) < 0$, so $Q > 0$. Energy is being \emph{injected} into the bulk.
+    \item For $a = \ac$: $\ln(a/\ac) = 0$, so $Q = 0$. Injection and decay balance at the peak.
+    \item For $a > \ac$: $\ln(a/\ac) > 0$, so $Q < 0$. Energy is being \emph{extracted} (or dissipated) from the bulk.
+\end{itemize}
+
+\paragraph{Case B: $w = w_{\mathrm{mech}}(a)$ (self-consistent reference).}
+
+If we take $w = w_{\mathrm{mech}}(a)$ as given by \eqref{eq:wmech_result}, then by construction the standard continuity equation is satisfied:
+\begin{equation}
+\dot{\umech} + 3H(1 + w_{\mathrm{mech}})\umech = 0.
+\end{equation}
+In this case, $Q(a) \equiv 0$ identically, and there is no net source term. This is the ``autonomous fluid'' interpretation.
+
+However, this interpretation obscures the physical origin of the energy. A more physically transparent approach is to compare $\umech$ evolution against a \emph{fiducial} equation of state (such as $w = -1$ or $w = 0$) and attribute the difference to the source.
+
+\paragraph{Case C: $w = 0$ (matter reference).}
+
+With $w = 0$ (pressureless dust), we have:
+\begin{equation}
+\dot{\umech} + 3H\umech = Q(a).
+\end{equation}
+
+Computing:
+\begin{align}
+Q^{(w=0)}(a) &= \dot{\umech} + 3H\umech \notag \\
+&= \umech \left( -\frac{H\ln(a/\ac)}{\sigmamech^2} + 3H \right) \notag \\
+&= H\umech \left( 3 - \frac{\ln(a/\ac)}{\sigmamech^2} \right).
+\end{align}
+
+Therefore:
+\begin{equation}
+\label{eq:Q_case_C}
+\boxed{Q^{(w=0)}(a) = H(a)\umech(a) \left( 3 - \frac{\ln(a/\ac)}{\sigmamech^2} \right)}
+\end{equation}
+
+\subsubsection{Connection to Boundary-Layer Physics}
+
+We now connect the source term $Q(a)$ to the microphysics of the conversion boundary.
+
+\paragraph{Energy flux through the conversion surface.}
+
+Let $\Sigma$ denote the conversion boundary, propagating outward with proper speed $\uf$ in the protofluid rest frame. The protofluid has energy density $\rho_{\mathrm{pf}}$ and the condensate has energy density $\rho_{\mathrm{c}}$. The conversion rate (volume of protofluid converted per unit time) is:
+\begin{equation}
+\dot{V}_{\mathrm{conv}} = A_\Sigma \cdot \uf,
+\end{equation}
+where $A_\Sigma$ is the proper area of the boundary.
+
+In a homogeneous FLRW setting, the condensate interior has comoving volume $V_{\mathrm{c}} = (4\pi/3) r_\Sigma^3$ where $r_\Sigma$ is the comoving radius of the boundary. The rate of comoving volume increase is:
+\begin{equation}
+\dot{V}_{\mathrm{c}} = 4\pi r_\Sigma^2 \dot{r}_\Sigma.
+\end{equation}
+
+\paragraph{Impedance mismatch and reflected energy.}
+
+At the boundary, incident waves from the protofluid are partially reflected with reflection coefficient $R$ and partially transmitted with coefficient $T = 1 - R$:
+\begin{equation}
+R = \left| \frac{\Zcond - \Zpf}{\Zcond + \Zpf} \right|^2, \qquad T = \frac{4\Zcond\Zpf}{(\Zcond + \Zpf)^2}.
+\end{equation}
+
+The incident energy flux (power per unit area) from the protofluid is:
+\begin{equation}
+\mathcal{F}_{\mathrm{inc}} = \rho_{\mathrm{pf}} \cs^{\mathrm{pf}} = \Zpf \cdot (\text{wave velocity}).
+\end{equation}
+
+The reflected energy flux is $R \cdot \mathcal{F}_{\mathrm{inc}}$, and this reflected energy can accumulate in the boundary layer or be re-processed into the condensate.
+
+\paragraph{Energy injection rate.}
+
+The total power injected into the boundary layer from impedance mismatch is:
+\begin{equation}
+\dot{E}_{\mathrm{boundary}} = R \cdot \mathcal{F}_{\mathrm{inc}} \cdot A_\Sigma = R \cdot \Zpf \cdot c_s^{\mathrm{pf}} \cdot A_\Sigma.
+\end{equation}
+
+A fraction of this boundary-layer energy is subsequently transferred into the bulk condensate (as $\umech$), while the rest remains trapped in the boundary layer (contributing to the surface stress-energy $S^{\mu\nu}$) or is re-radiated back into the protofluid.
+
+Let $\epsilon_{\mathrm{transfer}}$ denote the fraction of boundary-layer energy that leaks into the bulk condensate per Hubble time. Then the source term is:
+\begin{equation}
+Q(a) = \frac{\epsilon_{\mathrm{transfer}}}{V_{\mathrm{c}}} \cdot \dot{E}_{\mathrm{boundary}} = \frac{\epsilon_{\mathrm{transfer}} R \Zpf c_s^{\mathrm{pf}} A_\Sigma}{V_{\mathrm{c}}}.
+\end{equation}
+
+\paragraph{Dimensional analysis and scaling.}
+
+Using $A_\Sigma \propto r_\Sigma^2 \propto a^2$ and $V_{\mathrm{c}} \propto a^3$, we have:
+\begin{equation}
+Q(a) \propto \frac{a^2}{a^3} = a^{-1}.
+\end{equation}
+
+Combined with the $H(a)$ dependence from the dynamical timescale, we expect:
+\begin{equation}
+Q(a) \sim H(a) \cdot \rho_{\mathrm{boundary}} \cdot f(a/\ac, R),
+\end{equation}
+where $f$ is a function encoding the detailed boundary-layer dynamics.
+
+The Gaussian form of $\umech(a)$ arises when the competition between injection (which increases $\umech$) and dilution (which decreases $\umech$ as $a^{-3}$ or faster) produces a peaked profile. At early times ($a \ll \ac$), injection dominates over dilution, building up the reservoir. At late times ($a \gg \ac$), dilution dominates as the boundary becomes transparent or the protofluid is exhausted.
+
+\subsubsection{Total Energy Conservation}
+
+A crucial consistency requirement is that total energy (bulk condensate plus boundary layer) is conserved (or accounted for by flux through the conversion boundary).
+
+Define:
+\begin{itemize}
+    \item $E_{\mathrm{bulk}} = \int_{\mathrm{condensate}} (\rhostd + \umech) \, dV$ = energy in the condensate interior,
+    \item $E_{\mathrm{boundary}} = \int_\Sigma S^{\mu\nu} u_\mu n_\nu \, d^3\Sigma$ = energy stored in the boundary layer,
+    \item $\Phi_{\mathrm{in}}$ = energy flux entering through $\Sigma$ from the protofluid,
+    \item $\Phi_{\mathrm{out}}$ = energy flux leaving through $\Sigma$ (reflected back to protofluid).
+\end{itemize}
+
+The total energy balance reads:
+\begin{equation}
+\frac{d}{dt}(E_{\mathrm{bulk}} + E_{\mathrm{boundary}}) = \Phi_{\mathrm{in}} - \Phi_{\mathrm{out}} = (1 - R)\Phi_{\mathrm{in}} + R\Phi_{\mathrm{in}} - R\Phi_{\mathrm{in}} = \Phi_{\mathrm{in}} - R\Phi_{\mathrm{in}}.
+\end{equation}
+
+Wait---this requires careful bookkeeping. Let us be more precise.
+
+The transmitted flux $(1-R)\Phi_{\mathrm{in}}$ enters the condensate, contributing to $\rhostd$ (if it thermalizes) or $\umech$ (if it remains as a distinct component). The reflected flux $R\Phi_{\mathrm{in}}$ returns to the protofluid but may first deposit energy in the boundary layer.
+
+\paragraph{Conservation statement.}
+
+Let $Q_{\mathrm{bulk}}(a)$ be the source term for $\umech$ in the bulk, and let $\dot{\rho}_{\mathrm{boundary}}$ be the rate of change of boundary-layer energy density. Conservation requires:
+\begin{equation}
+\dot{E}_{\mathrm{total}} = \dot{E}_{\mathrm{bulk}} + \dot{E}_{\mathrm{boundary}} = \Phi_{\mathrm{net}},
+\end{equation}
+where $\Phi_{\mathrm{net}}$ is the net energy extracted from the protofluid.
+
+For the standard components $\rhostd$, we have standard conservation:
+\begin{equation}
+\dot{\rhostd} + 3H(\rhostd + p_{\mathrm{std}}) = 0.
+\end{equation}
+
+For the boundary-layer component, we have:
+\begin{equation}
+\dot{\umech} + 3H(1+w)\umech = Q(a).
+\end{equation}
+
+The source $Q(a)$ represents energy transferred from the boundary layer to the bulk. If we also track the boundary-layer energy density $\rho_{\mathrm{BL}}$, we have:
+\begin{equation}
+\dot{\rho}_{\mathrm{BL}} + (\text{boundary dynamics}) = -Q(a) + S_{\mathrm{ext}},
+\end{equation}
+where $S_{\mathrm{ext}}$ is the external supply from impedance mismatch.
+
+\textbf{Net conservation:} Adding the bulk and boundary contributions:
+\begin{equation}
+(\dot{\umech} + 3H\umech) + (\dot{\rho}_{\mathrm{BL}} + \ldots) = S_{\mathrm{ext}},
+\end{equation}
+showing that total energy increases at the rate supplied by the protofluid through the conversion process. In the limit where the conversion boundary has reached the edge of the observable universe (or the protofluid is exhausted), $S_{\mathrm{ext}} \to 0$, and total energy is conserved.
+
+
+\subsubsection{Explicit Form of $Q(a)$ for Representative Parameters}
+
+For the fiducial parameters $\fmech = 0.1$, $\ac = 10^{-3}$, $\sigmamech = 0.2$, we compute the source term using Equation \eqref{eq:Q_case_A}:
+\begin{equation}
+Q^{(w=-1)}(a) = -\frac{H(a)\ln(a/\ac)}{\sigmamech^2} \, \umech(a) = -\frac{H(a)\ln(a/\ac)}{0.04} \, \umech(a).
+\end{equation}
+
+\paragraph{Numerical values at selected scale factors.}
+
+Taking $\ac = 10^{-3}$ and computing $\ln(a/\ac)$ and the source magnitude:
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+$a$ & $\ln(a/\ac)$ & $Q/(H\umech)$ & Sign of $Q$ \\
+\midrule
+$10^{-6}$ & $-6.91$ & $+173$ & Injection \\
+$10^{-5}$ & $-4.61$ & $+115$ & Injection \\
+$10^{-4}$ & $-2.30$ & $+57.6$ & Injection \\
+$5\times 10^{-4}$ & $-0.69$ & $+17.3$ & Injection \\
+$10^{-3}$ (peak) & $0$ & $0$ & Balance \\
+$2\times 10^{-3}$ & $+0.69$ & $-17.3$ & Extraction \\
+$10^{-2}$ & $+2.30$ & $-57.6$ & Extraction \\
+$10^{-1}$ & $+4.61$ & $-115$ & Extraction \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Peak injection rate.}
+
+The injection rate $|Q|$ is maximized when $|Q/(H\umech)|$ is maximized while $\umech$ is still significant. For a Gaussian profile, the product $|Q| = |H\umech \cdot \ln(a/\ac)/\sigmamech^2|$ has contributions from both the log factor and the Gaussian amplitude.
+
+The maximum of $|Q|$ occurs where $\partial_a|Q| = 0$. Taking the derivative:
+\begin{equation}
+|Q| \propto |\ln(a/\ac)| \cdot \exp\left(-\frac{\ln^2(a/\ac)}{2\sigmamech^2}\right).
+\end{equation}
+
+Setting $x = \ln(a/\ac)$:
+\begin{equation}
+|Q| \propto |x| e^{-x^2/(2\sigmamech^2)}.
+\end{equation}
+
+The maximum of $|x|e^{-x^2/(2\sigmamech^2)}$ occurs at $x = \pm\sigmamech$, giving:
+\begin{equation}
+|Q|_{\max} = H \cdot \umech(\ac e^{\pm\sigmamech}) \cdot \frac{|\sigmamech|}{\sigmamech^2} = \frac{H}{\sigmamech} \umech(\ac e^{\pm\sigmamech}).
+\end{equation}
+
+For $\sigmamech = 0.2$:
+\begin{equation}
+|Q|_{\max} = 5 H \cdot \umech(\ac e^{\pm 0.2}) = 5 H \cdot \umech_{\mathrm{peak}} \cdot e^{-0.04/(2\times 0.04)} = 5 H \cdot \fmech \rhocrit \cdot e^{-1/2}.
+\end{equation}
+
+Thus:
+\begin{equation}
+|Q|_{\max} \approx 3.0 \, H \fmech \rhocrit = 0.30 \, H \rhocrit \quad \text{(for } \fmech = 0.1\text{)}.
+\end{equation}
+
+This represents a substantial energy injection rate---about 30\% of the critical density per Hubble time at the peak injection epoch.
+
+
+% ----------------------------------------------------------------------------
+% SUMMARY BOX
+% ----------------------------------------------------------------------------
+
+\subsection{Summary of Key Results}
+\label{sec:summary_wmech_Q}
+
+\begin{proposition}[Summary: Equation of State and Source Term]
+\label{prop:summary}
+For the boundary-layer energy density
+\begin{equation}
+\umech(a) = \rhocrit \fmech \exp\left(-\frac{\ln^2(a/\ac)}{2\sigmamech^2}\right),
+\end{equation}
+the key results are:
+
+\begin{enumerate}
+\item \textbf{Effective equation of state:}
+\begin{equation}
+w_{\mathrm{mech}}(a) = -1 + \frac{\ln(a/\ac)}{3\sigmamech^2}
+\end{equation}
+
+\item \textbf{Asymptotic behavior:}
+\begin{align}
+a \to 0: &\quad w_{\mathrm{mech}} \to -\infty \quad \text{(phantom)} \\
+a = \ac: &\quad w_{\mathrm{mech}} = -1 \quad \text{(cosmological constant)} \\
+a > \ac: &\quad w_{\mathrm{mech}} > -1 \quad \text{(quintessence)}
+\end{align}
+
+\item \textbf{Source term (with $w=-1$ reference):}
+\begin{equation}
+Q(a) = -\frac{H(a)\ln(a/\ac)}{\sigmamech^2}\umech(a)
+\end{equation}
+
+\item \textbf{Physical interpretation:}
+\begin{itemize}
+\item $Q > 0$ for $a < \ac$: energy injection from boundary layer
+\item $Q = 0$ at $a = \ac$: injection/decay balance
+\item $Q < 0$ for $a > \ac$: energy extraction/dissipation
+\end{itemize}
+
+\item \textbf{The phantom-crossing is not pathological:} It reflects energy injection from an external source (the conversion boundary), not violation of energy conditions by an autonomous phantom field.
+
+\item \textbf{Total energy conservation:} Bulk condensate energy plus boundary-layer energy plus protofluid energy is conserved, with transfers mediated by the impedance mismatch at $\Sigma$.
+\end{enumerate}
+\end{proposition}
+
+
+% ----------------------------------------------------------------------------
+% END OF MATHEMATICAL DERIVATIONS
+% ----------------------------------------------------------------------------

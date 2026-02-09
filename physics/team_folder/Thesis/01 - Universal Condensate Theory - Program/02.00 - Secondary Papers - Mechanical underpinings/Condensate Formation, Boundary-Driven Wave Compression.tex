@@ -1,0 +1,219 @@
+\documentclass[11pt,a4paper]{article}
+
+%=====================
+% PACKAGES
+%=====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Fix for siunitx and physics package conflict
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+%=====================
+% MACROS
+%=====================
+\newcommand{\mpl}{M_{\rm Pl}}
+\newcommand{\rs}{r_{\rm s}}
+\newcommand{\Hinf}{H_{\rm inf}}
+\newcommand{\Heq}{H_{\rm eq}}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\aeq}{a_{\rm eq}}
+\newcommand{\ac}{a_{\rm c}}
+\newcommand{\zc}{z_{\rm c}}
+\newcommand{\Omegam}{\Omega_{\rm m}}
+\newcommand{\Omegar}{\Omega_{\rm r}}
+\newcommand{\Omegab}{\Omega_{\rm b}}
+\newcommand{\Omegac}{\Omega_{\rm c}}
+\newcommand{\Omegak}{\Omega_{k}}
+\newcommand{\Omegal}{\Omega_{\Lambda}}
+\newcommand{\cs}{c_{\rm s}}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+%=====================
+% TITLE
+%=====================
+\title{\textbf{Condensate Formation, Boundary--Driven Wave Compression, and a Short--Lived Early Expansion Boost}}
+\author{Rob Skavberg\thanks{Independent Researcher, Calgary, Canada. Contact: \texttt{rob.skavberg@example.org}}}
+\date{\today}
+
+%=====================
+% DOCUMENT
+%=====================
+\begin{document}
+\maketitle
+\doublespacing
+
+\begin{abstract}
+We develop a hydrodynamic--to--geometric framework in which the vacuum emerges as a quantum condensate formed out of a pre--condensed fluid phase. During the phase conversion, a moving boundary (nucleation/condensation front) compresses phase and density excitations (\emph{waves}) in the proto--vacuum as they encounter the interface. This boundary--driven wave compression transiently amplifies quantum fluctuations and the short--wavelength mode density, which in turn enhances the one--loop induced Einstein--Hilbert term in the effective action of the background geometry. We show that a narrow, early--time enhancement of the induced gravitational ``stiffness''---expressed either as a bump in $\Geff(a)$ or as an effective energy reservoir $u_{\rm mech}(a)$---can mimic an \emph{Early Dark Energy} (EDE)--like episode: it raises the expansion rate before recombination, shrinks the sound horizon, and increases the CMB--inferred $H_0$ while decaying rapidly afterwards. We present a minimal parameterization for this boundary--driven fluctuation compression and outline consistency conditions with Big--Bang Nucleosynthesis (BBN), CMB, BAO/SNe, and the GW170817 speed--of--gravity constraint. The model suggests a concrete, mechanically motivated route to an EDE--like pre--recombination boost linked to condensate formation.
+\end{abstract}
+
+\section{Conceptual Overview}
+\paragraph{Two--phase picture.}
+We assume an initial \emph{proto--vacuum fluid} that undergoes a phase transition into a coherent quantum condensate (the present vacuum). The conversion proceeds via a moving interface (nucleation/condensation front) separating the fluid from the growing condensate. The fluid is taken to be effectively incompressible in bulk (constant mass density), but supports propagating excitations (phase, pressure, and density waves).
+
+\paragraph{Boundary--driven wave compression.}
+As the conversion front advances, waves within the fluid encounter the boundary. If the front speed $u_{\rm f}$ exceeds the group velocity component by which waves can escape upstream, wavefronts pile up and compress: wavelengths shorten, frequencies blue--shift, and the local fluctuation energy density grows near the interface. This is the cosmological analogue of wave amplification ahead of a moving phase boundary in condensed matter.
+
+\paragraph{Induced gravity response.}
+Quantum fluctuations in curved spacetime radiatively generate an Einstein--Hilbert (EH) term in the effective action (``induced gravity''). Integrating out matter degrees of freedom at one loop produces\footnote{Heuristically, $\Gamma \supset \frac{(\frac{1}{6}-\xi)\Lambda_{\rm UV}^2}{32\pi^2}\!\int\!\sqrt{-g}\,R+\cdots$, with $\xi$ a nonminimal coupling and $\Lambda_{\rm UV}$ an effective cutoff set by the fluctuation spectrum.} a curvature term whose coefficient is set by the spectrum and density of fluctuations. Boundary--driven wave compression transiently enhances this coefficient, i.e. temporarily increases the \emph{gravitational stiffness} of spacetime.
+
+\paragraph{Cosmological consequence.}
+A short--lived early enhancement of gravitational stiffness raises $H(a)$ before recombination, shrinks the acoustic ruler $\rs$, and therefore increases the CMB--inferred $H_0$---the same lever arm used in Early Dark Energy (EDE) scenarios---while decaying away to satisfy BBN, CMB, and late--time bounds.
+
+\section{Hydrodynamic Preliminaries and Interface Kinematics}
+Consider a fluid with velocity $\vb v$ and mass density $\rho_{\rm f}$ transitioning to a condensed phase with order parameter $\Psi=\sqrt{n}\,e^{i\theta}$. The fluid bulk is effectively incompressible ($\nabla\!\cdot\!\vb v=0$), yet supports small perturbations $\delta \theta$ (phase) and $\delta n$ (density). The interface position $X(t)$ defines a front speed $u_{\rm f}=\dot X$ along its normal.
+
+Under advection by an interface moving into the wavefield, a mode with comoving wavenumber $k$ experiences a Doppler shift,
+\be
+\omega' \simeq \omega - u_{\rm f}\,k_{\parallel},
+\ee
+so that for $u_{\rm f}$ comparable to the mode group velocity the mode is transiently blue--shifted and compressed. In the linear regime the wave energy density scales as $u_{\rm wave}\!\propto\! \omega^2 |\delta\theta|^2$, and the boundary layer acquires an excess
+\be
+\Delta u_{\rm wave} \sim \int_{X(t)-\ell}^{X(t)} \!\!\!\!\dx x \;\Big[ u_{\rm wave}(u_{\rm f})-u_{\rm wave}(0)\Big],
+\ee
+with thickness $\ell$ set by dissipation, scattering, or the healing length of the nascent condensate.
+
+\section{Induced Gravity and the EH Prefactor}
+Quantum fields on curved backgrounds generically produce an EH term in the one--loop effective action (Sakharov's induced gravity). Denoting the induced (squared) Planck mass by $M_{\rm ind}^2(a)$,
+\be
+S_{\rm ind}[g] \supset \int \dx^4 x\, \sqrt{-g}\;\frac{M_{\rm ind}^2(a)}{2}\,R,
+\qquad
+M_{\rm ind}^2(a)\equiv \frac{c^4}{8\pi \Geff(a)}.
+\ee
+The boundary--driven compression modifies the fluctuation spectrum and the effective cutoff $\Lambda_{\rm eff}$ within a narrow epoch, yielding a transient bump in $M_{\rm ind}^2(a)$ (equivalently, a dip in $\Geff$) centered at $a=\ac$.
+
+\paragraph{Minimal parameterization.}
+We adopt a lognormal bump:
+\be
+\frac{\Delta M_{\rm ind}^2}{M_{\rm ind,0}^2}(a)
+= A\,\exp\!\left[-\frac{\ln^2(a/\ac)}{2\sigma^2}\right],
+\qquad
+\Geff(a)=\frac{c^4}{8\pi \left[ M_{\rm ind,0}^2+\Delta M_{\rm ind}^2(a)\right]}.
+\label{eq:Geff}
+\ee
+Here $A>0$ controls the peak fractional enhancement, $\ac$ (or $\zc$) sets the timing (typically near matter--radiation equality), and $\sigma$ sets the narrow width in $\ln a$.
+
+\paragraph{Equivalent fluid view.}
+Alternatively, encode the boundary compression as an \emph{effective energy reservoir} $u_{\rm mech}(a)$ that redshifts away after the event:
+\be
+H^2(a) = \frac{8\pi G_0}{3}\left[\rho_{\rm std}(a)+u_{\rm mech}(a)\right],\quad
+u_{\rm mech}(a)=\rho_{\rm c0}\,f_{\rm mech}\,\exp\!\left[-\frac{\ln^2(a/\ac)}{2\sigma^2}\right]\,\Theta(a;a_{\rm on},a_{\rm off}).
+\ee
+The step $\Theta$ indicates that the reservoir is nonzero only during the conversion epoch; $f_{\rm mech}$ is its peak fraction of the critical density today.
+
+\section{Impact on the Sound Horizon and the CMB--Inferred $H_0$}
+The comoving sound horizon at last scattering $a_\ast$ is
+\be
+\rs = \int_0^{a_\ast} \frac{c_{\rm s}(a)}{a^2 H(a)}\,\dx a,
+\qquad
+c_{\rm s}(a) = \frac{c}{\sqrt{3\left(1 + \tfrac{3}{4}\,\rho_{\rm b}(a)/\rho_{\gamma}(a)\right)}}.
+\ee
+A localized early boost to $H(a)$ via either $\Geff(a)$ in Eq.~\eqref{eq:Geff} or $u_{\rm mech}(a)$ reduces $\rs$ (the integrand denominator grows near $\ac$). For fixed observed CMB angles, a smaller $\rs$ implies a larger inferred $H_0$ in parameter fits. The bump must be:
+\begin{itemize}
+    \item \emph{Early and narrow}: centered at $\zc\sim 3000$--$5000$, width $\sigma\lesssim 0.2$ in $\ln a$;
+    \item \emph{Small}: peak amplitude $A$ or $f_{\rm mech}$ at the few--to--ten percent level to move $H_0$ by $\mathcal{O}(5\%)$ without spoiling other observables;
+    \item \emph{Transient}: decays by recombination and well before late times to respect local gravity tests.
+\end{itemize}
+
+\section{Sketch of a Microphysical Link: From Wave Compression to $M_{\rm ind}^2$}
+Heuristically, the induced EH term scales as
+\be
+M_{\rm ind}^2 \sim \sum_i \frac{N_i}{16\pi^2}\,\Lambda_{i,\rm eff}^2(\text{state}),
+\ee
+where $i$ labels fluctuations (phonon--like, phase, density modes) and $N_i$ counts degrees of freedom. Compression near the interface raises the short--wavelength mode occupancy and the effective cutoff $\Lambda_{i,\rm eff}$ within a boundary layer of spacetime and time, thus raising $M_{\rm ind}^2$ during the event. After conversion completes, the spectrum relaxes and $M_{\rm ind}^2$ reverts to $M_{\rm ind,0}^2$.
+
+\section{Interface Model: Kinematic Compression and Energy Budget}
+For an interface advancing at $u_{\rm f}$ into a wavefield with dispersion $\omega(k)$, group velocity $v_{\rm g}=\partial\omega/\partial k$, waves with $v_{\rm g}\cos\theta < u_{\rm f}$ (angle $\theta$ relative to normal) cannot outrun the boundary and compress. The instantaneous blue--shift scales to leading order as
+\be
+\frac{\Delta \omega}{\omega} \sim \frac{u_{\rm f}}{v_{\rm g}}\cos\theta,
+\qquad
+\frac{\Delta k}{k} \sim \frac{u_{\rm f}}{v_{\rm g}}\cos\theta,
+\ee
+and the local energy density increment satisfies $\Delta u_{\rm wave} \propto \int\!\dx k\, \omega\,\Delta n_k$, where $\Delta n_k$ is the occupation change induced by the interface. The total mechanical reservoir available to feed the induced term is bounded by the latent heat (or free energy density drop) across the phase boundary and by the kinematics $u_{\rm f}$; both are finite, ensuring transience.
+
+\section{Consistency Conditions}
+\paragraph{BBN.} The Hubble rate during nucleosynthesis must not deviate by more than a few percent. Hence enforce $A\ll1$ or $f_{\rm mech}\ll 0.1$ at $T\!\sim$ MeV and center the bump at $\zc\gg 10^8$ (in $a$: much earlier) or, preferably, at $\zc \sim 3000$ but with negligible tails at BBN epoch.
+
+\paragraph{CMB.} The bump must be sufficiently narrow and early to avoid distorting the damping tail beyond Planck/ACT limits, while shifting $\rs$ enough to raise $H_0$ by the desired amount.
+
+\paragraph{Late--time gravity and GW170817.} The present--day $\Geff$ equals $G_0$ to high accuracy and the tensor propagation speed remains $c$. In practice, the induced bump is scalar--sector only and vanishes at late times, so $c_T= c$ today.
+
+\paragraph{Large--scale structure.} If the bump elevates small--scale power, the model may require a mild, correlated post--recombination suppression (e.g., through the detailed relaxation of $M_{\rm ind}^2$) to remain compatible with weak--lensing ($S_8$) data.
+
+\section{Observationally Useful Parameter Set}
+A minimal set for data confrontation:
+\[
+\{\zc,\ \sigma,\ A\}\quad \text{or equivalently}\quad \{\zc,\ \sigma,\ f_{\rm mech}\},
+\]
+with priors enforcing BBN and late--time bounds. One can map $\{A,\sigma\}$ to an \emph{effective} $f_{\rm EDE}$ at peak by computing the induced change in $H(a)$ and matching the area under the bump to an EDE energy fraction at $\ac$.
+
+\section{Predictions and Diagnostics}
+\begin{itemize}
+    \item A modest upward shift in $H_0$ derived from CMB+BAO fits, driven by $\rs\downarrow$;
+    \item Minimal impact on low--$z$ distance ladders if the bump decays early;
+    \item No deviation in the tensor speed $c_T$ today; standard sirens remain standard;
+    \item Subtle imprints in the early ISW effect and in the phase of acoustic peaks, testable with high--precision CMB polarization.
+\end{itemize}
+
+\section{Discussion}
+We presented a mechanically motivated route to an EDE--like episode tied to condensate formation. The physical engine is boundary--driven wave compression: as the condensate front overruns proto--vacuum waves, the fluctuation spectrum blue--shifts and transiently enhances the induced EH term, raising the early expansion rate. Because the driver is a finite phase--conversion front with finite latent energy, the episode is necessarily short--lived, naturally satisfying the transience required by cosmological data. The same mechanism does not \emph{by itself} explain Hubble redshift, which remains a consequence of continued metric expansion, but it can provide a \emph{cause} for an initial expansion impulse and a brief pre--recombination stiffening.
+
+\section*{Conclusions}
+A forming vacuum condensate provides a concrete, microphysically intuitive realization of a short--duration early expansion boost. Modeling the interface--induced wave compression as either a bump in $\Geff(a)$ or as an effective, decaying reservoir $u_{\rm mech}(a)$ yields exactly the ingredients needed to raise the CMB--inferred $H_0$ while respecting early and late--time constraints. The framework invites quantitative confrontation with Planck/ACT, BAO/SNe, weak--lensing, and multi--messenger gravity bounds.
+
+\section*{Acknowledgments}
+The author thanks colleagues for helpful discussions on analogue gravity, quantum fluids, and cosmological parameter inference.
+
+\appendix
+\section{One--Loop Induced Gravity: Intuition}
+Even if no Einstein--Hilbert term is present microscopically, integrating out fluctuating fields in a curved background generates a curvature term in the effective action. The coefficient depends on the short--wavelength content of fluctuations. A temporary enhancement of short modes near the moving boundary transiently increases this coefficient.
+
+\section*{References}
+\begin{thebibliography}{99}
+
+\bibitem{Sakharov1967}
+A.~D.~Sakharov, ``Vacuum quantum fluctuations in curved space and the theory of gravitation,'' \emph{Sov. Phys. Dokl.} \textbf{12}, 1040 (1968).
+
+\bibitem{Vassilevich2003}
+D.~V.~Vassilevich, ``Heat kernel expansion: User's manual,'' \emph{Phys. Rept.} \textbf{388}, 279--360 (2003).
+
+\bibitem{Schwinger1951}
+J.~Schwinger, ``On gauge invariance and vacuum polarization,'' \emph{Phys. Rev.} \textbf{82}, 664 (1951).
+
+\bibitem{Barcelo2011}
+C.~Barcel\'o, S.~Liberati, M.~Visser, ``Analogue Gravity,'' \emph{Living Rev. Relativ.} \textbf{14}, 3 (2011).
+
+\bibitem{Planck2018}
+Planck Collaboration, ``Planck 2018 results. VI. Cosmological parameters,'' \emph{Astron. Astrophys.} \textbf{641}, A6 (2020).
+
+\bibitem{RiessReview2024}
+A.~G.~Riess and L.~Breuval, ``The Local Value of $H_0$,'' arXiv:2308.10954 (2024).
+
+\bibitem{EDEReview2023}
+M.~Kamionkowski and A.~G.~Riess, ``The Hubble Tension and Early Dark Energy,'' \emph{Ann. Rev. Nucl. Part. Sci.} \textbf{73}, 153 (2023).
+
+\bibitem{PoulinReview2023}
+V.~Poulin, T.~L.~Smith, T.~Karwal, ``The Ups and Downs of Early Dark Energy solutions to the Hubble tension,'' \emph{Phys. Dark Univ.} \textbf{42}, 101348 (2023).
+
+\bibitem{GW170817}
+B.~P.~Abbott \emph{et al.}, ``Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A,'' \emph{Astrophys. J. Lett.} \textbf{848}, L13 (2017).
+
+\bibitem{Alvey2020}
+J.~Alvey, N.~Sabti, M.~Escudero, M.~Fairbairn, ``Improved BBN constraints on the variation of the gravitational constant,'' \emph{Eur. Phys. J. C} \textbf{80}, 148 (2020).
+
+\end{thebibliography}
+
+\end{document}

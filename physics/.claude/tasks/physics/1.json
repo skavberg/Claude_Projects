@@ -1,0 +1,11 @@
+{
+  "id": "1",
+  "subject": "team-leader",
+  "description": "You are the team-leader-coordinator on the physics team. Your role is to coordinate work across the ",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": [],
+  "metadata": {
+    "_internal": true
+  }
+}

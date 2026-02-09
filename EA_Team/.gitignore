@@ -1,0 +1,11 @@
+# Database
+*.db
+*.db-journal
+
+# Source data exports
+team_folder/Source_Data/*.csv
+team_folder/Source_Data/*.sql
+
+# Temp files
+*.tmp
+*.bak

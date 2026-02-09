@@ -1,0 +1,107 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\title{\textbf{Meeting Minutes --- Session 1: Project Kickoff}}
+\author{Physics Team}
+\date{February 7, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Attendees}
+\begin{itemize}
+    \item Robin Skavberg (Project Lead / Author)
+    \item team-lead (Session Coordinator)
+    \item team-leader (Team Coordinator Agent)
+    \item doc-agent (Document Specialist)
+    \item graphic-agent (Graphic Designer)
+    \item math-agent (Mathematics Specialist)
+    \item physics-agent (Physics Researcher)
+\end{itemize}
+
+\section{Agenda}
+\begin{enumerate}
+    \item Team roll call and introductions
+    \item Retrieve and organize reference papers
+    \item Establish project folder structure
+    \item Announce new paper project
+\end{enumerate}
+
+\section{Minutes}
+
+\subsection{Team Roll Call}
+All six agents confirmed present and operational. The team consists of five specialized agents plus the session coordinator (team-lead).
+
+\subsection{Reference Papers Retrieved}
+Three published papers by Robin Skavberg were retrieved from Zenodo and copied into the team workspace from the local OneDrive archive at:
+\texttt{C:\textbackslash Users\textbackslash skavbr\textbackslash OneDrive - Cenovus Energy Inc\textbackslash 01 - Universal Condensate Theory - Program\textbackslash 03.02 - Submitted Papers}
+
+\begin{enumerate}
+    \item \textbf{Paper 1:} ``A Mechanical Route to $G$: Matching Field Stress--Energy to the Einstein--Hilbert Coupling'' \\
+    Zenodo: \url{https://zenodo.org/records/18496765} \\
+    Source files: V8.tex, V8-V01.01.tex, PDF \\
+    Location: \texttt{team\_folder/doc-agent/reference\_docs/01\_Mechanical\_Route\_to\_G/}
+
+    \item \textbf{Paper 2:} ``A Mechanical Extension of General Relativity: The Singularity in Equilibrium'' \\
+    Zenodo: \url{https://zenodo.org/records/18393278} \\
+    DOI: 10.5281/zenodo.18393278 \\
+    Source files: .tex, PDF \\
+    Location: \texttt{team\_folder/doc-agent/reference\_docs/02\_Gravitational\_Coupling/}
+
+    \item \textbf{Paper 3:} ``Planck Field --- Resolving Hulse--Taylor Binary'' \\
+    Zenodo: \url{https://zenodo.org/records/18462909} \\
+    Source files: PDF only (no .tex source available) \\
+    Location: \texttt{team\_folder/doc-agent/reference\_docs/03\_Planck\_Field\_Hulse\_Taylor/}
+\end{enumerate}
+
+\subsection{Folder Structure Established}
+The following project folder structure was set up:
+
+\begin{verbatim}
+team_folder/
+  doc-agent/
+    draft_papers/        -- Work-in-progress paper drafts
+    meeting_minutes/     -- Session meeting minutes (this document)
+    reference_docs/      -- Three Skavberg reference papers
+  graphic-agent/         -- Draft figures and illustrations
+  math-agent/            -- Derivations, proofs, equations
+  physics-agent/         -- Research findings, literature, references
+  team-leader/           -- Coordination notes
+
+output/
+  papers/                -- Final arXiv-compliant PDFs and .tex
+  references/            -- Curated bibliography and .bib files
+  figures/               -- Final figures for papers
+\end{verbatim}
+
+Key rules:
+\begin{itemize}
+    \item Only doc-agent publishes to \texttt{output/}
+    \item Only doc-agent directs graphic-agent on figure creation
+    \item All collaboration and drafts happen in \texttt{team\_folder/}
+\end{itemize}
+
+\subsection{New Paper Announced}
+\textbf{Title:} ``The Universe as a Condensate'' \\
+\textbf{Foundation:} The theorem will be based on the mathematics of the Planck field (Paper 3). \\
+\textbf{Status:} Project kickoff. All agents briefed and directed to read the three reference papers, with particular attention to Paper 3.
+
+\section{Action Items}
+\begin{itemize}
+    \item All agents: Read and familiarize with the three reference papers
+    \item doc-agent: Begin draft paper setup in \texttt{team\_folder/doc-agent/draft\_papers/}
+    \item math-agent: Review Planck field mathematics from Paper 3; prepare for derivation work
+    \item physics-agent: Review literature context; prepare supporting references
+    \item graphic-agent: Stand by for figure requests from doc-agent
+\end{itemize}
+
+\section{Notes}
+\begin{itemize}
+    \item Paper 3 has no .tex source --- team will work from the PDF
+    \item Session restart planned to fix broadcast messaging (CLAUDE\_CODE\_TEAM\_NAME environment variable)
+\end{itemize}
+
+\end{document}

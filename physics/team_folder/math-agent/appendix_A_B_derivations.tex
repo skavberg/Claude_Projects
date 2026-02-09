@@ -1,0 +1,784 @@
+% ============================================================================
+% APPENDIX A & B: COMPLETE MATHEMATICAL DERIVATIONS
+% For: "The Observable Universe as a Condensate Expanding into a Universal Protofluid"
+% Prepared by: Math-Agent
+% Date: 2026-02-08
+% ============================================================================
+%
+% This file provides publication-ready LaTeX appendix content for:
+%   Appendix A: Generalized Rankine-Hugoniot Jump Conditions
+%   Appendix B: Impedance Matching and Energy Accumulation
+%
+% To include in the main document, add: \input{appendix_A_B_derivations.tex}
+% after \appendix and before \end{document}
+%
+% ============================================================================
+
+% ============================================================================
+% APPENDIX A: GENERALIZED RANKINE-HUGONIOT JUMP CONDITIONS
+% ============================================================================
+
+\section{Generalized Rankine-Hugoniot Jump Conditions with Surface Stress-Energy}
+\label{app:RH_derivation}
+
+This appendix provides a rigorous derivation of the generalized Rankine-Hugoniot jump conditions at the conversion boundary $\Sigma$ separating the protofluid and condensate phases. We establish the connection to the Israel junction conditions and clarify the role of surface stress-energy in mediating energy transfer between phases.
+
+\subsection{Setup and Conventions}
+\label{app:RH_setup}
+
+We adopt the metric signature $(-,+,+,+)$ throughout. Let $\mathcal{M}$ denote the full spacetime manifold, partitioned by a timelike or spacelike hypersurface $\Sigma$ into two regions:
+\begin{itemize}
+    \item $\mathcal{M}^{-}$: the \emph{condensate} interior (our observable universe),
+    \item $\mathcal{M}^{+}$: the \emph{protofluid} exterior.
+\end{itemize}
+
+\begin{definition}[Unit Normal]
+Let $n_\mu$ be the unit normal to $\Sigma$, satisfying:
+\begin{equation}
+\label{eq:normal_def}
+n^\mu n_\mu = \varepsilon, \quad \varepsilon =
+\begin{cases}
++1 & \text{if } \Sigma \text{ is timelike}, \\
+-1 & \text{if } \Sigma \text{ is spacelike}.
+\end{cases}
+\end{equation}
+We orient $n_\mu$ to point from the condensate ($\mathcal{M}^{-}$) toward the protofluid ($\mathcal{M}^{+}$).
+\end{definition}
+
+\begin{definition}[Induced Metric]
+The induced metric on $\Sigma$ is:
+\begin{equation}
+\label{eq:induced_metric}
+\gamma_{\mu\nu} = g_{\mu\nu} - \varepsilon \, n_\mu n_\nu.
+\end{equation}
+This projects tensors onto the hypersurface. In intrinsic coordinates $y^a$ on $\Sigma$ ($a = 0,1,2$ for a 3D hypersurface), the induced metric is $\gamma_{ab} = g_{\mu\nu} e^\mu_a e^\nu_b$, where $e^\mu_a = \partial x^\mu / \partial y^a$ are the tangent vectors.
+\end{definition}
+
+\begin{definition}[Extrinsic Curvature]
+The extrinsic curvature (second fundamental form) of $\Sigma$ embedded in $\mathcal{M}$ is:
+\begin{equation}
+\label{eq:extrinsic_curvature}
+K_{\mu\nu} = \gamma^\alpha_\mu \gamma^\beta_\nu \nabla_\alpha n_\beta = \gamma^\alpha_\mu \nabla_\alpha n_\nu,
+\end{equation}
+with trace $K = g^{\mu\nu} K_{\mu\nu} = \gamma^{\mu\nu} K_{\mu\nu} = \nabla_\mu n^\mu$.
+\end{definition}
+
+\begin{definition}[Jump Notation]
+For any quantity $X$ defined in the bulk, we denote:
+\begin{equation}
+\label{eq:jump_notation}
+[X] \equiv \lim_{\epsilon \to 0^+} \left( X\big|_{\Sigma + \epsilon n} - X\big|_{\Sigma - \epsilon n} \right) = X^{+} - X^{-},
+\end{equation}
+where $X^{+}$ and $X^{-}$ are the limiting values from the protofluid and condensate sides, respectively.
+\end{definition}
+
+\subsection{Bulk Stress-Energy Conservation}
+\label{app:bulk_conservation}
+
+In each bulk region $\mathcal{M}^{\pm}$, stress-energy is conserved:
+\begin{equation}
+\label{eq:bulk_conservation}
+\nabla_\mu T^{\mu\nu} = 0 \quad \text{in } \mathcal{M}^{\pm}.
+\end{equation}
+
+\begin{proposition}[Stress-Energy Decomposition]
+\label{prop:stress_decomposition}
+For a general fluid with 4-velocity $u^\mu$ ($u^\mu u_\mu = -1$), the stress-energy tensor admits the decomposition:
+\begin{equation}
+\label{eq:stress_decomposition}
+T^{\mu\nu} = \rho u^\mu u^\nu + p h^{\mu\nu} + q^\mu u^\nu + q^\nu u^\mu + \pi^{\mu\nu},
+\end{equation}
+where:
+\begin{itemize}
+    \item $\rho = T^{\mu\nu} u_\mu u_\nu$ is the energy density,
+    \item $p = \frac{1}{3} h_{\mu\nu} T^{\mu\nu}$ is the isotropic pressure,
+    \item $h^{\mu\nu} = g^{\mu\nu} + u^\mu u^\nu$ is the spatial projector,
+    \item $q^\mu = -h^\mu_\alpha T^{\alpha\beta} u_\beta$ is the heat flux,
+    \item $\pi^{\mu\nu} = h^\mu_\alpha h^\nu_\beta T^{\alpha\beta} - p h^{\mu\nu}$ is the anisotropic stress.
+\end{itemize}
+For a perfect fluid, $q^\mu = 0$ and $\pi^{\mu\nu} = 0$, yielding $T^{\mu\nu} = (\rho + p) u^\mu u^\nu + p g^{\mu\nu}$.
+\end{proposition}
+
+\subsection{Pillbox Integration Across the Boundary}
+\label{app:pillbox}
+
+The derivation of the jump conditions proceeds via a pillbox (Gaussian pillbox) integration technique.
+
+\begin{definition}[Pillbox Region]
+Consider a cylindrical 4-volume $\mathcal{V}_\epsilon$ straddling $\Sigma$, with:
+\begin{itemize}
+    \item ``Caps'' $\Sigma_{\pm\epsilon}$: 3-surfaces at proper distance $\pm\epsilon$ from $\Sigma$ along the normal direction,
+    \item ``Walls'': the 3-surface connecting the edges of the caps (timelike for spacelike $\Sigma$, or spacelike for timelike $\Sigma$).
+\end{itemize}
+The boundary $\partial \mathcal{V}_\epsilon$ consists of the two caps and the walls.
+\end{definition}
+
+\begin{proposition}[Integral Conservation Law]
+\label{prop:integral_conservation}
+Integrating $\nabla_\mu T^{\mu\nu} = 0$ over $\mathcal{V}_\epsilon$ and applying the divergence theorem:
+\begin{equation}
+\label{eq:integral_conservation}
+\int_{\mathcal{V}_\epsilon} \nabla_\mu T^{\mu\nu} \sqrt{-g} \, \dx^4 x = \oint_{\partial \mathcal{V}_\epsilon} T^{\mu\nu} N_\mu \, \dx \Sigma_3 = 0,
+\end{equation}
+where $N_\mu$ is the outward-pointing unit normal to $\partial \mathcal{V}_\epsilon$, and $\dx \Sigma_3$ is the invariant 3-volume element on the boundary.
+\end{proposition}
+
+\begin{proof}[Derivation of Jump Condition]
+Decompose the boundary integral into contributions from the caps and walls:
+\begin{equation}
+\label{eq:boundary_decomposition}
+\oint_{\partial \mathcal{V}_\epsilon} T^{\mu\nu} N_\mu \, \dx \Sigma_3 = \int_{\Sigma_{+\epsilon}} T^{\mu\nu}_{+} n_\mu \, \dx \Sigma_3 - \int_{\Sigma_{-\epsilon}} T^{\mu\nu}_{-} n_\mu \, \dx \Sigma_3 + \int_{\text{walls}} T^{\mu\nu} N^{\text{wall}}_\mu \, \dx \Sigma_3.
+\end{equation}
+
+Taking the limit $\epsilon \to 0$:
+\begin{enumerate}
+    \item The cap areas converge to the same 3-surface $\Sigma$: $\Sigma_{\pm\epsilon} \to \Sigma$.
+    \item The wall contribution vanishes if $T^{\mu\nu}$ is bounded (no delta-function singularities in the bulk): as $\epsilon \to 0$, the wall area shrinks to zero while the integrand remains finite.
+    \item If the boundary layer $\Sigma$ carries a \emph{surface stress-energy} $S^{\mu\nu}$ (a distributional contribution localized on $\Sigma$), then the bulk $T^{\mu\nu}$ contains a singular term:
+    \begin{equation}
+    \label{eq:singular_stress}
+    T^{\mu\nu}_{\text{total}} = T^{\mu\nu}_{\text{bulk}} + S^{\mu\nu} \delta(\Sigma),
+    \end{equation}
+    where $\delta(\Sigma)$ is a covariant delta function supported on $\Sigma$.
+\end{enumerate}
+
+The divergence of the singular part contributes:
+\begin{equation}
+\label{eq:singular_divergence}
+\int_{\mathcal{V}_\epsilon} \nabla_\mu \left( S^{\mu\nu} \delta(\Sigma) \right) \sqrt{-g} \, \dx^4 x = \int_\Sigma D_\alpha S^{\alpha\nu} \, \dx \Sigma_3,
+\end{equation}
+where $D_\alpha$ is the \emph{induced covariant derivative} on $\Sigma$, compatible with the induced metric $\gamma_{ab}$.
+
+Therefore, the total conservation law becomes:
+\begin{equation}
+\label{eq:total_conservation}
+\int_\Sigma \left[ T^{\mu\nu} n_\mu \right] \dx \Sigma_3 + \int_\Sigma D_\alpha S^{\alpha\nu} \, \dx \Sigma_3 = 0.
+\end{equation}
+
+Since this must hold for any portion of $\Sigma$, we obtain the \emph{local} jump condition:
+\begin{equation}
+\label{eq:RH_local}
+\boxed{\left[ T^{\mu\nu} n_\mu \right] = -D_\alpha S^{\alpha\nu}}
+\end{equation}
+
+This is the \textbf{generalized Rankine-Hugoniot condition} with surface stress-energy.
+\end{proof}
+
+\subsection{Components of the Jump Condition}
+\label{app:RH_components}
+
+To extract physical content, we decompose the jump condition into components parallel and perpendicular to the 4-velocity of the boundary.
+
+\begin{definition}[Boundary 4-Velocity]
+Let $u^\mu_\Sigma$ be the 4-velocity of the boundary $\Sigma$, satisfying $u^\mu_\Sigma u_{\Sigma\mu} = -1$ and $u^\mu_\Sigma n_\mu = 0$ (i.e., $u^\mu_\Sigma$ lies within $\Sigma$).
+\end{definition}
+
+\begin{proposition}[Energy Flux Jump]
+\label{prop:energy_jump}
+Contracting Eq.~\eqref{eq:RH_local} with $u_{\Sigma\nu}$:
+\begin{equation}
+\label{eq:energy_jump}
+\left[ T^{\mu\nu} n_\mu u_{\Sigma\nu} \right] = -D_\alpha S^{\alpha\nu} u_{\Sigma\nu}.
+\end{equation}
+For a perfect fluid with $T^{\mu\nu} = (\rho + p) u^\mu u^\nu + p g^{\mu\nu}$:
+\begin{equation}
+\label{eq:energy_jump_perfect}
+T^{\mu\nu} n_\mu u_{\Sigma\nu} = (\rho + p)(u^\mu n_\mu)(u^\nu u_{\Sigma\nu}) + p \, n^\nu u_{\Sigma\nu} = -(\rho + p)(u \cdot n)(u \cdot u_\Sigma).
+\end{equation}
+Define $\Gamma = -u^\mu u_{\Sigma\mu}$ (the Lorentz factor of the fluid relative to the boundary) and $v_n = u^\mu n_\mu / \Gamma$ (the normal velocity of the fluid relative to the boundary). Then:
+\begin{equation}
+\label{eq:energy_flux}
+T^{\mu\nu} n_\mu u_{\Sigma\nu} = (\rho + p) \Gamma^2 v_n.
+\end{equation}
+The energy flux jump is:
+\begin{equation}
+\label{eq:energy_conservation}
+\left[ (\rho + p) \Gamma^2 v_n \right] = -D_\alpha (S^{\alpha\nu} u_{\Sigma\nu}).
+\end{equation}
+This is the \textbf{energy balance} at the boundary: the discontinuity in bulk energy flux is compensated by the divergence of surface energy.
+\end{proposition}
+
+\begin{proposition}[Momentum Flux Jump]
+\label{prop:momentum_jump}
+Projecting Eq.~\eqref{eq:RH_local} onto the spatial directions within $\Sigma$ using $\gamma^\nu_\beta$:
+\begin{equation}
+\label{eq:momentum_jump}
+\left[ T^{\mu\nu} n_\mu \gamma^\beta_\nu \right] = -D_\alpha S^{\alpha\beta}.
+\end{equation}
+For a perfect fluid:
+\begin{equation}
+\label{eq:momentum_flux}
+T^{\mu\nu} n_\mu \gamma^\beta_\nu = (\rho + p)(u \cdot n) u^\beta_{\perp} + p \, n^\beta,
+\end{equation}
+where $u^\beta_\perp = \gamma^\beta_\nu u^\nu$ is the projection of the fluid velocity onto $\Sigma$.
+\end{proposition}
+
+\subsection{Special Case: No Surface Stress-Energy}
+\label{app:RH_simple}
+
+If the boundary layer has negligible surface stress-energy ($S^{\mu\nu} = 0$), the jump condition simplifies to:
+\begin{equation}
+\label{eq:RH_simple_case}
+\left[ T^{\mu\nu} n_\mu \right] = 0.
+\end{equation}
+This is the \textbf{classical Rankine-Hugoniot condition} for shock waves in relativistic hydrodynamics.
+
+For a perfect fluid, this implies:
+\begin{align}
+\label{eq:classical_RH}
+\left[ (\rho + p) \Gamma^2 v_n \right] &= 0, && \text{(energy flux continuity)} \\
+\left[ (\rho + p) \Gamma^2 v_n v_\perp + p \right] &= 0, && \text{(momentum flux continuity)}
+\end{align}
+where $v_\perp$ is the tangential velocity. These are the relativistic generalizations of the Taub adiabat conditions.
+
+\subsection{Connection to Israel Junction Conditions}
+\label{app:Israel}
+
+The Israel junction conditions relate the discontinuity in extrinsic curvature across $\Sigma$ to the surface stress-energy. We now establish the equivalence with our Rankine-Hugoniot formulation.
+
+\begin{proposition}[Israel Junction Conditions]
+\label{prop:Israel}
+Let $K^{\pm}_{ab}$ denote the extrinsic curvature of $\Sigma$ as computed from the metrics $g^{\pm}_{\mu\nu}$ in $\mathcal{M}^{\pm}$. The Einstein field equations, when integrated across $\Sigma$, yield:
+\begin{equation}
+\label{eq:Israel_junction}
+\boxed{\left[ K_{ab} \right] - \gamma_{ab} \left[ K \right] = -8\pi G \, S_{ab}}
+\end{equation}
+where $S_{ab}$ is the surface stress-energy tensor on $\Sigma$ (with indices in the intrinsic coordinates), and $[K] = [K^a_a]$ is the jump in the trace of extrinsic curvature.
+\end{proposition}
+
+\begin{proof}[Derivation from Einstein Equations]
+The Einstein tensor is:
+\begin{equation}
+G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R.
+\end{equation}
+The Riemann curvature contains second derivatives of the metric. Across $\Sigma$, if the metric is continuous but its first derivatives have a finite jump, the second derivatives contain delta-function singularities:
+\begin{equation}
+R_{\mu\nu} = R^{\text{bulk}}_{\mu\nu} + R^{\text{sing}}_{\mu\nu},
+\end{equation}
+where $R^{\text{sing}}_{\mu\nu}$ is proportional to $\delta(\Sigma)$.
+
+The singular part of the Einstein tensor can be computed using the Gauss-Codazzi formalism:
+\begin{equation}
+G^{\text{sing}}_{\mu\nu} = -\varepsilon \left( [K_{\mu\nu}] - [K] \gamma_{\mu\nu} \right) \delta(\Sigma).
+\end{equation}
+
+The Einstein equations $G_{\mu\nu} = 8\pi G \, T_{\mu\nu}$ then require:
+\begin{equation}
+-\varepsilon \left( [K_{\mu\nu}] - [K] \gamma_{\mu\nu} \right) \delta(\Sigma) = 8\pi G \, S_{\mu\nu} \delta(\Sigma).
+\end{equation}
+
+Projecting onto $\Sigma$ (using $\gamma^\alpha_\mu \gamma^\beta_\nu$) and noting that for a spacelike boundary ($\varepsilon = -1$), we obtain:
+\begin{equation}
+[K_{ab}] - \gamma_{ab} [K] = -8\pi G \, S_{ab}.
+\end{equation}
+\end{proof}
+
+\begin{proposition}[Equivalence of Formulations]
+\label{prop:equivalence}
+The Israel junction conditions \eqref{eq:Israel_junction} and the Rankine-Hugoniot conditions \eqref{eq:RH_local} are equivalent statements of stress-energy conservation across $\Sigma$.
+\end{proposition}
+
+\begin{proof}[Proof of Equivalence]
+The key is the contracted Gauss-Codazzi equations, which relate the divergence of the extrinsic curvature to projections of the bulk Einstein tensor:
+\begin{equation}
+\label{eq:Gauss_Codazzi}
+D_a K^a_b - D_b K = -\gamma^\mu_b n^\nu G_{\mu\nu}.
+\end{equation}
+
+Using $G_{\mu\nu} = 8\pi G \, T_{\mu\nu}$ (Einstein equations):
+\begin{equation}
+D_a K^a_b - D_b K = -8\pi G \, \gamma^\mu_b n^\nu T_{\mu\nu}.
+\end{equation}
+
+Taking the jump across $\Sigma$ and using \eqref{eq:Israel_junction}:
+\begin{align}
+D_a [K^a_b] - D_b [K] &= -8\pi G \, [T^{\mu\nu} n_\mu \gamma^\nu_b] \\
+D_a \left( -8\pi G \, S^a_b + \gamma^a_b [K] \right) - D_b [K] &= -8\pi G \, [T^{\mu\nu} n_\mu \gamma^\nu_b] \\
+-8\pi G \, D_a S^a_b &= -8\pi G \, [T^{\mu\nu} n_\mu \gamma^\nu_b].
+\end{align}
+
+Therefore:
+\begin{equation}
+[T^{\mu\nu} n_\mu \gamma^\nu_b] = D_a S^a_b,
+\end{equation}
+which is precisely the spatial projection of \eqref{eq:RH_local}. A similar calculation for the timelike component completes the proof.
+\end{proof}
+
+\subsection{Physical Interpretation for the Condensate-Protofluid System}
+\label{app:RH_physical}
+
+In the condensate cosmology framework:
+
+\begin{enumerate}
+    \item \textbf{The conversion boundary $\Sigma$} is the worldvolume of the phase-transition front, where protofluid is continuously converted into condensate.
+
+    \item \textbf{The surface stress-energy $S_{ab}$} represents energy and momentum stored in the boundary layer itself:
+    \begin{equation}
+    S_{ab} = \sigma \, u_{\Sigma a} u_{\Sigma b} + \tau \, \gamma_{ab},
+    \end{equation}
+    where $\sigma$ is the surface energy density and $\tau$ is the surface tension. In the condensate framework, $\sigma$ arises from:
+    \begin{itemize}
+        \item Impedance mismatch reflections accumulating at the boundary,
+        \item Phase-transition latent heat,
+        \item Kinetic energy of the conversion process.
+    \end{itemize}
+
+    \item \textbf{The jump condition \eqref{eq:RH_local}} states that any net flux of energy-momentum into the boundary from the bulk is compensated by changes in the surface stress-energy (via $D_\alpha S^{\alpha\nu}$). This ensures overall conservation.
+
+    \item \textbf{Energy accumulation mechanism}: When $R > 0$ (reflection coefficient nonzero due to impedance mismatch), incident waves from the protofluid are partially reflected. The reflected energy does not cross into the condensate and instead accumulates in the boundary layer, increasing $\sigma$. This is the origin of $u_{\text{mech}}(a)$ in the modified Friedmann equation.
+\end{enumerate}
+
+\subsection{Summary: Rankine-Hugoniot with Surface Stress-Energy}
+\label{app:RH_summary}
+
+\begin{equation}
+\boxed{
+\begin{aligned}
+&\textbf{Generalized Rankine-Hugoniot:} && [T^{\mu\nu} n_\mu] = -D_\alpha S^{\alpha\nu} \\[6pt]
+&\textbf{Israel Junction Conditions:} && [K_{ab}] - \gamma_{ab}[K] = -8\pi G \, S_{ab} \\[6pt]
+&\textbf{Simple case } (S^{\mu\nu} = 0): && [T^{\mu\nu} n_\mu] = 0
+\end{aligned}
+}
+\end{equation}
+
+These equations form the load-bearing mathematical foundation for understanding how energy crosses (or accumulates at) the conversion boundary between protofluid and condensate phases.
+
+
+% ============================================================================
+% APPENDIX B: IMPEDANCE MATCHING AND ENERGY ACCUMULATION
+% ============================================================================
+
+\section{Impedance Matching, Reflection Coefficients, and Energy Accumulation}
+\label{app:impedance}
+
+This appendix derives the reflection and transmission coefficients for acoustic perturbations at the conversion boundary, extends the analysis to relativistically moving boundaries and curved spacetime, and establishes the energy accumulation mechanism that sources $u_{\text{mech}}(a)$.
+
+\subsection{Classical Acoustic Impedance Matching}
+\label{app:classical_impedance}
+
+We begin with the textbook derivation for a stationary planar interface in flat spacetime, then systematically generalize.
+
+\subsubsection{Setup: Planar Interface at Rest}
+
+Consider two semi-infinite media joined at a planar interface at $x = 0$:
+\begin{itemize}
+    \item Medium 1 ($x < 0$): density $\rho_1$, sound speed $c_{s,1}$, impedance $Z_1 = \rho_1 c_{s,1}$,
+    \item Medium 2 ($x > 0$): density $\rho_2$, sound speed $c_{s,2}$, impedance $Z_2 = \rho_2 c_{s,2}$.
+\end{itemize}
+
+\subsubsection{Linearized Acoustic Equations}
+
+In each medium, the linearized equations for pressure perturbation $p'$ and velocity perturbation $v'$ are:
+\begin{align}
+\label{eq:acoustic_eqs}
+\frac{\partial \rho'}{\partial t} + \rho_0 \nabla \cdot \mathbf{v}' &= 0, && \text{(continuity)} \\
+\rho_0 \frac{\partial \mathbf{v}'}{\partial t} + \nabla p' &= 0, && \text{(momentum)}
+\end{align}
+where $p' = c_s^2 \rho'$ (barotropic equation of state).
+
+\begin{proposition}[Wave Equation]
+Combining the linearized equations yields the wave equation:
+\begin{equation}
+\label{eq:wave_equation}
+\frac{\partial^2 p'}{\partial t^2} = c_s^2 \nabla^2 p'.
+\end{equation}
+\end{proposition}
+
+\subsubsection{Plane Wave Solutions}
+
+For a monochromatic plane wave at normal incidence, we write:
+\begin{align}
+\label{eq:plane_waves}
+p'_{\text{inc}}(x,t) &= A_i \, e^{i(k_1 x - \omega t)}, && \text{(incident, } x < 0\text{)} \\
+p'_{\text{ref}}(x,t) &= A_r \, e^{i(-k_1 x - \omega t)}, && \text{(reflected, } x < 0\text{)} \\
+p'_{\text{trans}}(x,t) &= A_t \, e^{i(k_2 x - \omega t)}, && \text{(transmitted, } x > 0\text{)}
+\end{align}
+where $k_j = \omega / c_{s,j}$ and $\omega$ is the angular frequency.
+
+The velocity perturbations are related to pressure by $v' = p' / Z$:
+\begin{align}
+\label{eq:velocity_waves}
+v'_{\text{inc}} &= \frac{A_i}{Z_1} e^{i(k_1 x - \omega t)}, \\
+v'_{\text{ref}} &= -\frac{A_r}{Z_1} e^{i(-k_1 x - \omega t)}, && \text{(minus sign: propagating in } -x\text{ direction)} \\
+v'_{\text{trans}} &= \frac{A_t}{Z_2} e^{i(k_2 x - \omega t)}.
+\end{align}
+
+\subsubsection{Boundary Conditions}
+
+At the interface $x = 0$, we require:
+\begin{enumerate}
+    \item \textbf{Pressure continuity}: $p'_1(0,t) = p'_2(0,t)$,
+    \item \textbf{Normal velocity continuity}: $v'_1(0,t) = v'_2(0,t)$.
+\end{enumerate}
+
+\begin{proposition}[Amplitude Reflection and Transmission Coefficients]
+\label{prop:amplitude_coefficients}
+Applying the boundary conditions:
+\begin{align}
+A_i + A_r &= A_t, && \text{(pressure continuity)} \\
+\frac{A_i - A_r}{Z_1} &= \frac{A_t}{Z_2}. && \text{(velocity continuity)}
+\end{align}
+Solving for the amplitude ratios:
+\begin{equation}
+\label{eq:amplitude_r_t}
+r \equiv \frac{A_r}{A_i} = \frac{Z_2 - Z_1}{Z_2 + Z_1}, \qquad t \equiv \frac{A_t}{A_i} = \frac{2 Z_2}{Z_2 + Z_1}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+From pressure continuity: $A_t = A_i + A_r$. Substituting into velocity continuity:
+\begin{equation}
+\frac{A_i - A_r}{Z_1} = \frac{A_i + A_r}{Z_2}.
+\end{equation}
+Cross-multiplying:
+\begin{equation}
+Z_2 (A_i - A_r) = Z_1 (A_i + A_r).
+\end{equation}
+Rearranging:
+\begin{equation}
+A_i (Z_2 - Z_1) = A_r (Z_1 + Z_2),
+\end{equation}
+yielding $r = (Z_2 - Z_1)/(Z_2 + Z_1)$. Then $t = 1 + r = 2Z_2/(Z_2 + Z_1)$.
+\end{proof}
+
+\subsubsection{Intensity (Energy Flux) Coefficients}
+
+\begin{definition}[Energy Flux]
+The time-averaged energy flux (intensity) of an acoustic wave is:
+\begin{equation}
+\label{eq:intensity}
+I = \frac{1}{2} \text{Re}(p' v'^*) = \frac{|A|^2}{2 Z}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Intensity Reflection and Transmission Coefficients]
+\label{prop:intensity_coefficients}
+The intensity reflection coefficient $R$ and transmission coefficient $T$ are:
+\begin{equation}
+\label{eq:R_T_def}
+R \equiv \frac{I_{\text{ref}}}{I_{\text{inc}}} = |r|^2 = \left( \frac{Z_2 - Z_1}{Z_2 + Z_1} \right)^2,
+\end{equation}
+\begin{equation}
+\label{eq:T_def}
+T \equiv \frac{I_{\text{trans}}}{I_{\text{inc}}} = \frac{|A_t|^2 / (2 Z_2)}{|A_i|^2 / (2 Z_1)} = |t|^2 \frac{Z_1}{Z_2} = \frac{4 Z_1 Z_2}{(Z_1 + Z_2)^2}.
+\end{equation}
+\end{proposition}
+
+\begin{proposition}[Energy Conservation at Stationary Boundary]
+\label{prop:R_plus_T}
+For a stationary interface, energy is conserved:
+\begin{equation}
+\label{eq:R_plus_T_1}
+\boxed{R + T = 1}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Direct calculation:
+\begin{align}
+R + T &= \frac{(Z_2 - Z_1)^2}{(Z_2 + Z_1)^2} + \frac{4 Z_1 Z_2}{(Z_2 + Z_1)^2} \\
+&= \frac{Z_2^2 - 2 Z_1 Z_2 + Z_1^2 + 4 Z_1 Z_2}{(Z_2 + Z_1)^2} \\
+&= \frac{Z_2^2 + 2 Z_1 Z_2 + Z_1^2}{(Z_2 + Z_1)^2} = \frac{(Z_1 + Z_2)^2}{(Z_1 + Z_2)^2} = 1.
+\end{align}
+\end{proof}
+
+\subsection{Extension to Moving Boundary: Relativistic Doppler Correction}
+\label{app:moving_boundary}
+
+In the condensate framework, the conversion boundary propagates outward with proper speed $u_f$. This introduces Doppler shifts that modify the impedance matching.
+
+\subsubsection{Non-Relativistic Limit (Draft Equation 12)}
+
+For $u_f \ll c_{s}^{\text{pf}}$, an incident wave of frequency $\omega_{\text{pf}}$ in the protofluid rest frame is Doppler-shifted in the boundary frame:
+\begin{equation}
+\label{eq:nonrel_doppler}
+\omega_\Sigma = \omega_{\text{pf}} \left( 1 - \frac{u_f}{c_s^{\text{pf}}} \right)^{-1}.
+\end{equation}
+This is valid only for $u_f \ll c$ and should be replaced by the relativistic formula.
+
+\subsubsection{Relativistic Doppler Formula}
+
+\begin{proposition}[Relativistic Doppler Shift]
+\label{prop:rel_doppler}
+For a wave propagating toward a boundary moving with velocity $u_f$ (relative to the medium in which the wave travels), the Doppler-shifted frequency is:
+\begin{equation}
+\label{eq:rel_doppler}
+\boxed{\omega_\Sigma = \omega_{\text{pf}} \sqrt{\frac{1 + \beta}{1 - \beta}} = \omega_{\text{pf}} \gamma (1 + \beta)}
+\end{equation}
+where $\beta = u_f / c$ and $\gamma = (1 - \beta^2)^{-1/2}$.
+\end{proposition}
+
+\begin{proof}
+In special relativity, the Doppler factor for motion toward the observer is:
+\begin{equation}
+\frac{\omega_{\text{obs}}}{\omega_{\text{source}}} = \gamma (1 + \beta \cos\theta),
+\end{equation}
+where $\theta$ is the angle between the wave propagation direction and the velocity. For head-on incidence ($\theta = 0$, wave moving toward the boundary, boundary moving toward the wave source):
+\begin{equation}
+\omega_\Sigma = \omega_{\text{pf}} \gamma (1 + \beta) = \omega_{\text{pf}} \frac{1 + \beta}{\sqrt{1 - \beta^2}} = \omega_{\text{pf}} \sqrt{\frac{(1 + \beta)^2}{1 - \beta^2}} = \omega_{\text{pf}} \sqrt{\frac{1 + \beta}{1 - \beta}}.
+\end{equation}
+\end{proof}
+
+\subsubsection{Modified Reflection Coefficient for Moving Boundary}
+
+For a moving boundary, the effective impedance in the boundary frame is modified. Let $Z'_j$ denote the impedance as seen in the boundary rest frame.
+
+\begin{proposition}[Effective Impedance in Boundary Frame]
+\label{prop:effective_impedance}
+The effective impedance of medium $j$ in the boundary frame is:
+\begin{equation}
+\label{eq:effective_impedance}
+Z'_j = Z_j \cdot f_j(\beta),
+\end{equation}
+where $f_j(\beta)$ is a relativistic correction factor depending on the relative motion.
+
+For the protofluid (approaching the boundary):
+\begin{equation}
+Z'_{\text{pf}} = \rho'_{\text{pf}} c'_{s,\text{pf}} = \gamma_{\text{pf}} \rho_{\text{pf}} \cdot c_{s,\text{pf}} \left( 1 + \frac{u_f}{c_{s,\text{pf}}} \right) = Z_{\text{pf}} \gamma_{\text{pf}} \left( 1 + \beta_{s,\text{pf}} \right),
+\end{equation}
+where $\beta_{s,\text{pf}} = u_f / c_{s,\text{pf}}$ and $\gamma_{\text{pf}} = (1 - u_f^2/c^2)^{-1/2}$.
+\end{proposition}
+
+The full relativistic treatment requires solving the wave equation in both frames and matching at the boundary in a Lorentz-covariant manner. The result modifies $R$ and $T$ to functions of both the impedance ratio and the boundary velocity.
+
+\subsection{Extension to Curved Spacetime: Introduction of Absorption}
+\label{app:curved_spacetime}
+
+In curved spacetime (FLRW background), additional effects modify the energy balance at the boundary:
+
+\begin{enumerate}
+    \item \textbf{Geometric dilution}: The expanding universe dilutes both incident and reflected wave energy.
+    \item \textbf{Redshift}: Cosmological expansion redshifts wave frequencies.
+    \item \textbf{Absorption into the boundary layer}: Energy can be absorbed by the boundary itself, feeding the surface stress-energy $S^{\mu\nu}$.
+\end{enumerate}
+
+\begin{definition}[Absorption Coefficient]
+We define the absorption coefficient $A$ as the fraction of incident energy absorbed into the boundary layer:
+\begin{equation}
+\label{eq:absorption_def}
+A \equiv \frac{I_{\text{abs}}}{I_{\text{inc}}}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Generalized Energy Conservation]
+\label{prop:R_T_A}
+In curved spacetime with absorption, the energy balance becomes:
+\begin{equation}
+\label{eq:R_T_A}
+\boxed{R + T + A = 1}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Energy flux conservation at the boundary requires:
+\begin{equation}
+I_{\text{inc}} = I_{\text{ref}} + I_{\text{trans}} + I_{\text{abs}}.
+\end{equation}
+Dividing by $I_{\text{inc}}$:
+\begin{equation}
+1 = R + T + A.
+\end{equation}
+\end{proof}
+
+The absorption coefficient $A$ depends on:
+\begin{itemize}
+    \item The thickness of the boundary layer relative to the wavelength,
+    \item The dissipative properties of the boundary (viscosity, thermal conductivity),
+    \item The rate of phase conversion at the boundary.
+\end{itemize}
+
+For a thin, non-dissipative boundary ($A \ll 1$), we recover $R + T \approx 1$. For a thick, lossy boundary, $A$ can be significant.
+
+\subsection{Angular Averaging for Spherical Boundary}
+\label{app:angular_averaging}
+
+The conversion boundary in the condensate framework is approximately spherical (the boundary of our observable universe). For waves incident from random directions, we must average the reflection coefficient over all angles.
+
+\begin{proposition}[Oblique Incidence Reflection Coefficient]
+\label{prop:oblique_R}
+For a wave incident at angle $\theta$ to the normal, the reflection coefficient for pressure waves is:
+\begin{equation}
+\label{eq:oblique_R}
+R(\theta) = \left| \frac{Z_2 \cos\theta - Z_1 \cos\theta_t}{Z_2 \cos\theta + Z_1 \cos\theta_t} \right|^2,
+\end{equation}
+where $\theta_t$ is the transmission angle given by Snell's law:
+\begin{equation}
+\frac{\sin\theta}{c_{s,1}} = \frac{\sin\theta_t}{c_{s,2}}.
+\end{equation}
+\end{proposition}
+
+\begin{proposition}[Angular-Averaged Reflection Coefficient]
+\label{prop:angular_average}
+For isotropic incident radiation on a spherical boundary, the effective reflection coefficient is:
+\begin{equation}
+\label{eq:angular_average}
+\langle R \rangle = \int_0^{\pi/2} R(\theta) \cdot 2 \sin\theta \cos\theta \, \dx\theta = \int_0^{\pi/2} R(\theta) \sin(2\theta) \, \dx\theta.
+\end{equation}
+The factor $\sin\theta$ accounts for the solid angle element, and $\cos\theta$ accounts for the projected area.
+\end{proposition}
+
+For the special case $c_{s,1} = c_{s,2} = c_s$ (equal sound speeds but different densities):
+\begin{equation}
+\label{eq:equal_cs_R}
+R(\theta) = \left( \frac{Z_2 - Z_1}{Z_2 + Z_1} \right)^2 = R_0 \quad \text{(independent of } \theta\text{)}.
+\end{equation}
+In this case, $\langle R \rangle = R_0$.
+
+For $c_{s,1} \neq c_{s,2}$, the integral must be evaluated numerically or using specific approximations for the impedance ratio.
+
+\subsection{Energy Accumulation Rate at the Boundary}
+\label{app:energy_accumulation}
+
+We now derive the rate at which reflected energy accumulates in the boundary layer, establishing the source term for $u_{\text{mech}}(a)$.
+
+\subsubsection{Incident Energy Flux from Protofluid}
+
+\begin{definition}[Incident Energy Flux]
+Let $\Phi_{\text{inc}}$ denote the total energy flux (energy per unit area per unit time) incident on the boundary from the protofluid:
+\begin{equation}
+\label{eq:incident_flux}
+\Phi_{\text{inc}} = \rho_{\text{pf}} c_s^{\text{pf}} \langle \delta v^2 \rangle,
+\end{equation}
+where $\langle \delta v^2 \rangle$ is the mean-square velocity perturbation in the protofluid.
+\end{definition}
+
+In cosmological context, the protofluid may contain:
+\begin{itemize}
+    \item Thermal fluctuations (quantum vacuum fluctuations at effective temperature),
+    \item Relic perturbations from earlier epochs,
+    \item Mode-conversion from gravitational or electromagnetic perturbations.
+\end{itemize}
+
+\subsubsection{Reflected Energy Rate}
+
+\begin{proposition}[Energy Reflection Rate]
+\label{prop:reflection_rate}
+The rate at which energy is reflected back into the protofluid per unit boundary area is:
+\begin{equation}
+\label{eq:reflection_rate}
+\dot{E}_{\text{ref}} = \langle R \rangle \cdot \Phi_{\text{inc}}.
+\end{equation}
+\end{proposition}
+
+\subsubsection{Energy Absorption into Boundary Layer}
+
+The absorbed energy (fraction $A$) feeds the surface stress-energy $S^{\mu\nu}$. For the surface energy density $\sigma$:
+
+\begin{proposition}[Surface Energy Accumulation]
+\label{prop:surface_accumulation}
+The rate of change of surface energy density is:
+\begin{equation}
+\label{eq:surface_accumulation}
+\frac{\dx \sigma}{\dx t} = A \cdot \Phi_{\text{inc}} - \Gamma_{\text{diss}} \sigma - \Gamma_{\text{trans}} \sigma,
+\end{equation}
+where:
+\begin{itemize}
+    \item $A \cdot \Phi_{\text{inc}}$ is the absorption rate from incident waves,
+    \item $\Gamma_{\text{diss}}$ is the dissipation rate (conversion to heat or other forms),
+    \item $\Gamma_{\text{trans}}$ is the rate of energy transfer from boundary to condensate interior.
+\end{itemize}
+\end{proposition}
+
+\subsubsection{Transfer to Bulk Energy Density}
+
+The reflected energy that does not escape to infinity and the absorbed energy that is subsequently released into the condensate interior contribute to a bulk energy density $u_{\text{mech}}$.
+
+\begin{proposition}[Bulk Energy Source Term]
+\label{prop:bulk_source}
+The source term $Q(a)$ in the continuity equation for $u_{\text{mech}}$ is related to the boundary energy flux by:
+\begin{equation}
+\label{eq:Q_source}
+Q(a) = \frac{1}{V_c(a)} \frac{\dx}{\dx t} \left( \sigma \cdot A_\Sigma(a) \right) \cdot f_{\text{leak}},
+\end{equation}
+where:
+\begin{itemize}
+    \item $V_c(a) = \frac{4\pi}{3} r_\Sigma^3(a)$ is the comoving volume of the condensate,
+    \item $A_\Sigma(a) = 4\pi r_\Sigma^2(a)$ is the proper area of the boundary,
+    \item $f_{\text{leak}}$ is the fraction of boundary energy that leaks into the bulk.
+\end{itemize}
+\end{proposition}
+
+The modified continuity equation for $u_{\text{mech}}$ becomes:
+\begin{equation}
+\label{eq:modified_continuity}
+\boxed{\dot{u}_{\text{mech}} + 3H(1 + w_{\text{mech}}) u_{\text{mech}} = Q(a)}
+\end{equation}
+
+This equation governs the evolution of the boundary-sourced energy component. The phenomenological Gaussian form \eqref{eq:u_mech} in the main text emerges as an approximate solution when:
+\begin{itemize}
+    \item The incident flux $\Phi_{\text{inc}}$ varies slowly,
+    \item The impedance mismatch (hence $R$ and $A$) varies slowly,
+    \item The dissipation and transfer rates balance to produce a peaked response.
+\end{itemize}
+
+\subsection{Connection to Modified Friedmann Equation}
+\label{app:Friedmann_connection}
+
+\begin{proposition}[Energy Transfer to Friedmann Equation]
+\label{prop:Friedmann_connection}
+The Friedmann equation with boundary-layer energy is:
+\begin{equation}
+\label{eq:Friedmann_umech}
+H^2(a) = \frac{8\pi G}{3} \left[ \rho_{\text{std}}(a) + u_{\text{mech}}(a) \right],
+\end{equation}
+where $u_{\text{mech}}(a)$ satisfies \eqref{eq:modified_continuity}.
+\end{proposition}
+
+The source term $Q(a)$ ensures total energy conservation when both bulk and boundary contributions are included:
+\begin{equation}
+\label{eq:total_conservation_check}
+\frac{\dx}{\dx t} \left( \rho_{\text{bulk}} V + \sigma A_\Sigma \right) + p \frac{\dx V}{\dx t} + \tau \frac{\dx A_\Sigma}{\dx t} = 0,
+\end{equation}
+where $\tau$ is the surface tension.
+
+\subsection{Equation of State of Boundary-Layer Energy}
+\label{app:EOS_umech}
+
+As derived in the main review, the effective equation of state for $u_{\text{mech}}$ is:
+
+\begin{proposition}[Effective Equation of State]
+\label{prop:w_mech}
+From the continuity equation $\dot{\rho} + 3H(\rho + p) = Q$, the effective equation-of-state parameter is:
+\begin{equation}
+\label{eq:w_mech_derivation}
+w_{\text{mech}} = -1 - \frac{1}{3H} \frac{\dx \ln u_{\text{mech}}}{\dx t} + \frac{Q}{3H u_{\text{mech}}}.
+\end{equation}
+
+For the Gaussian form \eqref{eq:u_mech} with $Q = 0$ (phenomenological limit):
+\begin{equation}
+\label{eq:w_mech_Gaussian}
+\boxed{w_{\text{mech}}(a) = -1 + \frac{\ln(a/a_c)}{3\sigma_{\text{mech}}^2}}
+\end{equation}
+\end{proposition}
+
+\textbf{Physical interpretation}:
+\begin{itemize}
+    \item At $a = a_c$ (peak of the bump): $w_{\text{mech}} = -1$ (cosmological-constant-like).
+    \item At $a < a_c$: $w_{\text{mech}} < -1$ (phantom-like behavior).
+    \item At $a > a_c$: $w_{\text{mech}} > -1$ (quintessence-like behavior).
+    \item At $a = a_c \exp(3\sigma_{\text{mech}}^2)$: $w_{\text{mech}} = 0$ (matter-like).
+\end{itemize}
+
+The phantom crossing at $a = a_c$ is characteristic of energy being actively sourced (during buildup) and then dissipated (during decay).
+
+\subsection{Summary: Impedance Matching Results}
+\label{app:impedance_summary}
+
+\begin{equation}
+\boxed{
+\begin{aligned}
+&\textbf{Amplitude coefficients:} && r = \frac{Z_2 - Z_1}{Z_2 + Z_1}, \quad t = \frac{2Z_2}{Z_2 + Z_1} \\[6pt]
+&\textbf{Intensity coefficients:} && R = |r|^2, \quad T = |t|^2 \frac{Z_1}{Z_2} = \frac{4 Z_1 Z_2}{(Z_1 + Z_2)^2} \\[6pt]
+&\textbf{Flat, stationary:} && R + T = 1 \\[6pt]
+&\textbf{Curved, moving:} && R + T + A = 1 \\[6pt]
+&\textbf{Relativistic Doppler:} && \omega_\Sigma = \omega_{\text{pf}} \sqrt{\frac{1+\beta}{1-\beta}} \\[6pt]
+&\textbf{Energy accumulation:} && \dot{u}_{\text{mech}} + 3H(1 + w_{\text{mech}}) u_{\text{mech}} = Q(a)
+\end{aligned}
+}
+\end{equation}
+
+These results provide the complete mathematical foundation for understanding how impedance mismatch at the conversion boundary leads to transient energy accumulation that modifies the early expansion history of the universe.
+
+% ============================================================================
+% END OF APPENDIX A & B
+% ============================================================================

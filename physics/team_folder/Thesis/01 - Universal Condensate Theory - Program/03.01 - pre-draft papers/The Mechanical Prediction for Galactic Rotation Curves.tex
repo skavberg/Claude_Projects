@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+% Removed the complex title formatting that causes scan errors
+\title{The Mechanical Prediction for Galactic Rotation Curves: Vacuum Impedance and the Variable Gravitational Constant}
+\author{Robin Skavberg}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents a mechanical derivation of the gravitational constant $G$ as a function of vacuum restorative stiffness and matter-energy density. By defining $G = \frac{c^2}{8\pi\rho_m}$, we demonstrate that the observed "missing mass" in galactic rotation curves is a result of the vacuum recovering its ground-state tension in low-density environments. We provide a mathematical proof for field-strain satiation and propose a testable prediction regarding gravitational lensing discrepancies between high-density clusters and low-density cosmic voids.
+\end{abstract}
+
+\section{The Mechanical Basis of Gravitation}
+In standard relativistic astrophysics, $G$ is treated as a universal constant. However, applying a mechanical framework to the vacuum suggests that $G$ represents the coupling efficiency between matter and the elastic fabric of space. We define $c^2$ as the restorative stiffness of the vacuum medium. Matter-energy density ($\rho_m$) acts as the mechanical load, leading to the derivation:
+\begin{equation}
+G = \frac{c^2}{8\pi\rho_m}
+\end{equation}
+
+\section{Impedance, Strain, and Field-Strain Satiation}
+We define the vacuum as an elastic medium subject to impedance and strain.
+
+\subsection{Description of Terms}
+\begin{itemize}
+    \item \textbf{$\rho_m$:} Matter-Energy Density (The mechanical load).
+    \item \textbf{$c^2$:} Restorative Stiffness (The intrinsic modulus of the vacuum).
+    \item \textbf{$Z_v$:} Vacuum Impedance (Opposition to force).
+    \item \textbf{$\epsilon$:} Field Strain (Deformation where $\epsilon \propto 1/G$).
+\end{itemize}
+
+
+
+\subsection{Mathematical Correlation}
+In wave mechanics, impedance ($Z_v$) is the opposition a medium presents to a force. For the vacuum:
+\begin{equation}
+Z_v \propto \rho_m
+\end{equation}
+As $\rho_m$ increases, $Z_v$ rises, leading to \textbf{Strain Satiation}. This occurs when the field is mechanically saturated and the coupling $G$ approaches its minimum. Conversely, in the galactic outskirts where $\rho_m \to 0$, $Z_v$ is minimized, and the vacuum asserts its maximum restorative "grip."
+
+\section{Prediction for Galactic Rotation Curves}
+The "Dark Matter" effect is reinterpreted here as the recovery of the gravitational constant in low-impedance environments.
+
+\subsection{Suppression vs. Recovery}
+Local measurements of $G$ in high-density solar systems are suppressed by local vacuum impedance. As the ambient $\rho_m$ drops in the galactic outskirts:
+\begin{enumerate}
+    \item The denominator of Eq. (1) decreases.
+    \item The value of $G$ increases toward its ground-state maximum.
+    \item The increased gravitational coupling provides the necessary centripetal force to maintain stellar orbits without auxiliary mass.
+\end{enumerate}
+
+
+
+\section{Testable Prediction: Lensing Discrepancy}
+Unlike MOND, this model relies on \textbf{density-dependent coupling}. 
+
+\textbf{Experimental Test:} Consider two mass distributions of equal baryonic mass $M$. Distribution $A$ is in a high-density cluster; Distribution $B$ is in a low-density cosmic void. Because $\rho_m(B) < \rho_m(A)$, the effective $G$ for $B$ will be higher. Consequently:
+\begin{equation}
+\theta_{Void} > \theta_{Cluster} \quad \text{for equal } M
+\end{equation}
+
+\newpage
+\appendix
+\section{Technical Appendix}
+
+\subsection{Vacuum Refractive Index}
+The observed gravitational-electromagnetic delay is reconciled via:
+\begin{equation}
+n_v = \sqrt{1 + \rho_m} \implies v_{\gamma} = \frac{c}{n_v}
+\end{equation}
+
+\subsection{Ground-State Restoration Table}
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+Environment & Density ($\rho_m$) & Effective $G$ & Rotation Effect \\ \midrule
+Solar System & High & $G_{std}$ & Newtonian \\
+Galactic Disk & Medium & $G > G_{std}$ & Partial Flatness \\
+Galactic Halo & Low & $G \to G_{max}$ & Flat Rotation \\
+Cosmic Void & $\to 0$ & $G_{max}$ & Max Lensing \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{thebibliography}{9}
+\bibitem{1} Einstein, A. (1916). Annalen der Physik, 35

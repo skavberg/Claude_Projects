@@ -1,0 +1,53 @@
+[
+  {
+    "from": "team-lead",
+    "text": "A shared document area has been created for the team at:\n\n/home/skavbr/physics/shared/\n\nUse this directory to pass persistent information between teammates. You can read and write files here — research notes, references, drafts, calculation results, etc. Use clear filenames so others can find what they need. Check this directory when you need context from other teammates.",
+    "summary": "Shared docs area created at /home/skavbr/physics/shared/",
+    "timestamp": "2026-02-07T00:27:23.059Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "Please create a LaTeX template suitable for physics journal submissions to arXiv. Requirements:\n\n- Use the standard article class or revtex4-2 (commonly used for physics on arXiv)\n- Include standard physics packages (amsmath, amssymb, graphicx, hyperref, etc.)\n- Include placeholder sections: title, authors with affiliations, abstract, introduction, theory/methods, results, discussion, conclusion, acknowledgments, references\n- Include examples of common physics elements: equations, figures, tables, citations\n- Make it PDFLaTeX compatible\n- Keep it clean and well-commented so it serves as a good starting template\n\nIMPORTANT: Do NOT save the file yet. Instead, write the full .tex source code to the shared directory as a draft file at /home/skavbr/physics/shared/template-draft.tex so I can show it to the user for review before saving the final version.",
+    "summary": "Create arXiv physics LaTeX template draft",
+    "timestamp": "2026-02-07T00:29:59.733Z",
+    "read": true
+  },
+  {
+    "from": "latex-specialist",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"5\",\"subject\":\"Create arXiv physics LaTeX template draft\",\"description\":\"Create a PDFLaTeX-compatible LaTeX template for arXiv physics submissions using revtex4-2. Include standard physics packages, placeholder sections, and examples of equations, figures, tables, and citations. Save draft to /home/skavbr/physics/shared/template-draft.tex for team lead review.\",\"assignedBy\":\"latex-specialist\",\"timestamp\":\"2026-02-07T00:30:09.176Z\"}",
+    "timestamp": "2026-02-07T00:30:09.176Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "The shared directory now has subdirectories for each team member. Please use your designated subdirectory for all files going forward:\n\n/home/skavbr/physics/shared/latex/         - latex-specialist (templates, drafts, .tex files)\n/home/skavbr/physics/shared/math/          - math-expert (derivations, calculations, proofs)\n/home/skavbr/physics/shared/research/      - physics-researcher (references, notes, literature)\n/home/skavbr/physics/shared/coordination/  - team-leader (plans, task notes, coordination docs)\n\nRules:\n- Write your own files into YOUR subdirectory\n- Read from any teammate's subdirectory when you need their work\n- This keeps things organized and avoids clutter\n\nPlease move the existing template-draft.tex into the latex/ subdirectory.",
+    "summary": "Subdirectories created, use your own folder",
+    "timestamp": "2026-02-07T00:42:41.327Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "The template-draft.tex file needs to be recreated — it was lost during the team rebuild. Please save the arXiv physics template you drafted earlier to /home/skavbr/physics/shared/latex/template-draft.tex. Same content as before: revtex4-2 with APS/PRL formatting, standard physics packages, placeholder sections, equation/figure/table examples, etc.",
+    "summary": "Recreate template-draft.tex in latex/ subdir",
+    "timestamp": "2026-02-07T00:44:57.942Z",
+    "read": true
+  },
+  {
+    "from": "team-leader",
+    "text": "The team lead asked us to move `template-draft.tex` into `/home/skavbr/physics/shared/latex/`. However, I can't find the file at `/home/skavbr/physics/shared/template-draft.tex` — it doesn't exist on disk. \n\nDid you already move it or recreate it in the latex subdirectory? Can you confirm the current location of the template draft and ensure it's in `/home/skavbr/physics/shared/latex/`?",
+    "summary": "Checking on template-draft.tex file location",
+    "timestamp": "2026-02-07T00:45:16.551Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "physics-researcher",
+    "text": "Hey, the team lead asked for template-draft.tex to be moved to the shared directory, but the file doesn't exist anywhere under /home/skavbr/physics/. Could you please save your template draft to:\n\n/home/skavbr/physics/shared/latex/template-draft.tex\n\nThat's your designated subdirectory for all LaTeX files. Thanks!",
+    "summary": "Please save template-draft.tex to shared/latex/",
+    "timestamp": "2026-02-07T00:48:39.256Z",
+    "color": "purple",
+    "read": true
+  }
+]

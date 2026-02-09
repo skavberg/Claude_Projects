@@ -1,0 +1,8 @@
+calculate the "Breaking Point"—the maximum speed possible before the substrate's restorative pressure ($P_g$) crushes the decoherence bubble?
+
+\frac{dP}{dn}=gn
+
+
+G=\frac{{(3\times{10}^8)^4}}{8\pi9\times{10}^{-10}\mathrm{\thinsp} J/m^3}
+
+c=299,792,458\mathrm m/s

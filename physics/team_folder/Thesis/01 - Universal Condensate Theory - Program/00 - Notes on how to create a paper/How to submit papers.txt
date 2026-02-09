@@ -1,0 +1,48 @@
+How You Submit Papers for physics journals:
+
+You submit:
+✔ The compiled PDF
+✔ The .tex file(s)
+✔ The .bib file
+✔ Any figures (PDF/PNG)
+
+You do NOT submit:
+❌ Word documents
+❌ Raw LaTeX pasted into Word
+❌ Screenshots of formulas
+❌ Hand-converted PDFs
+
+
+=========================================
+🎯 Summary
+To use MiKTeX:
+
+Install MiKTeX
+Install a LaTeX editor
+Write .tex files in the editor
+Click compile → MiKTeX generates a PDF
+Submit the PDF to journals
+
+You never put LaTeX → Word → PDF.
+You only put LaTeX → MiKTeX → PDF.
+
+=========================================
+PREP FOR SUBMISSIONS:
+-----------------------------------------
+
+What to edit next
+
+Author block: fill in \affiliation{} and \email{}.
+Content: replace placeholders in sections/*.tex with your derivations for G=G(K,ρ,c)G=\mathcal{G}(K,\rho,c)G=G(K,ρ,c), your stability analysis, PPN/GW constraints, and cosmological fits.
+Figures: drop PDFs/PNGs into figures/ and include with \includegraphics{figures/your_figure}.
+References: add your sources to bib/references.bib and cite with \cite{key}.
+
+========================================
+SUBMIT:
+----------------------------------------
+
+arXiv + PRD tips
+
+arXiv: Upload all .tex, .bib, and figures; choose TeX → pdfLaTeX.
+PRD submission: Upload the compiled PDF for review; upon acceptance they’ll want the source as a ZIP/TAR (this tree is ready).
+Keep math out of section/figure titles or wrap with \texorpdfstring{…}{…} to avoid bookmark warnings.

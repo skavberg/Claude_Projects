@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============== PACKAGES ==============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{siunitx}
+\usepackage{physics}     % careful: see fix below
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Fix siunitx + physics name clash for \qty
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+% ============== MACROS ==============
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\ac}{a_{\rm c}}
+\newcommand{\zc}{z_{\rm c}}
+\newcommand{\rs}{r_{\rm s}}
+\newcommand{\cs}{c_{\rm s}}
+\newcommand{\mpl}{M_{\rm Pl}}
+
+% ============== TITLE ==============
+\title{\textbf{The Observable Universe as a Condensate Expanding into a Universal Protofluid:\\
+A Foundational Framework with Validation Checkpoints}}
+\author{Rob Skavberg\thanks{Independent Researcher, Calgary, Canada. Contact: \texttt{rob.skavberg@example.org}}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\doublespacing
+
+\begin{abstract}
+We present a foundational framework in which the \emph{observable Universe} is a quantum condensate expanding into a universal protofluid. The Big Bang is reinterpreted as the onset of a phase transition (nucleation) and subsequent outward propagation of a conversion boundary. Gravitational response is attributed to the medium's effective stiffness (to be elaborated in a companion manuscript), while boundary layers mediate impedance mismatch, reflection/refraction, and transient energy reservoirs that can modify the early expansion history in a brief, testable epoch. 
+\par
+A central contribution of this paper is a \emph{Validation of Foundational Proofs} section that checks the framework against well-established pillars of physics (classical GR tests, gravitational-wave propagation, Big-Bang Nucleosynthesis, the CMB/Planck-2018 likelihoods, BAO/SNe, and distance ladders) and specifies falsifiable pass/fail criteria. A research roadmap enumerates follow-on papers---on boundary-layer kinematics and wave compression, structure/planet formation within a condensate, and targeted comparisons with established theories---designed to stress-test the framework empirically.
+\end{abstract}
+
+\section{Motivation and High-Level Picture}
+The standard cosmological model fits a wide array of observations with remarkable precision. Yet long-running tensions (e.g., the Hubble constant discrepancy) and conceptual questions (initial conditions, microphysical origin of gravitational response) motivate exploring different organizing principles. We propose to view the observable Universe as a coherent \emph{condensate} formed inside a \emph{universal protofluid}. The Big Bang corresponds to nucleation of the condensate; cosmic expansion corresponds to the outward motion of a conversion boundary. The interior condensate inherits relativistic kinematics in equilibrium, while the boundary layer can (briefly) perturb the early-time expansion via transient energy accumulation, before decaying and leaving late-time physics unchanged.
+
+\section{Core Postulates}
+\label{sec:postulates}
+\begin{enumerate}[label=\textbf{P\arabic*:}, leftmargin=2.2em]
+\item \textbf{Two-phase medium:} A universal protofluid provides the pre-condensed environment; a coherent condensate nucleates and expands. The observable Universe is identified with the condensate interior.
+\item \textbf{Phase-transition origin of the Big Bang:} A critical seed forms and grows; the conversion boundary is a codimension-one hypersurface with finite thickness, surface stress-energy, and non-equilibrium microphysics.
+\item \textbf{Mechanical--geometric linkage:} The condensate’s stiffness (bulk/phase moduli, coherence) determines an effective geometric stiffness. In equilibrium, the response reproduces the Einstein–Hilbert dynamics; deviations can occur only during a short, early boundary epoch.\footnote{The constitutive law connecting stiffness to curvature response is developed in a companion ``Condensate Link Framework'' (CLF) manuscript.}
+\item \textbf{Impedance mismatch at the boundary:} Waves in the protofluid and in the condensate have different effective impedances; strong mismatch leads to reflection/refraction and \emph{boundary-layer energy reservoirs} (briefly raising $H(a)$). The effect must be localized in time and small in amplitude.
+\item \textbf{Causality/locality:} Signal propagation in the condensate interior respects local light cones; gravitational waves propagate luminally at late times.
+\end{enumerate}
+
+\section{Kinematics of Nucleation and Growth}
+\subsection{Conversion boundary}
+Let $\Sigma$ denote the boundary worldvolume with unit normal $n_\mu$ and proper speed $u_{\rm f}$. Denoting jumps as $[X]=X_{\rm c}-X_{\rm pf}$, integral conservation across $\Sigma$ yields generalized Rankine–Hugoniot relations,
+\begin{equation}
+\big[T^{\mu\nu} n_\mu\big] = - \nabla_\alpha S^{\alpha\nu},
+\end{equation}
+where $T^{\mu\nu}$ is the bulk stress–energy and $S^{\mu\nu}$ the surface stress–energy of the boundary layer. Effective impedances ($Z\sim \rho_{\rm eff} c_{\rm eff}$) determine reflection/transmission of linear perturbations,
+\begin{equation}
+R=\left|\frac{Z_{\rm c}-Z_{\rm pf}}{Z_{\rm c}+Z_{\rm pf}}\right|^{2},\qquad
+T=\frac{4 Z_{\rm c} Z_{\rm pf}}{(Z_{\rm c}+Z_{\rm pf})^{2}},\qquad R+T=1,
+\end{equation}
+and a finite $u_{\rm f}$ induces Doppler-like shifts in the boundary frame that select which modes pile up locally.
+
+\subsection{Coarse-grained expansion}
+On large scales, the condensate interior admits an effective FLRW description with scale factor $a(t)$. In equilibrium (i.e., outside the brief boundary epoch) standard Friedmann dynamics are recovered. During the brief boundary episode, an additional, localized energy density $u_{\rm mech}(a)$ can briefly raise $H(a)$:
+\begin{equation}
+H^2(a)=\frac{8\pi G_0}{3}\Big[\rho_{\rm std}(a)+u_{\rm mech}(a)\Big],\qquad
+u_{\rm mech}(a)=\rho_{\rm c0}\,f_{\rm mech}\,\exp\!\Big(-\frac{\ln^2(a/\ac)}{2\sigma^2}\Big),
+\end{equation}
+with small peak fraction $f_{\rm mech}\ll 1$, narrow width $\sigma$ in $\ln a$, and center $\ac$ at early times; this is the minimal EDE-like parameterization to be tested in a follow-on paper.
+
+\section{Validation of Foundational Proofs (Pass/Fail Guardrails)}
+This section lists the non-negotiable standards the framework must satisfy. Each item states the \emph{limit} in which we must recover the proof and the \emph{quantitative criterion} that constitutes a pass.
+
+\subsection{Classical GR Tests (Solar System, Binary Pulsars)}
+\begin{itemize}[leftmargin=1.8em]
+\item \textbf{Recovery of GR in equilibrium:} In the absence of boundary effects ($u_{\rm mech}\to 0$; stationary condensate), the effective action reduces to Einstein–Hilbert plus standard matter, recovering perihelion precession, light deflection, Shapiro delay, frame dragging, and binary-pulsar decay. \emph{Pass:} No deviations from PPN constraints at the quoted experimental precision. (Standard GR test-bed references apply.)
+\end{itemize}
+
+\subsection{Gravitational-Wave Propagation}
+\begin{itemize}[leftmargin=1.8em]
+\item \textbf{Luminal tensor speed today:} The tensor sector must satisfy $c_T/c=1$ at late times, respecting the GW170817/GRB\,170817A bound $|c_T/c-1|\lesssim 10^{-15}$. \emph{Pass:} No residual late-time modification to $c_T$. \emph{Rationale:} The boundary effect is early and transient; late-time propagation is standard. 
+\end{itemize}
+
+\subsection{Big-Bang Nucleosynthesis (BBN)}
+\begin{itemize}[leftmargin=1.8em]
+\item \textbf{Light-element yields and $G_{\rm BBN}$:} Any early-time modification must not alter expansion at $T\!\sim$ MeV beyond a few percent. Published bounds on $G_{\rm BBN}/G_0$ are at the few-percent level. \emph{Pass:} The best-fit region for $(\ac,\sigma,f_{\rm mech})$ that addresses early expansion is entirely consistent with BBN likelihoods (2$\sigma$). 
+\end{itemize}
+
+\subsection{CMB/Planck 2018 + BAO + SNe (Acoustic Proofs)}
+\begin{itemize}[leftmargin=1.8em]
+\item \textbf{Quality of fit to Planck likelihoods:} The framework must match Planck 2018 TT/TE/EE+lensing at $\Lambda$CDM-like $\chi^2$, with any early bump small and narrow enough to preserve the damping tail and acoustic phases. \emph{Pass:} $\Delta\chi^2$ competitive with $\Lambda$CDM and consistent with BAO/SNe. 
+\item \textbf{Sound-horizon integrity:} If a boundary-layer reservoir is invoked, it must shrink $\rs$ in a controlled way, raising the CMB-inferred $H_0$ while leaving BAO and SNe internally consistent. \emph{Pass:} The best-fit region does not degrade BAO/SNe fits relative to $\Lambda$CDM. 
+\end{itemize}
+
+\subsection{Distance Ladders and Cross-Checks}
+\begin{itemize}[leftmargin=1.8em]
+\item \textbf{Local $H_0$ and cross-calibrators:} The preferred parameter region must be compatible with state-of-the-art distance-ladder analyses and their JWST cross-checks, while not reintroducing late-time anomalies. \emph{Pass:} Consistency with the latest consolidated ladder assessments.
+\end{itemize}
+
+\subsection{Large-Scale Structure and Weak Lensing}
+\begin{itemize}[leftmargin=1.8em]
+\item \textbf{Growth history:} The framework should not worsen the $S_8$ tension; the early-time bump must not imprint unacceptable excess small-scale power. \emph{Pass:} Growth observables remain comparable to, or better than, $\Lambda$CDM at current precision.
+\end{itemize}
+
+\section{Relation to Established Results and Why Falsifiability is Clear}
+\paragraph{Einstein–Hilbert limit.} In equilibrium the condensate’s constitutive law reduces to Einstein–Hilbert dynamics, thereby recovering classical tests of GR and Solar-System constraints by construction. 
+\paragraph{Planck ``proofs.''} The CMB acoustic structure is an extremely sensitive integral of the expansion history; the boundary-layer episode is required to be brief and small so as not to spoil peak phases or the damping tail, while still allowing a percent-level shift in $\rs$ measurable in global fits.
+\paragraph{BBN \& GW guardrails.} The two sharpest guardrails are (i) the BBN epoch (few-percent expansion tolerance), and (ii) the luminal $c_T$ bound from GW170817. The framework is designed so the boundary effect is (1) pre-recombination but (2) post-BBN or negligibly small at $T\!\sim$MeV, and (3) absent at late times, thus evading these failure modes.
+
+\section{Research Roadmap (Sequenced Papers)}
+\begin{enumerate}[leftmargin=2.2em]
+\item \textbf{Early-Universe Baseline Fits:} Implement the $u_{\rm mech}(a)$ bump and compare to Planck+BAO+SNe+SH0ES; evaluate improvement in $H_0$ without degrading acoustic fits.
+\item \textbf{BBN and Time-Variation Checks:} Demonstrate the allowed window is fully BBN-safe; show no conflict with bounds on early $G$ variation.
+\item \textbf{GW Propagation and Causality:} Prove $c_T=c$ today; no anomalous tensor dispersion/polarization at late times.
+\item \textbf{Boundary-Layer Kinematics:} Derive impedance mismatch, reflection, and energy accumulation vs.\ $(Z_{\rm pf},Z_{\rm c},u_{\rm f})$ and map to $(f_{\rm mech},\ac,\sigma)$.
+\item \textbf{Structure Growth and Lensing:} Verify the preferred region does not worsen $S_8$ and remains consistent with BAO full-shape and CMB lensing.
+\item \textbf{Planet Formation in a Condensate:} Provide a micro-to-macro aggregation pathway and check chronology vs.\ observational benchmarks.
+\item \textbf{Targeted Null Tests and Discriminants:} Design measurements that must be null (or must deviate) if the boundary episode occurred.
+\end{enumerate}
+
+\section{Conclusions}
+We have framed a falsifiable program in which the observable Universe is a condensate expanding into a universal protofluid. The Big Bang is a phase transition and subsequent boundary growth; early-time boundary-layer reservoirs are a minimal, testable mechanism to alter $H(a)$ briefly, with sharp guardrails from BBN, CMB, and GW observations. Recovery of GR in equilibrium, luminal GW propagation at late times, and Planck-compatible acoustic fits are non-negotiable proofs the framework must satisfy. The sequenced papers will test these claims against gold-standard datasets and either delimit or corroborate the viable parameter space.
+
+\section*{Acknowledgments}
+I thank colleagues working on analogue gravity, early-Universe cosmology, and cosmological inference for discussions that shaped this foundational outline.
+
+% ============== REFERENCES (core checkpoints) ==============
+\begin{thebibliography}{99}\setlength{\itemsep}{2pt}
+
+\bibitem{Planck2018}
+Planck Collaboration, ``Planck 2018 results. VI. Cosmological parameters,'' \emph{Astron. Astrophys.} \textbf{641}, A6 (2020). Available at arXiv:1807.06209.
+
+\bibitem{RiessReview2024}
+A.~G.~Riess and L.~Breuval, ``The Local Value of $H_0$,'' arXiv:2308.10954 (2024).
+
+\bibitem{EDEReview2023}
+M.~Kamionkowski and A.~G.~Riess, ``The Hubble Tension and Early Dark Energy,'' \emph{Annu. Rev. Nucl. Part. Sci.} \textbf{73}, 153 (2023).
+
+\bibitem{PoulinReview2023}
+V.~Poulin, T.~L.~Smith, T.~Karwal, ``The Ups and Downs of Early Dark Energy solutions to the Hubble tension,'' \emph{Phys. Dark Univ.} \textbf{42}, 101348 (2023).
+
+\bibitem{BBN_Gbounds}
+J.~Alvey, N.~Sabti, M.~Escudero, M.~Fairbairn, ``Improved BBN constraints on the variation of the gravitational constant,'' \emph{Eur. Phys. J. C} \textbf{80}, 148 (2020).
+
+\bibitem{GW170817}
+B.~P.~Abbott \emph{et al.}, ``Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A,'' \emph{Astrophys. J. Lett.} \textbf{848}, L13 (2017).
+
+\bibitem{Sakharov}
+A.~D.~Sakharov, ``Vacuum quantum fluctuations in curved space and the theory of gravitation,'' \emph{Sov. Phys. Dokl.} \textbf{12}, 1040 (1968).
+
+\bibitem{Vassilevich}
+D.~V.~Vassilevich, ``Heat kernel expansion: User's manual,'' \emph{Phys. Rept.} \textbf{388}, 279--360 (2003).
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass[11pt,a4paper]{article}
+
+%=====================
+% PACKAGES
+%=====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Safe fix when using siunitx + physics
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+%=====================
+% MACROS
+%=====================
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\ac}{a_{\rm c}}
+\newcommand{\zc}{z_{\rm c}}
+\newcommand{\rs}{r_{\rm s}}
+\newcommand{\cs}{c_{\rm s}}
+
+%=====================
+% TITLE
+%=====================
+\title{\textbf{The Observable Universe as a Condensate Expanding into a Universal Protofluid:\\
+A Foundational Framework and Research Program}}
+\author{Rob Skavberg\thanks{Independent Researcher, Calgary, Canada. Contact: \texttt{rob.skavberg@example.org}}}
+\date{\today}
+
+%=====================
+% DOCUMENT
+%=====================
+\begin{document}
+\maketitle
+\doublespacing
+
+\begin{abstract}
+We present a foundational framework in which the observable Universe is treated as a quantum condensate expanding into a universal protofluid. The Big Bang is reinterpreted as a phase transition and the subsequent expansion as the outward motion of a conversion boundary. Within this picture, spacetime dynamics and gravitational response arise from the medium's effective stiffness, while matter and structure inherit their properties from the condensate's microphysics and its boundary interactions with the protofluid. This paper sets the conceptual and mathematical baseline: (i) postulates and kinematics of the condensate--protofluid system; (ii) the Big Bang as nucleation; (iii) boundary layers and impedance mismatch as the origin of reflection, refraction, and transient energy reservoirs; (iv) qualitative predictions and observational signatures; and (v) a roadmap of follow-on papers that will test the framework against current challenges---including planetary formation in a condensate, boundary-layer wave compression and its cosmological imprints, and targeted comparisons to established theories. A previously developed Condensate Link Framework (CLF) addressing gravity as geometric stiffness is positioned as a supporting contribution within this program.
+\end{abstract}
+
+\section{Motivation and Scope}
+Modern cosmology provides high-precision measurements of the cosmic microwave background, large-scale structure, and late-time expansion history. Yet several conceptual tensions motivate alternative organizing principles. Here we propose one such principle: the \emph{observable Universe is a condensate}, grown via a phase transition from an ambient \emph{universal protofluid}. In this view,
+\begin{itemize}
+    \item the Big Bang corresponds to \emph{nucleation of a coherent phase}, 
+    \item the Hubble expansion corresponds to \emph{outward propagation of a conversion boundary} into the protofluid,
+    \item gravitational response emerges from the medium's \emph{effective stiffness} (addressed in detail in the separate CLF paper),
+    \item and the boundary layer mediates impedance mismatch and transient energy accumulation that can leave observable signatures.
+\end{itemize}
+This \emph{foundational paper} states the postulates, minimal kinematics, conservation laws, and a research program. Specialized phenomena---planet formation pathways, boundary-layer wave compression, and targeted tests vs.\ established theories---will be treated in separate companion papers.
+
+\section{Core Postulates}
+\label{sec:postulates}
+We adopt a minimal set of postulates that are deliberately agnostic about microscopic details but sufficient to derive observational consequences.
+\begin{enumerate}
+    \item \textbf{Two-phase medium.} A universal \emph{protofluid} provides the pre-condensed environment. A \emph{condensate} phase nucleates and expands. The observable Universe consists of the interior of this condensate.
+    \item \textbf{Phase transition origin.} The Big Bang is the onset of coherent order---a first (or weakly first) order transition---followed by outward phase conversion. The condensation generates an interface (the \emph{Condensate Boundary}) separating the phases.
+    \item \textbf{Effective continuum description.} On cosmological scales, both phases admit hydrodynamic/continuum descriptions with well-defined energy--momentum tensors. The boundary is a codimension-one hypersurface with surface stress--energy and finite thickness (boundary layer).
+    \item \textbf{Mechanical--geometric linkage.} The medium's stiffness (bulk/phase moduli, coherence) determines an effective geometric response: curvature reacts to stress as if endowed with a stiffness proportional to suitable condensate parameters. (Quantitatively developed in the separate CLF paper.)
+    \item \textbf{Impedance mismatch.} Waves in the protofluid and condensate experience distinct impedances; mismatch at the boundary causes strong reflection/refraction and the possibility of boundary-layer energy reservoirs.
+    \item \textbf{Causality and locality.} Signal propagation respects local light cones within the condensate interior; the framework recovers standard relativistic kinematics in equilibrium regions, with boundary effects encoded in finite-thickness corrections.
+\end{enumerate}
+
+\section{Kinematic Framework}
+\subsection{Bulk fields and conservation laws}
+Let $T^{\mu\nu}_{\rm pf}$ and $T^{\mu\nu}_{\rm c}$ denote the protofluid and condensate stress--energy tensors in their respective hydrodynamic regimes. Away from the boundary,
+\begin{equation}
+\nabla_\mu T^{\mu\nu}_{\rm pf}=0\,,\qquad 
+\nabla_\mu T^{\mu\nu}_{\rm c}=0\,,
+\end{equation}
+where $\nabla_\mu$ is the covariant derivative compatible with the effective metric in each phase. The boundary layer carries surface stress--energy $S^{\mu\nu}$ and mediates flux matching.
+
+\subsection{Conversion boundary and flux matching}
+Let $\Sigma$ be the boundary worldvolume with unit normal $n_\mu$. Denote jumps as $[X]\equiv X_{\rm c}-X_{\rm pf}$. The integral conservation laws across $\Sigma$ imply generalized Rankine--Hugoniot conditions:
+\begin{equation}
+\big[T^{\mu\nu} n_\mu\big] = - \nabla_\mu S^{\mu\nu}\,,
+\end{equation}
+ensuring momentum/energy balance when a finite-thickness layer is retained. The boundary has a proper speed $u_{\rm f}$ relative to either bulk.
+
+\subsection{Effective impedances}
+For linearized waves, define effective impedances $Z_{\rm pf}$ and $Z_{\rm c}$, e.g.\ $Z\sim \rho_{\rm eff} c_{\rm eff}$, with $\rho_{\rm eff}$ an effective inertia and $c_{\rm eff}$ a phase/phonon speed in each phase. The power reflection/transmission (for near-normal incidence) take the familiar forms:
+\begin{equation}
+R=\left|\frac{Z_{\rm c}-Z_{\rm pf}}{Z_{\rm c}+Z_{\rm pf}}\right|^{2},\qquad
+T=\frac{4 Z_{\rm c} Z_{\rm pf}}{(Z_{\rm c}+Z_{\rm pf})^{2}},\qquad R+T=1\,.
+\label{eq:RT}
+\end{equation}
+Finite $u_{\rm f}$ induces Doppler-like kinematic shifts in the boundary frame and selects which modes pile up in the boundary layer (those with $v_g \cos\theta \lesssim u_{\rm f}$).
+
+\section{The Big Bang as Nucleation and Growth}
+\subsection{Nucleation}
+The transition begins when a critical region of the condensate forms inside the protofluid. The initial seed exceeds the critical size set by surface energy vs.\ bulk free-energy gain, after which the interface becomes dynamically stable and begins outward propagation.
+
+\subsection{Growth and coarse-grained expansion}
+The macroscopic expansion of the condensate interior---identified with the observable Universe---is described by an effective scale factor $a(t)$ that tracks the coarse-grained metric response of the condensate phase. In equilibrium regions the usual relativistic expansion laws recover; the novelty lies in how boundary processes can modulate early-time expansion history via transient energy reservoirs.
+
+\section{Boundary Layers and Transient Energy Reservoirs}
+\label{sec:boundary}
+\subsection{Impedance mismatch and reflection}
+Equation~\eqref{eq:RT} implies strong reflection when $|Z_{\rm c}-Z_{\rm pf}|\gg 0$. Waves in the protofluid approaching the boundary are partially reflected; modes unable to outrun the advancing interface accumulate within the boundary layer. In a moving-boundary frame, the effective frequency/wavenumber of incident modes can shift, sharpening gradients and increasing local fluctuation energy.
+
+\subsection{Energy budgeting and back-reaction}
+Let $u_{\rm BL}(t)$ be the boundary-layer energy density integrated across the layer thickness. Its evolution is governed schematically by
+\begin{equation}
+\frac{\dx u_{\rm BL}}{\dx t} \sim \Phi_{\rm in} R(u_{\rm f}) - \Phi_{\rm out}(T,\text{diss}) - \frac{u_{\rm BL}}{\tau_{\rm relax}}\,,
+\end{equation}
+where $\Phi_{\rm in}$ is incident spectral flux from the protofluid, $\Phi_{\rm out}$ encodes leakage into the condensate and dissipative channels, and $\tau_{\rm relax}$ captures intrinsic relaxation in the layer. A positive net accumulation over a finite epoch creates a \emph{transient reservoir} capable of modulating the background expansion.
+
+\subsection{Minimal phenomenology for cosmology}
+A compact way to encode the boundary reservoir is
+\begin{equation}
+H^2(a) = \frac{8\pi G_0}{3}\Big[\rho_{\rm std}(a) + u_{\rm mech}(a)\Big], \qquad
+u_{\rm mech}(a)= \rho_{\rm c0}\, f_{\rm mech}\,
+\exp\!\Big(-\frac{\ln^2(a/\ac)}{2\sigma^2}\Big),
+\end{equation}
+with peak fraction $f_{\rm mech}\ll 1$, center $\ac$ (often near matter--radiation equality), and narrow width $\sigma$ in $\ln a$. This \emph{narrow early-time bump} raises $H(a)$ briefly, shrinking the acoustic ruler $\rs$ and shifting CMB-inferred parameters in a controlled, testable manner. The detailed microphysical mapping from $(Z_{\rm pf},Z_{\rm c},u_{\rm f})$ to $(f_{\rm mech},\ac,\sigma)$ is the subject of the boundary-layer companion paper.
+
+\section{Observational Signatures (Qualitative)}
+\begin{itemize}
+    \item \textbf{Early-time expansion modulation.} A narrow boost in $H(a)$ alters the sound horizon and acoustic phases in predictable ways if centered before recombination.
+    \item \textbf{No late-time deviations.} As the boundary recedes outside the observable Universe and the reservoir dissipates, standard late-time gravity and signal speeds are recovered.
+    \item \textbf{Structure growth subtleties.} Early-time changes can imprint small phase/amplitude shifts that propagate into matter clustering; these will be bounded in the tests program.
+    \item \textbf{Interface relics.} Inhomogeneous nucleation or transient defects could seed subtle, testable anisotropies if any crossing occurred within the visible patch.
+\end{itemize}
+
+\section{Research Program and Companion Papers}
+This foundational paper defines the medium, kinematics, and boundary concepts. The following \emph{separate papers} will test the framework against known challenges:
+
+\subsection*{Paper A: Gravity as Geometric Stiffness (CLF)}
+A dedicated manuscript (the CLF) models gravity as the geometric stiffness emerging from the condensate's mechanical properties. It will be used throughout the program as a constitutive relation between stress and curvature response.
+
+\subsection*{Paper B: Planet Formation from a Condensate}
+We will derive a physically consistent pathway from condensate microphysics to mesoscopic clumping and macroscopic bodies. Topics include: fluctuation seeds from early boundary activity, phase-stability windows for aggregation, and scaling from grains to planetesimals to planets under the medium's effective equations.
+
+\subsection*{Paper C: Boundary-Layer Kinematics and Wave Compression}
+This paper quantifies the impedance mismatch, mode reflection/refraction, Doppler-like effects from a moving interface, and the mapping to an effective $u_{\rm mech}(a)$ bump. It will specify priors on $(f_{\rm mech},\ac,\sigma)$, compute acoustic-peak shifts, and confront CMB/BAO/SNe datasets.
+
+\subsection*{Paper D: Targeted Tests vs.\ Established Theories}
+A falsifiability paper: (i) parameter regimes where the condensate framework reduces to standard predictions, and (ii) regimes that differ at observably testable levels. Emphasis on \emph{predictions that can fail}, including null tests and cross-survey consistency checks.
+
+\section{Discussion}
+Treating the observable Universe as a condensate expanding into a universal protofluid provides a single organizing picture for the Big Bang (nucleation), Hubble expansion (boundary growth), gravitational response (stiffness), and boundary phenomena (impedance mismatch, transient reservoirs). The strength of the approach is not in a claim of final explanation but in its \emph{testable structure}: each ingredient maps to specific observables, and each companion paper targets a well-defined empirical question. The framework is expressly modular: improvements to any constituent (e.g., better boundary microphysics or a refined stiffness law) can be propagated consistently.
+
+\section{Conclusions}
+We have outlined a minimal, falsifiable foundation for modeling the observable Universe as a condensate that nucleates and expands into a universal protofluid. The Big Bang is recast as phase transition; expansion is the outward motion of a conversion boundary; gravity follows from effective stiffness; and boundary layers generate impedance-driven reservoirs capable of leaving testable cosmological imprints. The accompanying research program---planet formation in a condensate, boundary-layer kinematics and wave compression, and targeted tests vs.\ established theories---is designed to stress-test the fundamental picture without biasing claims toward convergence with any preexisting narrative.
+
+\section*{Author Contributions and Availability}
+This manuscript frames the foundational theory and roadmap. Follow-on papers will be released as independent, citable parts of the program. Drafts and datasets will be made available upon request.
+
+\end{document}

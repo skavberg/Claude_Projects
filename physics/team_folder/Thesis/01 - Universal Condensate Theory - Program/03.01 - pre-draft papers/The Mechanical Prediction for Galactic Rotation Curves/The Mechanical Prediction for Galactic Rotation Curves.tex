@@ -1,0 +1,196 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+
+\geometry{margin=1in}
+
+\begin{document}
+
+\begin{center}
+    \large \textbf{The Mechanical Vacuum: \\ Frame-Dragging, Satiation Velocity, and the Variable Gravitational Constant} \\
+    \vspace{1em}
+    \normalsize Robin Skavberg \\
+    \normalsize February 2026
+\end{center}
+
+\begin{abstract}
+In standard General Relativity (GR), $G$ is a coupling constant that determines how much spacetime curves for a given amount of energy-momentum. GR treats $G$ as a static scalar, whereas this model treats it as a dynamic equilibrium state of the field itself. We suggest an \textbf{Equilibrium Perspective}: the constant $G$ is the restorative response of the vacuum field. As the matter-energy density ($T_{\mu\nu}$) increases, the vacuum impedance rises, effectively damping the field's ability to respond. This paper derives $G$ as a function of vacuum restorative stiffness and matter-energy density, providing a mechanical solution for flat galactic rotation curves and the observed Newtonian limit in high-density solar systems.
+\end{abstract}
+
+\section{The Mechanical Basis of Gravitation}
+In standard relativistic astrophysics, $G$ is treated as a universal constant. However, applying a mechanical framework to the vacuum suggests that $G$ represents the coupling efficiency between matter and the elastic fabric of space. 
+
+We define $c^2$ as the restorative stiffness of the vacuum medium. Matter-energy density $\rho_m$ acts as the mechanical load. This paper builds upon the derivation for the gravitational constant $G$ as a function of vacuum restorative stiffness and density\textsuperscript{2}:
+\begin{equation}
+G = \frac{c^2}{8\pi\rho_m}
+\end{equation}
+where $\rho_m$ is interpreted as an effective linear mass density (mass per unit length, $M/L$). This allows the units to align ($m^3 \cdot kg^{-1} \cdot s^{-2}$) and provides a geometric reason for suppression: as matter ``packs'' into a region, the field’s ability to be further displaced (its ``tensor strength'') reaches a saturation point.
+
+\section{Tensor Saturation and the Newtonian Limit}
+In high-density systems like the Solar System, the presence of a massive central body increases the local tensor stiffness. To prevent $G$ from hitting zero (which would halt gravitational interaction), we define the effective gravitational coupling as an asymptotic approach to the Newtonian floor:
+\begin{equation}
+G(\rho_m) = G_{vac} \cdot \exp\left(-\frac{\rho_{local}}{\rho_{crit}}\right) + G_{Newton}
+\end{equation}
+where $\rho_{crit}$ is a ``Critical Saturation Density.'' On galactic scales, the vacuum remains ``pliant,'' allowing for a higher effective $G$. This enhancement provides the additional centripetal force required to maintain flat rotation curves at large radii without the need for cold dark matter.
+
+\section{Derivation of Velocity-Gravity Equivalence}
+The core of this framework lies in the link between the gravitational coupling constant ($G$) and the propagation velocity of light ($v_{\gamma}$).
+
+\subsection{Defining Vacuum Refractive Index}
+Applying a mechanical load $\rho_m$ to the vacuum medium, we can model the refractive index $n_v$ based on the density of the tensor field:
+\begin{equation}
+n_v = \sqrt{1 + \rho_m}
+\end{equation}
+Substituting our expression for $\rho_m$ from Equation (1):
+\begin{equation}
+\rho_m = \frac{c^2}{8\pi G}
+\end{equation}
+
+\subsection{Deriving the Phase Velocity}
+Substituting Equation (4) into the velocity equation $v_{\gamma} = c/n_v$:
+\begin{equation}
+v_{\gamma} = \frac{c}{\sqrt{1 + \frac{c^2}{8\pi G}}} = c \sqrt{\frac{8\pi G}{8\pi G + c^2}}
+\end{equation}
+
+\subsection{Numerical Evaluation}
+Using standard SI values ($c \approx 2.9979 \times 10^8$ m/s, $G \approx 6.6743 \times 10^{-11}$ m$^3$ kg$^{-1}$ s$^{-2}$), the ratio within the square root is approximately $1.866 \times 10^{-26}$. Taking the root and multiplying by $c$:
+\begin{equation}
+v_{\gamma} \approx 0.00004 \text{ m/s}
+\end{equation}
+This value identifies the propagation floor or ``viscosity'' of the local vacuum frame.
+
+
+
+\section{The Mechanical Integration of Screening Mechanisms}
+The observed suppression of $G$ in high-density environments is not unique to this model; it aligns with established screening theories in modified gravity. By viewing the vacuum as a medium with variable \textbf{tensor susceptibility}, we can integrate these mechanisms under a single mechanical framework.
+
+\subsection{Chameleon Screening: Density-Driven Displacement}
+In the Chameleon mechanism, the scalar field's mass is a function of the ambient density. In our framework, this is interpreted as a non-linear change in the vacuum's \textbf{effective elastic modulus}. In low-density regions, the vacuum exhibits high \textbf{tensor susceptibility}, allowing matter to displace the field and create a long-range gradient (the fifth force). In high-density regions (Solar System), the field is \textbf{saturated} by the high ambient matter-energy density. This increases the \textbf{tensor stiffness}, rendering the vacuum unresponsive to additional displacement. The force is suppressed because the field has reached its maximum displacement capacity.
+
+
+
+\subsection{Symmetron Theory: Symmetry as Structural Phase}
+The Symmetron model relies on a density-dependent phase transition. We interpret this as a transition in the coupling efficiency of the vacuum field. At high densities, the field resides in a symmetric state where its interaction cross-section with matter is effectively zero; consequently, the tensor field remains unperturbed, and no additional displacement occurs. In low-density environments, spontaneous symmetry breaking occurs as the field shifts to a non-zero vacuum expectation value. The vacuum enters a high-susceptibility phase, where the matter-field coupling is restored. This mechanical displacement of the field manifests as the observed "fifth force" or anomalous acceleration in galactic outskirts.
+
+\subsection{The DGP Model: Dimensional Leakage and Bottlenecking}
+The Dvali-Gabadadze-Porrati (DGP) model traditionally suggests that gravitational flux leaks'' into a higher-dimensional bulk at infra-red scales. In this mechanical framework, we reinterpret this leakage as the vacuum's recovery of its ground-state tensor strength in low-density environments. Under the \textbf{Vainshtein Screening} effect, near massive sources, the tensor field reaches its \textbf{satiated limit}, where $G$ is clamped to the 4D Newtonian value. This satiation effectively shuts the door'' on the extra-dimensional scaling, forcing the vacuum to behave as a rigid 4D manifold. Consequently, the transition scale $r_c$ in DGP is recontextualized as the density threshold where the vacuum shifts from a satiated, high-impedance state (Solar System) to an unsatiated, high-susceptibility state (Deep Space).
+
+
+
+\section{Validation and Scaling: The Triple-Satiation Proof}
+
+We define Mechanical Satiation as the state wherein the vacuum's tensor susceptibility reaches a non-linear limit due to high ambient matter-energy density. In this satiated regime, the gravitational constant $G$ is suppressed to its minimum Newtonian value, effectively 'clamping' the field and preventing the manifestation of modified gravity effects observed in lower-density, unsatiated environments.
+The transition from local suppression to universal maxima is governed by the dynamic range of the vacuum impedance. 
+
+We define the Satiation Ratio $\mathcal{S} = v_{\gamma} / c$, which represents the scaling factor between the local propagation floor and the maximum vacuum wave speed. The propagation floor, $v_{\gamma}$, is the minimum phase velocity of a wave in a mechanically satiated field—specifically, the velocity at which the vacuum impedance, driven by local matter-energy density $\rho_m$, reaches its maximum effective stiffness. By correlating $c$ to the maximum propagation speed of a wave in a zero-density field ($G_{max}$), we define $v_{\gamma}$ as the characteristic velocity of the local frame where the gravitational coupling is clamped to the Newtonian floor ($G_{Newton}$)."
+
+
+In the context of the $G = \frac{c^2}{8\pi\rho_m}$ theory, the Propagation Floor refers to the minimum permissible phase velocity of a wave within the vacuum medium when it is under maximum mechanical load. To understand this physically, we must view the vacuum not as an empty void, but as a mechanical field with a finite capacity for displacement. 
+
+\subsection{The Variable Wave Speed Concept: Definition of Satiation}
+In classical wave mechanics, the speed of a wave ($v$) is determined by the ratio of the medium's stiffness ($C$) to its density ($\rho$): $v = \sqrt{C/\rho}$. In this model, $c$ represents the Maximum Propagation Speed—the velocity of a wave in a ground-state vacuum where density $\rho_m$ is negligible and the field is at its most elastic. The Propagation Floor ($v_\gamma$) is the velocity of that same wave when the density $\rho_m$ has increased to the point of Mechanical Satiation. At this limit, the vacuum impedance is so high that the field becomes "stiff," slowing the propagation of the gravitational/electromagnetic wave to its absolute lowest possible value.
+
+\subsection{The "Clamping" Mechanism}
+The floor acts as a non-linear bottleneck. As we add matter to the system (increasing $\rho_m$), the wave speed drops. However, the vacuum cannot become infinitely stiff; it hits a physical limit where the tensor field can no longer be compressed. This limit is the Propagation Floor. In the Solar System, we are living in a region where the vacuum is "clamped" at this floor. This is why $G$ appears to be a constant here—we are at the bottom of the curve where the field is satiated and no longer fluctuates.
+
+\subsection{Relation to the Satiation Ratio ($\mathcal{S}$)}
+The ratio $\mathcal{S} = v_\gamma / c$ defines the dynamic range of the vacuum. If $\mathcal{S} \approx 1$, the vacuum is unsatiated (Deep Space), and $G$ is at its maximum. If $\mathcal{S} \approx 0.00004$ (as defined here), the vacuum is satiated (Solar System), and $G$ is at its Newtonian floor.
+
+\subsection{Empirical Context}
+The reason we call it a "floor" is that it represents the ground-state jitter or "viscosity" of the local frame. By identifying $v_\gamma \approx 40$ $\mu$m/s, we suggest that this is the slowest "speed of gravity/light" possible in our local high-density environment. This speed correlates to the detected "frame-dragging" values by experiments like Gravity Probe B.
+
+
+\subsection{5.2 Local Evidence: Mechanical Satiation (Gravity Probe B)}
+In high-density environments, the vacuum is ``loaded'' by matter-energy $\rho_m$, which saturates its tensor susceptibility. This state of mechanical satiation manifests as the ``viscosity'' of the medium, traditionally interpreted as frame-dragging. We correlate the observed Lense-Thirring precession $\Omega_{LT}$ to the vacuum's mechanical propagation floor $v_{\gamma}$. The linear drift velocity at Earth's radius $R_{\oplus}$ is:
+\begin{equation}
+v_{drift} = \Omega_{LT} \cdot R_{\oplus} \approx 4.2 \times 10^{-8} \text{ m/s}
+\end{equation}
+Consistent with the derivation in Section 3.2, the propagation floor $v_{\gamma}$ is determined by the local refractive index:
+\begin{equation}
+v_{\gamma} = c \sqrt{\displaystyle\frac{8\pi G}{8\pi G + c^2}} \approx 4.09 \times 10^{-5} \text{ m/s}
+\end{equation}
+The alignment of these magnitudes (both significantly sub-relativistic and determined by the $G/c^2$ ratio) suggests that frame-dragging is the physical displacement of a satiated, high-impedance vacuum medium. The 8.6\% Hubble Tension further implies that as $G$ recovers in low-density environments, this mechanical coupling increases, offering a unified explanation for galactic rotation anomalies.
+
+\subsection{5.2 Alignment of Observed vs. Theoretical Drift}
+To validate the mechanical model, we compare the theoretical propagation floor $v_{\gamma}$ to the empirical drift $v_{drift}$ measured by Gravity Probe B.
+\begin{equation}
+v_{\gamma} = c \sqrt{\displaystyle\frac{8\pi G}{8\pi G + c^2}} \approx 4.09 \times 10^{-5} \text{ m/s}
+\end{equation}
+\begin{equation}
+v_{drift} = \Omega_{LT} \cdot R_{\oplus} \approx 4.2 \times 10^{-8} \text{ m/s}
+\end{equation}
+We define the \textbf{Vacuum Coupling Efficiency} ($\kappa$) as:
+\begin{equation}
+\kappa = \frac{v_{drift}}{v_{\gamma}} \approx 10^{-3}
+\end{equation}
+This indicates that in the Earth's high-density satiated environment, the vacuum dragging efficiency is 0.1\%. The observed 8.6\% Hubble Tension provides the recovery gradient: as density $\rho_m$ decreases, $\kappa$ increases, providing the additional centripetal coupling observed in galactic rotation curves without requiring dark matter particles.
+
+\subsection{The Universal Floor: Unruh Satiation}
+The Unruh effect predicts a thermal bath $T = \hbar a / (2\pi c k_B)$ for an accelerating observer. We propose this temperature represents the stochastic noise floor of the vacuum at the limit of mechanical satiation. At the Milgromian acceleration constant $a_0 \approx 1.2 \times 10^{-10} \text{ m/s}^2$, we equate the energy of the vacuum satiation velocity to the Unruh thermal energy. This indicates that the suppression of $G$ is maintained as long as the gravitational potential energy of the vacuum is in equilibrium with the Unruh radiation pressure. This provides a physical basis for the "Newtonian floor," preventing the gravitational coupling from diverging in high-acceleration regimes.
+
+\textbf{Mathematical Comparison:}
+At the Milgromian acceleration constant $a_0 \approx 1.2 \times 10^{-10} \text{ m/s}^2$, we equate the energy of the vacuum satiation velocity to the Unruh thermal energy:
+\begin{equation}
+\frac{1}{2} m v_{\gamma}^2 \sim k_B T_{Unruh}
+\end{equation}
+This indicates that the ``clamping'' of $G$ occurs exactly when the gravitational potential energy of the vacuum reaches equilibrium with Unruh radiation pressure, preventing $G$ from diverging.
+
+\subsection{The Galactic Solution: Recovery of Ground-State Tension}
+Dark Matter is reinterpreted as the vacuum’s return to its \textbf{Unsaturated Ground State}. As $\rho_m$ drops in the galactic halo, $G$ scales upward as the impedance drops.
+
+\textbf{Mathematical Comparison:}
+To maintain a flat rotation curve, the required centripetal acceleration is $a = v^2/r$. Standard theory adds Dark Matter ($M_{DM}$); our model scales $G$:
+\begin{equation}
+\frac{v^2}{r} = \frac{G(\rho) M_{baryonic}}{r^2}
+\end{equation}
+As $\rho_m$ drops below the critical threshold $\rho_{crit}$, $G(\rho)$ increases by a factor of $\approx 10$, compensating for the ``missing'' mass. The ``Dark Matter'' effect is the vacuum recovering its restorative stiffness ($c^2$) in the absence of mechanical load.
+
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Environment & Density & Effective $G$ & Effect \\ \midrule
+Solar System & High & $G$-Newton & Standard Orbits \\
+Galactic Halo & Low & $G \to G$-max & Flat Rotation Curves \\
+Cosmic Void & $\to 0$ & $G$-max & Enhanced Lensing \\ \bottomrule
+\end{tabular}
+\end{center}
+
+\section{Discussions}
+This mechanical model predicts that lensing in low-density voids is enhanced, aligning with discrepancies in lensing signals from certain cosmic voids noted by Sanchez et al. (2017)\textsuperscript{6}, and further explains the following observations:
+
+\subsection{The Shapiro Delay (The "Mechanical" Proof)}
+This is perhaps the most direct observation of a "propagation floor" in action. Irwin Shapiro first predicted and measured that radio signals passing near the Sun take longer to return than expected.
+\textbf{The Observation:} Radar pulses sent to Venus and Mercury "slow down" as they pass through the high-density gravitational well of the Sun.
+\textbf{Interpretation of this Model:}
+ As the signal enters a high-density region ($\rho_m$ increases), the vacuum reaches its satiation limit. The impedance rises, and the propagation speed drops toward the local "floor." The "delay" is the physical manifestation of the wave traveling at a reduced velocity through a satiated medium.
+\subsection{ Gravitational Redshift (Pound-Rebka Experiment)}
+If the propagation speed of the field is linked to its tension ($G$), then moving through different densities should change the wave's energy.
+\textbf{The Observation:} Light escaping a gravitational well (moving from high $\rho_m$ to lower $\rho_m$) shifts toward the red end of the spectrum.
+\textbf{Interpretation of this Model:} This is a transition from a satiated, stiff vacuum to an unsatiated, pliant vacuum. The change in $G$ and propagation velocity causes the wave to "stretch," as it is moving from a high-impedance "floor" back toward its ground-state maximum speed.
+\subsection{Cosmic Voids and Lensing Anomalies}
+Observations of cosmic voids (large regions of very low density) have shown discrepancies in gravitational lensing—the way light bends around matter.
+\textbf{The Observation:} Some studies (like Sanchez et al., 2017) suggest that lensing signals in voids are stronger than predicted by standard GR.
+\textbf{Interpretation of this Model:} In these low-density voids, the vacuum is unsatiated. $G$ is higher than the Newtonian floor, and the propagation speed is closer to its true ground-state maximum. This increased "tensor susceptibility" causes light to deviate more than it would in a "stiff" Solar System environment.
+\subsection{The Variable Speed of Light (VSL) Theories}
+In cosmology, theorists like João Magueijo have proposed that $c$ was significantly higher in the early universe to solve the "Horizon Problem" (why the universe looks uniform).
+\textbf{Observation/Theory:} This addresses the lack of thermal equilibrium in the CMB.
+\textbf{Interpretation in your Model} In the extremely early universe, before the "satiation" caused by large-scale structure formation, the vacuum impedance was lower, allowing for a much higher propagation speed. This aligns with the idea that $G$ and $c$ are tied to the mechanical state of the field.
+
+\section*{Author Information}
+\noindent \textbf{AI Statement:} LLM technology was utilized as a technical collaborator for LaTeX typesetting and document structure optimization. Original theories and scientific conclusions are by the human author.
+
+\begin{thebibliography}{9}
+\bibitem{1} Einstein, A. (1916). Annalen der Physik, 354(7), 769--822.
+\bibitem{2} Skavberg, R. (2026). The Mechanical Resolution of the Gravitational Constant. Zenodo. DOI: 10.5281/zenodo.18393277
+\bibitem{3} Everitt, C. W. F., et al. (2011). Gravity Probe B. Phys. Rev. Lett., 106(22), 221101.
+\bibitem{4} Unruh, W. G. (1976). Notes on black-hole evaporation. Phys. Rev. D, 14(4), 870.
+\bibitem{5} Christodoulou, D. M., \& Kazanas, D. (2019). Galactic rotation curves. MNRAS.
+\bibitem{6} Sanchez, C., et al. (2017). Cosmic voids and lensing anomalies. JCAP, 2017(09), 015.
+\end{thebibliography}
+
+\end{document}

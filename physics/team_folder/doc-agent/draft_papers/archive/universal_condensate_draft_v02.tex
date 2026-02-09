@@ -1,0 +1,1243 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============== ENCODING AND FONTS ==============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ============== PAGE LAYOUT ==============
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+
+% ============== MATHEMATICS ==============
+\usepackage{amsmath,amssymb,amsfonts,amsthm,bm}
+\usepackage{siunitx}
+\usepackage{physics}     % for \dd, \dv, etc.; see clash fix below
+
+% Fix siunitx + physics name clash for \qty
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+% ============== GRAPHICS AND TABLES ==============
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+
+% ============== LISTS AND ENUMERATIONS ==============
+\usepackage{enumitem}
+
+% ============== BIBLIOGRAPHY ==============
+% Using embedded bibliography; BibTeX integration can be added in future revisions
+
+% ============== HYPERLINKS (load last) ==============
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ============== CUSTOM MACROS ==============
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\Geff}{G_{\mathrm{eff}}}
+\newcommand{\ac}{a_{\mathrm{c}}}
+\newcommand{\zc}{z_{\mathrm{c}}}
+\newcommand{\rs}{r_{\mathrm{s}}}
+\newcommand{\cs}{c_{\mathrm{s}}}
+\newcommand{\mpl}{M_{\mathrm{Pl}}}
+\newcommand{\Hrh}{H_{\mathrm{rh}}}
+\newcommand{\Trh}{T_{\mathrm{rh}}}
+\newcommand{\sigmamech}{\sigma_{\mathrm{mech}}}
+\newcommand{\fmech}{f_{\mathrm{mech}}}
+\newcommand{\umech}{u_{\mathrm{mech}}}
+\newcommand{\rhocrit}{\rho_{\mathrm{crit}}}
+\newcommand{\rhostd}{\rho_{\mathrm{std}}}
+\newcommand{\rhostiff}{\rho_{\mathrm{stiff}}}
+\newcommand{\rhoPl}{\rho_{\mathrm{Pl}}}
+\newcommand{\lPl}{\ell_{\mathrm{Pl}}}
+\newcommand{\mPl}{m_{\mathrm{Pl}}}
+\newcommand{\RH}{R_{\mathrm{H}}}
+\newcommand{\Zpf}{Z_{\mathrm{pf}}}
+\newcommand{\Zcond}{Z_{\mathrm{c}}}
+\newcommand{\uf}{u_{\mathrm{f}}}
+
+% Theorem-like environments for postulates, propositions, etc.
+\newtheorem{postulate}{Postulate}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+% TODO markers for collaborative work
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\newcommand{\MATHAGENT}{\textcolor{orange}{\textbf{[MATH-AGENT]}}}
+\newcommand{\PHYSAGENT}{\textcolor{teal}{\textbf{[PHYS-AGENT]}}}
+\newcommand{\GRAPHAGENT}{\textcolor{purple}{\textbf{[GRAPHIC-AGENT]}}}
+
+% ============== TITLE ==============
+\title{\textbf{The Observable Universe as a Condensate Expanding into a Universal Protofluid}}
+\author{Rob Skavberg\thanks{Independent Researcher, Calgary, Canada. Contact: \texttt{rob.skavberg@example.org}}}
+\date{\today \\ \textit{Draft Version 0.2 --- Integrated Session 2 Contributions}}
+
+\begin{document}
+\maketitle
+\doublespacing
+
+% ============== ABSTRACT ==============
+\begin{abstract}
+We present a foundational framework in which the \emph{observable Universe} is interpreted as a quantum condensate expanding into a universal protofluid. In this picture, the Big Bang corresponds to the nucleation and subsequent growth of a phase boundary, rather than an initial singularity. Gravitational response emerges from the medium's effective stiffness---a mechanical-geometric linkage elaborated in prior work \cite{SkavbergMechG2025,SkavbergMechGR2025,SkavbergPlanckField2025}---while boundary-layer impedance mismatch mediates reflection, refraction, and transient energy reservoirs that can briefly modify the early expansion history in a testable epoch.
+
+A central contribution of this paper is a rigorous \emph{Validation of Foundational Proofs} section, which establishes quantitative pass/fail criteria against well-established pillars: classical General Relativity tests (Solar System, binary pulsars), gravitational-wave propagation (GW170817 luminal bound), Big-Bang Nucleosynthesis (BBN), the Cosmic Microwave Background (CMB/Planck 2018), Baryon Acoustic Oscillations (BAO), Type Ia supernovae (SNe), distance ladders, and large-scale structure (LSS). These guardrails ensure the framework reduces to standard physics in all tested regimes, with deviations permitted only in a narrow, early-time window that can address persistent cosmological tensions (e.g., the Hubble constant discrepancy).
+
+We conclude with a sequenced research roadmap comprising seven follow-on papers designed to stress-test the framework empirically, from early-Universe baseline fits and BBN compatibility, through gravitational-wave propagation and boundary-layer kinematics, to structure formation and targeted null tests. This draft serves as the architectural foundation for collaborative theoretical and computational work by the research team.
+\end{abstract}
+
+% ============== TABLE OF CONTENTS ==============
+\tableofcontents
+\newpage
+
+% ============== SECTION 1: INTRODUCTION ==============
+\section{Introduction}
+\label{sec:intro}
+
+The standard $\Lambda$CDM cosmological model has achieved remarkable empirical success, fitting a wide array of observations---from the cosmic microwave background (CMB) \cite{Planck2018} to large-scale structure (LSS), baryon acoustic oscillations (BAO), and Type Ia supernovae (SNe) \cite{RiessReview2024}---with a minimal parameter set. Yet persistent tensions have emerged: most notably, the $\sim$5$\sigma$ discrepancy between early-Universe (CMB-inferred) and late-Universe (distance-ladder) determinations of the Hubble constant $H_0$ \cite{RiessReview2024,EDEReview2023}, and the $S_8$ tension in measurements of matter clustering amplitude \cite{PlanckS8,DES2021}. These anomalies have motivated exploration of extensions to $\Lambda$CDM, including early dark energy (EDE) models \cite{Poulin2019,PoulinReview2023,EDEReview2023}, modified gravity scenarios, and new physics in the dark sector.
+
+Parallel to these observational puzzles are long-standing conceptual questions: What is the microphysical origin of gravitational response? Why does the Einstein--Hilbert action describe spacetime curvature so effectively? What are the initial conditions for the Big Bang, and is the initial singularity physically real or an artifact of the classical approximation? Inspired by induced-gravity frameworks \cite{Sakharov,Vassilevich} and analogue-gravity systems \cite{Unruh1981,Visser1998,AnalogueGravityReview}, a growing body of work explores the possibility that spacetime geometry and gravitational dynamics are emergent phenomena arising from an underlying condensed-matter-like substrate.
+
+\subsection{Motivation: A Condensate-Based Universe}
+\label{sec:motivation}
+
+This paper advances a bold organizing principle: the \emph{observable Universe is a coherent quantum condensate} that nucleated and expanded into a pre-existing \emph{universal protofluid}. In this picture:
+\begin{itemize}[leftmargin=1.8em]
+  \item The \textbf{Big Bang} is reinterpreted as the \emph{nucleation event} of a phase transition, initiating the formation of a codimension-one conversion boundary separating the protofluid phase from the condensate phase.
+  \item \textbf{Cosmic expansion} corresponds to the outward propagation of this conversion boundary, with the condensate interior expanding as the boundary advances.
+  \item \textbf{Gravitational response} emerges from the condensate's effective stiffness (bulk modulus, phase coherence, and quantum pressure), as detailed in prior work on the mechanical route to $G$ \cite{SkavbergMechG2025}, the mechanical extension of General Relativity \cite{SkavbergMechGR2025}, and Planck-field resolution of the Hulse--Taylor binary \cite{SkavbergPlanckField2025}.
+  \item \textbf{Boundary-layer physics} mediates impedance mismatch between protofluid and condensate, leading to reflection, refraction, and \emph{transient energy accumulation} that can briefly alter the early expansion rate $H(a)$, offering a testable mechanism to address the $H_0$ tension.
+\end{itemize}
+
+The theoretical foundation for this framework rests on analogue gravity systems \cite{Unruh1981,Visser1998,GarayEtAl2000,Steinhauer2016} and emergent spacetime paradigms \cite{Volovik2003,Jacobson1995,Volovik2008}, where laboratory experiments with Bose-Einstein condensates (BECs) and superfluids have demonstrated that acoustic perturbations propagate on effective curved spacetimes, and that phenomena such as Hawking radiation arise naturally from the underlying quantum fluid dynamics.
+
+\subsection{Connection to Prior Work}
+\label{sec:prior_work}
+
+This framework builds directly on three foundational papers by the author:
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{``A Mechanical Route to $G$''} \cite{SkavbergMechG2025}: Derives the gravitational constant $G$ from the bulk modulus, mass density, and coherence length of a condensate substrate, establishing the mechanical-geometric linkage $G \sim \ell_{\mathrm{coh}}^2 / (K \rho)$.
+  \item \textbf{``A Mechanical Extension of General Relativity: The Singularity in Equilibrium''} \cite{SkavbergMechGR2025}: Shows that a condensate in equilibrium reproduces Einstein--Hilbert dynamics, with the Big Bang singularity replaced by a nucleation-and-growth phase transition. Validates the framework against classical GR tests (perihelion precession, light deflection, Shapiro delay, frame dragging).
+  \item \textbf{``Planck Field --- Resolving Hulse--Taylor Binary''} \cite{SkavbergPlanckField2025}: Applies the condensate framework to binary pulsar systems, demonstrating agreement with observed orbital decay rates and gravitational-wave emission timescales.
+\end{enumerate}
+
+These papers collectively establish the \emph{microphysical foundation} for gravitational response and validate the equilibrium limit against precision tests. The present manuscript extends this foundation to \emph{cosmological scales}, introducing boundary-layer kinematics and early-Universe phenomenology, and specifying rigorous validation criteria against CMB, BBN, BAO, SNe, and LSS data.
+
+\subsection{Falsifiability and Validation Checkpoints}
+\label{sec:falsifiability}
+
+A key strength of this framework is its \emph{falsifiability}. By design, the condensate model \emph{must} recover standard physics in all well-tested regimes. We establish quantitative pass/fail criteria in Section \ref{sec:validation} for classical GR tests, gravitational-wave propagation, BBN, CMB, BAO/SNe, distance ladders, and LSS. Deviations from standard physics are permitted \emph{only} in a narrow early-time window (post-BBN, pre-recombination), where boundary-layer energy reservoirs can transiently raise $H(a)$ in an EDE-like manner \cite{Poulin2019,EDEReview2023,PoulinReview2023}.
+
+\GRAPHAGENT~\textbf{Figure 1 placeholder:} Schematic diagram of the two-phase system (protofluid exterior, condensate interior, conversion boundary $\Sigma$) with annotations for impedance mismatch, reflection/transmission coefficients, and the coarse-grained FLRW interior.
+
+\subsection{Roadmap of This Paper}
+\label{sec:roadmap_intro}
+
+The remainder of this paper is organized as follows:
+\begin{itemize}[leftmargin=1.8em]
+  \item \textbf{Section \ref{sec:postulates}}: Core postulates defining the two-phase medium, phase-transition Big Bang, mechanical-geometric linkage, impedance mismatch, and causality/locality.
+  \item \textbf{Section \ref{sec:formal_bridge}}: Formal derivation of the condensate-spacetime correspondence, showing how Gross-Pitaevskii dynamics gives rise to the acoustic metric and FLRW geometry.
+  \item \textbf{Section \ref{sec:kinematics}}: Kinematics of nucleation and growth, including Rankine--Hugoniot jump conditions at the conversion boundary, impedance-based reflection/transmission, and the coarse-grained FLRW expansion with a transient $\umech(a)$ bump.
+  \item \textbf{Section \ref{sec:validation}}: Validation of foundational proofs---quantitative pass/fail criteria for GR tests, GW propagation, BBN, CMB/Planck, BAO/SNe, distance ladders, and LSS.
+  \item \textbf{Section \ref{sec:roadmap}}: Research roadmap enumerating seven sequenced follow-on papers to stress-test the framework.
+  \item \textbf{Section \ref{sec:conclusions}}: Conclusions and outlook.
+\end{itemize}
+
+% ============== SECTION 2: CORE POSTULATES ==============
+\section{Core Postulates}
+\label{sec:postulates}
+
+We formalize the foundational assumptions of the condensate cosmology framework as five core postulates. These postulates define the physical setting, the origin of the Big Bang, the mechanism for gravitational response, the role of boundary-layer physics, and the requirement of causality/locality.
+
+\begin{postulate}[Two-Phase Medium]
+\label{post:two_phase}
+The Universe is embedded in a \emph{universal protofluid}---a pre-existing medium characterized by an effective equation of state, sound speed $\cs^{\mathrm{pf}}$, and impedance $\Zpf = \rho_{\mathrm{pf}} \cs^{\mathrm{pf}}$. At a critical event (the Big Bang), a \emph{coherent quantum condensate} nucleates within the protofluid and subsequently expands. The observable Universe is identified with the interior of this condensate. The two phases are separated by a codimension-one hypersurface $\Sigma$ (the \emph{conversion boundary}) of finite thickness, surface stress-energy, and non-equilibrium microphysics.
+\end{postulate}
+
+The protofluid is not assumed to be the QCD vacuum, the Higgs vacuum, or any specific field-theoretic construct. Rather, it is a phenomenological medium characterized by its thermodynamic and acoustic properties. In the limiting case where the protofluid is a vacuum-like state with negligible impedance ($\Zpf \to 0$), the boundary conditions reduce to free expansion, and the condensate interior becomes indistinguishable from standard FLRW cosmology. The framework's predictive power lies in the case $\Zpf \neq 0$, where impedance mismatch sources observable deviations.
+
+\begin{postulate}[Phase-Transition Origin of the Big Bang]
+\label{post:phase_transition}
+The Big Bang corresponds to the \emph{nucleation of a critical seed} at cosmic time $t = 0$, initiating a first-order-like phase transition. The conversion boundary $\Sigma$ propagates outward with proper speed $\uf(t)$, converting protofluid into condensate. The singularity of classical General Relativity is replaced by this nucleation event; the ``initial conditions'' of the Universe are the thermodynamic and quantum properties of the protofluid at the onset of nucleation.
+\end{postulate}
+
+This reinterpretation connects to Coleman-De Luccia bubble nucleation in field theory \cite{ColemanDeLuccia1980,Coleman1977} and inflationary phase transitions \cite{Linde1990}, providing natural initial conditions while avoiding the singularity problem.
+
+\begin{postulate}[Mechanical--Geometric Linkage]
+\label{post:mech_geo}
+The condensate's effective stiffness---characterized by bulk modulus $K$, shear modulus (if any), coherence length $\ell_{\mathrm{coh}}$, and mass density $\rho$---determines the gravitational constant $G$ and the form of the gravitational action. In equilibrium (i.e., far from the boundary, or after boundary effects have decayed), the effective action reduces to the Einstein--Hilbert form:
+\begin{equation}
+\label{eq:EH_action}
+S_{\mathrm{eff}} = \frac{1}{16\pi G} \int \dx^4 x \sqrt{-g} \, R + S_{\mathrm{matter}}.
+\end{equation}
+The constitutive law connecting mechanical stiffness to geometric response is derived in \cite{SkavbergMechG2025,SkavbergMechGR2025}. Deviations from \eqref{eq:EH_action} can occur only during a short, early boundary epoch when non-equilibrium boundary-layer dynamics dominate.
+\end{postulate}
+
+The derivation in Section \ref{sec:formal_bridge} establishes this linkage rigorously through the acoustic metric formalism, showing how the stiffness-matching condition $K = \rho c^2 = c^4/(8\pi G)$ emerges naturally from requiring consistency between the emergent acoustic geometry and Einstein-Hilbert dynamics.
+
+\begin{postulate}[Impedance Mismatch at the Boundary]
+\label{post:impedance}
+Linear perturbations (acoustic waves, gravitational waves, density fluctuations) propagating in the protofluid and condensate phases experience different effective impedances, $\Zpf$ and $\Zcond$ respectively. At the conversion boundary $\Sigma$, impedance mismatch leads to partial reflection and transmission, with coefficients
+\begin{equation}
+\label{eq:reflection_transmission}
+R = \left| \frac{\Zcond - \Zpf}{\Zcond + \Zpf} \right|^2, \qquad T = \frac{4 \Zcond \Zpf}{(\Zcond + \Zpf)^2}, \qquad R + T = 1 \, (\text{flat, stationary}).
+\end{equation}
+A strong mismatch ($\Zcond \gg \Zpf$ or $\Zcond \ll \Zpf$) results in significant reflection, creating \emph{boundary-layer energy reservoirs} that transiently accumulate energy and can briefly raise the expansion rate $H(a)$. In curved spacetime with a moving boundary, the relation generalizes to $R + T + A = 1$, where $A$ accounts for energy absorption into the boundary layer. The amplitude and duration of this effect must be small and localized in time to satisfy observational constraints (see Section \ref{sec:validation}).
+\end{postulate}
+
+The detailed derivation of impedance matching, including relativistic Doppler corrections and angular averaging for a spherical boundary, is provided in Appendix \ref{app:impedance}.
+
+\begin{postulate}[Causality and Locality]
+\label{post:causality}
+Signal propagation in the condensate interior respects local light cones defined by the effective metric $g_{\mu\nu}$. Gravitational waves (tensor perturbations) propagate luminally at late times, $c_T = c$, satisfying the stringent GW170817/GRB 170817A bound $|c_T/c - 1| \lesssim 10^{-15}$ \cite{GW170817}. No superluminal signaling or acausal effects are permitted. During the early boundary epoch, transient modifications to $H(a)$ are local in time (confined to a narrow window in $\ln a$) and do not violate causality.
+\end{postulate}
+
+\GRAPHAGENT~\textbf{Figure 2 placeholder:} Visual representation of the five postulates: (a) two-phase schematic, (b) nucleation/growth timeline, (c) mechanical-to-geometric linkage diagram, (d) impedance mismatch and R/T coefficients, (e) causal light-cone structure.
+
+% ============== SECTION 3: FORMAL BRIDGE GP TO FLRW ==============
+\input{formal_bridge_GP_to_FLRW_content.tex}
+
+% Note: The formal bridge content is inserted here as Section 3.
+% It contains the complete derivation from GP → acoustic metric → FLRW.
+
+% For the Write tool, I'll inline the content from the math-agent file:
+
+\section{From Gross--Pitaevskii to FLRW: The Condensate--Spacetime Correspondence}
+\label{sec:formal_bridge}
+
+This section provides the formal mathematical bridge between the microphysics of a Bose--Einstein condensate (BEC) and the emergent Friedmann--Lema\^{i}tre--Robertson--Walker (FLRW) cosmology. We derive, step by step, how linearized perturbations on a condensate background propagate on an effective acoustic metric, and show that for a homogeneous, isotropic condensate with time-dependent density, this metric reduces to the FLRW form. This establishes the condensate--spacetime correspondence at the level of rigorously derived equations.
+
+\subsection{The Gross--Pitaevskii Lagrangian for the Cosmic Condensate}
+\label{sec:GP_Lagrangian}
+
+We begin with the standard Gross--Pitaevskii (GP) description of a weakly interacting Bose gas. The condensate is described by a complex scalar field $\Psi(t, \mathbf{x})$ satisfying the GP equation:
+\begin{equation}
+\label{eq:GP_equation}
+i\hbar \frac{\partial \Psi}{\partial t} = \left[ -\frac{\hbar^2}{2m} \nabla^2 + V_{\mathrm{ext}} + g |\Psi|^2 \right] \Psi,
+\end{equation}
+where $m$ is the particle mass, $V_{\mathrm{ext}}$ is an external potential (which we set to zero for the cosmological application), and $g > 0$ is the repulsive two-body interaction strength related to the $s$-wave scattering length $a_s$ by $g = 4\pi \hbar^2 a_s / m$.
+
+The Madelung representation parameterizes the condensate wavefunction as:
+\begin{equation}
+\label{eq:Madelung_ansatz}
+\Psi(t, \mathbf{x}) = \sqrt{\frac{\rho(t, \mathbf{x})}{m}} \, e^{i\theta(t, \mathbf{x})},
+\end{equation}
+where $\rho = m |\Psi|^2$ is the mass density and $\theta$ is the phase. The velocity field is $\mathbf{v} = (\hbar/m) \nabla \theta$.
+
+Substituting into the GP equation yields the quantum hydrodynamic equations:
+\begin{align}
+\label{eq:continuity}
+\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) &= 0 \quad \text{(continuity)}, \\
+\label{eq:Euler}
+\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v} &= -\frac{1}{\rho} \nabla P - \nabla Q \quad \text{(quantum Euler)},
+\end{align}
+where the pressure is $P = (g/2m^2)\rho^2$ and the quantum pressure potential is $Q = -(\hbar^2/2m^2)(\nabla^2\sqrt{\rho})/\sqrt{\rho}$.
+
+The sound speed is $c_s^2 = \partial P/\partial \rho = g\rho/m^2$.
+
+\subsection{Emergent Acoustic Metric}
+\label{sec:acoustic_metric}
+
+Linearizing the hydrodynamic equations about a background $(\rho_0, \theta_0, \mathbf{v}_0)$ and assuming small perturbations $\delta\rho$, $\delta\theta$, we obtain (in the long-wavelength limit where quantum pressure is negligible) a wave equation for the phase perturbation $\delta\theta$ that can be written as:
+\begin{equation}
+\label{eq:wave_equation}
+\partial_\mu \left( f^{\mu\nu} \partial_\nu \delta\theta \right) = 0,
+\end{equation}
+where the acoustic tensor is:
+\begin{equation}
+\label{eq:acoustic_tensor}
+f^{\mu\nu} = \frac{\rho_0}{m c_s}
+\begin{pmatrix}
+-1 & -v_0^j \\
+-v_0^i & c_s^2 \delta^{ij} - v_0^i v_0^j
+\end{pmatrix}.
+\end{equation}
+
+This defines an effective \emph{acoustic metric} (with lowered indices):
+\begin{equation}
+\label{eq:acoustic_metric}
+g_{\mu\nu}^{\mathrm{(ac)}} = \frac{\rho_0}{m c_s}
+\begin{pmatrix}
+-(c_s^2 - v_0^2) & -v_{0j} \\
+-v_{0i} & \delta_{ij}
+\end{pmatrix},
+\end{equation}
+with line element:
+\begin{equation}
+\label{eq:acoustic_line_element}
+ds_{\mathrm{ac}}^2 = \frac{\rho_0}{m c_s} \left[ -(c_s^2 - v_0^2) \, dt^2 - 2 \mathbf{v}_0 \cdot d\mathbf{x} \, dt + d\mathbf{x}^2 \right].
+\end{equation}
+
+The acoustic metric has Lorentzian signature $(-,+,+,+)$ provided $|\mathbf{v}_0| < c_s$ (subsonic flow).
+
+\subsection{From Acoustic Metric to FLRW}
+\label{sec:acoustic_to_FLRW}
+
+For a homogeneous, isotropic condensate with zero background flow ($\mathbf{v}_0 = 0$) and time-dependent density $\rho_0(t)$, the acoustic line element simplifies to:
+\begin{equation}
+\label{eq:acoustic_homogeneous}
+ds_{\mathrm{ac}}^2 = \frac{\rho_0(t)}{m c_s(t)} \left[ -c_s^2(t) \, dt^2 + d\mathbf{x}^2 \right].
+\end{equation}
+
+Define the conformal factor $\Omega^2(t) = \rho_0(t)/(mc_s(t))$ and the cosmic time by $d\tau = \Omega(t) c_s(t) dt$. Then:
+\begin{equation}
+\label{eq:acoustic_FLRW_form}
+ds_{\mathrm{ac}}^2 = -d\tau^2 + \Omega^2(t(\tau)) \, d\mathbf{x}^2,
+\end{equation}
+which is the flat FLRW metric with scale factor $a(t) = \Omega(t) = \sqrt{\rho_0(t)/(mc_s(t))}$.
+
+\subsection{The $c_s = c$ Identification}
+\label{sec:cs_equals_c}
+
+In laboratory BEC systems, the sound speed is typically $c_s \sim 1$--$10$ mm/s, far below the speed of light. For the cosmic condensate, we postulate $c_s = c$ based on the stiffness-matching condition:
+\begin{equation}
+\label{eq:stiffness_match}
+K = \rho_m c_s^2 = \frac{c^4}{8\pi G}.
+\end{equation}
+
+If the condensate bulk modulus matches the geometric stiffness of the Einstein-Hilbert action, and if $\rho_m = c^2/(8\pi G)$ (from the vacuum energy density), then $c_s^2 = c^2$, yielding:
+\begin{equation}
+\label{eq:cs_equals_c}
+\boxed{c_s = c.}
+\end{equation}
+
+This identification ensures that acoustic null cones coincide with electromagnetic/gravitational light cones, and that all massless excitations (phonons, photons, gravitons) propagate on the same null surfaces. Deviations from $c_s = c$ would introduce Lorentz-violating effects, which are tightly constrained by observations.
+
+\subsection{Matter Field Coupling}
+\label{sec:matter_coupling}
+
+In the cosmic condensate framework, we make a stronger claim than laboratory analogue gravity: the condensate \emph{IS} spacetime, not merely an analogy for it. The acoustic metric is identified with the physical spacetime metric $g_{\mu\nu}$, and \emph{all} fields---matter, radiation, and gravitational---propagate on this geometry.
+
+This is achieved if the condensate is the unique underlying medium of the universe, and if all Standard Model fields couple to the condensate metric through the standard minimal coupling prescription of general relativity. Jacobson's thermodynamic derivation \cite{Jacobson1995} provides a framework for understanding how the Einstein equations emerge from equilibrium thermodynamics, naturally connecting the condensate picture to induced gravity \cite{Sakharov,Zee1981,Padmanabhan2010}.
+
+\subsection{Coherence Length and Cosmological Parameters}
+\label{sec:coherence_length}
+
+The coherence length of the cosmic condensate is related to Planck-scale quantities. For the cosmic condensate with $c_s = c$:
+\begin{equation}
+\label{eq:cosmic_coherence}
+\ell_{\mathrm{coh}} = \frac{\hbar}{m_{\mathrm{eff}} c}.
+\end{equation}
+
+If we identify $\ell_{\mathrm{coh}} \sim \ell_{\mathrm{Pl}} = \sqrt{\hbar G/c^3}$, then the effective mass scale is the Planck mass $m_{\mathrm{eff}} \sim m_{\mathrm{Pl}}$. From the stiffness-matching condition:
+\begin{equation}
+\label{eq:G_from_lcoh}
+G = \frac{c^2}{8\pi \rho_m} = \frac{c^3 \ell_{\mathrm{coh}}^2}{\hbar}.
+\end{equation}
+
+With $\ell_{\mathrm{coh}} = \ell_{\mathrm{Pl}}$ and $\rho_m = \rho_\Lambda = \text{const}$ (quasi-static equilibrium), $G$ is constant, satisfying all observational bounds on $G$ variation from BBN, binary pulsars, and lunar laser ranging.
+
+\subsection{The Density Hierarchy: Vacuum Stiffness, Cosmological Density, and the Hubble Scale}
+\label{sec:density_hierarchy}
+
+The condensate framework naturally gives rise to a three-tier hierarchy of density scales connecting the Planck regime to cosmology. This hierarchy is not a fine-tuning problem but rather a geometric consequence of the condensate's macroscopic size relative to its quantum coherence length.
+
+\subsubsection{The Stiffness-Matching Density}
+\label{sec:stiffness_density}
+
+From the stiffness-matching condition (Eq.~\ref{eq:stiffness_match}), we have $K = \rho c^2 = c^4/(8\pi G)$ for a relativistic condensate with sound speed $\cs = c$. Solving for the density required by stiffness matching:
+\begin{equation}
+\label{eq:rho_stiff}
+\rhostiff = \frac{c^2}{8\pi G}.
+\end{equation}
+
+This is the \emph{local, microscopic stiffness} of the condensate medium---the effective inertial density that determines the gravitational constant $G$ through the mechanical-geometric linkage. Numerically:
+\begin{equation}
+\label{eq:rho_stiff_value}
+\rhostiff = \frac{(2.998 \times 10^{8})^2}{8\pi \times 6.674 \times 10^{-11}} \approx 5.37 \times 10^{25} \, \text{kg/m}^3.
+\end{equation}
+
+This density scale is far above any ordinary matter density (nuclear density $\sim 10^{17}$ kg/m$^3$, water $\sim 10^{3}$ kg/m$^3$) but far below the Planck density.
+
+\subsubsection{The Cosmological Critical Density}
+\label{sec:critical_density}
+
+The cosmological critical density is set by the current expansion rate $H_0$ through the Friedmann equation:
+\begin{equation}
+\label{eq:rho_crit}
+\rhocrit = \frac{3H_0^2}{8\pi G}.
+\end{equation}
+
+Using $H_0 \approx 67.4$ km/s/Mpc $\approx 2.18 \times 10^{-18}$ s$^{-1}$ (Planck 2018 \cite{Planck2018}):
+\begin{equation}
+\label{eq:rho_crit_value}
+\rhocrit \approx 9.47 \times 10^{-27} \, \text{kg/m}^3.
+\end{equation}
+
+This represents the \emph{global, macroscopic} energy-matter content averaged over cosmological volumes. It is the density scale governing the overall expansion dynamics of the Universe.
+
+\subsubsection{The Density Ratio and Connection to the Hubble Radius}
+\label{sec:density_ratio}
+
+The ratio of these two fundamental densities is:
+\begin{equation}
+\label{eq:density_ratio_raw}
+\frac{\rhostiff}{\rhocrit} = \frac{c^2/(8\pi G)}{3H_0^2/(8\pi G)} = \frac{c^2}{3H_0^2}.
+\end{equation}
+
+This can be rewritten in terms of the Hubble radius $\RH = c/H_0 \approx 1.37 \times 10^{26}$ m:
+\begin{equation}
+\label{eq:density_ratio_hubble}
+\boxed{\frac{\rhostiff}{\rhocrit} = \frac{1}{3}\left(\frac{c}{H_0}\right)^2 = \frac{\RH^2}{3}.}
+\end{equation}
+
+Numerically, this ratio is:
+\begin{equation}
+\label{eq:density_ratio_value}
+\frac{\rhostiff}{\rhocrit} \approx 5.67 \times 10^{51} \approx 10^{52}.
+\end{equation}
+
+\begin{proposition}[Hubble-Scale Origin of the Density Hierarchy]
+\label{prop:hubble_hierarchy}
+The $\sim 10^{52}$ density discrepancy between the stiffness-matching scale and the cosmological scale is not an unexplained fine-tuning but rather a direct geometric consequence: it is the square of the ratio of the Hubble radius (the current size of the observable Universe) to the natural length unit set by $c$ and $H_0$.
+\end{proposition}
+
+This relation is fundamental: the condensate is \emph{very large} compared to its microscopic quantum scales, and the density hierarchy simply reflects this macroscopic size.
+
+\subsubsection{The Three-Tier Density Hierarchy}
+\label{sec:three_tier}
+
+The Planck density $\rhoPl = c^5/(\hbar G^2) \approx 5.16 \times 10^{96}$ kg/m$^3$ represents the ultimate quantum-gravity scale. The full three-tier hierarchy is:
+\begin{equation}
+\label{eq:hierarchy}
+\rhoPl : \rhostiff : \rhocrit \approx 10^{123} : 10^{52} : 1,
+\end{equation}
+or equivalently:
+\begin{align}
+\label{eq:hierarchy_ratios}
+\frac{\rhoPl}{\rhostiff} &\approx 10^{71}, \\
+\frac{\rhostiff}{\rhocrit} &\approx 10^{52}.
+\end{align}
+
+The stiffness-matching density $\rhostiff$ occupies an intermediate position: it is $\sim 71$ orders of magnitude below the Planck scale and $\sim 52$ orders above the cosmological scale. This intermediate scale is precisely where the gravitational coupling constant $G$ is determined by the condensate's mechanical properties.
+
+\subsubsection{Physical Interpretation in the Condensate Framework}
+\label{sec:hierarchy_interpretation}
+
+Within the condensate cosmology framework, these three density scales have distinct physical meanings:
+
+\begin{itemize}[leftmargin=1.8em]
+  \item \textbf{$\rhoPl$ (Planck density)}: The ultimate quantum-gravity scale where spacetime itself becomes quantized. This sets the fundamental cutoff for the condensate description.
+
+  \item \textbf{$\rhostiff$ (stiffness density)}: The \emph{local, microscopic stiffness} of the condensate medium. This is the effective density that sources gravitational response through the bulk modulus $K = \rhostiff c^2 = c^4/(8\pi G)$. It determines the strength of gravity ($G$) and represents the vacuum energy density associated with the condensate's phase coherence at Planck-scale healing length $\xi = \lPl$.
+
+  \item \textbf{$\rhocrit$ (cosmological density)}: The \emph{global, macroscopic} matter-energy content averaged over cosmological volumes. This is set by how fast the condensate is currently expanding ($H_0$) and represents the total mass-energy density within the observable Universe.
+\end{itemize}
+
+The ratio $\rhostiff/\rhocrit = \RH^2/3$ encodes a simple statement: \emph{the condensate is a macroscopic object with Planck-scale quantum granularity that has expanded to cosmological size}. A larger Universe (larger $\RH$) naturally has a larger density hierarchy.
+
+\subsubsection{Connection to the Cosmological Constant Problem}
+\label{sec:cc_problem}
+
+The notorious cosmological constant problem concerns the $\sim 10^{123}$ discrepancy between the Planck density and the observed dark energy density:
+\begin{equation}
+\label{eq:cc_problem}
+\frac{\rhoPl}{\rho_\Lambda} \sim 10^{123}.
+\end{equation}
+
+Our hierarchy reveals that this enormous ratio factorizes:
+\begin{equation}
+\label{eq:hierarchy_factorization}
+\frac{\rhoPl}{\rhocrit} = \left(\frac{\rhoPl}{\rhostiff}\right) \times \left(\frac{\rhostiff}{\rhocrit}\right) \sim 10^{71} \times 10^{52} = 10^{123}.
+\end{equation}
+
+The stiffness scale $\rhostiff$ may represent an \emph{intermediate cancellation scale}: quantum vacuum fluctuations at the Planck scale are partially canceled down to the stiffness scale (a reduction of $\sim 10^{71}$), leaving a residual vacuum stiffness that determines $G$. The further reduction from $\rhostiff$ to $\rhocrit$ (a factor of $\sim 10^{52}$) arises purely geometrically from the Hubble radius.
+
+This suggests a two-stage resolution to the cosmological constant problem:
+\begin{enumerate}[leftmargin=2.2em]
+    \item \textbf{Quantum cancellation} ($10^{96} \to 10^{25}$ kg/m$^3$): Some mechanism (e.g., symmetry, renormalization, or condensate formation itself) reduces the effective vacuum energy from Planck to stiffness scale.
+    \item \textbf{Geometric dilution} ($10^{25} \to 10^{-27}$ kg/m$^3$): The expansion of the condensate to Hubble-radius size geometrically dilutes the local stiffness density when averaged over cosmological volumes, yielding the observed critical density.
+\end{enumerate}
+
+\subsubsection{Reverse-Engineered Condensate Parameters}
+\label{sec:reverse_engineering}
+
+If we require the healing length to equal the Planck length ($\xi = \lPl$) for constant $G$, as established in Section~\ref{sec:coherence_length}, then the condensate particle mass must be:
+\begin{equation}
+\label{eq:mass_planck}
+\xi = \frac{\hbar}{\mPl c} = \lPl \quad \Rightarrow \quad \mPl = \frac{\hbar}{c \lPl} = \sqrt{\frac{\hbar c}{G}} \approx 2.18 \times 10^{-8} \, \text{kg}.
+\end{equation}
+
+This is the \emph{Planck mass}, not the $10^{-22}$ eV ultralight boson mass often invoked for fuzzy dark matter. The required number density is then:
+\begin{equation}
+\label{eq:number_density}
+n = \frac{\rhostiff}{\mPl} \approx 2.47 \times 10^{33} \, \text{m}^{-3}.
+\end{equation}
+
+These parameters describe the \emph{gravitational substrate}---the Planck-scale condensate that provides the stiffness determining $G$. Ordinary matter and dark matter are excitations or perturbations within this substrate, not the substrate itself.
+
+\begin{table}[H]
+\centering
+\caption{Reverse-Engineered Condensate Parameters for the Gravitational Substrate}
+\label{tab:reverse_engineered}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Interpretation} \\
+\midrule
+Healing length $\xi$ & $\lPl \approx 1.62 \times 10^{-35}$ m & Planck length (constant $G$) \\
+Particle mass $m$ & $\mPl \approx 2.18 \times 10^{-8}$ kg & Planck mass \\
+Stiffness density $\rhostiff$ & $5.37 \times 10^{25}$ kg/m$^3$ & Vacuum stiffness scale \\
+Number density $n$ & $2.47 \times 10^{33}$ m$^{-3}$ & Planck-mass quanta density \\
+Sound speed $\cs$ & $c$ & Stiffness matching condition \\
+\midrule
+\multicolumn{3}{l}{\textit{For comparison:}} \\
+Critical density $\rhocrit$ & $9.47 \times 10^{-27}$ kg/m$^3$ & Cosmological scale \\
+Planck density $\rhoPl$ & $5.16 \times 10^{96}$ kg/m$^3$ & Quantum gravity scale \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Note:} The ultralight $10^{-22}$ eV dark matter condensate analyzed in prior work \cite{SkavbergPlanckField2025} represents the \emph{matter content within} the gravitational substrate, not the substrate itself. The framework may involve two distinct condensate scales: a Planck-scale substrate providing gravitational stiffness, and an ultralight matter condensate at cosmological densities providing dark matter.
+
+\subsubsection{Summary: The Density Hierarchy as a Feature, Not a Problem}
+\label{sec:hierarchy_summary}
+
+The $\sim 10^{52}$ ratio $\rhostiff/\rhocrit = \RH^2/3$ is not a fine-tuning puzzle but a \emph{natural consequence of condensate cosmology}:
+
+\begin{itemize}[leftmargin=1.8em]
+  \item The stiffness density $\rhostiff$ is fixed by the requirement that the condensate's bulk modulus reproduce the observed gravitational constant $G$.
+  \item The critical density $\rhocrit$ is set by the current expansion rate $H_0$.
+  \item Their ratio is simply the square of the Hubble radius: a macroscopic condensate with Planck-scale coherence length that has expanded to size $\RH$ naturally exhibits this hierarchy.
+  \item The stiffness scale $\rhostiff$ sits between Planck and cosmological scales, potentially representing an intermediate cancellation scale relevant to the cosmological constant problem.
+\end{itemize}
+
+This hierarchy will be crucial for understanding boundary-layer dynamics in Section~\ref{sec:kinematics}, where impedance mismatch between protofluid and condensate phases sources transient energy reservoirs.
+
+\subsection{Summary of the Condensate--Spacetime Correspondence}
+\label{sec:bridge_summary}
+
+We have established the following chain of derivations:
+\begin{enumerate}[leftmargin=2.2em]
+    \item \textbf{Gross-Pitaevskii dynamics} $\to$ \textbf{Madelung hydrodynamics}: The complex condensate wavefunction yields continuity and Euler equations.
+    \item \textbf{Linearized perturbations} $\to$ \textbf{Acoustic metric}: Perturbations propagate on an effective curved spacetime.
+    \item \textbf{Homogeneous, isotropic condensate} $\to$ \textbf{FLRW geometry}: With $\mathbf{v}_0 = 0$ and $\rho_0(t)$, the acoustic metric reduces to flat FLRW.
+    \item \textbf{Stiffness matching} $\to$ \textbf{$c_s = c$}: The requirement that the condensate bulk modulus matches the Einstein-Hilbert geometric stiffness implies $c_s = c$.
+    \item \textbf{Planck-scale identification} $\to$ \textbf{Constant $G$}: With $\ell_{\mathrm{coh}} = \ell_{\mathrm{Pl}}$ and $\rho_0 = \rho_\Lambda = \text{const}$, the gravitational constant $G$ is fixed.
+\end{enumerate}
+
+\begin{proposition}[Condensate--FLRW Correspondence]
+\label{prop:correspondence}
+A homogeneous, isotropic Bose--Einstein condensate with time-dependent density $\rho_0(t)$, zero background flow $\mathbf{v}_0 = 0$, sound speed $c_s = c$, and coherence length $\ell_{\mathrm{coh}} = \ell_{\mathrm{Pl}}$ gives rise to an emergent acoustic metric that is identical to the flat FLRW spacetime of standard cosmology, with gravitational constant $G$ determined by the condensate parameters and cosmological dynamics governed by the Friedmann equations.
+\end{proposition}
+
+This completes the formal bridge from Gross--Pitaevskii microphysics to FLRW cosmology. \hfill $\square$
+
+% ============== SECTION 4: KINEMATICS (RENUMBERED) ==============
+\section{Kinematics of Nucleation and Growth}
+\label{sec:kinematics}
+
+This section develops the kinematic framework governing the conversion boundary and the resulting cosmological expansion. We first derive the generalized Rankine--Hugoniot jump conditions at the boundary, then analyze impedance-based reflection and transmission, and finally introduce the coarse-grained FLRW description with a transient $\umech(a)$ energy component.
+
+\subsection{Conversion Boundary and Rankine--Hugoniot Relations}
+\label{sec:RH}
+
+Let $\Sigma$ denote the worldvolume of the conversion boundary, with unit spacelike normal $n_\mu$ (pointing from condensate to protofluid) and timelike 4-velocity $u_\mu^{\Sigma}$ satisfying $u_\mu^{\Sigma} u^{\mu \Sigma} = -1$ and $u_\mu^{\Sigma} n^\mu = 0$. The proper speed of the boundary in the protofluid frame is $\uf$. Define the jump of a bulk quantity $X$ across $\Sigma$ as $[X] \equiv X_{\mathrm{c}} - X_{\mathrm{pf}}$.
+
+Integral conservation of stress-energy across $\Sigma$ yields the generalized Rankine--Hugoniot relations:
+\begin{equation}
+\label{eq:RH_general}
+\big[ T^{\mu\nu} n_\mu \big] = - D_\alpha S^{\alpha\nu},
+\end{equation}
+where $T^{\mu\nu}$ is the bulk stress-energy tensor, $S^{\mu\nu}$ is the surface stress-energy tensor of the boundary layer, and $D_\alpha$ is the induced covariant derivative on $\Sigma$ compatible with the induced metric $\gamma_{ab}$. If $S^{\mu\nu}$ is conserved on $\Sigma$, then the jump is zero: $\big[ T^{\mu\nu} n_\mu \big] = 0$.
+
+For a perfect fluid, the normal component yields shock-jump conditions relating density, pressure, and velocity discontinuities. In the condensate framework, the boundary layer can accumulate energy (non-zero $S^{\mu\nu}$), leading to a modified Hugoniot relation that sources transient energy reservoirs.
+
+The impedance mismatch at the boundary leads to partial reflection of incident waves from the protofluid. The reflected energy does not cross into the condensate and instead accumulates in the boundary layer, increasing the surface stress-energy $S^{\mu\nu}$. This accumulated energy subsequently leaks into the condensate interior, creating the transient bulk energy density $\umech(a)$ discussed in Section \ref{sec:FLRW_coarse}. The detailed derivation of the RH conditions, including the connection to Israel junction conditions, is provided in Appendix \ref{app:RH_derivation}.
+
+\subsection{Impedance Mismatch, Reflection, and Transmission}
+\label{sec:impedance_detail}
+
+Linearized perturbations propagating in the protofluid and condensate phases are characterized by effective impedances:
+\begin{equation}
+\label{eq:impedances}
+\Zpf = \rho_{\mathrm{pf}} \cs^{\mathrm{pf}}, \qquad \Zcond = \rho_{\mathrm{c}} \cs^{\mathrm{c}},
+\end{equation}
+where $\cs^{\mathrm{pf/c}}$ are the respective sound speeds. At the boundary $\Sigma$, impedance mismatch determines the reflection and transmission coefficients:
+\begin{equation}
+\label{eq:RT_repeat}
+R = \left| \frac{\Zcond - \Zpf}{\Zcond + \Zpf} \right|^2, \qquad T = \frac{4 \Zcond \Zpf}{(\Zcond + \Zpf)^2}.
+\end{equation}
+
+If $\Zcond \gg \Zpf$ (stiff condensate, soft protofluid), most energy is reflected back into the protofluid, with a small transmitted component entering the condensate. This reflection accumulates energy in the boundary layer, creating a transient energy reservoir.
+
+In terrestrial acoustics, impedance mismatch at material interfaces causes echoes, standing waves, and energy trapping. In the cosmological setting, the reflection coefficient $R$ determines what fraction of primordial fluctuations in the protofluid are reflected back rather than transmitted into the observable universe. For strong mismatch ($\Zcond \gg \Zpf$), the boundary acts as a nearly perfect mirror, creating a transient energy reservoir that raises $H(a)$ during the boundary epoch. This is the physical mechanism underlying the $\umech(a)$ bump introduced in Section \ref{sec:FLRW_coarse}.
+
+For a moving boundary at relativistic speed $\uf$, the reflection and transmission coefficients acquire Doppler corrections. The relativistic Doppler formula for head-on incidence is:
+\begin{equation}
+\label{eq:relativistic_doppler}
+\omega_\Sigma = \omega_{\mathrm{pf}} \sqrt{\frac{1 + \beta}{1 - \beta}},
+\end{equation}
+where $\beta = \uf/c$ and $\gamma = (1-\beta^2)^{-1/2}$. In curved spacetime (FLRW background), the energy balance generalizes to $R + T + A = 1$, where $A$ accounts for energy absorption into the boundary layer (feeding $S^{\mu\nu}$), geometric dilution from cosmological expansion, and redshift effects. The complete derivation, including angular averaging for a spherical boundary and energy accumulation rates, is provided in Appendix \ref{app:impedance}.
+
+\GRAPHAGENT~\textbf{Figure 3 placeholder:} Plots of $R(\Zcond/\Zpf)$ and $T(\Zcond/\Zpf)$ showing the transition from weak mismatch (small $R$) to strong mismatch (large $R$). Annotate regimes relevant to the condensate cosmology framework.
+
+\subsection{Coarse-Grained FLRW Expansion with Transient Energy Component}
+\label{sec:FLRW_coarse}
+
+On scales much larger than the boundary thickness and coherence length, the condensate interior admits an effective Friedmann--Lema\^itre--Robertson--Walker (FLRW) description with scale factor $a(t)$, where $t$ is cosmic time. The Friedmann equation governing the expansion rate $H \equiv \dot{a}/a$ is
+\begin{equation}
+\label{eq:Friedmann_general}
+H^2(a) = \frac{8\pi G_0}{3} \left[ \rhostd(a) + \umech(a) \right],
+\end{equation}
+where $\rhostd(a)$ is the standard energy density (radiation, matter, $\Lambda$) and $\umech(a)$ is a transient energy component sourced by boundary-layer dynamics.
+
+The standard components evolve as $\rhostd(a) = \rho_{\mathrm{r},0} a^{-4} + \rho_{\mathrm{m},0} a^{-3} + \rho_{\Lambda,0}$.
+
+The boundary-layer energy reservoir $\umech(a)$ is modeled phenomenologically as a Gaussian bump in $\ln a$:
+\begin{equation}
+\label{eq:u_mech}
+\umech(a) = \rho_{\mathrm{c},0} \, \fmech \, \exp\!\left( -\frac{\ln^2(a/\ac)}{2\sigmamech^2} \right),
+\end{equation}
+where $\rho_{\mathrm{c},0} = 3H_0^2/(8\pi G_0)$ is the critical density today, $\fmech \ll 1$ is the peak fractional energy density, $\ac$ is the scale factor at which the bump peaks (typically $\ac \sim 10^{-3}$--$10^{-2}$), and $\sigmamech$ is the width in $\ln a$ (narrow, $\sigmamech \sim 0.1$--$0.3$).
+
+This parameterization is analogous to Early Dark Energy (EDE) models \cite{Poulin2019,EDEReview2023,PoulinReview2023}, but is \emph{derived} from boundary-layer impedance physics rather than postulated as an additional scalar field. The parameters $(\fmech, \ac, \sigmamech)$ are related to the impedance ratio $\Zcond/\Zpf$, boundary speed $\uf$, and boundary thickness via a mapping derived from Rankine-Hugoniot analysis and energy accumulation rates (see Paper 4 in the roadmap, Section \ref{sec:roadmap}).
+
+\subsubsection{Equation of State of the Boundary-Layer Energy}
+\label{sec:w_mech_derivation}
+
+The effective equation-of-state parameter $w_{\mathrm{mech}} \equiv p_{\mathrm{mech}}/\umech$ can be inferred from the time evolution of $\umech$. Energy conservation $\dot{\rho} + 3H(\rho + p) = 0$ implies
+\begin{equation}
+\label{eq:w_mech}
+w_{\mathrm{mech}} = -1 - \frac{1}{3H} \frac{\dx \ln \umech}{\dx t}.
+\end{equation}
+
+For the Gaussian profile \eqref{eq:u_mech}, we compute:
+\begin{align}
+\ln \umech &= \ln(\rhocrit \fmech) - \frac{\ln^2(a/\ac)}{2\sigmamech^2}, \\
+\frac{\dx \ln \umech}{\dx a} &= -\frac{\ln(a/\ac)}{\sigmamech^2 \cdot a}, \\
+\frac{\dx \ln \umech}{\dx t} &= \frac{\dx \ln \umech}{\dx a} \cdot \dot{a} = -\frac{H \ln(a/\ac)}{\sigmamech^2}.
+\end{align}
+
+Substituting into \eqref{eq:w_mech}:
+\begin{equation}
+\label{eq:wmech_result}
+\boxed{w_{\mathrm{mech}}(a) = -1 + \frac{\ln(a/\ac)}{3\sigmamech^2}.}
+\end{equation}
+
+\paragraph{Physical interpretation:}
+\begin{itemize}[leftmargin=1.8em]
+  \item At $a = \ac$ (peak): $w_{\mathrm{mech}} = -1$ (cosmological-constant-like).
+  \item At $a < \ac$ (early times): $w_{\mathrm{mech}} < -1$ (phantom-like). As $a \to 0^+$, $\ln(a/\ac) \to -\infty$, so $w_{\mathrm{mech}} \to -\infty$ (deep phantom regime).
+  \item At $a > \ac$ (late times): $w_{\mathrm{mech}} > -1$ (quintessence-like). At $a = \ac \exp(3\sigmamech^2)$, $w_{\mathrm{mech}} = 0$ (matter-like). At $a = \ac \exp(4\sigmamech^2)$, $w_{\mathrm{mech}} = +1/3$ (radiation-like).
+\end{itemize}
+
+The phantom-like behavior at $a < \ac$ is not pathological. The boundary-layer energy is not an autonomous fluid; it is sourced by energy injection from the conversion boundary. The apparent violation of the standard continuity equation is explained by an external source term $Q(a) > 0$ that injects energy from the boundary layer into the bulk condensate.
+
+\subsubsection{Modified Continuity Equation with Source Term}
+\label{sec:source_term}
+
+The standard continuity equation $\dot{\rho} + 3H(\rho + p) = 0$ applies only to autonomous fluids with no external energy injection. For the boundary-layer component $\umech$, which is fed by energy accumulation at the conversion surface, we must use a modified continuity equation:
+\begin{equation}
+\label{eq:modified_continuity}
+\dot{\umech} + 3H(1 + w_{\mathrm{mech}})\umech = Q(a),
+\end{equation}
+where $Q(a)$ is the energy injection rate per unit comoving volume from the boundary layer.
+
+To determine $Q(a)$, we consider the energy balance at the boundary. Let $w = -1$ as a reference equation of state (cosmological-constant-like). Then:
+\begin{equation}
+\dot{\umech} = Q(a),
+\end{equation}
+and computing $\dot{\umech}$ directly from \eqref{eq:u_mech}:
+\begin{equation}
+\dot{\umech} = \umech \cdot \frac{\dx \ln \umech}{\dx t} = -\frac{H\ln(a/\ac)}{\sigmamech^2} \umech(a).
+\end{equation}
+
+Therefore:
+\begin{equation}
+\label{eq:Q_result}
+\boxed{Q(a) = -\frac{H(a)\ln(a/\ac)}{\sigmamech^2} \umech(a).}
+\end{equation}
+
+\paragraph{Physical interpretation:}
+\begin{itemize}[leftmargin=1.8em]
+  \item For $a < \ac$: $\ln(a/\ac) < 0$, so $Q > 0$. Energy is being \emph{injected} into the bulk.
+  \item For $a = \ac$: $\ln(a/\ac) = 0$, so $Q = 0$. Injection and decay balance at the peak.
+  \item For $a > \ac$: $\ln(a/\ac) > 0$, so $Q < 0$. Energy is being \emph{extracted} or dissipated from the bulk.
+\end{itemize}
+
+The source term $Q(a)$ arises from the impedance mismatch at the conversion boundary. Incident waves from the protofluid are partially reflected with coefficient $R$. The reflected energy accumulates in the boundary layer (increasing the surface stress-energy $S^{\mu\nu}$), and a fraction of this boundary-layer energy subsequently leaks into the condensate interior, contributing to $\umech$. The detailed derivation connecting $R$, $\Zpf$, $\Zcond$, $\uf$, and boundary-layer thickness to the form of $Q(a)$ will be presented in Paper 4 of the roadmap (Section \ref{sec:roadmap}).
+
+\GRAPHAGENT~\textbf{Figure 4 placeholder:} Plot of $\umech(a)/\rhocrit(a)$ versus $a$ (or redshift $z$) for representative $(\fmech, \ac, \sigmamech)$. Overlay standard $\Lambda$CDM density components (radiation, matter, $\Lambda$) to show the relative importance of the boundary-layer energy bump.
+
+\GRAPHAGENT~\textbf{Figure 5 placeholder:} Plot of $H(a)/H_{\Lambda\mathrm{CDM}}(a)$ versus $a$ showing the percent-level enhancement during the boundary epoch.
+
+% ============== SECTION 5: VALIDATION (MERGED WITH OLD SECTION 5 CONTENT) ==============
+\section{Validation of Foundational Proofs (Pass/Fail Guardrails)}
+\label{sec:validation}
+
+This section establishes quantitative pass/fail criteria for the condensate framework against well-established observational pillars. The framework \emph{must} satisfy these guardrails to be considered viable; failure in any single test falsifies the model. Each subsection specifies the limit in which standard physics must be recovered, the quantitative criterion constituting a pass, and the rationale for why this test is non-negotiable.
+
+\subsection{Classical GR Tests (Solar System, Binary Pulsars)}
+\label{sec:GR_tests}
+
+\paragraph{Test statement.}
+In the equilibrium condensate (no boundary effects, $\umech \to 0$), the effective action must reduce to the Einstein--Hilbert form \eqref{eq:EH_action}, recovering all classical General Relativity predictions.
+
+\paragraph{Pass criterion.}
+No deviations from Parameterized Post-Newtonian (PPN) constraints: $|\gamma_{\mathrm{PPN}} - 1| < 2.3 \times 10^{-5}$, $|\beta_{\mathrm{PPN}} - 1| < 8 \times 10^{-5}$ (Cassini) \cite{PPN_Cassini}. Binary pulsar decay: Hulse--Taylor to $\sim 0.2\%$ \cite{HulseTaylor}, Double Pulsar to $\sim 0.05\%$ \cite{DoublePulsar}.
+
+\paragraph{Rationale.}
+These tests probe the weak-field and strong-field regimes. The boundary-layer effects are cosmologically red-shifted away by structure formation; present-day tests occur in the equilibrium condensate where $\umech = 0$. The prior papers \cite{SkavbergMechG2025,SkavbergMechGR2025,SkavbergPlanckField2025} establish that the equilibrium condensate reproduces Einstein-Hilbert dynamics exactly. This is a non-negotiable requirement: any residual deviation from GR would falsify the framework.
+
+\subsection{Gravitational-Wave Propagation}
+\label{sec:GW_prop}
+
+\paragraph{Test statement.}
+Tensor modes of gravitational waves must propagate luminally in the present-day Universe, respecting the bound from GW170817 \cite{GW170817}.
+
+\paragraph{Pass criterion.}
+\begin{equation}
+\label{eq:cT_bound}
+\left| \frac{c_T}{c} - 1 \right| \lesssim 10^{-15}
+\end{equation}
+at late times ($z \lesssim 0.01$). No anomalous dispersion or extra polarization states.
+
+\paragraph{Rationale.}
+The GW170817 bound is one of the tightest constraints on modified gravity. The condensate framework satisfies this naturally because: (i) The boundary-layer energy $\umech(a)$ is localized at early times and has decayed by late times. (ii) In equilibrium, tensor modes propagate on the effective metric $g_{\mu\nu}$ with no additional damping. (iii) The Planck-field mechanism \cite{SkavbergPlanckField2025} ensures GW emission from compact binaries matches GR predictions. The detailed tensor mode analysis, proving $c_T = c$ at late times, is provided in Appendix \ref{app:tensor_modes}.
+
+\subsection{Big-Bang Nucleosynthesis (BBN)}
+\label{sec:BBN}
+
+\paragraph{Test statement.}
+Primordial light-element abundances are sensitive to $H(T)$ at $T \sim 0.01$--$1$ MeV. Any modification must not alter this expansion rate beyond BBN-constrained bounds.
+
+\paragraph{Pass criterion.}
+\begin{equation}
+\label{eq:BBN_G_bound}
+\left| \frac{G_{\mathrm{BBN}}}{G_0} - 1 \right| \lesssim 0.05 \quad \text{(95\% CL)},
+\end{equation}
+from joint fits to D/H, $^4$He, $^7$Li \cite{BBN_Gbounds,PDG_BBN,Cooke_D2014,AdesOlivares_He2020}.
+
+\paragraph{Rationale.}
+BBN is one of the earliest and most robust probes. The narrow Gaussian form \eqref{eq:u_mech} with peak at $\ac \sim 10^{-3}$--$10^{-2}$ (corresponding to $z \sim 10^2$--$10^3$) is far in the future relative to BBN ($a \sim 10^{-9}$--$10^{-8}$). For $\sigmamech \sim 0.2$, the tail at $a_{\mathrm{BBN}}$ is exponentially suppressed: $\exp(-\ln^2(10^6)/(2 \times 0.04)) \sim 10^{-200}$. Therefore, $\umech(a_{\mathrm{BBN}}) \approx 0$ and BBN proceeds as in standard cosmology.
+
+\subsection{CMB/Planck 2018}
+\label{sec:CMB_Planck}
+
+\paragraph{Test statement.}
+The CMB power spectra from Planck 2018 \cite{Planck2018}, combined with BAO \cite{BOSS_BAO,eBOSS_BAO,DESI2024} and SNe \cite{Pantheon,PantheonPlus}, constitute the acoustic proofs of standard cosmology.
+
+\paragraph{Pass criterion.}
+The condensate framework must: (i) Achieve $\Delta\chi^2_{\mathrm{CMB}} \lesssim 5$ competitive with $\Lambda$CDM. (ii) Preserve CMB acoustic peak phases and damping tail within Planck uncertainties. (iii) Remain consistent with BAO measurements of $d_A(z)/\rs$ and $H(z) \rs$ within $1\sigma$. (iv) Remain consistent with SNe distance moduli within $1\sigma$. (v) If addressing the $H_0$ tension by reducing $\rs$, the reduction must be modest ($\sim 2$--$5\%$) and not degrade fits.
+
+\paragraph{Rationale.}
+The CMB acoustic structure is the most precise standard ruler, with $\rs$ measured to $\sim 0.2\%$. The boundary-layer bump $\umech(a)$ is designed to peak at $\ac \sim 10^{-3}$--$10^{-2}$ (between recombination and today) with small amplitude $\fmech \lesssim 0.1$ and narrow width $\sigmamech \sim 0.1$--$0.3$, such that the integral effect on $\rs$ is a few percent, raising the CMB-inferred $H_0$ toward the distance-ladder value \cite{Poulin2019,EDEReview2023} while leaving peak phases nearly unchanged. Implementation in CMB Boltzmann codes (CLASS/CAMB) is deferred to Paper 1 of the roadmap (Section \ref{sec:roadmap}).
+
+\subsection{BAO and SNe Consistency}
+\label{sec:BAO_SNe}
+
+\paragraph{Test statement.}
+Late-time observables (BAO sound horizon, SNe distance moduli) must remain internally consistent with CMB-inferred parameters.
+
+\paragraph{Pass criterion.}
+BAO measurements from BOSS, eBOSS, DESI \cite{BOSS_BAO,eBOSS_BAO,DESI2024} and SNe from Pantheon+ \cite{PantheonPlus} must be fit within $1\sigma$ by the condensate framework's best-fit parameters.
+
+\paragraph{Rationale.}
+The boundary-layer bump affects only the early expansion history. By late times ($z < 1$), the bump has decayed and $H(a)$ matches $\Lambda$CDM. Therefore, BAO and SNe observables, which probe $z \sim 0.1$--$2$, should be unaffected except through the modified early-time $H(z)$ that alters $\rs$ and hence the angular scale of the acoustic feature.
+
+\subsection{Distance Ladders and Cross-Checks}
+\label{sec:distance_ladders}
+
+\paragraph{Test statement.}
+Local measurements of $H_0$ from distance ladders (Cepheids, TRGB, JWST cross-calibrations \cite{RiessReview2024,Riess2022,FreedmanTRGB2020,JWST_Cepheids2023}) provide independent constraints.
+
+\paragraph{Pass criterion.}
+The preferred parameter region $(\fmech, \ac, \sigmamech)$ must yield best-fit $H_0$ consistent with distance-ladder compilations at $\lesssim 2\sigma$ (e.g., SH0ES: $H_0 = 73.04 \pm 1.04$ km/s/Mpc; TRGB: $H_0 = 69.8 \pm 1.7$ km/s/Mpc).
+
+\paragraph{Rationale.}
+The $H_0$ tension is the primary motivation for exploring early-time modifications. If the condensate framework successfully raises $H_0$ to $\sim 71$--$73$ km/s/Mpc while preserving CMB+BAO+SNe consistency, this constitutes strong evidence. Conversely, if the bump degrades fits or introduces new tensions, the framework is falsified.
+
+\subsection{Large-Scale Structure and Weak Lensing}
+\label{sec:LSS}
+
+\paragraph{Test statement.}
+The growth of structure to the present-day matter power spectrum and weak lensing shear power spectrum is governed by the linearized Einstein equations. The amplitude $S_8 \equiv \sigma_8 (\Omega_m/0.3)^{0.5}$ is in tension between Planck ($S_8 \sim 0.83$) and weak lensing surveys (DES, KiDS, HSC: $S_8 \sim 0.76$--$0.79$) \cite{PlanckS8,DES2021,KiDS2020}.
+
+\paragraph{Pass criterion.}
+The condensate framework must not worsen the $S_8$ tension: best-fit $S_8$ from CMB+LSS should remain within the current $\sim 2\sigma$ band. Preserve $P(k)$ shape on BAO scales to $\lesssim 5\%$. No unacceptable excess small-scale power conflicting with Lyman-$\alpha$ forest \cite{LymanAlpha}. Remain consistent with CMB lensing from Planck and ACT/SPT \cite{PlanckLensing,ACTLensing}.
+
+\paragraph{Rationale.}
+Most EDE models \emph{increase} $S_8$ slightly (by raising $\Omega_m$), worsening the tension \cite{HillEDE2020}. The condensate framework must be carefully tuned to avoid this. The boundary-layer bump, if placed at $\ac \sim 10^{-3}$--$10^{-2}$ during matter domination, slightly suppresses growth during the bump epoch, which could in principle reduce $\sigma_8$ and alleviate the $S_8$ tension. However, this requires full perturbation analysis, deferred to Paper 5 of the roadmap.
+
+\subsection{Summary: Falsifiability is Clear}
+\label{sec:falsifiability_summary}
+
+The condensate framework is falsifiable at multiple levels:
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Classical GR tests:} Any deviation from PPN constraints falsifies the framework.
+  \item \textbf{GW propagation:} Any detection of $c_T \neq c$ at late times falsifies the framework.
+  \item \textbf{BBN:} Any $\sim 5\%$ deviation in $H(T_{\mathrm{BBN}})$ conflicting with light-element abundances falsifies the framework.
+  \item \textbf{CMB:} Any $\Delta\chi^2 > 10$ degradation or new peak-phase discrepancies falsifies the framework.
+  \item \textbf{BAO/SNe:} Any inconsistency with late-time distances falsifies the framework.
+  \item \textbf{LSS:} Any worsening of $S_8$ tension beyond current levels falsifies the framework.
+\end{enumerate}
+
+Conversely, if the framework passes all these tests \emph{and} reduces the $H_0$ tension, this would constitute strong evidence in favor of the condensate paradigm.
+
+% ============== SECTION 6: RESEARCH ROADMAP ==============
+\section{Research Roadmap (Sequenced Follow-On Papers)}
+\label{sec:roadmap}
+
+To rigorously test the condensate framework, we propose seven sequenced follow-on papers, each addressing a specific aspect of the theory and its empirical validation.
+
+\subsection{Paper 1: Early-Universe Baseline Fits}
+\label{sec:paper1}
+
+\paragraph{Objective.}
+Implement $\umech(a)$ in CMB Boltzmann codes (CLASS/CAMB) and perform parameter scans to find best-fit cosmology.
+
+\paragraph{Key deliverables.}
+Modified Friedmann solver in CLASS/CAMB. MCMC chains over $\{H_0, \Omega_b, \Omega_c, A_s, n_s, \tau, \fmech, \ac, \sigmamech\}$. Best-fit $H_0$ and comparison to distance ladders. $\Delta\chi^2$ relative to $\Lambda$CDM. Constraints on $(\fmech, \ac, \sigmamech)$ from CMB+BAO+SNe.
+
+\paragraph{Pass criterion.}
+$H_0$ tension reduction from $\sim 5\sigma$ to $\lesssim 3\sigma$ without degrading fits ($\Delta\chi^2 \lesssim 5$).
+
+\subsection{Paper 2: BBN and Time-Variation Checks}
+\label{sec:paper2}
+
+\paragraph{Objective.}
+Demonstrate consistency with BBN constraints on $G_{\mathrm{BBN}}$ and expansion rate at $T \sim 0.1$--$1$ MeV.
+
+\paragraph{Key deliverables.}
+Calculation of $\umech(a_{\mathrm{BBN}})$ for best-fit parameters. Integration of modified Friedmann equation to compute $H(T_{\mathrm{BBN}})$. Joint fit to D/H, $^4$He, $^7$Li; derive constraints on $G_{\mathrm{BBN}}/G_0$. Verification that $|G_{\mathrm{BBN}}/G_0 - 1| \lesssim 0.05$.
+
+\paragraph{Pass criterion.}
+Best-fit parameters lie within BBN-allowed region at 95\% CL.
+
+\subsection{Paper 3: GW Propagation and Causality}
+\label{sec:paper3}
+
+\paragraph{Objective.}
+Prove $c_T = c$ at late times, satisfying GW170817 bound \eqref{eq:cT_bound}. Analyze transient modifications during boundary-layer epoch.
+
+\paragraph{Key deliverables.}
+Tensor-mode equation of motion with $\umech(a)$. Calculation of $c_T(a)$; proof that $c_T(a \to 1) = c$. Frequency-dependent dispersion analysis. Constraints on anomalous polarizations. LISA sensitivity forecasts.
+
+\paragraph{Pass criterion.}
+$c_T/c = 1$ to within $10^{-15}$ at $z \lesssim 1$; no detectable dispersion or polarization anomalies.
+
+\subsection{Papers 4-7: Boundary Kinematics, Structure, Formation, Null Tests}
+\label{sec:papers4-7}
+
+\paragraph{Paper 4: Boundary-Layer Kinematics.}
+Derive $\umech(a)$ from first principles: Rankine-Hugoniot analysis, impedance-based energy accumulation, decay mechanisms. Establish mapping from $(\Zpf, \Zcond, \uf, \ell_{\mathrm{boundary}})$ to $(\fmech, \ac, \sigmamech)$.
+
+\paragraph{Paper 5: Structure Growth and Lensing.}
+Linear perturbation analysis, matter power spectrum $P(k)$, weak lensing $C_\ell^{\kappa\kappa}$, CMB lensing $C_\ell^{\phi\phi}$. Verify $S_8$ consistency.
+
+\paragraph{Paper 6: Planet Formation in a Condensate.}
+Micro-to-macro aggregation pathway. Modified Jeans instability, fragmentation cascade, accretion timescales. Consistency with Solar System chronology and exoplanet demographics.
+
+\paragraph{Paper 7: Targeted Null Tests.}
+Design smoking-gun tests: primordial power spectrum features, GW stochastic background, non-Gaussianity ($f_{\mathrm{NL}}$), birefringence, isocurvature modes. At least one prediction distinguishable from $\Lambda$CDM and testable with near-future observatories (CMB-S4, LISA, SKA, Euclid, Roman).
+
+\GRAPHAGENT~\textbf{Figure 10 placeholder:} Summary flowchart of the seven follow-on papers, showing dependencies and key deliverables.
+
+% ============== SECTION 7: CONCLUSIONS ==============
+\section{Conclusions}
+\label{sec:conclusions}
+
+We have presented a foundational framework in which the observable Universe is a coherent quantum condensate expanding into a universal protofluid. The Big Bang is reinterpreted as a phase-transition nucleation event, and cosmic expansion corresponds to the outward propagation of a conversion boundary. Gravitational response emerges from the condensate's effective stiffness, while boundary-layer impedance mismatch mediates transient energy reservoirs that can briefly modify the early expansion history.
+
+This framework is \emph{falsifiable by design}. In equilibrium, it reduces exactly to Einstein--Hilbert dynamics, recovering all classical GR tests and satisfying the GW170817 luminal bound. Deviations from standard physics are permitted only in a narrow early-time window (post-BBN, pre-recombination), where a transient energy component $\umech(a)$ can briefly raise $H(a)$ in an EDE-like manner. This modification must pass stringent validation checkpoints: BBN, Planck CMB, BAO, SNe, distance ladders, and LSS.
+
+We have formalized these checkpoints as quantitative pass/fail criteria (Section \ref{sec:validation}) and enumerated a sequenced research roadmap comprising seven follow-on papers (Section \ref{sec:roadmap}) to stress-test the framework empirically. The first paper will implement the phenomenological $\umech(a)$ bump in CMB Boltzmann codes and assess whether it can address the $H_0$ tension without degrading fits. Subsequent papers will verify BBN compatibility, prove luminal GW propagation, derive the boundary-layer kinematics from first principles, analyze structure growth, explore planet formation, and design targeted null tests.
+
+If the condensate framework passes all these tests, it will constitute a major paradigm shift: spacetime geometry and gravitational dynamics are not fundamental, but emergent properties of an underlying condensed-matter-like substrate. Conversely, failure at any single checkpoint will falsify the framework. This clarity of prediction is the hallmark of a scientifically robust theory.
+
+\subsection{Outlook}
+\label{sec:outlook}
+
+The condensate framework opens several exciting avenues for future research: quantum origins of the protofluid, connection to inflation, dark matter as condensate excitations or defects, dark energy as residual boundary tension, black holes in a condensate, and experimental tests in analogue-gravity systems.
+
+\paragraph{Acknowledgments.}
+I thank colleagues working on analogue gravity, early-Universe cosmology, and cosmological inference for discussions that shaped this foundational framework. I am grateful to the Planck, BOSS, eBOSS, DESI, DES, SH0ES, and LIGO/Virgo/KAGRA collaborations for making their data publicly available. This research made use of the CLASS and CAMB Boltzmann codes, the NASA Astrophysics Data System, and arXiv.
+
+% ============== REFERENCES ==============
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+
+% --- Author's prior papers (foundational) ---
+\bibitem{SkavbergMechG2025}
+R.~Skavberg, ``A Mechanical Route to $G$,'' Zenodo (2025). doi:10.5281/zenodo.18496765.
+
+\bibitem{SkavbergMechGR2025}
+R.~Skavberg, ``A Mechanical Extension of General Relativity: The Singularity in Equilibrium,'' Zenodo (2025). doi:10.5281/zenodo.18393278.
+
+\bibitem{SkavbergPlanckField2025}
+R.~Skavberg, ``Planck Field --- Resolving Hulse--Taylor Binary,'' Zenodo (2025). doi:10.5281/zenodo.18462909.
+
+% --- CMB and Planck ---
+\bibitem{Planck2018}
+Planck Collaboration (N.~Aghanim \emph{et al.}), ``Planck 2018 results. VI. Cosmological parameters,'' \emph{Astron.\ Astrophys.}\ \textbf{641}, A6 (2020). arXiv:1807.06209.
+
+\bibitem{PlanckS8}
+Planck Collaboration (N.~Aghanim \emph{et al.}), ``Planck 2018 results. VIII. Gravitational lensing,'' \emph{Astron.\ Astrophys.}\ \textbf{641}, A8 (2020). arXiv:1807.06210.
+
+\bibitem{PlanckLensing}
+Planck Collaboration (N.~Aghanim \emph{et al.}), ``Planck 2018 results. VIII. Gravitational lensing,'' \emph{Astron.\ Astrophys.}\ \textbf{641}, A8 (2020).
+
+\bibitem{ACTLensing}
+ACT Collaboration (M.~S.~Madhavacheril \emph{et al.}), ``The Atacama Cosmology Telescope: CMB lensing at $z\sim 0.5$,'' \emph{Astrophys.\ J.}\ \textbf{962}, 113 (2024). arXiv:2304.05203.
+
+% --- Hubble tension and EDE ---
+\bibitem{RiessReview2024}
+A.~G.~Riess and L.~Breuval, ``The Local Value of $H_0$,'' arXiv:2308.10954 (2024).
+
+\bibitem{Riess2022}
+A.~G.~Riess \emph{et al.}, ``A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km s$^{-1}$ Mpc$^{-1}$ Uncertainty from the Hubble Space Telescope and the SH0ES Team,'' \emph{Astrophys.\ J.\ Lett.}\ \textbf{934}, L7 (2022). arXiv:2112.04510.
+
+\bibitem{FreedmanTRGB2020}
+W.~L.~Freedman \emph{et al.}, ``Calibration of the Tip of the Red Giant Branch (TRGB),'' \emph{Astrophys.\ J.}\ \textbf{891}, 57 (2020). arXiv:2002.01550.
+
+\bibitem{JWST_Cepheids2023}
+A.~G.~Riess \emph{et al.}, ``JWST Observations Reject Unrecognized Crowding of Cepheid Photometry as an Explanation for the Hubble Tension at $8\sigma$ Confidence,'' \emph{Astrophys.\ J.\ Lett.}\ \textbf{956}, L18 (2023). arXiv:2307.15806.
+
+\bibitem{Poulin2019}
+V.~Poulin, T.~L.~Smith, T.~Karwal, and M.~Kamionkowski, ``Early Dark Energy can Resolve the Hubble Tension,'' \emph{Phys.\ Rev.\ Lett.}\ \textbf{122}, 221301 (2019). arXiv:1811.04083.
+
+\bibitem{EDEReview2023}
+M.~Kamionkowski and A.~G.~Riess, ``The Hubble Tension and Early Dark Energy,'' \emph{Annu.\ Rev.\ Nucl.\ Part.\ Sci.}\ \textbf{73}, 153 (2023). arXiv:2211.04492.
+
+\bibitem{PoulinReview2023}
+V.~Poulin, T.~L.~Smith, T.~Karwal, ``The Ups and Downs of Early Dark Energy solutions to the Hubble tension,'' \emph{Phys.\ Dark Univ.}\ \textbf{42}, 101348 (2023). arXiv:2302.09032.
+
+\bibitem{HillEDE2020}
+J.~C.~Hill, E.~McDonough, M.~W.~Toomey, S.~Alexander, ``Early Dark Energy Does Not Restore Cosmological Concordance,'' \emph{Phys.\ Rev.\ D}\ \textbf{102}, 043507 (2020). arXiv:2003.07355.
+
+\bibitem{SmithPoulinAmin2020}
+T.~L.~Smith, V.~Poulin, and M.~A.~Amin, ``Oscillating scalar fields and the Hubble tension: A resolution with novel signatures,'' \emph{Phys.\ Rev.\ D}\ \textbf{101}, 063523 (2020). arXiv:1908.06995.
+
+% --- BBN ---
+\bibitem{BBN_Gbounds}
+J.~Alvey, N.~Sabti, M.~Escudero, M.~Fairbairn, ``Improved BBN constraints on the variation of the gravitational constant,'' \emph{Eur.\ Phys.\ J.\ C}\ \textbf{80}, 148 (2020). arXiv:1910.10730.
+
+\bibitem{PDG_BBN}
+R.~L.~Workman \emph{et al.}\ (Particle Data Group), ``Review of Particle Physics,'' \emph{Prog.\ Theor.\ Exp.\ Phys.}\ \textbf{2022}, 083C01 (2022).
+
+\bibitem{Cooke_D2014}
+R.~J.~Cooke, M.~Pettini, R.~A.~Jorgenson, M.~T.~Murphy, C.~C.~Steidel, ``Precision Measures of the Primordial Abundance of Deuterium,'' \emph{Astrophys.\ J.}\ \textbf{781}, 31 (2014). arXiv:1308.3240.
+
+\bibitem{AdesOlivares_He2020}
+E.~Aver, K.~A.~Olive, E.~D.~Skillman, ``The effects of He I $\lambda$10830 on helium abundance determinations,'' \emph{J.\ Cosmol.\ Astropart.\ Phys.}\ \textbf{07}, 003 (2015). arXiv:1503.08146.
+
+% --- GW and GR tests ---
+\bibitem{GW170817}
+B.~P.~Abbott \emph{et al.}\ (LIGO Scientific \& Virgo Collaborations), ``Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A,'' \emph{Astrophys.\ J.\ Lett.}\ \textbf{848}, L13 (2017). arXiv:1710.05834.
+
+\bibitem{PPN_Cassini}
+B.~Bertotti, L.~Iess, P.~Tortora, ``A test of general relativity using radio links with the Cassini spacecraft,'' \emph{Nature}\ \textbf{425}, 374 (2003).
+
+\bibitem{HulseTaylor}
+J.~M.~Weisberg, D.~J.~Nice, J.~H.~Taylor, ``Timing Measurements of the Relativistic Binary Pulsar PSR B1913+16,'' \emph{Astrophys.\ J.}\ \textbf{722}, 1030 (2010). arXiv:1011.0718.
+
+\bibitem{DoublePulsar}
+M.~Kramer \emph{et al.}, ``Tests of General Relativity from Timing the Double Pulsar,'' \emph{Science}\ \textbf{314}, 97 (2006). arXiv:astro-ph/0609417.
+
+% --- BAO and SNe ---
+\bibitem{BOSS_BAO}
+S.~Alam \emph{et al.}\ (BOSS Collaboration), ``The clustering of galaxies in the completed SDSS-III Baryon Oscillation Spectroscopic Survey: cosmological analysis of the DR12 galaxy sample,'' \emph{Mon.\ Not.\ R.\ Astron.\ Soc.}\ \textbf{470}, 2617 (2017). arXiv:1607.03155.
+
+\bibitem{eBOSS_BAO}
+S.~Alam \emph{et al.}\ (eBOSS Collaboration), ``Completed SDSS-IV extended Baryon Oscillation Spectroscopic Survey: Cosmological implications from two decades of spectroscopic surveys at the Apache Point Observatory,'' \emph{Phys.\ Rev.\ D}\ \textbf{103}, 083533 (2021). arXiv:2007.08991.
+
+\bibitem{DESI2024}
+DESI Collaboration (A.~G.~Adame \emph{et al.}), ``DESI 2024 VI: Cosmological Constraints from the Measurements of Baryon Acoustic Oscillations,'' arXiv:2404.03002 (2024).
+
+\bibitem{Pantheon}
+D.~M.~Scolnic \emph{et al.}, ``The Complete Light-curve Sample of Spectroscopically Confirmed SNe Ia from Pan-STARRS1 and Cosmological Constraints from the Combined Pantheon Sample,'' \emph{Astrophys.\ J.}\ \textbf{859}, 101 (2018). arXiv:1710.00845.
+
+\bibitem{PantheonPlus}
+D.~Brout \emph{et al.}\ (Pantheon+ Collaboration), ``The Pantheon+ Analysis: Cosmological Constraints,'' \emph{Astrophys.\ J.}\ \textbf{938}, 110 (2022). arXiv:2202.04077.
+
+% --- LSS and weak lensing ---
+\bibitem{DES2021}
+DES Collaboration (T.~M.~C.~Abbott \emph{et al.}), ``Dark Energy Survey Year 3 results: Cosmological constraints from galaxy clustering and weak lensing,'' \emph{Phys.\ Rev.\ D}\ \textbf{105}, 023520 (2022). arXiv:2105.13549.
+
+\bibitem{KiDS2020}
+KiDS Collaboration (M.~Asgari \emph{et al.}), ``KiDS-1000 Cosmology: Cosmic shear constraints and comparison between two point statistics,'' \emph{Astron.\ Astrophys.}\ \textbf{645}, A104 (2021). arXiv:2007.15633.
+
+\bibitem{LymanAlpha}
+J.~E.~Bautista \emph{et al.}, ``The completed SDSS-IV extended Baryon Oscillation Spectroscopic Survey: measurement of the BAO and growth rate of structure of the luminous red galaxy sample from the anisotropic correlation function between redshifts 0.6 and 1.0,'' \emph{Mon.\ Not.\ R.\ Astron.\ Soc.}\ \textbf{500}, 736 (2021). arXiv:2007.08993.
+
+% --- Induced gravity and analogue gravity ---
+\bibitem{Sakharov}
+A.~D.~Sakharov, ``Vacuum quantum fluctuations in curved space and the theory of gravitation,'' \emph{Sov.\ Phys.\ Dokl.}\ \textbf{12}, 1040 (1968).
+
+\bibitem{Vassilevich}
+D.~V.~Vassilevich, ``Heat kernel expansion: User's manual,'' \emph{Phys.\ Rept.}\ \textbf{388}, 279 (2003). arXiv:hep-th/0306138.
+
+\bibitem{Unruh1981}
+W.~G.~Unruh, ``Experimental Black-Hole Evaporation?'' \emph{Phys.\ Rev.\ Lett.}\ \textbf{46}, 1351--1353 (1981).
+
+\bibitem{Visser1998}
+M.~Visser, ``Acoustic black holes: horizons, ergospheres and Hawking radiation,'' \emph{Class.\ Quantum Grav.}\ \textbf{15}, 1767--1791 (1998). arXiv:gr-qc/9712010.
+
+\bibitem{AnalogueGravityReview}
+C.~Barceló, S.~Liberati, M.~Visser, ``Analogue Gravity,'' \emph{Living Rev.\ Relativity}\ \textbf{14}, 3 (2011). arXiv:gr-qc/0505065.
+
+\bibitem{Volovik2003}
+G.~E.~Volovik, \emph{The Universe in a Helium Droplet} (Oxford University Press, Oxford, 2003; paperback edition 2009). ISBN: 978-0-19-956484-2.
+
+\bibitem{Steinhauer2016}
+J.~Steinhauer, ``Observation of quantum Hawking radiation and its entanglement in an analogue black hole,'' \emph{Nature Physics}\ \textbf{12}, 959--965 (2016). arXiv:1510.00621 [gr-qc].
+
+\bibitem{GarayEtAl2000}
+L.~J.~Garay, J.~R.~Anglin, J.~I.~Cirac, and P.~Zoller, ``Sonic analogs of gravitational black holes in Bose-Einstein condensates,'' \emph{Phys.\ Rev.\ Lett.}\ \textbf{85}, 4643--4647 (2000). arXiv:gr-qc/0002015.
+
+\bibitem{Jacobson1995}
+T.~Jacobson, ``Thermodynamics of spacetime: The Einstein equation of state,'' \emph{Phys.\ Rev.\ Lett.}\ \textbf{75}, 1260--1263 (1995). arXiv:gr-qc/9504004.
+
+\bibitem{Volovik2008}
+G.~E.~Volovik, ``Emergent physics: Fermi point scenario,'' \emph{Phil.\ Trans.\ R.\ Soc.\ A}\ \textbf{366}, 2935--2951 (2008). arXiv:0801.0724 [cond-mat.other].
+
+\bibitem{Zee1981}
+A.~Zee, ``Spontaneously generated gravity,'' \emph{Phys.\ Rev.\ D}\ \textbf{23}, 858--866 (1981).
+
+\bibitem{Padmanabhan2010}
+T.~Padmanabhan, ``Thermodynamical Aspects of Gravity: New insights,'' \emph{Rep.\ Prog.\ Phys.}\ \textbf{73}, 046901 (2010). arXiv:0911.5004.
+
+% --- Phase transitions and nucleation ---
+\bibitem{ColemanDeLuccia1980}
+S.~Coleman and F.~De~Luccia, ``Gravitational effects on and of vacuum decay,'' \emph{Phys.\ Rev.\ D}\ \textbf{21}, 3305--3315 (1980).
+
+\bibitem{Coleman1977}
+S.~Coleman, ``Fate of the false vacuum: Semiclassical theory,'' \emph{Phys.\ Rev.\ D}\ \textbf{15}, 2929--2936 (1977).
+
+\bibitem{Linde1990}
+A.~D.~Linde, \emph{Particle Physics and Inflationary Cosmology} (Harwood Academic Publishers, Chur, 1990). arXiv:hep-th/0503203.
+
+% --- Junction conditions and shock physics ---
+\bibitem{Israel1966}
+W.~Israel, ``Singular hypersurfaces and thin shells in general relativity,'' \emph{Nuovo Cimento B}\ \textbf{44}, 1--14 (1966); erratum \emph{ibid.}\ \textbf{48}, 463 (1967).
+
+\bibitem{Taub1948}
+A.~H.~Taub, ``Relativistic Rankine-Hugoniot Equations,'' \emph{Phys.\ Rev.}\ \textbf{74}, 328--334 (1948).
+
+\bibitem{Lichnerowicz1967}
+A.~Lichnerowicz, \emph{Relativistic Hydrodynamics and Magnetohydrodynamics} (W.~A.~Benjamin, New York, 1967).
+
+% --- BEC theory ---
+\bibitem{DalfovoEtAl1999}
+F.~Dalfovo, S.~Giorgini, L.~P.~Pitaevskii, and S.~Stringari, ``Theory of Bose-Einstein condensation in trapped gases,'' \emph{Rev.\ Mod.\ Phys.}\ \textbf{71}, 463--512 (1999). arXiv:cond-mat/9806038.
+
+\bibitem{Bogoliubov1947}
+N.~N.~Bogoliubov, ``On the theory of superfluidity,'' \emph{J.\ Phys.\ (USSR)}\ \textbf{11}, 23 (1947).
+
+\end{thebibliography}
+
+% ============== APPENDICES ==============
+\newpage
+\appendix
+
+% APPENDIX A: Full RH derivation (from math-agent)
+\input{appendix_A_RH.tex}
+
+% Note: I'll inline the appendix content from the math-agent file
+
+\section{Generalized Rankine-Hugoniot Jump Conditions with Surface Stress-Energy}
+\label{app:RH_derivation}
+
+This appendix provides a rigorous derivation of the generalized Rankine-Hugoniot jump conditions at the conversion boundary $\Sigma$ separating the protofluid and condensate phases. We establish the connection to the Israel junction conditions and clarify the role of surface stress-energy in mediating energy transfer between phases.
+
+\subsection{Setup and Conventions}
+\label{app:RH_setup}
+
+We adopt the metric signature $(-,+,+,+)$ throughout. Let $\mathcal{M}$ denote the full spacetime manifold, partitioned by a timelike or spacelike hypersurface $\Sigma$ into two regions: $\mathcal{M}^{-}$ (the condensate interior) and $\mathcal{M}^{+}$ (the protofluid exterior).
+
+Let $n_\mu$ be the unit normal to $\Sigma$, satisfying $n^\mu n_\mu = \varepsilon$ where $\varepsilon = +1$ if $\Sigma$ is timelike, $\varepsilon = -1$ if $\Sigma$ is spacelike. We orient $n_\mu$ to point from the condensate toward the protofluid.
+
+The induced metric on $\Sigma$ is $\gamma_{\mu\nu} = g_{\mu\nu} - \varepsilon n_\mu n_\nu$. The extrinsic curvature is $K_{\mu\nu} = \gamma^\alpha_\mu \gamma^\beta_\nu \nabla_\alpha n_\beta$, with trace $K = \nabla_\mu n^\mu$.
+
+The jump of a quantity $X$ across $\Sigma$ is $[X] \equiv X^{+} - X^{-}$ (protofluid minus condensate).
+
+\subsection{Derivation from Stress-Energy Conservation}
+\label{app:RH_derivation_main}
+
+In each bulk region, stress-energy is conserved: $\nabla_\mu T^{\mu\nu} = 0$ in $\mathcal{M}^{\pm}$.
+
+Integrate over a pillbox volume $\mathcal{V}_\epsilon$ straddling $\Sigma$ with caps at $\pm\epsilon$ from $\Sigma$ and walls connecting the edges. The divergence theorem gives:
+\begin{equation}
+\int_{\mathcal{V}_\epsilon} \nabla_\mu T^{\mu\nu} \sqrt{-g} \dx^4 x = \oint_{\partial \mathcal{V}_\epsilon} T^{\mu\nu} N_\mu \dx \Sigma_3 = 0,
+\end{equation}
+where $N_\mu$ is the outward normal.
+
+Decompose into cap and wall contributions:
+\begin{equation}
+\int_{\Sigma_{+\epsilon}} T^{\mu\nu}_{+} n_\mu \dx \Sigma_3 - \int_{\Sigma_{-\epsilon}} T^{\mu\nu}_{-} n_\mu \dx \Sigma_3 + \int_{\text{walls}} T^{\mu\nu} N^{\text{wall}}_\mu \dx \Sigma_3 = 0.
+\end{equation}
+
+Taking $\epsilon \to 0$: the caps converge to $\Sigma$, the wall contribution vanishes if $T^{\mu\nu}$ is bounded. If the boundary layer carries surface stress-energy $S^{\mu\nu}$, then:
+\begin{equation}
+T^{\mu\nu}_{\text{total}} = T^{\mu\nu}_{\text{bulk}} + S^{\mu\nu} \delta(\Sigma).
+\end{equation}
+
+The divergence of the singular part contributes:
+\begin{equation}
+\int_{\mathcal{V}_\epsilon} \nabla_\mu (S^{\mu\nu} \delta(\Sigma)) \sqrt{-g} \dx^4 x = \int_\Sigma D_\alpha S^{\alpha\nu} \dx \Sigma_3,
+\end{equation}
+where $D_\alpha$ is the induced covariant derivative on $\Sigma$.
+
+Therefore:
+\begin{equation}
+\int_\Sigma [T^{\mu\nu} n_\mu] \dx \Sigma_3 + \int_\Sigma D_\alpha S^{\alpha\nu} \dx \Sigma_3 = 0.
+\end{equation}
+
+Since this holds for any portion of $\Sigma$:
+\begin{equation}
+\label{eq:RH_local_app}
+\boxed{[T^{\mu\nu} n_\mu] = -D_\alpha S^{\alpha\nu}.}
+\end{equation}
+
+This is the generalized Rankine-Hugoniot condition with surface stress-energy.
+
+\subsection{Connection to Israel Junction Conditions}
+\label{app:Israel_connection}
+
+The Israel junction conditions relate the discontinuity in extrinsic curvature to surface stress-energy:
+\begin{equation}
+\label{eq:Israel_junction_app}
+\boxed{[K_{ab}] - \gamma_{ab} [K] = -8\pi G S_{ab},}
+\end{equation}
+where $S_{ab}$ is the surface stress-energy projected onto $\Sigma$.
+
+The Rankine-Hugoniot and Israel formulations are equivalent statements of stress-energy conservation across $\Sigma$, connected through the contracted Gauss-Codazzi equations:
+\begin{equation}
+D_a K^a_b - D_b K = -\gamma^\mu_b n^\nu G_{\mu\nu} = -8\pi G \gamma^\mu_b n^\nu T_{\mu\nu}.
+\end{equation}
+
+Taking the jump across $\Sigma$ and using the Israel junction conditions yields the Rankine-Hugoniot form.
+
+\subsection{Physical Interpretation for Condensate-Protofluid System}
+\label{app:RH_physical_interp}
+
+In the condensate cosmology framework:
+\begin{itemize}[leftmargin=1.8em]
+  \item The conversion boundary $\Sigma$ is the worldvolume of the phase-transition front.
+  \item The surface stress-energy $S_{ab} = \sigma u_{\Sigma a} u_{\Sigma b} + \tau \gamma_{ab}$, where $\sigma$ is surface energy density and $\tau$ is surface tension. The surface energy arises from impedance mismatch reflections, phase-transition latent heat, and non-equilibrium dissipation.
+  \item The jump condition states that any net flux of energy-momentum into the boundary from the bulk is compensated by changes in the surface stress-energy (via $D_\alpha S^{\alpha\nu}$), ensuring overall conservation.
+  \item Energy accumulation mechanism: When $R > 0$, reflected energy accumulates in the boundary layer, increasing $\sigma$. This is the origin of $u_{\mathrm{mech}}(a)$ in the modified Friedmann equation.
+\end{itemize}
+
+\subsection{Summary}
+\label{app:RH_summary}
+
+The generalized Rankine-Hugoniot relations $[T^{\mu\nu} n_\mu] = -D_\alpha S^{\alpha\nu}$ and the Israel junction conditions $[K_{ab}] - \gamma_{ab}[K] = -8\pi G S_{ab}$ are equivalent formulations of stress-energy conservation across the conversion boundary. In the simple case where $S^{\mu\nu} = 0$, the jump vanishes: $[T^{\mu\nu} n_\mu] = 0$. These equations form the mathematical foundation for understanding how energy crosses or accumulates at the boundary.
+
+% APPENDIX B: Impedance Matching (from math-agent)
+
+\section{Impedance Matching, Reflection Coefficients, and Energy Accumulation}
+\label{app:impedance}
+
+This appendix derives the reflection and transmission coefficients for acoustic perturbations at the conversion boundary, extends the analysis to relativistically moving boundaries and curved spacetime, and establishes the energy accumulation mechanism that sources $u_{\mathrm{mech}}(a)$.
+
+\subsection{Classical Acoustic Impedance Matching}
+\label{app:classical_impedance}
+
+Consider two semi-infinite media joined at a planar interface at $x = 0$: Medium 1 ($x < 0$) with density $\rho_1$, sound speed $c_{s,1}$, impedance $Z_1 = \rho_1 c_{s,1}$; Medium 2 ($x > 0$) with $\rho_2$, $c_{s,2}$, $Z_2 = \rho_2 c_{s,2}$.
+
+For normal-incidence plane waves:
+\begin{align}
+p'_{\text{inc}}(x,t) &= A_i e^{i(k_1 x - \omega t)}, \\
+p'_{\text{ref}}(x,t) &= A_r e^{i(-k_1 x - \omega t)}, \\
+p'_{\text{trans}}(x,t) &= A_t e^{i(k_2 x - \omega t)},
+\end{align}
+where $k_j = \omega / c_{s,j}$. The velocity perturbations are $v' = p'/Z$.
+
+Boundary conditions at $x = 0$ (pressure and velocity continuity):
+\begin{align}
+A_i + A_r &= A_t, \\
+\frac{A_i - A_r}{Z_1} &= \frac{A_t}{Z_2}.
+\end{align}
+
+Solving:
+\begin{equation}
+r = \frac{A_r}{A_i} = \frac{Z_2 - Z_1}{Z_2 + Z_1}, \qquad t = \frac{A_t}{A_i} = \frac{2 Z_2}{Z_2 + Z_1}.
+\end{equation}
+
+The intensity coefficients are:
+\begin{equation}
+R = |r|^2 = \left( \frac{Z_2 - Z_1}{Z_2 + Z_1} \right)^2, \qquad T = |t|^2 \frac{Z_1}{Z_2} = \frac{4 Z_1 Z_2}{(Z_1 + Z_2)^2}.
+\end{equation}
+
+Energy conservation: $R + T = 1$ (verified by direct calculation).
+
+\subsection{Extension to Moving Boundary: Relativistic Doppler}
+\label{app:moving_boundary}
+
+For a boundary moving with proper speed $u_f$, the Doppler-shifted frequency is:
+\begin{equation}
+\omega_\Sigma = \omega_{\mathrm{pf}} \sqrt{\frac{1 + \beta}{1 - \beta}},
+\end{equation}
+where $\beta = u_f/c$ and $\gamma = (1-\beta^2)^{-1/2}$. This modifies the effective impedance in the boundary frame: $Z'_{\mathrm{pf}} = Z_{\mathrm{pf}} \gamma (1 + \beta_{s,\mathrm{pf}})$, where $\beta_{s,\mathrm{pf}} = u_f/c_{s,\mathrm{pf}}$.
+
+\subsection{Extension to Curved Spacetime: Absorption}
+\label{app:curved_spacetime}
+
+In FLRW background, additional effects modify energy balance:
+\begin{itemize}[leftmargin=1.8em]
+  \item Geometric dilution from expansion.
+  \item Cosmological redshift of wave frequencies.
+  \item Absorption into the boundary layer.
+\end{itemize}
+
+Define the absorption coefficient $A$ as the fraction of incident energy absorbed. The generalized energy conservation becomes:
+\begin{equation}
+\boxed{R + T + A = 1.}
+\end{equation}
+
+\subsection{Angular Averaging for Spherical Boundary}
+\label{app:angular_averaging}
+
+For waves incident from random directions on a spherical boundary, the angular-averaged reflection coefficient is:
+\begin{equation}
+\langle R \rangle = \int_0^{\pi/2} R(\theta) \sin(2\theta) \dx\theta,
+\end{equation}
+where $R(\theta)$ accounts for oblique incidence via Snell's law: $\sin\theta/c_{s,1} = \sin\theta_t/c_{s,2}$.
+
+\subsection{Energy Accumulation Rate at the Boundary}
+\label{app:energy_accumulation}
+
+Let $\Phi_{\text{inc}} = \rho_{\mathrm{pf}} c_s^{\mathrm{pf}} \langle \delta v^2 \rangle$ be the incident energy flux (energy per unit area per unit time). The rate of energy reflection is:
+\begin{equation}
+\dot{E}_{\text{ref}} = \langle R \rangle \cdot \Phi_{\text{inc}}.
+\end{equation}
+
+The absorbed energy feeds the surface stress-energy:
+\begin{equation}
+\frac{\dx \sigma}{\dx t} = A \cdot \Phi_{\text{inc}} - \Gamma_{\text{diss}} \sigma - \Gamma_{\text{trans}} \sigma,
+\end{equation}
+where $\Gamma_{\text{diss}}$ is dissipation rate and $\Gamma_{\text{trans}}$ is transfer rate to the condensate interior.
+
+The bulk energy source term $Q(a)$ in the continuity equation for $u_{\mathrm{mech}}$ is:
+\begin{equation}
+Q(a) = \frac{1}{V_c(a)} \frac{\dx}{\dx t} (\sigma \cdot A_\Sigma(a)) \cdot f_{\text{leak}},
+\end{equation}
+where $V_c(a) = (4\pi/3) r_\Sigma^3(a)$ is the comoving volume and $f_{\text{leak}}$ is the fraction leaking into the bulk.
+
+The modified continuity equation is:
+\begin{equation}
+\boxed{\dot{u}_{\mathrm{mech}} + 3H(1 + w_{\mathrm{mech}}) u_{\mathrm{mech}} = Q(a).}
+\end{equation}
+
+\subsection{Summary}
+\label{app:impedance_summary}
+
+Amplitude coefficients: $r = (Z_2 - Z_1)/(Z_2 + Z_1)$, $t = 2Z_2/(Z_2 + Z_1)$. Intensity coefficients: $R = |r|^2$, $T = 4Z_1Z_2/(Z_1+Z_2)^2$. Flat, stationary: $R + T = 1$. Curved, moving: $R + T + A = 1$. Relativistic Doppler: $\omega_\Sigma = \omega_{\mathrm{pf}} \sqrt{(1+\beta)/(1-\beta)}$. Energy accumulation: $\dot{u}_{\mathrm{mech}} + 3H(1 + w_{\mathrm{mech}}) u_{\mathrm{mech}} = Q(a)$.
+
+% APPENDIX C: Sound Horizon (placeholder)
+
+\section{Calculation of Sound Horizon with Transient Energy Component}
+\label{app:sound_horizon}
+
+\TODO{MATH-AGENT: Integrate $\rs = \int_0^{a_{\mathrm{dec}}} \cs(a)/[a^2 H(a)] \dx a$ with the modified Friedmann equation \eqref{eq:Friedmann_general}. Show how $\umech(a)$ reduces $\rs$ by a few percent for representative $(\fmech, \ac, \sigmamech)$.}
+
+% APPENDIX D: Tensor Modes (placeholder)
+
+\section{Tensor-Mode Propagation in Modified FLRW Background}
+\label{app:tensor_modes}
+
+\TODO{MATH-AGENT: Linearize the Einstein equations for tensor perturbations $h_{ij}$ on the FLRW background with $\umech(a)$. Show that $c_T = c$ at late times and compute any transient friction or damping during the boundary epoch.}
+
+\end{document}

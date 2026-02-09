@@ -1,0 +1,22 @@
+
+Fix the Quantum Dynamics - Super positioning Paper:
+Derive the mathematical proof that the Bose-Einstein Condensate is a Phase-Locked Substrate
+------------------------
+The Quantum Dynamics Super Positioning Paper has content that is the same as in the 
+------------------------
+- reconcile the speed of light document:
+	- •	When $\beta$ increases while $\rho_m$ is constant, $c$ increases.
+	- validate the idea that C increases. Does not quite compute.
+Specifically:
+
+Verification of the Hubble Tension:
+Because the theory presents the medium as Phase-Incompressible, the density ($\rho_m$) remains constant. However, in the early universe, the high Overlap Pressure (Quantum Resilience) increased the interaction strength ($g$) and the Bulk Modulus ($\beta$).
+•	When $\beta$ increases while $\rho_m$ is constant, $c$ increases.
+•	This explains why the early universe expanded faster (Hubble Boost) without requiring "New Physics"—it was a mechanical surge in the stiffness of the vacuum.
+
+
+-------------------------
+
+Space Time - rationalize
+
+Wave refraction resulting in entropy

@@ -1,0 +1,52 @@
+
+
+Phase is only meaning full in superposition.
+superposition means that the particle can exist in multiple states at the same time.
+
+
+encode angles for each probable outcome as the number of wires for the gate.
+setup the quantum gate using Hadamard or rotational gate methodology 
+measure angle difference between each wire and the selected value all at once and do this a thousand times (as shots) to acquire a reasonable data that forms a basian probability curve (think standard deviations and linear regression)
+Use the oracle theorem to amplify the amplitude of the correct answer
+evaluate theoretical probabilities
+validate measured probabilities
+
+import pennylane as qml
+from pennylane import numpy as np
+
+# User selects a number from 1 to 10
+selected_value = int(input("Select a number from 1 to 10: "))
+assert 1 <= selected_value <= 10, "Please select a number between 1 and 10."
+
+# Values to encode on each wire
+values = list(range(1, 11))  # [1, 2, ..., 10]
+
+# Set up a 10-qubit quantum device
+dev = qml.device("default.qubit", wires=10, shots=1000)
+
+@qml.qnode(dev)
+def circuit():
+    for i, val in enumerate(values):
+        angle = (val / 10) * np.pi  # Normalize to [0, π]
+        qml.RY(angle, wires=i)
+    return [qml.sample(qml.PauliZ(i)) for i in range(10)]
+
+# Run the circuit
+samples = circuit()
+
+# Convert PauliZ measurements to 0/1 and compute average for each wire
+bit_counts = [np.mean((1 - s) / 2) for s in samples]
+
+# Compute the angle for the selected value
+selected_angle = (selected_value / 10) * np.pi
+
+# Compute the angle for each wire and find the closest one
+angles = [(val / 10) * np.pi for val in values]
+differences = [abs(a - selected_angle) for a in angles]
+closest_index = int(np.argmin(differences))
+
+# Output results
+print("Encoded values:", values)
+print("User selected value:", selected_value)
+print("Average measurement (probability of 1) per wire:", bit_counts)
+print(f"Closest wire index: {closest_index} (Value: {values[closest_index]})")
