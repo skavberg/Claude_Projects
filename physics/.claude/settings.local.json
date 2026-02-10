@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:zenodo.org)"
+      "WebFetch(domain:zenodo.org)",
+      "WebSearch"
     ]
   }
 }
