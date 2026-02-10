@@ -1,0 +1,100 @@
+100,"Spiral (Superior)"
+1001,"HOOS PRD Database"
+1004,"Helpdesk Popup Application"
+1008,"Honeywell Safety Suite (SaaS)"
+1010,"HQC Pricebook"
+1015,POSitouch
+102,"Sulcol (Lima)"
+103,"API Technical Databook"
+104,"EasyPower (Toledo)"
+1040,"Shell Cat-Check Process Monitor"
+1041,"UOP Process Monitor"
+1054,"SIS Website Intranet"
+1056,"InView - Wisetools"
+1057,"Allegro Horizon (CDN RP)"
+1058,"IPS (Integrated Pipeline System - Midstream)"
+1059,"Cordex Connect (Lima)"
+1061,H/Comet
+1062,H/COMET
+107,"AORA (Lloyd)"
+1074,"Lima PM (Lima)"
+1077,Jade
+108,"AORA (Lima)"
+1080,"JetBrains Resharper Utlimate"
+1081,"JetBrains TeamCity 2019.2"
+1089,Reuters
+1092,"Keystone Pipelines Portal (web app)"
+1111,"SAP  Legacy Valero (Lima)"
+1119,"Light Oil Marketing"
+112,"AORA (Superior)"
+1126,"Petro SIM"
+1130,"Loner Portal (WSDS) WorkSafe"
+1132,"LVControls - Lloydminster"
+1133,"LVControls - Minnedosa"
+1135,"Environmental Intellect"
+1139,"Matrix Gemini LIMS"
+1143,"LIMS Web - ASL"
+1144,"LIMS Web - HLU"
+1147,"Track (SAAS)"
+115,ActiveCampaign
+1150,Mapper
+1152,EMD
+1158,Maxavera
+116,"Bulloch Standad Change"
+1162,"Maxum Workstation"
+1163,Ackroo
+1164,MCEGold
+1167,"GE APM Corporate"
+1168,"GE APM Toledo"
+117,"TSI DMS (Lima)"
+118,"Machinery Health Manager (Lima)"
+119,"Aspen HYSYS (Lima)"
+1193,"Modern Commodities"
+120,"Syncade LTM"
+1202,"mPro/PUHMA (Toledo)"
+1203,MRCGO
+1213,NGX
+1214,NGMS
+1216,"Navitrack (Toledo)"
+1217,NaviTrack
+1218,"Solo (Stand Alone Chemometrics Software)"
+1227,Nlink
+1231,"SKF Machine Suite"
+1245,"Omega PIMS"
+1247,"OMS - Oil Marketing System"
+1254,PC*Miler
+1255,"EBB - ICE"
+1268,"Ultranalysis Suite 3"
+1283,"PCMS (CDT)"
+1284,"PCMS (Lima)"
+1285,"PCMS (Superior)"
+1286,"PCMS (Cloud)"
+1287,"PCMS (Conventional)"
+1288,"PCMS (Midstream)"
+1289,"PCMS (Lloyd Complex)"
+1303,"One Exchange"
+1322,"PLATTS (Data subscription)"
+1332,"Primavera P6 (CVE)"
+1333,"Primavera P6 (Lima)"
+1334,"Primavera P6 (Toledo)"
+1355,Promax
+1361,"Prometheus Roser (Toledo)"
+1366,EcoSys
+1370,"PS Trax"
+1392,"cBliss (Lima)"
+1404,JBoss
+1408,"Storepoint (Green Zone)"
+1409,"Reliability Workbench (Toledo)"
+1411,"DamageWeb (Lima)"
+1418,"LIMS WEB - Rainbow Lake"
+1425,"EPS Kiosk"
+1427,"Storepoint (POS)"
+1433,"Rosemount TankMaster"
+1434,"Route Commander"
+1437,"Retail Transaction Switch (Banking)"
+1458,"RightAngle (US Customer Portal)"
+1459,Salus
+149,"Crude Oil BO Reports"
+150,"Bloomberg Request Builder"
+1503,"Trading Platform Integration-Future"
+1547,"SHS - Toledo - (Legacy Shift Handover System) - Archive"
