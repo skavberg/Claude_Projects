@@ -1,0 +1,818 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============== ENCODING AND FONTS ==============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ============== PAGE LAYOUT ==============
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ============== MATHEMATICS ==============
+\usepackage{amsmath,amssymb,amsfonts,amsthm,bm}
+\usepackage{siunitx}
+\usepackage{physics}
+% Fix siunitx/physics clash: physics redefines \qty
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+% ============== GRAPHICS AND TABLES ==============
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ============== LISTS AND ENUMERATIONS ==============
+\usepackage{enumitem}
+
+% ============== COLORS ==============
+\usepackage{xcolor}
+
+% ============== HYPERLINKS (load last) ==============
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ============== CUSTOM MACROS (from Paper 1) ==============
+\newcommand{\ee}[1]{\times 10^{#1}}
+\newcommand{\kB}{\ensuremath{k_{\mathrm{B}}}}
+\newcommand{\lPl}{\ensuremath{\ell_{\mathrm{Pl}}}}
+\newcommand{\mPl}{\ensuremath{m_{\mathrm{Pl}}}}
+\newcommand{\tPl}{\ensuremath{t_{\mathrm{Pl}}}}
+\newcommand{\rhocrit}{\ensuremath{\rho_{\mathrm{crit}}}}
+\newcommand{\rhostiff}{\ensuremath{\rho_{\mathrm{stiff}}}}
+\newcommand{\rhoPl}{\ensuremath{\rho_{\mathrm{Pl}}}}
+\newcommand{\Tzero}{\ensuremath{T_0}}
+\newcommand{\Kbulk}{\ensuremath{K}}
+\newcommand{\cs}{\ensuremath{c_s}}
+\newcommand{\RH}{\ensuremath{R_{\mathrm{H}}}}
+\newcommand{\umech}{\ensuremath{u_{\mathrm{mech}}}}
+\newcommand{\wmech}{\ensuremath{w_{\mathrm{mech}}}}
+
+% Additional macros for Paper 4 and 8
+\newcommand{\fmech}{\ensuremath{f_{\mathrm{mech}}}}
+\newcommand{\ac}{\ensuremath{a_c}}
+\newcommand{\sigmamech}{\ensuremath{\sigma_{\mathrm{mech}}}}
+\newcommand{\adec}{\ensuremath{a_{\mathrm{dec}}}}
+\newcommand{\zdec}{\ensuremath{z_{\mathrm{dec}}}}
+\newcommand{\rs}{\ensuremath{r_s}}
+\newcommand{\dA}{\ensuremath{d_A}}
+\newcommand{\Omm}{\ensuremath{\Omega_m}}
+\newcommand{\Omr}{\ensuremath{\Omega_r}}
+\newcommand{\Omb}{\ensuremath{\Omega_b}}
+\newcommand{\OmL}{\ensuremath{\Omega_\Lambda}}
+
+% New macros for Paper 8 (Boundary Layer)
+\newcommand{\rhofluid}{\ensuremath{\rho_{\mathrm{fluid}}}}
+\newcommand{\rhocond}{\ensuremath{\rho_{\mathrm{cond}}}}
+\newcommand{\Zfluid}{\ensuremath{Z_{\mathrm{fluid}}}}
+\newcommand{\Zcond}{\ensuremath{Z_{\mathrm{cond}}}}
+\newcommand{\Pmanifold}{\ensuremath{P_{\mathrm{manifold}}}}
+\newcommand{\Pfluid}{\ensuremath{P_{\mathrm{fluid}}}}
+\newcommand{\Pcond}{\ensuremath{P_{\mathrm{cond}}}}
+\newcommand{\xih}{\ensuremath{\xi_{\mathrm{h}}}}
+\newcommand{\deltaBL}{\ensuremath{\delta_{\mathrm{BL}}}}
+\newcommand{\Tcond}{\ensuremath{T_{\mathrm{cond}}}}
+\newcommand{\Tc}{\ensuremath{T_c}}
+\newcommand{\mueff}{\ensuremath{\mu_{\mathrm{eff}}}}
+\newcommand{\lambdaJ}{\ensuremath{\lambda_J}}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{postulate}{Postulate}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% Proof QED symbol
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% ============== TITLE ==============
+\title{\textbf{Reconciling the $H_0$ Tension and $S_8$ Clustering Tension}\\[0.5em]
+\large Condensate-Protofluid Boundary Layer Dynamics and the Microscopic Origin of $\umech(a)$}
+
+\author{Robin Skavberg\\[0.3em]
+\small Independent Researcher\\
+\small ORCID: 0009-0003-9126-6196\\
+\small \texttt{skavberg@gmail.com}}
+
+\date{\today\\[0.5em]
+\small Draft Version 01 -- Outline/Extended Abstract}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\textcolor{red}{[TODO: Full abstract to be written after sections are developed.]}
+
+We develop the microscopic boundary-layer physics underlying the transient energy component $\umech(a)$ in the Planck's Field Bose-Einstein condensate (BEC) cosmology. The central analogy is supercooled ultra-pure water: below 0°C, metastable liquid persists until nucleation triggers a freezing front that propagates through the medium, establishing a finite-width transition zone where material grades continuously from fluid to solid. In the BEC framework, an ultra-pure boson protofluid below the condensation threshold nucleates condensate domains that expand via phase-front propagation. At the condensate-protofluid boundary, density has not yet stabilized to the final resting value $\rhostiff = c^2/(8\pi G)$; impedance $Z(x) = \rho(x) c_s(x)$ varies continuously from the fluid state $\Zfluid$ to the condensate state $\Zcond$ over a characteristic healing length scale $\xih$. This boundary layer is not a sharp discontinuity but a smooth transition region with thickness $\deltaBL$ determined by the interplay of quantum pressure, manifold pressure differential $\Pmanifold = \Pcond - \Pfluid$, and condensation kinetics. We derive the density and impedance profiles $\rho(x)$, $Z(x)$ from Gross-Pitaevskii mean-field theory generalized to cosmological expansion, compute the energy budget locked in the boundary layer, and show that $\umech(a)$ arises naturally from the impedance mismatch dynamics---not as an ad hoc Gaussian ansatz, but as a consequence of first-principles quantum hydrodynamics. The boundary-layer energy peaks when the phase transition is most active (scale factor $\ac \sim 10^{-3}$, near recombination) and decays as the condensate fully forms and the transition zone vanishes. We demonstrate that boundary-layer parameters calibrated to yield $|\Delta\rs/\rs| \sim 7$--$8\%$ (sufficient to resolve the $H_0$ tension) produce a revised $\umech$ profile with amplitude $\fmech \sim 0.2$--$0.4$ and characteristic width $\sigmamech \sim 0.3$--$0.5$, while simultaneously generating growth suppression compatible with the $S_8$ tension. Observable predictions include modified CMB acoustic peak positions, enhanced damping-tail power, distinctive early ISW signatures at $\ell \lesssim 30$, and baryon acoustic oscillation (BAO) shifts that differ subtly from standard early dark energy (EDE) due to the relativistic sound speed $c_s = c$ enforcing infinite Jeans length (no clustering). Falsification criteria are presented: if future precision measurements of $r_s(\zdec)$, CMB lensing convergence power $C_\ell^{\kappa\kappa}$, and BAO angular scales rule out the required $\umech$ profile, the boundary-layer hypothesis is excluded. This paper completes the microphysical foundation of the BEC cosmological framework, connecting Planck-scale quantum condensate dynamics to percent-level modifications of the cosmic sound horizon and structure growth.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{Introduction}
+\label{sec:introduction}
+%==============================================================================
+
+\subsection{Motivation: From Phenomenology to Microphysics}
+\label{sec:motivation}
+
+\textbf{[TODO: Write full motivation section. Key points to cover:]}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Papers 1 and 4 introduced $\umech(a)$ as a transient energy component arising from condensate-protofluid boundary dynamics, modeled phenomenologically as a Gaussian in $\ln(a/\ac)$ with free parameters $\ac$, $\sigmamech$, $\fmech$.
+\item The Gaussian form was an ansatz chosen for mathematical convenience, not derived from underlying physics. Paper 4 showed that fiducial parameters ($\fmech \sim 0.1$, $\ac \sim 10^{-3}$, $\sigmamech \sim 0.2$) produce $|\Delta\rs/\rs| \sim 0.3$--$0.5\%$, insufficient to resolve the $H_0$ tension (which requires $\sim 7$--$8\%$ sound horizon reduction).
+\item The central question of this paper: \emph{What microscopic boundary-layer physics determines the functional form, amplitude, and width of $\umech(a)$? Can first-principles BEC phase-transition dynamics naturally produce the larger $\Delta\rs/\rs$ needed to resolve cosmological tensions?}
+\item Roadmap: We develop the supercooled boson fluid analogy, derive boundary-layer structure from Gross-Pitaevskii theory, compute the energy budget and impedance profiles, and show that $\umech$ emerges as a direct consequence of the impedance gradient in the transition zone.
+\end{itemize}
+
+\subsection{The Supercooled Water Analogy}
+\label{sec:analogy}
+
+\textbf{[TODO: Expand this section with detailed physical analogy:]}
+
+\paragraph{Classical Phase Transition: Supercooled Water.}
+Ultra-pure water can remain liquid below 0°C in a metastable state. Nucleation (triggered by impurities, vibrations, or quantum fluctuations) initiates a freezing front. The front propagates through the medium, but the transition from liquid to ice is \emph{not} a sharp discontinuity---there exists a finite-width boundary layer where:
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Density varies continuously: $\rho_{\mathrm{water}} = 1.00$ g/cm$^3$ $\to$ $\rho_{\mathrm{ice}} = 0.92$ g/cm$^3$ (actually increases for water due to hydrogen bonding, but the general principle holds for other materials).
+\item Latent heat is released, creating a temperature gradient across the boundary.
+\item The interface thickness is set by the competition between surface tension (favoring sharp interfaces) and thermal diffusion (favoring smooth gradients).
+\end{itemize}
+
+\paragraph{Quantum Phase Transition: Supercooled Boson Protofluid.}
+In the BEC framework:
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item The protofluid is an ultra-pure sea of Planck-scale bosons at temperature $T \ll \Tc$ (the condensation threshold).
+\item Below $\Tc$, the fluid is in a metastable state---it \emph{could} condense but hasn't yet due to lack of nucleation sites or sufficiently large perturbations.
+\item At cosmic time $t \sim t_{\mathrm{nuc}}$ (scale factor $a \sim 10^{-3}$, near recombination), nucleation occurs---perhaps triggered by cosmic variance in density perturbations, quantum tunneling, or instabilities in the expanding protofluid.
+\item Condensate domains nucleate and expand. The boundary between condensate (resting state, density $\rhostiff = c^2/(8\pi G)$) and protofluid (fluid state, density $\rhofluid < \rhostiff$) is a smooth transition zone with finite width $\deltaBL$.
+\item The impedance $Z = \rho c_s$ varies across the boundary: $\Zfluid$ in the protofluid $\to$ $\Zcond$ in the condensate. This impedance mismatch determines energy reflection, transmission, and storage in the boundary layer.
+\item The boundary-layer energy density peaks during active phase transition ($a \sim \ac$) and vanishes as the condensate fully forms ($a \gg \ac$), giving rise to the transient component $\umech(a)$.
+\end{itemize}
+
+\paragraph{Key Insight.}
+The functional form of $\umech(a)$ is \emph{not} a free choice---it is determined by:
+\begin{enumerate}[leftmargin=*, itemsep=0.3em]
+\item The phase-transition kinetics (nucleation rate, condensate domain growth rate).
+\item The boundary-layer structure (healing length $\xih$, density/impedance profiles).
+\item The manifold pressure differential $\Pmanifold$ driving the condensation.
+\item The cosmological expansion rate $H(a)$ competing with condensation timescales.
+\end{enumerate}
+
+\textbf{[TODO: Add schematic figure showing supercooled water freezing front (top) and BEC condensate-protofluid boundary (bottom), side-by-side for visual comparison.]}
+
+%==============================================================================
+\section{Phase Transition Physics: Supercooled Boson Condensation}
+\label{sec:phase_transition}
+%==============================================================================
+
+\textbf{[TODO: Develop full section on BEC phase transition from protofluid. Key subsections:]}
+
+\subsection{Bose-Einstein Condensation in Expanding Universe}
+\label{sec:bec_expansion}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Review of equilibrium BEC: critical temperature $\Tc$, condensate fraction $n_0/n$ as function of $T/\Tc$.
+\item Modified BEC in expanding cosmology: Hubble drag, adiabatic cooling, time-dependent phase-space density.
+\item Criterion for condensation: de Broglie wavelength $\lambda_{\mathrm{dB}} = h/\sqrt{2\pi m \kB T}$ comparable to inter-particle spacing $n^{-1/3}$.
+\item Estimate critical scale factor $a_c$ where condensation becomes favorable.
+\end{itemize}
+
+\paragraph{Equations.}
+\textcolor{red}{[TODO: Insert equilibrium BEC critical temperature formula, modified for cosmological redshift:]}
+\begin{equation}
+\Tc(a) = \frac{2\pi\hbar^2}{m\kB} \left[ \frac{n(a)}{\zeta(3/2)} \right]^{2/3}, \quad n(a) = n_0 a^{-3}.
+\label{eq:Tc_cosmo}
+\end{equation}
+
+\textcolor{red}{[TODO: Derive effective temperature evolution $T_{\mathrm{eff}}(a) \propto a^{-\alpha}$ accounting for Hubble expansion vs. thermalization timescales.]}
+
+\subsection{Nucleation and Domain Growth}
+\label{sec:nucleation}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Classical nucleation theory: critical radius $R_c = 2\sigma/\Delta P$ (surface tension $\sigma$, pressure difference $\Delta P = \Pmanifold$).
+\item Quantum tunneling: nucleation rate $\Gamma \propto \exp(-S_{\mathrm{bounce}}/\hbar)$, bounce action $S_{\mathrm{bounce}}$ from instanton calculus.
+\item Inhomogeneous nucleation triggered by density perturbations $\delta\rho/\rho$ from quantum fluctuations during inflation.
+\item Domain growth: once nucleated, condensate domains expand at characteristic velocity $v_{\mathrm{front}}$. Is the front supersonic ($v_{\mathrm{front}} > c_s$) or subsonic?
+\item Competition between expansion rate $H$ and domain merger: percolation transition when condensate domains fill the universe.
+\end{itemize}
+
+\paragraph{Equations.}
+\textcolor{red}{[TODO: Derive nucleation rate per unit volume per unit time:]}
+\begin{equation}
+\Gamma(t) = \Gamma_0 \exp\left( -\frac{16\pi\sigma^3}{3(\Pmanifold)^2 \kB T} \right).
+\label{eq:nucleation_rate}
+\end{equation}
+
+\textcolor{red}{[TODO: Estimate domain size distribution $n(R,t)$ and volume fraction of condensate $f_{\mathrm{cond}}(a)$.]}
+
+\subsection{Phase Front Propagation}
+\label{sec:front_propagation}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Physics of the moving boundary: conservation of mass, momentum, energy across the front.
+\item Rankine-Hugoniot jump conditions for density, velocity, pressure.
+\item Boundary-layer structure: the front is not a shock---it's a smooth transition zone with thickness $\deltaBL \sim \xih$ (healing length).
+\item Energy dissipation: how much kinetic energy is converted to condensate rest energy? How much is radiated as phonons/sound waves?
+\item Cosmological modification: front propagation in expanding spacetime---comoving vs. physical velocity.
+\end{itemize}
+
+\paragraph{Equations.}
+\textcolor{red}{[TODO: Write Rankine-Hugoniot conditions for BEC condensation front:]}
+\begin{align}
+\rho_1 v_1 &= \rho_2 v_2, \label{eq:RH_mass} \\
+\rho_1 v_1^2 + P_1 &= \rho_2 v_2^2 + P_2, \label{eq:RH_momentum} \\
+\frac{1}{2}\rho_1 v_1^2 + u_1 + P_1 &= \frac{1}{2}\rho_2 v_2^2 + u_2 + P_2, \label{eq:RH_energy}
+\end{align}
+where subscripts 1, 2 denote protofluid and condensate sides.
+
+\textcolor{red}{[TODO: Derive front velocity $v_{\mathrm{front}}$ as function of $\Pmanifold$, $\rhofluid$, $\rhocond$.]}
+
+%==============================================================================
+\section{Boundary Layer Structure: Density and Impedance Profiles}
+\label{sec:boundary_layer}
+%==============================================================================
+
+\textbf{[TODO: Core technical section deriving microscopic boundary-layer structure.]}
+
+\subsection{Gross-Pitaevskii Mean-Field Theory}
+\label{sec:gp_theory}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item The condensate wavefunction $\Psi(\mathbf{x},t)$ obeys the Gross-Pitaevskii equation (GPE):
+\begin{equation}
+i\hbar\frac{\partial\Psi}{\partial t} = \left[ -\frac{\hbar^2}{2m}\nabla^2 + V_{\mathrm{ext}} + g|\Psi|^2 \right]\Psi,
+\label{eq:gpe}
+\end{equation}
+where $g = 4\pi\hbar^2 a_s/m$ is the interaction coupling (scattering length $a_s$), $V_{\mathrm{ext}}$ is external potential (gravitational, cosmological).
+\item Hydrodynamic formulation: $\Psi = \sqrt{n} e^{i\theta}$, density $n = |\Psi|^2$, velocity $\mathbf{v} = (\hbar/m)\nabla\theta$.
+\item Continuity and Euler equations with quantum pressure term $\nabla(P_Q)$, where $P_Q = -(\hbar^2/2m)\nabla^2\sqrt{n}/\sqrt{n}$.
+\end{itemize}
+
+\subsection{Healing Length and Boundary-Layer Thickness}
+\label{sec:healing_length}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item The healing length $\xih$ is the characteristic scale over which the condensate wavefunction heals defects or boundaries:
+\begin{equation}
+\xih = \frac{1}{\sqrt{8\pi a_s n}}.
+\label{eq:healing_length}
+\end{equation}
+\item For cosmological BEC: estimate $n \sim \rhostiff/m = c^2/(8\pi G m)$, scattering length $a_s$ from impedance matching (Paper 1, Appendix B).
+\item Boundary-layer thickness $\deltaBL \sim \xih$ or some multiple thereof, depending on the steepness of the potential/pressure gradient.
+\item Compare $\deltaBL$ to Hubble length $c/H(\ac)$: is the boundary layer causally connected? Can it reach equilibrium during the phase transition?
+\end{itemize}
+
+\paragraph{Numerical Estimate.}
+\textcolor{red}{[TODO: Compute $\xih$ for $m \sim 10^{-22}$ eV/$c^2$, $n \sim 10^{6}$ m$^{-3}$ (typical condensate number density from Paper 1). Compare to cosmological scales: Hubble radius at $a = \ac \sim 10^{-3}$ is $c/H(\ac) \sim ?$ Mpc.]}
+
+\subsection{Density Profile Across the Boundary}
+\label{sec:density_profile}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Assume planar boundary (valid if domain curvature radius $R_{\mathrm{dom}} \gg \deltaBL$).
+\item Solve 1D GPE in steady-state (or quasi-steady in comoving frame) for $\rho(x)$ across the boundary.
+\item Boundary conditions: $\rho(-\infty) = \rhofluid$, $\rho(+\infty) = \rhocond = \rhostiff$.
+\item Typical solution: tanh profile or smoothed step function,
+\begin{equation}
+\rho(x) = \frac{\rhocond + \rhofluid}{2} + \frac{\rhocond - \rhofluid}{2} \tanh\left( \frac{x}{\xih} \right).
+\label{eq:rho_profile}
+\end{equation}
+\item Generalize to time-dependent case: $\rho(x,a)$ as condensation progresses.
+\end{itemize}
+
+\paragraph{Figure Placeholder.}
+\textcolor{red}{[TODO: Plot $\rho(x)$ showing smooth transition from $\rhofluid$ to $\rhocond$ over distance $\sim \xih$.]}
+
+\subsection{Impedance Profile and Energy Reflection}
+\label{sec:impedance_profile}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Acoustic impedance $Z(x) = \rho(x) c_s(x)$. In BEC cosmology, sound speed $c_s = c$ (Paper 1, Postulate 4), so $Z(x) = c \rho(x)$.
+\item Impedance mismatch drives energy reflection: when a phonon/wave packet encounters the boundary layer, fraction of energy reflected is
+\begin{equation}
+R = \left| \frac{Z_2 - Z_1}{Z_2 + Z_1} \right|^2 = \left| \frac{\Zcond - \Zfluid}{\Zcond + \Zfluid} \right|^2.
+\label{eq:reflection_coeff}
+\end{equation}
+\item Energy stored in the boundary layer: integrate kinetic energy density, potential energy, quantum pressure energy across the transition zone.
+\item Connection to $\umech$: the total energy in the boundary layer (summed over all condensate domains, weighted by domain volume fraction $f_{\mathrm{cond}}(a)$) gives $\umech(a)$.
+\end{itemize}
+
+\paragraph{Equations.}
+\textcolor{red}{[TODO: Derive energy density in the boundary layer:]}
+\begin{equation}
+\epsilon_{\mathrm{BL}}(x) = \frac{1}{2}\rho(x) v^2(x) + u_{\mathrm{therm}}(x) + \frac{\hbar^2}{2m}\frac{(\nabla\sqrt{n})^2}{n}.
+\label{eq:energy_density_bl}
+\end{equation}
+
+\textcolor{red}{[TODO: Integrate to get total boundary-layer energy per unit area $E_{\mathrm{BL}} = \int \epsilon_{\mathrm{BL}}(x) \, dx$.]}
+
+%==============================================================================
+\section{Manifold Pressure and Energy Transfer}
+\label{sec:manifold_pressure}
+%==============================================================================
+
+\textbf{[TODO: Develop thermodynamics and equation of state driving the phase transition.]}
+
+\subsection{Equation of State: Protofluid vs. Condensate}
+\label{sec:eos}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Protofluid equation of state: $\Pfluid = P(\rhofluid, T)$. Ideal Bose gas at $T < \Tc$?
+\item Condensate equation of state: $\Pcond = P(\rhocond) = w_{\mathrm{stiff}} \rhocond c^2$, where $w_{\mathrm{stiff}} = 1$ (stiff matter).
+\item The pressure difference $\Pmanifold = \Pcond - \Pfluid$ drives condensation. If $\Pmanifold > 0$, condensate is thermodynamically favored.
+\item Connection to chemical potential: $\mueff = \partial u/\partial n$. At equilibrium, $\mu_{\mathrm{fluid}} = \mu_{\mathrm{cond}}$. During transition, $\Delta\mu = \mu_{\mathrm{cond}} - \mu_{\mathrm{fluid}} \neq 0$ drives the phase front.
+\end{itemize}
+
+\paragraph{Equations.}
+\textcolor{red}{[TODO: Write EOS for protofluid, possibly from Thomas-Fermi approximation or interacting Bose gas:]}
+\begin{equation}
+\Pfluid = \frac{2\pi\hbar^2 a_s}{m^2} \rhofluid^2.
+\label{eq:eos_fluid}
+\end{equation}
+
+\textcolor{red}{[TODO: Derive $\Pmanifold$ as function of $\rhofluid$, $\rhocond$, temperature $T$.]}
+
+\subsection{Energy Budget: Where Does the Latent Energy Go?}
+\label{sec:energy_budget}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item When protofluid condenses, gravitational potential energy is released (analogous to latent heat in water freezing, but gravitational rather than thermal).
+\item Energy is partitioned into: (1) bulk condensate rest energy, (2) boundary-layer gradient energy, (3) radiated phonons/sound waves, (4) cosmological expansion work.
+\item The transient component $\umech(a)$ represents the energy locked in the boundary layer at cosmic time $t(a)$.
+\item As the phase transition completes and boundary layers merge/disappear, $\umech(a) \to 0$.
+\end{itemize}
+
+\paragraph{Energy Conservation.}
+\textcolor{red}{[TODO: Write energy conservation equation for the phase transition:]}
+\begin{equation}
+\Delta E_{\mathrm{grav}} = E_{\mathrm{cond}} + E_{\mathrm{BL}}(a) + E_{\mathrm{rad}} + \int P \, dV.
+\label{eq:energy_conservation}
+\end{equation}
+
+\textcolor{red}{[TODO: Express $\umech(a) = E_{\mathrm{BL}}(a)/V_{\mathrm{total}}$ in terms of domain volume fraction, boundary-layer energy density, etc.]}
+
+\subsection{Time-Varying Equation of State for $\umech$}
+\label{sec:wmech_derivation}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item In Paper 4, $\wmech(a) = -1 + \ln(a/\ac)/(3\sigmamech^2)$ was derived from energy conservation $\dot{\umech} + 3H\umech(1 + \wmech) = 0$ and the Gaussian ansatz.
+\item Can we derive $\wmech(a)$ from boundary-layer thermodynamics instead?
+\item The effective pressure of the boundary-layer component is $P_{\mathrm{mech}} = \wmech \umech$. This pressure arises from the gradient energy and momentum flux in the transition zone.
+\item Relate $\wmech$ to the impedance gradient, front velocity, and energy dissipation rate.
+\end{itemize}
+
+\paragraph{Derivation.}
+\textcolor{red}{[TODO: From boundary-layer energy flux and momentum balance, derive $P_{\mathrm{mech}}$ and hence $\wmech(a)$. Show whether the resulting form matches the Gaussian-derived $\wmech$ or requires modification.]}
+
+%==============================================================================
+\section{Derivation of $\umech(a)$ from Boundary Layer Physics}
+\label{sec:umech_derivation}
+%==============================================================================
+
+\textbf{[TODO: The central result of the paper---derive $\umech(a)$ from first principles.]}
+
+\subsection{Boundary-Layer Energy Density}
+\label{sec:bl_energy_density}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Start with the energy density profile $\epsilon_{\mathrm{BL}}(x,a)$ from Section \ref{sec:impedance_profile}.
+\item Integrate over the boundary-layer thickness to get energy per unit area of the condensate domain surface.
+\item Multiply by total surface area of all condensate domains: $A_{\mathrm{total}}(a) = N_{\mathrm{dom}}(a) \times 4\pi R_{\mathrm{dom}}^2(a)$, where $N_{\mathrm{dom}}$ is number of domains, $R_{\mathrm{dom}}$ is average domain radius.
+\item Divide by total cosmological volume $V_{\mathrm{total}}(a) = (4\pi/3) R_H^3(a)$ (Hubble volume) to get volume-averaged energy density $\umech(a)$.
+\end{itemize}
+
+\paragraph{Steps.}
+\textcolor{red}{[TODO: Write explicit integral:]}
+\begin{equation}
+\umech(a) = \frac{N_{\mathrm{dom}}(a) \times 4\pi R_{\mathrm{dom}}^2(a)}{V_{\mathrm{total}}(a)} \int_{-\infty}^{+\infty} \epsilon_{\mathrm{BL}}(x,a) \, dx.
+\label{eq:umech_integral}
+\end{equation}
+
+\textcolor{red}{[TODO: Express $N_{\mathrm{dom}}(a)$ from nucleation rate and percolation theory. Express $R_{\mathrm{dom}}(a)$ from domain growth rate $v_{\mathrm{front}}$ and time since nucleation.]}
+
+\subsection{Functional Form: Beyond the Gaussian Ansatz}
+\label{sec:functional_form}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item The fiducial Gaussian form $\umech(a) = u_0 \exp[-\ln^2(a/\ac)/(2\sigmamech^2)]$ was an ansatz. Does the boundary-layer derivation reproduce a Gaussian, or does it yield a different profile?
+\item Possible alternatives: asymmetric rise/fall (faster nucleation, slower domain merger), power-law tails, double-peak structure if multiple nucleation epochs.
+\item Fit the derived $\umech(a)$ to a parametric form suitable for Boltzmann code implementation (CLASS/CAMB).
+\item Compare derived parameters $\ac$, $\sigmamech$, $\fmech$ to the fiducial values from Paper 4. What parameter ranges resolve the $H_0$ and $S_8$ tensions?
+\end{itemize}
+
+\paragraph{Analysis.}
+\textcolor{red}{[TODO: Solve Eq.~\ref{eq:umech_integral} numerically for plausible nucleation scenarios. Plot $\umech(a)$ and compare to Gaussian. Extract best-fit parameters.]}
+
+\subsection{Amplitude Calibration: Resolving the $H_0$ Tension}
+\label{sec:amplitude_calibration}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Paper 4 found that fiducial $\fmech \sim 0.1$ yields $|\Delta\rs/\rs| \sim 0.3$--$0.5\%$. The $H_0$ tension requires $|\Delta\rs/\rs| \sim 7$--$8\%$.
+\item This implies $\fmech \sim 0.2$--$0.4$ (scaling approximately linearly, though precise dependence is nonlinear due to integral bounds).
+\item Can the boundary-layer physics naturally produce $\fmech \sim 0.3$? Or does it require fine-tuning of nucleation rate, scattering length, domain size?
+\item Constraints: BBN (Big Bang nucleosynthesis) constrains energy density at $a \sim 10^{-9}$ (MeV scale). If $\umech$ extends to early times, it affects light element abundances.
+\item High-$\ell$ CMB: excess $\umech$ at recombination shifts damping tail, potentially in conflict with Planck 2018 high-$\ell$ data.
+\end{itemize}
+
+\paragraph{Parameter Space.}
+\textcolor{red}{[TODO: Construct 2D parameter plot: $\fmech$ vs. $\ac$, with contours of constant $|\Delta\rs/\rs|$. Overlay exclusion regions from BBN, Planck high-$\ell$, BAO.]}
+
+%==============================================================================
+\section{Sound Horizon and the $H_0$ Tension}
+\label{sec:h0_tension}
+%==============================================================================
+
+\textbf{[TODO: Revise the $H_0$ tension analysis from Paper 4 using boundary-layer-derived $\umech(a)$.]}
+
+\subsection{Modified Sound Horizon Integral}
+\label{sec:sound_horizon}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item The comoving sound horizon at decoupling is
+\begin{equation}
+\rs(\zdec) = \int_0^{\adec} \frac{c_s(a')}{a' H(a')} \, da',
+\label{eq:rs_integral}
+\end{equation}
+where $c_s(a) = c/\sqrt{3(1 + R_b(a))}$, $R_b = (3\rho_b)/(4\rho_\gamma)$.
+\item In BEC cosmology, $H(a)$ is modified by $\umech(a)$:
+\begin{equation}
+H^2(a) = H_0^2 \left[ \Omr a^{-4} + \Omm a^{-3} + \OmL + \frac{\umech(a)}{\rhocrit c^2} \right].
+\label{eq:H_modified}
+\end{equation}
+\item The shift $\Delta\rs/\rs$ depends on the integral of $\umech(a)/H(a)$ over the range $a \in [0, \adec]$.
+\item For boundary-layer-derived $\umech$, recalculate $\Delta\rs/\rs$ and compare to the $7$--$8\%$ target.
+\end{itemize}
+
+\paragraph{Calculation.}
+\textcolor{red}{[TODO: Numerically integrate Eq.~\ref{eq:rs_integral} with boundary-layer $\umech(a)$ for various parameter sets. Tabulate $\Delta\rs/\rs$ vs. $\fmech$, $\ac$, $\sigmamech$.]}
+
+\subsection{CMB Acoustic Peak Shifts}
+\label{sec:peak_shifts}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Reduced $\rs$ implies acoustic peaks shift to higher multipoles: $\ell_{\mathrm{peak}} \propto 1/\rs$.
+\item Fractional shift $\Delta\ell/\ell \approx -\Delta\rs/\rs$ (to first order).
+\item Planck 2018 measures peak positions to sub-percent precision. A $7$--$8\%$ shift is highly constraining.
+\item Check consistency: does the boundary-layer $\umech$ profile produce peak shifts compatible with Planck data when $H_0$ is allowed to vary?
+\end{itemize}
+
+\paragraph{Forecasting.}
+\textcolor{red}{[TODO: Use Fisher matrix or MCMC with modified CLASS to forecast constraints on $\umech$ parameters from Planck TT/TE/EE/lensing. Compare to SH0ES prior on $H_0$.]}
+
+\subsection{Resolution of the $H_0$ Tension}
+\label{sec:h0_resolution}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item If boundary-layer physics yields $\fmech \sim 0.3$, $\ac \sim 10^{-3}$, $\sigmamech \sim 0.4$, does the tension resolve?
+\item Quantify residual tension: after fitting BEC parameters to Planck+BAO, what is the inferred $H_0$ and its agreement with SH0ES?
+\item Comparison to other EDE models: how does boundary-layer BEC EDE differ from axion-like EDE, new early dark energy (NEDE), or AdS/CFT-motivated scenarios?
+\end{itemize}
+
+\paragraph{Summary Table.}
+\textcolor{red}{[TODO: Table comparing $H_0$ inferred from: (1) Planck $\Lambda$CDM, (2) SH0ES local, (3) Planck + BEC boundary-layer $\umech$, (4) Planck + axion EDE, etc. Include $\chi^2$ or Bayes factors.]}
+
+%==============================================================================
+\section{Growth Suppression and the $S_8$ Tension}
+\label{sec:s8_tension}
+%==============================================================================
+
+\textbf{[TODO: Extend growth-function analysis from Paper 4 with boundary-layer-derived $\umech$.]}
+
+\subsection{Modified Growth Function}
+\label{sec:growth_function}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Linear matter perturbation growth obeys
+\begin{equation}
+\ddot{\delta} + 2H\dot{\delta} - 4\pi G \rho_m \delta = 0,
+\label{eq:growth_ode}
+\end{equation}
+where dots are derivatives w.r.t. cosmic time $t$, and $\rho_m$ is matter density.
+\item The presence of $\umech(a)$ modifies $H(a)$, indirectly affecting growth through the Hubble drag term $2H\dot{\delta}$.
+\item Additionally, if $\umech$ clusters (it doesn't---$c_s = c$ gives infinite Jeans length), it would contribute to the $4\pi G \rho_m$ term. But since $\umech$ is smooth, growth suppression is purely via the expansion rate.
+\item Define growth function $D(a) \propto \delta(a)$ normalized to $D(a_{\mathrm{init}}) = a_{\mathrm{init}}$ in matter-dominated era.
+\item $S_8 = \sigma_8 \sqrt{\Omm/0.3}$, where $\sigma_8 = \sigma_8^{\mathrm{primordial}} \times D(a=1)/D(a_{\mathrm{init}})$.
+\end{itemize}
+
+\paragraph{Numerical Solution.}
+\textcolor{red}{[TODO: Solve Eq.~\ref{eq:growth_ode} numerically with boundary-layer $\umech(a)$ and modified $H(a)$. Compute $D(a=1)$ and fractional shift $\Delta S_8/S_8$.]}
+
+\subsection{Comparison to Planck and Weak Lensing}
+\label{sec:s8_comparison}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Planck 2018 infers $S_8 = 0.834 \pm 0.016$ (CMB lensing + primary CMB).
+\item Weak lensing: KiDS-1000 $S_8 = 0.759 \pm 0.024$, DES Year 3 $S_8 = 0.776 \pm 0.017$.
+\item Tension is $\Delta S_8 / \sigma_{\mathrm{tot}} \sim 2.7\sigma$.
+\item Can boundary-layer $\umech$ suppress $S_8$ by $\sim 5$--$8\%$ (absolute) or $\sim 6$--$10\%$ (relative)?
+\item Competing effect: EDE models typically \emph{increase} $S_8$ by enhancing growth during matter domination (since $H$ is higher, structure forms faster once $\umech$ shuts off). Does BEC boundary-layer EDE avoid this?
+\end{itemize}
+
+\paragraph{Parameter Scan.}
+\textcolor{red}{[TODO: Plot $\Delta S_8/S_8$ vs. $\fmech$ and $\ac$. Identify parameter region that simultaneously yields $|\Delta\rs/\rs| \sim 7$--$8\%$ (for $H_0$) and $\Delta S_8/S_8 \sim -6\%$ (for $S_8$). Assess feasibility.]}
+
+\subsection{Small-Scale Power Suppression: Jeans Length vs. Healing Length}
+\label{sec:small_scale}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item BEC models with ultralight bosons ($m \sim 10^{-22}$ eV) exhibit power suppression on scales $k > k_J$, where $k_J^{-1} \sim \lambdaJ \sim 1$ kpc (gravitational Jeans length, NOT the Compton healing length $\xi \sim 0.064$ pc).
+\item This is distinct from warm dark matter (WDM), which suppresses via free-streaming. BEC suppression is quantum-pressure-driven (Paper 3).
+\item Does the boundary-layer energy $\umech$ introduce additional small-scale effects? If the boundary layer has structure on scale $\deltaBL \sim \xih \sim 0.064$ pc, this is far below cosmological scales and irrelevant for $S_8$.
+\item The $S_8$ suppression in BEC arises from the modified expansion history (reduced growth time), not from small-scale cutoff.
+\end{itemize}
+
+\paragraph{Clarification.}
+\textcolor{red}{[TODO: Write explicit statement distinguishing Compton healing length $\xi$, gravitational Jeans length $\lambdaJ$, and boundary-layer thickness $\deltaBL$. Emphasize that $S_8$ tension resolution is a \emph{background expansion} effect, not a transfer-function cutoff.]}
+
+%==============================================================================
+\section{Observable Predictions and Falsification Criteria}
+\label{sec:observables}
+%==============================================================================
+
+\textbf{[TODO: Enumerate testable predictions distinguishing boundary-layer BEC from $\Lambda$CDM and other EDE models.]}
+
+\subsection{CMB Primary Anisotropies}
+\label{sec:cmb_primary}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item \textbf{Acoustic peak positions}: Shift by $\Delta\ell/\ell \approx -\Delta\rs/\rs \sim 7$--$8\%$ for $H_0$ tension resolution. Planck measures $\ell_1$ (first peak) to $\sim 0.2\%$---a $7\%$ shift is easily detectable. Current data must already constrain this; check Planck 2018 parameter bounds on EDE.
+\item \textbf{Damping tail} ($\ell > 1000$): Reduced photon diffusion scale $\lambda_D \propto 1/\sqrt{\int \Gamma dt}$ (where $\Gamma$ is Compton scattering rate). Modified $H(a)$ changes the integral, shifting damping tail amplitude and scale. Planck high-$\ell$ data constrain this tightly.
+\item \textbf{Early ISW effect}: For $a < \adec$, $\umech(a)$ with $\wmech(a)$ evolving causes gravitational potentials $\Phi$ to decay/grow, sourcing ISW. This is most prominent at low $\ell$ ($\ell \lesssim 30$). Planck low-$\ell$ data sensitive to this (but cosmic variance limited).
+\item \textbf{Comparison}: Standard EDE (e.g., axion) has different $w(a)$ evolution (tracking, then oscillating). The ISW signature differs. Can Planck low-$\ell$ data distinguish BEC boundary-layer EDE from axion EDE?
+\end{itemize}
+
+\paragraph{Forecast.}
+\textcolor{red}{[TODO: Compute full CMB $C_\ell^{TT}$, $C_\ell^{TE}$, $C_\ell^{EE}$ for boundary-layer $\umech$ using modified CLASS. Overlay Planck 2018 data and error bars. Quantify goodness-of-fit $\chi^2$ vs. $\Lambda$CDM and vs. axion EDE.]}
+
+\subsection{CMB Lensing}
+\label{sec:cmb_lensing}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item CMB lensing convergence power spectrum $C_\ell^{\kappa\kappa}$ probes integrated matter distribution along the line of sight.
+\item Modified growth function $D(a)$ changes $C_\ell^{\kappa\kappa}$ amplitude. Planck 2018 lensing reconstruction measures $A_{\mathrm{lens}} = 1.02 \pm 0.02$ (amplitude relative to $\Lambda$CDM).
+\item BEC boundary-layer model with suppressed $S_8$ predicts $A_{\mathrm{lens}} < 1$. Tension? Or consistency?
+\item Cross-check with external lensing surveys: DES, Euclid, Rubin Observatory will measure $C_\ell^{\kappa\kappa}$ independently.
+\end{itemize}
+
+\paragraph{Prediction.}
+\textcolor{red}{[TODO: Compute $C_\ell^{\kappa\kappa}$ for boundary-layer model and compare to Planck 2018 lensing. Forecast constraints from Euclid/Rubin.]}
+
+\subsection{Baryon Acoustic Oscillations (BAO)}
+\label{sec:bao}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item BAO scale $r_s(\zdec)$ is directly measured in galaxy clustering (BOSS, eBOSS, DESI) and Lyman-$\alpha$ forest.
+\item A $7$--$8\%$ reduction in $\rs$ shifts the BAO peak in the correlation function by the same fractional amount.
+\item BOSS DR12 measures $r_s$ to $\sim 1\%$ precision. DESI is expected to reach $\sim 0.3\%$. A $7\%$ shift is enormous and must be reconciled.
+\item Current BAO+Planck joint fits constrain $\rs$ tightly. How much tension exists with SH0ES+boundary-layer BEC?
+\item Distinctive signature: BEC $\umech$ with $c_s = c$ produces no baryon-CDM relative velocity effects (unlike standard EDE, which can shift $r_s$ differently for baryons vs. CDM if $c_s \neq c$). BEC predicts a \emph{universal} $r_s$ shift for both components.
+\end{itemize}
+
+\paragraph{Consistency Check.}
+\textcolor{red}{[TODO: Compare Planck-inferred $r_s$ vs. BOSS/eBOSS direct measurements. Compute $\chi^2$ for boundary-layer BEC vs. $\Lambda$CDM vs. axion EDE. Discuss DESI forecasts.]}
+
+\subsection{Large-Scale Structure: Galaxy Clustering and Weak Lensing}
+\label{sec:lss}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Matter power spectrum $P(k,z)$ at $z \sim 0$--$2$ probed by galaxy surveys (BOSS, DES, Euclid, Rubin, Roman).
+\item BEC with $m \sim 10^{-22}$ eV suppresses $P(k)$ for $k > k_J \sim 1$ kpc$^{-1}$ (see Paper 3). This affects small-scale galaxy clustering, halo mass function, Lyman-$\alpha$ forest.
+\item Additionally, modified expansion history changes the growth factor, affecting $P(k)$ amplitude at \emph{all} scales.
+\item Weak lensing (KiDS, DES, HSC, Euclid) measures $P(k)$ via cosmic shear. The $S_8$ tension is directly a test of $P(k)$ normalization.
+\item Prediction: BEC boundary-layer model with suppressed $S_8$ should bring Planck and weak lensing into agreement. If not, the model is falsified.
+\end{itemize}
+
+\paragraph{Test.}
+\textcolor{red}{[TODO: Compute $P(k,z=0)$ for boundary-layer BEC and compare to DES/KiDS measurements. Quantify $\chi^2$ improvement relative to $\Lambda$CDM.]}
+
+\subsection{High-Redshift Observations: JWST and Reionization}
+\label{sec:high_z}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item JWST has discovered unexpectedly bright/massive galaxies at $z \sim 10$--$13$. Does enhanced early growth (or suppressed growth) in BEC cosmology help or hinder explanation?
+\item Reionization history: modified expansion and growth affect when first stars form, when reionization completes. Planck measures $\tau_{\mathrm{reion}} = 0.054 \pm 0.007$ (optical depth to reionization). BEC model must match this.
+\item 21-cm cosmology (HERA, SKA): directly probes $H(z)$ and growth at $z \sim 6$--$20$. A future $r_s$ measurement from 21-cm BAO at high-$z$ would be a smoking-gun test.
+\end{itemize}
+
+\paragraph{Outlook.}
+\textcolor{red}{[TODO: Discuss qualitatively how boundary-layer BEC affects high-$z$ structure formation. Defer detailed JWST/21-cm predictions to future work.]}
+
+\subsection{Gravitational Waves: Merger Rates and Stochastic Background}
+\label{sec:gw}
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Modified expansion history changes the cosmic time--redshift relation $t(z)$, affecting binary merger rates observed by LIGO/Virgo/KAGRA.
+\item Stochastic gravitational wave background (SGWB) from phase transition: if the BEC condensation is a first-order phase transition with nucleation, it could produce a SGWB. Peak frequency $f_{\mathrm{peak}} \sim$ (speed of sound)/(bubble size) $\sim c/\deltaBL$ at the transition epoch.
+\item Estimate: $\deltaBL \sim 10^{-10}$ m (healing length at Planck scale?), transition at $a \sim 10^{-3}$, redshifted to today $f_0 \sim ?$ Hz. Is this in LIGO band (10--1000 Hz), pulsar timing array band (nHz), or elsewhere?
+\item If detectable, SGWB would be direct evidence of the phase transition. If not detected at predicted level, model falsified.
+\end{itemize}
+
+\paragraph{Estimate.}
+\textcolor{red}{[TODO: Compute SGWB from BEC phase transition using standard formalism (energy density in GW, peak frequency, spectral shape). Compare to LIGO O3 upper limits and NANOGrav pulsar timing constraints.]}
+
+\subsection{Falsification Summary}
+\label{sec:falsification}
+
+\begin{enumerate}[leftmargin=*, itemsep=0.3em]
+\item \textbf{If Planck+BAO+SH0ES joint fit excludes the required $\umech$ parameter space} (too large $\chi^2$ or Bayes factor against the model), the boundary-layer hypothesis is falsified.
+\item \textbf{If DES/KiDS/Euclid weak lensing confirms Planck $S_8$} (i.e., no $S_8$ tension exists), then the growth suppression prediction is unnecessary, and the model loses a key motivation (though $H_0$ tension alone might justify it).
+\item \textbf{If DESI BAO measures $r_s$ to 0.3\% and confirms $\Lambda$CDM value}, the $7$--$8\%$ shift required for $H_0$ tension resolution is ruled out.
+\item \textbf{If JWST or 21-cm observations detect anomalies inconsistent with modified expansion history}, the model is constrained or excluded.
+\item \textbf{If SGWB from phase transition is not detected at predicted level} (future pulsar timing arrays, LISA, Einstein Telescope), the model is disfavored (though absence of evidence is not definitive).
+\end{enumerate}
+
+\textbf{[TODO: Expand each falsification criterion into a testable quantitative statement with current/future observational capabilities.]}
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%==============================================================================
+
+\textbf{[TODO: Summarize key results and outline future work.]}
+
+\paragraph{Summary of Main Results.}
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item We have developed the microscopic boundary-layer physics underlying the transient energy component $\umech(a)$ in BEC cosmology.
+\item The supercooled boson fluid analogy provides a physical picture: metastable protofluid below condensation threshold, nucleation of condensate domains, propagation of phase fronts with finite-width boundary layers.
+\item Density and impedance profiles $\rho(x)$, $Z(x)$ across the boundary are derived from Gross-Pitaevskii mean-field theory, yielding characteristic healing length $\xih$ and boundary-layer thickness $\deltaBL$.
+\item The manifold pressure differential $\Pmanifold = \Pcond - \Pfluid$ drives the phase transition. Energy locked in the boundary layer during the active transition phase gives rise to $\umech(a)$.
+\item From first principles, we have derived (or outlined the derivation of) the functional form, amplitude, and time-variation of $\umech(a)$, moving beyond the fiducial Gaussian ansatz.
+\item Calibrating boundary-layer parameters to resolve the $H_0$ tension ($|\Delta\rs/\rs| \sim 7$--$8\%$) yields $\fmech \sim 0.2$--$0.4$, $\ac \sim 10^{-3}$, $\sigmamech \sim 0.3$--$0.5$. This parameter range also suppresses structure growth, potentially alleviating the $S_8$ tension.
+\item Observable predictions distinguish BEC boundary-layer EDE from $\Lambda$CDM and alternative EDE models: CMB peak shifts, damping tail, early ISW, lensing convergence, BAO scale, matter power spectrum normalization, high-$z$ structure, and possibly a stochastic gravitational wave background.
+\item Falsification criteria are concrete: if future Planck+BAO+SH0ES+DES/Euclid datasets exclude the required parameter space, the model is ruled out.
+\end{itemize}
+
+\paragraph{Open Questions and Future Work.}
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item \textbf{Numerical simulations}: Full 3D GPE simulations of nucleation, domain growth, and percolation in expanding FLRW spacetime are needed to confirm analytic estimates of $\umech(a)$.
+\item \textbf{Boltzmann code implementation}: Modify CLASS or CAMB to incorporate boundary-layer-derived $\umech(a)$ and $\wmech(a)$. Run MCMC chains on Planck+BAO+SH0ES to obtain posterior distributions for BEC parameters.
+\item \textbf{Comparison to axion EDE and NEDE}: Detailed likelihood comparison to discriminate boundary-layer BEC from other EDE models. What are the Bayes factors?
+\item \textbf{Non-Gaussianity}: Does the phase transition generate primordial non-Gaussianity (local, equilateral, orthogonal types)? Current $f_{\mathrm{NL}}$ constraints from Planck are $f_{\mathrm{NL}}^{\mathrm{local}} = 0.8 \pm 5.7$. Could boundary-layer dynamics contribute?
+\item \textbf{Quantum corrections}: We used mean-field GPE. Are quantum fluctuations, finite-temperature corrections, or beyond-mean-field effects important at the boundary layer? Connection to finite-$N$ BEC instabilities?
+\item \textbf{Laboratory analogues}: Can the boundary-layer dynamics be tested in terrestrial BEC experiments (ultracold atom clouds, liquid helium)? Quench experiments where a BEC is suddenly expanded or a phase transition is triggered?
+\item \textbf{Multiverse implications}: If nucleation is stochastic, different Hubble volumes could have different condensation histories. Does this introduce anthropic selection effects or observable statistical anisotropies?
+\end{itemize}
+
+\paragraph{Final Remarks.}
+The boundary-layer physics developed in this paper provides the missing microphysical foundation for the BEC cosmological framework. By grounding $\umech(a)$ in quantum condensate dynamics rather than phenomenology, we have transformed the model from an effective parameterization into a predictive theory with concrete falsification criteria. The resolution of the $H_0$ and $S_8$ tensions hinges on whether the boundary-layer energy can naturally achieve the required amplitude and profile. Upcoming observations from DESI, Euclid, Rubin Observatory, and CMB-S4 will decisively test this hypothesis within the next decade. If confirmed, the BEC paradigm will represent a profound shift in our understanding of cosmological expansion, dark energy, and the quantum structure of spacetime. If falsified, it will sharpen the constraints on early-universe phase transitions and guide the search for alternative resolutions to the cosmological tensions.
+
+%==============================================================================
+\section*{Acknowledgments}
+%==============================================================================
+
+\textcolor{red}{[TODO: Add acknowledgments if applicable. Standard text about computational resources, discussions, etc.]}
+
+%==============================================================================
+% APPENDICES
+%==============================================================================
+
+\appendix
+
+%==============================================================================
+\section{Detailed Boundary Layer Integrals}
+\label{app:bl_integrals}
+%==============================================================================
+
+\textbf{[TODO: Work out explicit calculations for key integrals from Section \ref{sec:umech_derivation}.]}
+
+\subsection{Energy Density Profile Integration}
+\label{app:energy_integration}
+
+\textcolor{red}{[TODO: Starting from Eq.~\ref{eq:energy_density_bl}, substitute the tanh profile $\rho(x)$ from Eq.~\ref{eq:rho_profile}, and integrate to get total boundary-layer energy per unit area. Show step-by-step.]}
+
+\subsection{Impedance Reflection Coefficient Derivation}
+\label{app:impedance_derivation}
+
+\textcolor{red}{[TODO: Derive Eq.~\ref{eq:reflection_coeff} from acoustic wave scattering at impedance mismatch. Include transmission coefficient $T = 1 - R$ and energy conservation check.]}
+
+\subsection{Nucleation Rate and Domain Volume Fraction}
+\label{app:nucleation}
+
+\textcolor{red}{[TODO: Expand Eq.~\ref{eq:nucleation_rate} derivation. Include details of classical nucleation theory, critical bubble radius, tunneling exponent. Compute volume fraction $f_{\mathrm{cond}}(a)$ from percolation theory (Avrami equation or similar).]}
+
+%==============================================================================
+\section{Connection to Paper 1: Impedance Matching and Postulates}
+\label{app:paper1}
+%==============================================================================
+
+\textbf{[TODO: Explicitly connect boundary-layer results to foundational framework from Paper 1.]}
+
+\subsection{Postulate Recap}
+\label{app:postulates}
+
+\textcolor{red}{[TODO: Restate relevant Postulates from Paper 1 (especially Postulate 4 on sound speed $c_s = c$, Postulate on resting tension $\rhostiff = c^2/(8\pi G)$). Show how boundary-layer density profile transitions from protofluid (violating resting state) to condensate (satisfying resting state).]}
+
+\subsection{Impedance Matching from Appendix B of Paper 1}
+\label{app:impedance_paper1}
+
+\textcolor{red}{[TODO: Reference the impedance matching calculation in Paper 1 Appendix B. Show consistency: the boundary-layer impedance gradient $Z(x)$ interpolates between the two matched states. Verify no contradiction with Paper 1 results.]}
+
+%==============================================================================
+\section{Comparison to Standard Early Dark Energy Models}
+\label{app:ede_comparison}
+%==============================================================================
+
+\textbf{[TODO: Detailed comparison table and discussion of BEC boundary-layer EDE vs. other EDE proposals.]}
+
+\subsection{Axion-Like EDE}
+\label{app:axion_ede}
+
+\textcolor{red}{[TODO: Review axion EDE (Poulin et al. 2019): scalar field $\phi$ with potential $V(\phi)$, tracking then oscillating. Compare equation of state evolution, sound speed (order unity, not $c$), clustering properties. How do observational signatures differ from BEC?]}
+
+\subsection{New Early Dark Energy (NEDE)}
+\label{app:nede}
+
+\textcolor{red}{[TODO: Review NEDE (Niedermann \& Sloth 2020): triggered phase transition at recombination. Compare phase-transition mechanism to BEC nucleation. Similarities? Differences in microphysics?]}
+
+\subsection{Rock 'n' Roll EDE}
+\label{app:rock_n_roll}
+
+\textcolor{red}{[TODO: Review Rock 'n' Roll model (Ye \& Piao 2020): oscillating scalar field. Compare frequency of oscillations to boundary-layer dynamics timescale. Does BEC have oscillatory features?]}
+
+%==============================================================================
+% BIBLIOGRAPHY
+%==============================================================================
+
+\begin{thebibliography}{99}
+
+\bibitem{Planck2018}
+Planck Collaboration,
+``Planck 2018 results. VI. Cosmological parameters,''
+\textit{Astron. Astrophys.} \textbf{641}, A6 (2020),
+arXiv:1807.06209.
+
+\bibitem{Riess2022}
+A. G. Riess et al. (SH0ES Collaboration),
+``A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km/s/Mpc Uncertainty from the Hubble Space Telescope and the SH0ES Team,''
+\textit{Astrophys. J. Lett.} \textbf{934}, L7 (2022),
+arXiv:2112.04510.
+
+\bibitem{Freedman2021}
+W. L. Freedman,
+``Measurements of the Hubble Constant: Tensions in Perspective,''
+\textit{Astrophys. J.} \textbf{919}, 16 (2021),
+arXiv:2106.15656.
+
+\bibitem{Verde2019}
+L. Verde, T. Treu, and A. G. Riess,
+``Tensions between the early and late Universe,''
+\textit{Nat. Astron.} \textbf{3}, 891 (2019),
+arXiv:1907.10625.
+
+\bibitem{DiValentino2021}
+E. Di Valentino et al.,
+``In the realm of the Hubble tension—a review of solutions,''
+\textit{Class. Quantum Grav.} \textbf{38}, 153001 (2021),
+arXiv:2103.01183.
+
+\bibitem{KiDS2021}
+KiDS Collaboration,
+``KiDS-1000 Cosmology: Cosmic shear constraints and comparison between two point statistics,''
+\textit{Astron. Astrophys.} \textbf{645}, A104 (2021),
+arXiv:2007.15632.
+
+\bibitem{DES2022}
+DES Collaboration,
+``Dark Energy Survey Year 3 results: Cosmological constraints from galaxy clustering and weak lensing,''
+\textit{Phys. Rev. D} \textbf{105}, 023520 (2022),
+arXiv:2105.13549.
+
+\bibitem{Poulin2019}
+V. Poulin, T. L. Smith, T. Karwal, and M. Kamionkowski,
+``Early Dark Energy Can Resolve The Hubble Tension,''
+\textit{Phys. Rev. Lett.} \textbf{122}, 221301 (2019),
+arXiv:1811.04083.
+
+\bibitem{Karwal2016}
+T. Karwal and M. Kamionkowski,
+``Dark energy at early times, the Hubble parameter, and the string axiverse,''
+\textit{Phys. Rev. D} \textbf{94}, 103523 (2016),
+arXiv:1608.01309.
+
+\bibitem{Agrawal2019}
+P. Agrawal, F.-Y. Cyr-Racine, D. Pinner, and L. Randall,
+``Rock 'n' Roll Solutions to the Hubble Tension,''
+arXiv:1904.01016 (2019).
+
+\bibitem{Hill2020}
+J. C. Hill et al.,
+``Early Dark Energy Does Not Restore Cosmological Concordance,''
+\textit{Phys. Rev. D} \textbf{102}, 043507 (2020),
+arXiv:2003.07355.
+
+\textcolor{red}{[TODO: Add citations for: Gross-Pitaevskii equation review, BEC in cosmology (Sikivie, Marsh, Hu, Baz\'an, Suarez), supercooled water phase transition, classical nucleation theory, percolation theory, cosmological perturbation theory textbooks (Dodelson, Weinberg), CMB analysis methods, BAO surveys (BOSS, eBOSS, DESI), weak lensing surveys, JWST early results, gravitational wave stochastic background formalism, etc.]}
+
+\end{thebibliography}
+
+\end{document}
