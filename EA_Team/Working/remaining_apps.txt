@@ -1,0 +1,200 @@
+1409,"Reliability Workbench (Toledo)"
+1411,"DamageWeb (Lima)"
+1418,"LIMS WEB - Rainbow Lake"
+1425,"EPS Kiosk"
+1427,"Storepoint (POS)"
+1433,"Rosemount TankMaster"
+1434,"Route Commander"
+1437,"Retail Transaction Switch (Banking)"
+1458,"RightAngle (US Customer Portal)"
+1459,Salus
+149,"Crude Oil BO Reports"
+150,"Bloomberg Request Builder"
+1503,"Trading Platform Integration-Future"
+1547,"SHS - Toledo - (Legacy Shift Handover System) - Archive"
+1550,"BroadPeak K3"
+1551,"Capital IQ"
+1554,"Skybridge LeakDAS"
+1560,"GE Smart Signals"
+1563,"EXTERNAL - PROS (Price Optimization System)"
+1569,"PD Tools Pro"
+1571,"Whitehouse Process Crtl ToolKit (Lima)"
+1578,Benson
+1582,"Management of Change"
+1590,SPARK
+1603,"Bloomberg Terminals"
+1604,CQGNet
+1611,"Stoner(Synergi) Pipeline Simulator"
+1633,"System 1 Evo (Lima)"
+1634,"System 1 Evo (Toledo)"
+1651,"TMS TopTech Superior"
+1652,"TerminalBoss (Golden Lake)"
+1653,"TerminalBoss (Landrose)"
+1654,"TerminalBoss (Rainbow Lake)"
+1677,"PTS / Callout Book (Lima)"
+1701,SL_P
+1703,Denodo
+1711,"Datalink(Toledo TSA)"
+1722,"Marketing EBB's/Websites"
+1727,"Terminal Compliance Tracking Tool"
+1730,mWorkOrder
+1731,mRounds
+1745,"ETHANOL Stocks and Ops - Lloydminster"
+1746,"ETHANOL Stocks and Ops - MINNEDOSA"
+1773,"Volumetric Data Collector (VDC)"
+1778,"EXTERNAL - DTN (Invoice)"
+1779,"EXTERNAL - DTN ( TABS)"
+1790,TermWorx
+1791,"EXTERNAL - DTN (Fuel Seller)"
+1793,TIBS
+1808,"DSDB (Downstream Strategy and Analysis database)"
+1814,"SMS - US PROGRESS"
+1841,"TerminalBoss (Minnedosa)"
+1842,"TerminalBoss (Lloydminster)"
+1843,"NitonConnect Sync Manager"
+1844,"IT Assets (Lima)"
+1845,"Aveva Visual Flare"
+1849,"EIA Reports @ Lima"
+1850,"FTZ Report"
+1884,"IPS (ToadFly)"
+1889,"Offshore Crude Spreadsheet"
+1893,"File Transfer Switch"
+1903,TMS
+1909,"Worldship (Lima)"
+1911,"MARPlot (Lima)"
+1912,"Cameo Chemicals (Lima)"
+1918,"CME Direct"
+1922,"iTest Client (Lima)"
+1923,"Egistix Oil"
+1926,"C-Visual Explorer (Lima)"
+1927,"C-Visual Explorer (Toledo)"
+1932,"FLIR Tools (Lima)"
+1941,"SFRA (Lima)"
+1944,"Truck DB (Lima)"
+1945,"Delivery DB (Lima)"
+1947,"VACworks II"
+1955,Veeder-Root
+1956,"Suez Water Technologies"
+1957,"Spartan BlueMarvel"
+1958,"Ventis MX4"
+1967,VistaExpress
+1968,OceanSMART
+1982,"Google Maps Retail API"
+1993,"WEX E-Manager"
+2006,RBMI
+2014,"ZappySys  (Toledo TSA)"
+231,Geometrix
+236,"EXTERNAL - Transport4"
+239,"TMS TopTech Lloyd"
+284,"Minnedosa Quality Contol (QC)"
+291,"Bourque Logistics (Lima)"
+305,"Docker Container Instance"
+355,"Cloud9 Trader Enterprise"
+363,CTRM-LogicApp
+377,AnzioWin
+385,"Baytek COA (Lima)"
+42,"Market db"
+423,"Argus  - Biofuels Data
+45,"SMS US"
+47,"Software Athlete � PI Vision Extensibility components"
+48,"AspenTech Orion (Toledo)"
+49,"Microstation (Lima)"
+50,"KG-Tower (Lima)"
+52,"Texas CPA Motor Fuels (Columbus)"
+532,"Evolis Badge Studio"
+537,"Crystal Reports Server (Lima)"
+538,"Allegro Horizon (Derivatives)"
+539,"Allegro (Nat Gas)"
+540,AllegroU
+549,"SAP (Toledo-TSA)"
+55,"Aloha (Lima)"
+561,"Skybridge Cooling Towers"
+577,"HVAC (Lima)"
+579,MACSsuite
+583,"ETRM - RightAngle"
+584,"US Refined Products"
+585,"Canadian Industrial Products"
+586,RightAngle
+590,RINS
+604,"Contract Matrix"
+607,Nostra
+618,"Authorization Server"
+62,"Aspen HYSYS (Toledo)"
+637,"EXTERNAL � AVALARA"
+64,"Cascade (Toledo)"
+640,"ROMeo Mass Balance Module"
+654,BechtCONNECT
+660,"Bit9 - Downstream"
+662,Blackline
+663,"Bloomberg Anywhere"
+67,H/CAMS
+672,"IQ Flange Management"
+674,"Content Server (Toledo-TSA)"
+678,"Salesforce - Downstream - ETRM"
+688,"Caesar II (Lima)"
+69,"CMX Professional"
+695,cAST
+697,"cBliss (Lloyd ASL)"
+698,"cBLISS (Superior)"
+699,"cBliss (Toledo)"
+700,"cBliss (Lloyd HLU)"
+714,cFlow
+715,NRGStream
+719,"Print Services (Lima)"
+734,ClearView
+741,"CNotes ASM"
+755,ConnectIN
+77,Ascent
+79,"PlantManager (Lima)"
+793,"System 1 EVO (Lloyd Upgrader)"
+80,"PlantManager (Superior)"
+803,"Credit Cube"
+81,"Synchrowave (Lima)"
+815,"ETRM CA Raptor"
+816,"ETRM CA Admin Console"
+817,"ETRM CA SchedulingUI"
+818,"ETRM CA FIFO"
+823,WebTracker
+826,"Leica Geosystems Suite"
+828,"DamageWeb (Superior)"
+829,"DamageWeb (Toledo)"
+836,"MDS (Marketing Data store)"
+837,"Cokecar database (Lima)"
+839,NExSTARS
+848,eConfirm
+851,"Bourque Logistics (Toledo) "
+857,"HLU Gas Chromatograph Software"
+858,"Pavilion MPC"
+859,PCARD
+86,"Aspen HYSYS (Upstream)"
+860,"EPS Pay at Pump"
+879,"Downstream Report Creator (DORC)"
+88,"InstruCalc (Lima)"
+881,"SMS CANADA"
+882,"FEL Toolbox"
+889,"E2G Practices"
+89,"Smartview (Lima)"
+890,E2G
+891,"EBB - NrG Highway - Web"
+895,"Egistix Open"
+90,"CivilStorm (Toledo)"
+905,SWIFTLINK
+91,"PlantManager (Toledo)"
+917,"Superior NetDAHS"
+921,ERDI
+935,Omnivex
+936,"Marex NEON Trader"
+94,"AORA (Toledo)"
+940,"Fenceline Pro"
+95,EasyRCA
+96,"PRV2SIZE (Lima)"
+961,"Feedstock Scheduling Tool (FST)"
+963,FuelForce
+965,"Bloomberg Data License"
+97,"SmartPlant Instrumentation (Lima)"
+976,"Geometrix - Yard Management (Lloydminster)"
+977,"Geometrix - Yard Management (Superior)"
+978,"Geometrix - Yard Management (Bruderheim )"
+98,"PHA Pro (Toledo)"
+99,"Spiral (Lima)"
+998,Haz-Shipper
