@@ -1,0 +1,428 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============== ENCODING AND FONTS ==============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ============== PAGE LAYOUT ==============
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ============== MATHEMATICS ==============
+\usepackage{amsmath,amssymb}
+
+% ============== GRAPHICS AND TABLES ==============
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% ============== LISTS ==============
+\usepackage{enumitem}
+
+% ============== COLORS ==============
+\usepackage{xcolor}
+
+% ============== HYPERLINKS (load last) ==============
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ============== CUSTOM MACROS ==============
+\newcommand{\ee}[1]{\times 10^{#1}}
+\newcommand{\rhostiff}{\ensuremath{\rho_{\mathrm{stiff}}}}
+\newcommand{\Tzero}{\ensuremath{T_0}}
+
+% ============== DOCUMENT ==============
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Planck Field Research Program}}\\[0.5em]
+{\Large Program Outline and Document Structure}\\[1.5em]
+{\large Robin Skavberg}\\[0.3em]
+{\small Independent Researcher \quad ORCID: 0009-0003-9126-6196}\\
+{\small \texttt{skavberg@gmail.com}}\\[1.5em]
+{\small Version 1.0 \quad---\quad \today}
+\end{center}
+
+\vspace{1em}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{Overview}
+%==============================================================================
+
+The Planck field research program develops a mechanical framework in which the observable universe emerges as a Bose-Einstein condensate (BEC) expanding into a universal protofluid. The central organizing quantity is the resting tension $\Tzero = c^4/(8\pi G) \approx 4.83 \times 10^{42}$ Pa---the intrinsic elastic modulus of the Planck field. From this single constitutive property:
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item Gravity arises as the elastic response of the field to displacement by matter.
+\item The maximum density of matter is $\rhostiff = c^2/(8\pi G) \approx 5.36 \times 10^{25}$ kg/m$^3$.
+\item The weakness of gravity is explained by the fractional perturbation $\delta T/\Tzero \sim 10^{-52}$.
+\item The cosmological constant problem is reduced from $10^{123}$ to $10^{71}$.
+\item Frozen cores (matter at $\rhostiff$) are acoustically opaque, providing a dark matter candidate.
+\end{itemize}
+
+The program comprises three published foundation papers and eleven research papers.
+
+%==============================================================================
+\section{Foundation Papers (Published)}
+\label{sec:foundation}
+%==============================================================================
+
+These three papers, published on Zenodo, establish the mechanical principles from which the entire program derives. They are not numbered within the research paper series; they are the foundation upon which it stands.
+
+%----------------------------------------------------------------------
+\subsection{A Mechanical Route to $G$}
+\label{sec:foundation_G}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} A Mechanical Route to $G$: Matching Field Stress-Energy to the Einstein-Hilbert Coupling
+
+\textbf{DOI:} \href{https://doi.org/10.5281/zenodo.18496765}{10.5281/zenodo.18496765}
+
+\textbf{Scope:} Models the vacuum as a quantum condensate and derives the gravitational coupling constant $G$ by matching the field's mechanical stiffness ($K = \rho_m c^2$) to the geometric stiffness in the Einstein-Hilbert action. Establishes the foundational equation $G = c^2/(8\pi P_m)$, identifying gravity as the elastic response of the Planck field to displacement by matter. Presents three realizations of field pressure (elastic curvature response, superfluid phonon force, single-field EFT) and traces the evolution of $G_{\mathrm{eff}}$ across cosmological epochs.
+
+\textbf{Key Result:} Gravity is not a fundamental force but the intrinsic modulus strength of the Planck field acting on matter that displaces it.
+
+%----------------------------------------------------------------------
+\subsection{The Singularity in Equilibrium}
+\label{sec:foundation_singularity}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} A Mechanical Extension of General Relativity: The Singularity in Equilibrium
+
+\textbf{DOI:} \href{https://doi.org/10.5281/zenodo.18393278}{10.5281/zenodo.18393278}
+
+\textbf{Scope:} Shows that the dynamic coupling $G(P_m) = c^2/(8\pi P_m)$ implies $G \to 0$ as $P_m \to \infty$, halting gravitational collapse at a finite-density ``singularity in equilibrium.'' Derives modified Einstein field equations with $\kappa_{\mathrm{eff}} = 1/(c^2 P_m)$, proves that curvature saturates rather than diverges, re-derives Hawking radiation as the thermodynamic consequence of the pressure gradient between the saturated core and the ambient vacuum, and establishes a ``mechanical floor'' at the Planck scale. Verified against S2 orbital data near Sgr~A*.
+
+\textbf{Key Result:} There is no singularity. Gravitational collapse halts at a finite density where the manifold's resistance to compression matches the matter pressure.
+
+%----------------------------------------------------------------------
+\subsection{Resolving the Hulse-Taylor Binary}
+\label{sec:foundation_hulse_taylor}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Planck Field---Resolving the Hulse-Taylor Binary
+
+\textbf{DOI:} \href{https://doi.org/10.5281/zenodo.18462909}{10.5281/zenodo.18462909}
+
+\textbf{Scope:} Applies the Planck field framework to the Hulse-Taylor binary pulsar (PSR~B1913+16), demonstrating that the observed orbital decay is consistent with impedance-mediated energy transfer at the field boundary. Introduces the impedance mismatch mechanism that later informs the frozen core concept and the frame-dragging interpretation.
+
+\textbf{Key Result:} The impedance mismatch between matter and the Planck field drives observable energy transfer, validated against precision binary pulsar timing.
+
+%==============================================================================
+\section{Research Papers}
+\label{sec:research_papers}
+%==============================================================================
+
+The following eleven papers develop the full BEC cosmology, observational tests, and theoretical extensions. Papers 1--7 are complete as draft manuscripts. Papers 8--11 are in development.
+
+%----------------------------------------------------------------------
+\subsection{Paper 1: The Observable Universe as a Condensate}
+\label{sec:paper1}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} The Observable Universe as a Condensate Expanding into a Universal Protofluid
+
+\textbf{File:} \texttt{I\_universal\_condensate/}
+
+\textbf{Scope:} Foundational framework. Postulates, formal GP $\to$ FLRW bridge, density hierarchy ($\rho_{\mathrm{Pl}} : \rhostiff : \rho_{\mathrm{crit}}$), resting tension interpretation, frozen core dark matter (Section 5), kinematics with transient energy $u_{\mathrm{mech}}(a)$, complete Rankine-Hugoniot and impedance matching derivations (appendices), validation against 30 observational constraints, BEC parameter analysis.
+
+\textbf{Key Results:}
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+\item GP hydrodynamics exactly reproduces FLRW Friedmann and continuity equations
+\item $\rhostiff/\rho_{\mathrm{crit}} = R_H^2/3 \approx 6 \times 10^{51}$ (geometric, not fine-tuned)
+\item Frozen cores resolve the Lyman-alpha tension
+\item 26 PASS, 2 PARTIAL, 0 TENSION (30/30 consistent)
+\end{itemize}
+
+\textbf{Status:} Complete (draft v03). \quad \textbf{Depends on:} All three foundation papers.
+
+%----------------------------------------------------------------------
+\subsection{Paper 2: Gravitational Lensing and Light Propagation}
+\label{sec:paper2}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Gravitational Lensing and Light Propagation in a Bose-Einstein Condensate Universe
+
+\textbf{File:} \texttt{II\_gravitational\_lensing/}
+
+\textbf{Objective:} Derive photon geodesics in the acoustic metric; test lensing predictions against strong lensing (Einstein rings, time delays) and weak lensing (cosmic shear, galaxy-galaxy lensing).
+
+\textbf{Key Results:}
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+\item Acoustic metric reproduces exact GR deflection angle $\Delta\theta = 4GM/(bc^2)$ and Shapiro delay $\Delta t = (4GM/c^3)\ln(4r_1 r_2/b^2)$
+\item Solitonic core lensing produces finite central convergence $\kappa_0$ and deflection angle $\alpha \propto \theta^2$ at small scales, contrasting with divergent NFW cusp
+\item Granular Einstein ring modulations at $\sim 0.1$ arcsec scale predicted from BEC wave interference
+\end{itemize}
+
+\textbf{Status:} Complete (draft v01). \quad \textbf{Depends on:} Paper 1.
+
+%----------------------------------------------------------------------
+\subsection{Paper 3: Galaxy Rotation Curves and Solitonic Cores}
+\label{sec:paper3}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Galaxy Rotation Curves and Solitonic Cores in a Bose-Einstein Condensate Universe
+
+\textbf{File:} \texttt{III\_rotation\_curves/}
+
+\textbf{Scope:} GP equation solutions for galactic density profiles. Rotation curves, core-cusp resolution, Tully-Fisher relation, radial acceleration relation, quantized vortex spacing. Frozen core resolution of Lyman-alpha tension.
+
+\textbf{Key Results:}
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+\item Solitonic core profile $\rho(r) = \rho_c/[1+0.091(r/r_c)^2]^8$ produces solid-body rotation $v \propto r$ at $r < r_c$, resolving the core-cusp problem
+\item Mass-radius relation $M_{\mathrm{sol}} \times r_c \approx 2.3 \times 10^9\,M_\odot \cdot \mathrm{kpc}$ for $m = 10^{-22}$ eV
+\item Baryonic Tully-Fisher relation $M_b \propto v_{\mathrm{flat}}^4$ reproduced
+\item Quantized vortex spacing $d_v \sim 0.4$ kpc for MW-like rotation
+\item Lyman-alpha tension resolved by frozen core dark matter interpretation
+\end{itemize}
+
+\textbf{Status:} Complete (draft v01). \quad \textbf{Depends on:} Paper 1.
+
+%----------------------------------------------------------------------
+\subsection{Paper 4: CMB Power Spectrum and Perturbations}
+\label{sec:paper4}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} CMB Power Spectrum and Perturbations in a Bose-Einstein Condensate Universe
+
+\textbf{File:} \texttt{IV\_cmb\_perturbations/}
+
+\textbf{Objective:} Compute CMB temperature and polarization power spectra from acoustic metric perturbations; test against Planck 2018 data.
+
+\textbf{Key Results:}
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+\item Sound horizon shift $|\Delta r_s/r_s| \sim 0.3$--$0.5\%$ at fiducial parameters, consistent with Planck but insufficient to resolve $H_0$ tension ($\sim 7$--$8\%$ needed)
+\item Growth function suppression reduces $S_8$ in correct direction; $|\Delta S_8/S_8| \sim 0.5$--$1\%$ at fiducial parameters
+\item ISW enhancement $\sim 3\%$ at $\ell < 30$ within current uncertainties
+\item Framework uniquely addresses both $H_0$ and $S_8$ tensions in the same direction
+\item Full MCMC analysis with modified Boltzmann codes required for parameter optimization
+\end{itemize}
+
+\textbf{Status:} Complete (draft v01). \quad \textbf{Depends on:} Paper 1. \quad \textbf{Extended by:} Paper 8.
+
+%----------------------------------------------------------------------
+\subsection{Paper 5: Dark Energy and Late-Time Acceleration}
+\label{sec:paper5}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Dark Energy and Late-Time Acceleration in a Bose-Einstein Condensate Universe
+
+\textbf{File:} \texttt{V\_dark\_energy/}
+
+\textbf{Objective:} Model the protofluid thermodynamics; derive effective dark energy equation of state; test against SN Ia, BAO, and $H(z)$ measurements.
+
+\textbf{Key Results:}
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+\item Resting tension $\Tzero = c^4/(8\pi G)$, diluted over Hubble volume, produces observed dark energy density
+\item Cosmological constant problem factorized: $10^{123} = 10^{71} \times 10^{52}$, with $10^{52}$ geometric
+\item Transient energy $w_{\mathrm{mech}}(a) = -1 + \ln(a/a_c)/(3\sigma_{\mathrm{mech}}^2)$ exhibits phantom crossing consistent with DESI 2024 hints
+\item Cosmic coincidence resolved through expansion dynamics rather than anthropic selection
+\end{itemize}
+
+\textbf{Status:} Complete (draft v01). \quad \textbf{Depends on:} Paper 1.
+
+%----------------------------------------------------------------------
+\subsection{Paper 6: Gravitational Waves and Tensor Modes}
+\label{sec:paper6}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Gravitational Waves and Tensor Modes in a Bose-Einstein Condensate Universe
+
+\textbf{File:} \texttt{VI\_gravitational\_waves/}
+
+\textbf{Objective:} Derive gravitational wave propagation in the acoustic metric; predict strain amplitude, dispersion, and polarization; test against LIGO/Virgo/LISA data.
+
+\textbf{Key Results:}
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+\item GW speed $|c_T/c - 1| \sim 10^{-20}$ at LIGO frequencies, satisfying GW170817 bound by 5 orders of magnitude
+\item No birefringence: $c_T^{(+)} = c_T^{(\times)} = c$
+\item Bogoliubov dispersion negligible at LIGO/LISA; non-perturbative at $f \lesssim 10^{-8}$ Hz (PTA band)
+\item Stochastic background cutoff at healing frequency $f_\xi \sim 10^{-8}$ Hz
+\item Primordial GW peak at $f_{\mathrm{peak}} \sim 10^{-5}$ Hz (LISA target)
+\end{itemize}
+
+\textbf{Status:} Complete (draft v01). \quad \textbf{Depends on:} Paper 1.
+
+%----------------------------------------------------------------------
+\subsection{Paper 7: Quantum Gravity Connections and Planck-Scale Physics}
+\label{sec:paper7}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Quantum Gravity Connections and Planck-Scale Physics in a Bose-Einstein Condensate Universe
+
+\textbf{File:} \texttt{VII\_quantum\_gravity/}
+
+\textbf{Objective:} Explore connections to quantum gravity; investigate the origin of the protofluid; connect to emergent gravity proposals (Jacobson, Verlinde, Padmanabhan).
+
+\textbf{Key Results:}
+\begin{itemize}[leftmargin=*, itemsep=0.1em]
+\item Resting tension $\Tzero$ unifies Jacobson's thermodynamic gravity, Verlinde's entropic force, and Padmanabhan's emergent spacetime
+\item Group field theory condensate cosmology provides microscopic origin for the GP wavefunction
+\item All Planck-scale phenomenology bounds (LIV, GRB time delays, GZK cutoff) satisfied
+\item Holographic interpretation: $\rhostiff/\rho_{\mathrm{crit}} = R_H^2/3$ encodes surface-to-volume information ratio
+\item Black hole information paradox resolved through acoustic horizon analogs
+\end{itemize}
+
+\textbf{Status:} Complete (draft v01). \quad \textbf{Depends on:} Papers 1, 6. \quad \textbf{Foundation paper:} ``The Singularity in Equilibrium.''
+
+%----------------------------------------------------------------------
+\subsection{Paper 8: Reconciling the $H_0$ and $S_8$ Tensions}
+\label{sec:paper8}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Reconciling the $H_0$ Tension and $S_8$ Clustering Tension: Condensate-Protofluid Boundary Layer Dynamics and the Microscopic Origin of $u_{\mathrm{mech}}(a)$
+
+\textbf{File:} \texttt{VIII\_H0\_S8\_tensions/}
+
+\textbf{Scope:} Condensate-protofluid boundary layer as transition zone with graded impedance. Supercooled boson analogy. Manifold pressure. Revised $u_{\mathrm{mech}}(a)$ derivation. Full MCMC parameter optimization against Planck, BAO, local $H_0$.
+
+\textbf{Status:} In development (outline v01). \quad \textbf{Depends on:} Papers 1, 4. \quad \textbf{Extends:} Paper 4 (quantitative $H_0$/$S_8$ resolution).
+
+%----------------------------------------------------------------------
+\subsection{Paper 9: Hawking Radiation as Frozen Core Extrusion}
+\label{sec:paper9}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Hawking Radiation as Frozen Core Extrusion: No Singularity, Impedance-Driven Emission, and Black Star Phenomenology
+
+\textbf{File:} \texttt{IX\_hawking\_radiation/}
+
+\textbf{Scope:} No singularity (frozen core replaces it). Radiation extrusion from frozen core surface via impedance mismatch. Hawking temperature comparison. Information preservation. GW ringdown echoes. Rotating frozen cores and frame dragging.
+
+\textbf{Status:} In development (outline v01). \quad \textbf{Depends on:} Paper 1 (frozen cores). \quad \textbf{Foundation papers:} ``The Singularity in Equilibrium,'' ``Resolving the Hulse-Taylor Binary.''
+
+%----------------------------------------------------------------------
+\subsection{Paper 10: Thermodynamics of Frozen Matter}
+\label{sec:paper10}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Thermodynamics of Frozen Matter: From Maximum Planck Density to Resting Tension in the Planck Field
+
+\textbf{File:} \texttt{X\_thermodynamics\_frozen\_thaw/}
+
+\textbf{Scope:} Thermodynamic ground state at $\rhostiff$ (absolute zero of the field). Thermal thaw pathway as density decreases. Reverse calculation from maximum density to CMB temperature. Temperature profile at frozen core boundary. Cosmological implications of primordial frozen core thawing. Case study: thawing a neutrino---concrete worked example at particle physics scales, frozen core radius hierarchy for mass eigenstates, rest mass as thaw energy, implications for neutrino cosmology.
+
+\textbf{Status:} In development (outline v01). \quad \textbf{Depends on:} Papers 1, 9.
+
+%----------------------------------------------------------------------
+\subsection{Paper 11: Quantum Superposition at Maximum Planck Density}
+\label{sec:paper11}
+%----------------------------------------------------------------------
+
+\textbf{Full Title:} Quantum Superposition at Maximum Planck Density and the Resolution of Entanglement in the Planck Field
+
+\textbf{File:} \texttt{XI\_quantum\_superposition/}
+
+\textbf{Scope:} Quantum state at $\rhostiff$ (maximal coherence, zero decoherence channels). The Planck field as physical medium for quantum correlations. EPR resolution: entangled particles share pre-existing correlated field displacement patterns. Decoherence at the frozen core boundary. Wavefunction collapse as field relaxation.
+
+\textbf{Status:} In development (outline v01). \quad \textbf{Depends on:} Papers 1, 7, 10.
+
+%==============================================================================
+\section{Program Structure}
+\label{sec:structure}
+%==============================================================================
+
+%----------------------------------------------------------------------
+\subsection{Dependency Map}
+%----------------------------------------------------------------------
+
+\begin{center}
+\begin{tabular}{llp{8cm}}
+\toprule
+\textbf{Paper} & \textbf{Status} & \textbf{Dependencies} \\
+\midrule
+Foundation: Route to $G$ & Published & --- \\
+Foundation: Singularity & Published & Route to $G$ \\
+Foundation: Hulse-Taylor & Published & Route to $G$ \\
+\midrule
+1. Universal Condensate & Draft v03 & All three foundation papers \\
+2. Gravitational Lensing & Draft v01 & Paper 1 \\
+3. Rotation Curves & Draft v01 & Paper 1 \\
+4. CMB Perturbations & Draft v01 & Paper 1 \\
+5. Dark Energy & Draft v01 & Paper 1 \\
+6. Gravitational Waves & Draft v01 & Paper 1 \\
+7. Quantum Gravity & Draft v01 & Papers 1, 6; Foundation: Singularity \\
+8. $H_0$ / $S_8$ Tensions & Outline v01 & Papers 1, 4 \\
+9. Hawking Radiation & Outline v01 & Paper 1; Foundation: Singularity, Hulse-Taylor \\
+10. Thermodynamics & Outline v01 & Papers 1, 9 \\
+11. Quantum Superposition & Outline v01 & Papers 1, 7, 10 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%----------------------------------------------------------------------
+\subsection{Conceptual Domains}
+%----------------------------------------------------------------------
+
+The papers cluster into four conceptual domains. Each paper belongs to its own scope and should not embed the program structure.
+
+\textbf{Domain A: Cosmological Framework} (Papers 1, 4, 5, 8)\\
+The universe as a BEC expanding into a protofluid. Background cosmology, CMB, dark energy, $H_0$/$S_8$ tensions.
+
+\textbf{Domain B: Astrophysical Observables} (Papers 2, 3, 6)\\
+Gravitational lensing, galaxy rotation curves, gravitational waves. Observational tests against current data.
+
+\textbf{Domain C: Frozen Cores and Compact Objects} (Papers 9, 10)\\
+Matter at maximum density $\rhostiff$. Hawking radiation as extrusion. Thermodynamics of frozen matter. \emph{Distinct from Domain A}---frozen cores are compact objects at maximum compression, not the cosmological condensate.
+
+\textbf{Domain D: Fundamental Physics} (Papers 7, 11)\\
+Quantum gravity connections. Quantum superposition and entanglement through the Planck field.
+
+%----------------------------------------------------------------------
+\subsection{Validation Summary}
+%----------------------------------------------------------------------
+
+Papers 1--7 validate the framework against 30 independent observational constraints spanning 14 orders of magnitude in scale:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Result} & \textbf{Count} & \textbf{Notes} \\
+\midrule
+PASS & 26 & Including Lyman-alpha (frozen core resolution) \\
+PARTIAL & 2 & $H_0$ tension, $S_8$ tension (Paper 8 targets these) \\
+TENSION & 0 & --- \\
+\midrule
+\textbf{Total} & \textbf{30/30 consistent} & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\section{Key Principles}
+\label{sec:principles}
+%==============================================================================
+
+\begin{enumerate}[leftmargin=*, itemsep=0.5em]
+
+\item \textbf{Two distinct concepts must not be conflated:}
+\begin{itemize}
+\item \textbf{The universe as a BEC} (Domains A, B): The cosmological framework---the observable universe is a condensate expanding into a protofluid.
+\item \textbf{Frozen cores} (Domain C): Matter compressed to maximum density $\rhostiff$. Compact objects. Zero excitations. Acoustically opaque. These are at the opposite end of the density scale from the cosmological condensate.
+\end{itemize}
+
+\item \textbf{The resting tension $\Tzero = c^4/(8\pi G)$ is the keystone.} It is the single constitutive property from which gravity, maximum density, the cosmological constant reduction, and the weakness of gravity all derive. No other framework identifies or uses this quantity.
+
+\item \textbf{Independent convergences, not lineage.} Where the program's results coincide with prior work (gravastars, Planck stars, acoustic black holes, stiff matter cosmology), these are independent convergences from different premises. The Planck field framework derives from gravity as the intrinsic elastic modulus of the field---a fundamentally different starting point.
+
+\item \textbf{Each paper focuses on its own scope.} The program structure (numbering, dependencies, relationships) lives in this outline document, not in the individual papers.
+
+\end{enumerate}
+
+%==============================================================================
+\section{Document Conventions}
+\label{sec:conventions}
+%==============================================================================
+
+\begin{itemize}[leftmargin=*, itemsep=0.3em]
+\item All papers use the same LaTeX preamble (article class, 11pt, a4paper, PDFLaTeX compatible).
+\item Common macros ($\rhostiff$, $\Tzero$, etc.) are consistent across all documents.
+\item Author: Robin Skavberg, Independent Researcher, ORCID: 0009-0003-9126-6196.
+\item Cross-references between papers use citations, not embedded program numbering.
+\item Foundation papers are cited by DOI.
+\end{itemize}
+
+\end{document}
